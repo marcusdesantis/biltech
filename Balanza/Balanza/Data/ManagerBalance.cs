@@ -35,7 +35,7 @@ namespace Balanza.Data
                 serialPort1.Open();
 
                 // se indica el tipo de pesaje que desea obtener segun el manual de la balanza
-                serialPort1.Write("0P");
+                serialPort1.Write("P");
             }
             catch (Exception ex)
             {
