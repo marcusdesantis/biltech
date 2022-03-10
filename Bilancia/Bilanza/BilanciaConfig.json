@@ -1,0 +1,22 @@
+  [
+    {
+      "Balance": "OHAUS 1",
+      "PortCOM": "COM3",
+      "BaudRate": 9600,
+      "DataBits": 8,
+      "Parity": 0,
+      "StopBit": 1,
+      "HandShake": 0,
+      "CommandForWeight": "SP"
+    },
+    {
+      "Balance": "OHAUS 2",
+      "PortCOM": "COM4",
+      "BaudRate": 4800,
+      "DataBits": 8,
+      "Parity": 0,
+      "StopBit": 1,
+      "HandShake": 0,
+      "CommandForWeight": "0P"
+    }
+  ]

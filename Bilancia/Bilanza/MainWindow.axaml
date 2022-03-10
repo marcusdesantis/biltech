@@ -1,0 +1,61 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Bilanza.MainWindow"
+        Title="Bilanza">
+  <StackPanel Margin="10,10,10,10">
+    <TextBlock Text="Bilancia"></TextBlock>
+    <ComboBox x:Name="cbBalances" Width="200" SelectionChanged="ComboBox_SelectionChanged"></ComboBox>
+    <Grid x:Name="grdMain" ColumnDefinitions="50*,50*" RowDefinitions="Auto">
+      <StackPanel x:Name="spParameters" IsVisible="false" Margin="20,20,20,20" Grid.Column="0" Grid.Row="0">
+        <Grid x:Name="grdSample" Width="500" HorizontalAlignment="Left" ColumnDefinitions="50*,50*" RowDefinitions="Auto,Auto,Auto,Auto, Auto, Auto, Auto"  Margin="4" ShowGridLines="False" >
+          <Label x:Name="lblPorto" Content="Porto:" Grid.Column="0" Grid.Row="0"></Label>
+          <TextBlock x:Name="Porto" Text="" Margin="1,3" Grid.Column="1" Grid.Row="0"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="1">BoudRate:</Label>
+          <TextBlock x:Name="txtBaudRate" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="1"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="2">Databits:</Label>
+          <TextBlock x:Name="txtDataBits" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="2"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="3">Parity:</Label>
+          <TextBlock x:Name="txtParity" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="3"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="4">StopBit:</Label>
+          <TextBlock x:Name="txtStopBits" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="4"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="5">HandShake:</Label>
+          <TextBlock x:Name="txtHandShake" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="5"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="6">Comando di pesatura stabile:</Label>
+          <TextBlock x:Name="txtCommand" Text="" Margin="1,3" Grid.Column="1" Grid.Row="6"></TextBlock>
+        </Grid>
+        <StackPanel Orientation="Horizontal" Margin="20,20,20,20">
+          <Button x:Name="btnConnect" ClickMode="Press" >Collegare</Button>
+          <Button x:Name="btnWeight" ClickMode="Press" IsVisible="False">Pesare</Button>
+          <Button x:Name="btnDisconnect" ClickMode="Press" IsVisible="False">Disconetti</Button>
+        </StackPanel>
+        <StackPanel Margin="20,20,20,20">
+          <TextBlock x:Name="txtErrorMessage" Foreground="Red" Text=""></TextBlock>
+        </StackPanel>
+      </StackPanel>
+      <StackPanel x:Name="spResults" Margin="20,20,20,20" Grid.Column="1" Grid.Row="0" IsVisible="False">
+        <Grid x:Name="grdResults" ColumnDefinitions="50*,50*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+          <Label Grid.Column="0" Grid.Row="0">First</Label>
+          <TextBlock x:Name="txtFirst" Grid.Column="1" Grid.Row="0"></TextBlock>
+          
+          <Label Grid.Column="0" Grid.Row="1">Weight</Label>
+          <TextBlock x:Name="txtWeight" Grid.Column="1" Grid.Row="1"></TextBlock>
+          
+          <Label Grid.Column="0" Grid.Row="2">Weight/100</Label>
+          <TextBlock x:Name="txtWeight_100" Grid.Column="1" Grid.Row="2"></TextBlock>
+
+          <Label Grid.Column="0" Grid.Row="3">Date</Label>
+          <TextBlock x:Name="txtDate" Grid.Column="1" Grid.Row="3"></TextBlock>
+
+          <Label Grid.Column="0" Grid.Row="4">Second</Label>
+          <TextBlock x:Name="txtSecond" Grid.Column="1" Grid.Row="4"></TextBlock>
+
+          <Label Grid.Column="0" Grid.Row="5">Code</Label>
+          <TextBlock x:Name="txtCode" Grid.Column="1" Grid.Row="5"></TextBlock>
+        </Grid>
+      </StackPanel>
+    </Grid>
+  </StackPanel>
+</Window>
