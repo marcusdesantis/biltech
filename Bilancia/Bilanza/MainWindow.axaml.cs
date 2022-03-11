@@ -89,6 +89,8 @@ namespace Bilanza
                     txtHandShake.Text = _selected.HandShake.ToString();
                     txtDataBits.Text = _selected.DataBits.ToString();
                     txtCommand.Text = _selected.CommandForWeight;
+                    txtParserFormat.Text = _selected.ParserFormat;
+                    txtWeightConvertion.Text = _selected.WeightConversion.ToString();
                     spParameters.IsVisible = true;
                 }
                 else

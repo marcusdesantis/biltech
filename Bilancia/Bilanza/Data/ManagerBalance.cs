@@ -252,12 +252,12 @@ namespace Bilanza.Data
             if(!string.IsNullOrEmpty(dataValue))
             {
                 //BalanceResultModel
-                String[] result = GetParseData(dataValue);
-                _balanceResultModel.First = result[0];
+                _balanceResultModel = GetParseData(dataValue, _balanceSelected.ParserFormat);
+                /*_balanceResultModel.First = result[0];
                 _balanceResultModel.WeightKg = decimal.Parse(result[1]);
                 _balanceResultModel.Weight_100 = decimal.Parse(result[1]) / 100;
                 _balanceResultModel.Date = result[2];
-                _balanceResultModel.Second = result[3];
+                _balanceResultModel.Second = result[3];*/
             }
             else
             {
@@ -267,12 +267,12 @@ namespace Bilanza.Data
         }
 
         //BalanceResultModel
-        public string[] GetParseData(string data, string parseFormat)//JDJDJ_2345_20220311_123345
+        public BalanceResultModel GetParseData(string data, string parseFormat)//JDJDJ_2345_20220311_123345
         {
-
+            BalanceResultModel _result = new BalanceResultModel();
             string[] partsData = data.Split("_");
 
-            return partsData;
+            return _result;
         }
 
         public bool SelectBalance(string balanceName)

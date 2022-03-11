@@ -10,7 +10,7 @@
     <ComboBox x:Name="cbBalances" Width="200" SelectionChanged="ComboBox_SelectionChanged"></ComboBox>
     <Grid x:Name="grdMain" ColumnDefinitions="50*,50*" RowDefinitions="Auto">
       <StackPanel x:Name="spParameters" IsVisible="false" Margin="20,20,20,20" Grid.Column="0" Grid.Row="0">
-        <Grid x:Name="grdSample" Width="500" HorizontalAlignment="Left" ColumnDefinitions="50*,50*" RowDefinitions="Auto,Auto,Auto,Auto, Auto, Auto, Auto"  Margin="4" ShowGridLines="False" >
+        <Grid x:Name="grdSample" Width="500" HorizontalAlignment="Left" ColumnDefinitions="50*,50*" RowDefinitions="Auto,Auto,Auto,Auto, Auto, Auto, Auto,Auto, Auto"  Margin="4" ShowGridLines="False" >
           <Label x:Name="lblPorto" Content="Porto:" Grid.Column="0" Grid.Row="0"></Label>
           <TextBlock x:Name="Porto" Text="" Margin="1,3" Grid.Column="1" Grid.Row="0"></TextBlock>
           <Label Grid.Column="0" Grid.Row="1">BoudRate:</Label>
@@ -25,6 +25,10 @@
           <TextBlock x:Name="txtHandShake" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="5"></TextBlock>
           <Label Grid.Column="0" Grid.Row="6">Comando di pesatura stabile:</Label>
           <TextBlock x:Name="txtCommand" Text="" Margin="1,3" Grid.Column="1" Grid.Row="6"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="7">Parser:</Label>
+          <TextBlock x:Name="txtParserFormat" Text="" Margin="1,3" Grid.Column="1" Grid.Row="7"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="8">Weight conversion:</Label>
+          <TextBlock x:Name="txtWeightConvertion" Text="" Margin="1,3" Grid.Column="1" Grid.Row="8"></TextBlock>
         </Grid>
         <StackPanel Orientation="Horizontal" Margin="20,20,20,20">
           <Button x:Name="btnConnect" ClickMode="Press" >Collegare</Button>

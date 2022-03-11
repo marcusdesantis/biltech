@@ -15,7 +15,10 @@ namespace Bilanza.Models
         public int StopBit { get; set; }
         public int HandShake { get; set; }
         public string CommandForWeight { get; set; }
-        
+        public string ParserFormat { get; set; }
+        public decimal WeightConversion { get; set; }
+
+
     }
 
     public class BalanceResultModel

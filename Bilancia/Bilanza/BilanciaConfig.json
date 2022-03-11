@@ -8,7 +8,6 @@
       "StopBit": 1,
       "HandShake": 0,
       "CommandForWeight": "SP,SP",
-      "TimeBetweenCommands": 200,
       "ParserFormat": "XXXXX_PPPP_YYYYMMDD_HHMMSS",
       "WeightConversion":  100
     },
@@ -21,7 +20,6 @@
       "StopBit": 1,
       "HandShake": 0,
       "CommandForWeight": "0P",
-      "TimeBetweenCommands": 200,
       "ParserFormat": "YYYYMMDD_XXXXX_PPPP_HHMMSS",
       "WeightConversion": 1000
     }
