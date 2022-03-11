@@ -251,13 +251,9 @@ namespace Bilanza.Data
             dataValue = serialPort1.ReadExisting();
             if(!string.IsNullOrEmpty(dataValue))
             {
-                //BalanceResultModel
-                _balanceResultModel = GetParseData(dataValue, _balanceSelected.ParserFormat);
-                /*_balanceResultModel.First = result[0];
-                _balanceResultModel.WeightKg = decimal.Parse(result[1]);
-                _balanceResultModel.Weight_100 = decimal.Parse(result[1]) / 100;
-                _balanceResultModel.Date = result[2];
-                _balanceResultModel.Second = result[3];*/
+
+                _balanceResultModel = GetParseData(dataValue, _balanceSelected.WeightConversion);
+
             }
             else
             {
@@ -266,13 +262,123 @@ namespace Bilanza.Data
             }
         }
 
-        //BalanceResultModel
-        public BalanceResultModel GetParseData(string data, string parseFormat)//JDJDJ_2345_20220311_123345
+        //JDJDJ_2345_20220311_123345
+        //2345_11032022_123599
+        public BalanceResultModel GetParseData(string data, decimal weightConversion)
         {
             BalanceResultModel _result = new BalanceResultModel();
-            string[] partsData = data.Split("_");
+            string[] partsDataValue = data.Split("_");
+            var lengthPartsDataValue = partsDataValue.Length;
+
+            var FormatFirst = "";
+            var FormartWeight = "";
+            var FormatDate = "";
+            var FormatSeconds = "";
+
+            
+            if (partsDataValue[0].All(char.IsDigit))
+            {
+                if (partsDataValue[0].Length == 8)
+                {
+                        FormatDate = partsDataValue[0];
+                }
+                else
+                {
+                    if (partsDataValue[0].Length == 6)
+                    {
+                        FormatSeconds = partsDataValue[0];
+                    }
+                    else
+                    {
+                        FormartWeight = partsDataValue[0];
+                    }
+                }
+            }
+            else
+            {
+               FormatFirst = partsDataValue[0];
+            }
+
+            if (partsDataValue[1].All(char.IsDigit))
+            {
+                if (partsDataValue[1].Length == 8)
+                {
+                    FormatDate = partsDataValue[1];
+                }
+                else
+                {
+                    if (partsDataValue[1].Length == 6)
+                    {
+                        FormatSeconds = partsDataValue[1];
+                    }
+                    else
+                    {
+                        FormartWeight = partsDataValue[1];
+                    }
+                }
+            }
+            else
+            {
+                FormatFirst = partsDataValue[1];
+            }
+
+            if (partsDataValue[2].All(char.IsDigit))
+            {
+                if (partsDataValue[2].Length == 8)
+                {
+                    FormatDate = partsDataValue[2];
+                }
+                else
+                {
+                    if (partsDataValue[2].Length == 6)
+                    {
+                        FormatSeconds = partsDataValue[2];
+                    }
+                    else
+                    {
+                        FormartWeight = partsDataValue[2];
+                    }
+                }
+            }
+            else
+            {
+                FormatFirst = partsDataValue[2];
+            }
+
+            if (lengthPartsDataValue == 4)
+            {
+                if (partsDataValue[3].All(char.IsDigit))
+                {
+                    if (partsDataValue[3].Length == 8)
+                    {
+                        FormatDate = partsDataValue[3];
+                    }
+                    else
+                    {
+                        if (partsDataValue[3].Length == 6)
+                        {
+                            FormatSeconds = partsDataValue[3];
+                        }
+                        else
+                        {
+                            FormartWeight = partsDataValue[3];
+                        }
+                    }
+                }
+                else
+                {
+                    FormatFirst = partsDataValue[3];
+                }
+            }
+
+            _result.First = FormatFirst;
+            _result.WeightKg = decimal.Parse(FormartWeight);
+            _result.Weight_100 = (decimal.Parse(FormartWeight)/ weightConversion);
+            _result.Date = FormatDate;
+            _result.Second = FormatSeconds;
 
             return _result;
+
         }
 
         public bool SelectBalance(string balanceName)
