@@ -7,7 +7,10 @@
       "Parity": 0,
       "StopBit": 1,
       "HandShake": 0,
-      "CommandForWeight": "SP"
+      "CommandForWeight": "SP,SP",
+      "TimeBetweenCommands": 200,
+      "ParserFormat": "XXXXX_PPPP_YYYYMMDD_HHMMSS",
+      "WeightConversion":  100
     },
     {
       "Balance": "OHAUS 2",
@@ -17,6 +20,9 @@
       "Parity": 0,
       "StopBit": 1,
       "HandShake": 0,
-      "CommandForWeight": "0P"
+      "CommandForWeight": "0P",
+      "TimeBetweenCommands": 200,
+      "ParserFormat": "YYYYMMDD_XXXXX_PPPP_HHMMSS",
+      "WeightConversion": 1000
     }
   ]

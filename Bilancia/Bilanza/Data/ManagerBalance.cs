@@ -251,6 +251,7 @@ namespace Bilanza.Data
             dataValue = serialPort1.ReadExisting();
             if(!string.IsNullOrEmpty(dataValue))
             {
+                //BalanceResultModel
                 String[] result = GetParseData(dataValue);
                 _balanceResultModel.First = result[0];
                 _balanceResultModel.WeightKg = decimal.Parse(result[1]);
@@ -265,7 +266,8 @@ namespace Bilanza.Data
             }
         }
 
-        public string[] GetParseData(string data)
+        //BalanceResultModel
+        public string[] GetParseData(string data, string parseFormat)//JDJDJ_2345_20220311_123345
         {
 
             string[] partsData = data.Split("_");
