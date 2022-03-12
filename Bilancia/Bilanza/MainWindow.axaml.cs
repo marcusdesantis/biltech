@@ -21,6 +21,7 @@ namespace Bilanza
             btnWeight.Click += BtnWeight_Click;
             btnDisconnect.Click += BtnDisconnect_Click;
             _balance = new ManagerBalance(@"C:\Projects\biltech\Bilancia\Bilanza\BilanciaConfig.json");
+            //_balance = new ManagerBalance(@"C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\Bilancia\Bilanza\BilanciaConfig.json");
             
             foreach(BalanceModel b in _balance.BalanceList)
             {
