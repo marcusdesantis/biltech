@@ -74,7 +74,7 @@ namespace Bilanza.Data
                 serialPort1.Open();
 
                 // se indica el tipo de pesaje que desea obtener segun el manual de la balanza
-                serialPort1.Write("P");
+                serialPort1.Write("PRUEBAAAA");
             }
             catch (Exception ex)
             {
@@ -199,7 +199,8 @@ namespace Bilanza.Data
             {
                 try
                 {
-                    serialPort1.Write(_balanceSelected.CommandForWeight);
+                    //serialPort1.Write(_balanceSelected.CommandForWeight);
+                    serialPort1.Write("Prueba 2");
                     _error = false;
                     _messageError = string.Empty;
                 }

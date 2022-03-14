@@ -1,9 +1,12 @@
 using Avalonia.Controls;
+using MySql.Data.MySqlClient;
 using Bilanza.Data;
 using Bilanza.Models;
 using System.Collections.Generic;
 using System.Linq;
-
+using System;
+using Bilancia.DB;
+using System.Diagnostics;
 
 namespace Bilanza
 {
@@ -13,6 +16,7 @@ namespace Bilanza
         private List<string> _listBalanceNames = new List<string>();
         BalanceModel _selected = null;
         bool handle = false;
+        BalanceResultModel _balanceResultModel = new BalanceResultModel();
         public MainWindow()
         {
             InitializeComponent();
@@ -20,14 +24,16 @@ namespace Bilanza
             btnConnect.Click += BtnConnect_Click;
             btnWeight.Click += BtnWeight_Click;
             btnDisconnect.Click += BtnDisconnect_Click;
-            _balance = new ManagerBalance(@"C:\Projects\biltech\Bilancia\Bilanza\BilanciaConfig.json");
-            //_balance = new ManagerBalance(@"C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\Bilancia\Bilanza\BilanciaConfig.json");
+            //_balance = new ManagerBalance(@"C:\Projects\biltech\Bilancia\Bilanza\BilanciaConfig.json");
+            _balance = new ManagerBalance(@"C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\Bilancia\Bilanza\BilanciaConfig.json");
             
             foreach(BalanceModel b in _balance.BalanceList)
             {
                 _listBalanceNames.Add(b.Balance);
             }
             cbBalances.Items = _listBalanceNames;
+
+
         }
 
         private void BtnDisconnect_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -42,7 +48,25 @@ namespace Bilanza
 
                 if (!_balance.SendWeightRequest2SelectedBalance())
                 {
+                    BalanceResultModel _result = new BalanceResultModel();
                     txtErrorMessage.Text = _balance.MessageError;
+                   
+                    Console.WriteLine("Puerto -> " + Porto.Text);
+                    Console.WriteLine("PaserFormant -> " + txtParserFormat.Text);
+                    _balanceResultModel = _balance.GetParseData(txtParserFormat.Text, decimal.Parse(txtWeightConvertion.Text));
+
+                    Console.WriteLine(_balanceResultModel.Weight_100);
+                  
+                    if (Insert(_balanceResultModel))
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                    spParameters.IsVisible = true;
+
                 } 
                 else
                 {
@@ -52,6 +76,7 @@ namespace Bilanza
                     txtDate.Text = _balance.BalanceResult.Date;
                     txtSecond.Text = _balance.BalanceResult.Second;
                     txtCode.Text = _balance.BalanceResult.Code;
+
                 }
             }
         }
@@ -106,5 +131,63 @@ namespace Bilanza
             //handle = !cmb.IsDropDownOpen;
             //Handle();
         }
+
+        public bool Insert(BalanceResultModel _balanceResultModel)
+        {
+            try
+            {
+                String idBilancia = "1";
+                String idProdotto = "1";
+                string peso = _balanceResultModel.Weight_100.ToString().Replace(",",".");
+                String idFormulaProdotto = "1";
+                DateTime dataCreazione = DateTime.Now;
+                string dateFormart = dataCreazione.ToString("yy-MM-dd");
+                Console.WriteLine(dateFormart);
+
+                string sql = "INSERT INTO misurazione (Id_Bilancia, Id_Prodotto, Peso, Id_FormulaProdotto, DataCreazione) VALUES ('" + idBilancia + "', '" + idProdotto + "','" + peso + "','" + idFormulaProdotto + "','" + dateFormart + "')";
+                string sqlId = "SELECT @@identity AS id";
+
+                MySqlConnection conexionBD = ConnectionBD.connection();
+                conexionBD.Open();
+
+                try
+                {
+                    MySqlCommand comando = new MySqlCommand(sql, conexionBD);
+                    comando.ExecuteNonQuery();
+                    Console.WriteLine("Insert Success");
+
+                    MySqlCommand comandoId = new MySqlCommand(sqlId, conexionBD);
+                    Console.WriteLine(comandoId.ExecuteNonQuery());
+
+
+                    return true;
+
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine("Insert Error");
+                    Console.WriteLine("ex");
+                    return false;
+
+                }
+                finally
+                {
+                    conexionBD.Close();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Insert Error 2");
+                Console.WriteLine("Aqui -> " + ex);
+            }
+
+            return false;
+
+
+
+        }
     }
+
 }

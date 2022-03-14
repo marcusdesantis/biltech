@@ -20,7 +20,7 @@
       "StopBit": 1,
       "HandShake": 0,
       "CommandForWeight": "0P",
-      "ParserFormat": "YYYYMMDD_XXXXX_PPPP_HHMMSS",
+      "ParserFormat": "2022014_OHAUS2_2450_141005",
       "WeightConversion": 1000
     }
   ]
