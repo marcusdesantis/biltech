@@ -3,7 +3,9 @@ using Bilanza.Data;
 using Bilanza.Models;
 using System.Collections.Generic;
 using System.Linq;
-
+using System;
+using Bilancia.DB;
+using System.Diagnostics;
 
 namespace Bilanza
 {
@@ -13,6 +15,7 @@ namespace Bilanza
         private List<string> _listBalanceNames = new List<string>();
         BalanceModel _selected = null;
         bool handle = false;
+        BalanceResultModel _balanceResultModel = new BalanceResultModel();
         public MainWindow()
         {
             InitializeComponent();
@@ -28,6 +31,8 @@ namespace Bilanza
                 _listBalanceNames.Add(b.Balance);
             }
             cbBalances.Items = _listBalanceNames;
+
+
         }
 
         private void BtnDisconnect_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -40,9 +45,18 @@ namespace Bilanza
             if (_selected != null)
             {
 
-                if (!_balance.SendWeightRequest2SelectedBalance())
+                if (!_balance.IsPortAvailable())
                 {
+                    BalanceResultModel _result = new BalanceResultModel();
                     txtErrorMessage.Text = _balance.MessageError;
+                   
+                    Console.WriteLine("Port -> " + Porto.Text);
+                    Console.WriteLine("Command -> " + txtWeightConvertion.Text);
+
+                    _balance.DataSend(txtWeightConvertion.Text.ToString());
+
+                    spParameters.IsVisible = true;
+
                 } 
                 else
                 {
@@ -52,6 +66,7 @@ namespace Bilanza
                     txtDate.Text = _balance.BalanceResult.Date;
                     txtSecond.Text = _balance.BalanceResult.Second;
                     txtCode.Text = _balance.BalanceResult.Code;
+
                 }
             }
         }
@@ -106,5 +121,7 @@ namespace Bilanza
             //handle = !cmb.IsDropDownOpen;
             //Handle();
         }
+
     }
+
 }

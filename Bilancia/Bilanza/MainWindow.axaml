@@ -38,6 +38,7 @@
         <StackPanel Margin="20,20,20,20">
           <TextBlock x:Name="txtErrorMessage" Foreground="Red" Text=""></TextBlock>
         </StackPanel>
+	 
       </StackPanel>
       <StackPanel x:Name="spResults" Margin="20,20,20,20" Grid.Column="1" Grid.Row="0" IsVisible="False">
         <Grid x:Name="grdResults" ColumnDefinitions="50*,50*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">

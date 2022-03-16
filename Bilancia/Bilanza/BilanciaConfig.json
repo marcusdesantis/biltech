@@ -8,8 +8,8 @@
       "StopBit": 1,
       "HandShake": 0,
       "CommandForWeight": "SP,SP",
-      "ParserFormat": "XXXXX_PPPP_YYYYMMDD_HHMMSS",
-      "WeightConversion":  100
+      "ParserFormat": "4450_051418_OHAUS3_15032022",
+      "WeightConversion": 100
     },
     {
       "Balance": "OHAUS 2",
@@ -20,7 +20,7 @@
       "StopBit": 1,
       "HandShake": 0,
       "CommandForWeight": "0P",
-      "ParserFormat": "YYYYMMDD_XXXXX_PPPP_HHMMSS",
+      "ParserFormat": "20220314_OHAUS2_2450_141005",
       "WeightConversion": 1000
     }
   ]
