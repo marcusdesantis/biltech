@@ -5,33 +5,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Bilancia.DB
 {
     class ConnectionBD
     {
-
         public static MySqlConnection connection()
         {
-            string servidor = "localhost";
-            string bd = "biltek_bd";
-            string usuario = "root";
-            string password = "";
-
-            string cadenaConexion = "Database=" + bd + "; Data Source=" + servidor + "; User Id= " + usuario + "; Password=" + password + "";
-
+           
+            string connectionString = CredentialDB.DB; 
             try
             {
-                MySqlConnection conexionBD = new MySqlConnection(cadenaConexion);
-                Console.WriteLine("Conexión exitosa");
-                return conexionBD;
+                MySqlConnection connectionBD = new MySqlConnection(connectionString);
+                Console.WriteLine("Successful Connection");
+                return connectionBD;
             }
             catch (MySqlException ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
-                Console.WriteLine("Conexón Fallida");
+                Console.WriteLine("Error -> " + ex.Message);
+                Console.WriteLine("Connection Failed");
                 return null;
             }
         }
+
     }
 }

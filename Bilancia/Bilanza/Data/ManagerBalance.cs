@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
+using Bilanza.Data;
+using Bilancia.DB;
 
 namespace Bilanza.Data
 {
@@ -61,11 +64,6 @@ namespace Bilanza.Data
         {
             try
             {
-                // COM3 = puerto que ha capturado la conexion de la Balanza
-                // BaudRate = colocar el valor del manual de la balanza
-                // Parity = colocar el valor del manual de la balanza
-                // DataBits = colocar el valor del manual de la balanza
-                // StopBits = colocar el valor del manual de la balanza
                 serialPort1 = new SerialPort("COM3", 2400, Parity.None, 8, StopBits.One);
                 serialPort1.Handshake = Handshake.None;
                 serialPort1.DataReceived += new SerialDataReceivedEventHandler(DataReceived);
@@ -73,12 +71,10 @@ namespace Bilanza.Data
                 serialPort1.WriteTimeout = 500;
                 serialPort1.Open();
 
-                // se indica el tipo de pesaje que desea obtener segun el manual de la balanza
-                serialPort1.Write("PRUEBAAAA");
-            }
+           }
             catch (Exception ex)
             {
-
+                Console.WriteLine("Error " + ex);
             }
         }
 
@@ -192,15 +188,14 @@ namespace Bilanza.Data
             }
         }
 
-        public bool SendWeightRequest2SelectedBalance()
+        public bool IsPortAvailable()
         {
             bool retVal = false;
             if (_balanceSelected != null && serialPort1 != null && serialPort1.IsOpen)
             {
                 try
                 {
-                    //serialPort1.Write(_balanceSelected.CommandForWeight);
-                    serialPort1.Write("Prueba 2");
+                     //serialPort1.Write(_balanceSelected.CommandForWeight);
                     _error = false;
                     _messageError = string.Empty;
                 }
@@ -245,6 +240,21 @@ namespace Bilanza.Data
         }
 
 
+        public void DataSend(String command)
+        {
+            Thread.Sleep(500);
+            try
+            {
+                serialPort1.WriteLine(command);
+                
+            }catch (Exception ex)
+            {
+                Console.WriteLine("Error ->" + ex);
+            }
+            
+
+        }
+
         private void DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             Thread.Sleep(500);
@@ -254,12 +264,22 @@ namespace Bilanza.Data
             {
 
                 _balanceResultModel = GetParseData(dataValue, _balanceSelected.WeightConversion);
-
+                if (InsertBalance(_balanceResultModel))
+                {
+                    Console.WriteLine("-> " + dataValue);
+                    Console.WriteLine("Weight -> " + _balanceResultModel.WeightKg);
+                    Console.WriteLine("Weight Convert -> " + _balanceResultModel.Weight_100);
+                }
+                else
+                {
+                    Console.WriteLine("Error inserting");
+                }
             }
             else
             {
                 _error = true;
                 _messageError = "";
+
             }
         }
 
@@ -399,7 +419,7 @@ namespace Bilanza.Data
                     }
                     else
                     {
-                        _messageError = "Non è stato possibile ottenere informazioni sulla configurazione";
+                        _messageError = "It is not possible to obtain information about your configuration";
                     }
                 }
             }
@@ -408,7 +428,7 @@ namespace Bilanza.Data
         public bool loadDataConfigurationBalanceJson(string rutaJson)
         {
             bool valRet = false;
-            //StreamReader r = new StreamReader("file.json");
+           
             if (File.Exists(rutaJson))
             {
                 try
@@ -419,19 +439,7 @@ namespace Bilanza.Data
                     r.Close();
                     r.Dispose();
                     _balanceList = JsonConvert.DeserializeObject<List<BalanceModel>>(jsonString);
-
-                    /*
-                    BalanceModel _balance = _balanceList.Where(x => x.Balance.Equals(balanceName)).FirstOrDefault();
-                    if(_balance != null)
-                    {
-                        //loadDataConfigurationBalance(_balance);
-                        _balanceSelected = _balance;
-                    }
-                    else
-                    {
-                        _messageError = "Non è stato possibile ottenere informazioni sulla configurazione";
-                    }
-                    */
+         
                 }
                 catch (Exception ex)
                 {
@@ -440,6 +448,55 @@ namespace Bilanza.Data
             }
 
             return valRet;
+        }
+
+        public bool InsertBalance(BalanceResultModel _balanceResultModel)
+        {
+            try
+            {
+                String idBilancia = "4";
+                String idProdotto = "2";
+                string peso = _balanceResultModel.Weight_100.ToString().Replace(",", ".");
+                String idFormulaProdotto = "2";
+                DateTime dataCreazione = DateTime.Now;
+                string dateFormart = dataCreazione.ToString("yy-MM-dd HH:mm:ss");
+
+                string sql = "INSERT INTO misurazione (Id_Bilancia, Id_Prodotto, Peso, Id_FormulaProdotto, DataCreazione) VALUES ('" + idBilancia + "', '" + idProdotto + "','" + peso + "','" + idFormulaProdotto + "','" + dateFormart + "')";
+
+                MySqlConnection connectionBD = ConnectionBD.connection();
+                connectionBD.Open();
+
+                try
+                {
+                    MySqlCommand comando = new MySqlCommand(sql, connectionBD);
+                    comando.ExecuteNonQuery();
+                    Console.WriteLine("Insert Success");
+
+                    return true;
+
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine("Insert Error -> "+ ex);
+                    return false;
+
+                }
+                finally
+                {
+                    connectionBD.Close();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error -> " + ex);
+            }
+
+            return false;
+
+
+
         }
     }
 }

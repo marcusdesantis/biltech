@@ -1,5 +1,4 @@
 using Avalonia.Controls;
-using MySql.Data.MySqlClient;
 using Bilanza.Data;
 using Bilanza.Models;
 using System.Collections.Generic;
@@ -46,25 +45,16 @@ namespace Bilanza
             if (_selected != null)
             {
 
-                if (!_balance.SendWeightRequest2SelectedBalance())
+                if (!_balance.IsPortAvailable())
                 {
                     BalanceResultModel _result = new BalanceResultModel();
                     txtErrorMessage.Text = _balance.MessageError;
                    
-                    Console.WriteLine("Puerto -> " + Porto.Text);
-                    Console.WriteLine("PaserFormant -> " + txtParserFormat.Text);
-                    _balanceResultModel = _balance.GetParseData(txtParserFormat.Text, decimal.Parse(txtWeightConvertion.Text));
+                    Console.WriteLine("Port -> " + Porto.Text);
+                    Console.WriteLine("Command -> " + txtWeightConvertion.Text);
 
-                    Console.WriteLine(_balanceResultModel.Weight_100);
-                  
-                    if (Insert(_balanceResultModel))
-                    {
+                    _balance.DataSend(txtWeightConvertion.Text.ToString());
 
-                    }
-                    else
-                    {
-
-                    }
                     spParameters.IsVisible = true;
 
                 } 
@@ -132,62 +122,6 @@ namespace Bilanza
             //Handle();
         }
 
-        public bool Insert(BalanceResultModel _balanceResultModel)
-        {
-            try
-            {
-                String idBilancia = "1";
-                String idProdotto = "1";
-                string peso = _balanceResultModel.Weight_100.ToString().Replace(",",".");
-                String idFormulaProdotto = "1";
-                DateTime dataCreazione = DateTime.Now;
-                string dateFormart = dataCreazione.ToString("yy-MM-dd");
-                Console.WriteLine(dateFormart);
-
-                string sql = "INSERT INTO misurazione (Id_Bilancia, Id_Prodotto, Peso, Id_FormulaProdotto, DataCreazione) VALUES ('" + idBilancia + "', '" + idProdotto + "','" + peso + "','" + idFormulaProdotto + "','" + dateFormart + "')";
-                string sqlId = "SELECT @@identity AS id";
-
-                MySqlConnection conexionBD = ConnectionBD.connection();
-                conexionBD.Open();
-
-                try
-                {
-                    MySqlCommand comando = new MySqlCommand(sql, conexionBD);
-                    comando.ExecuteNonQuery();
-                    Console.WriteLine("Insert Success");
-
-                    MySqlCommand comandoId = new MySqlCommand(sqlId, conexionBD);
-                    Console.WriteLine(comandoId.ExecuteNonQuery());
-
-
-                    return true;
-
-                }
-                catch (MySqlException ex)
-                {
-                    Console.WriteLine("Insert Error");
-                    Console.WriteLine("ex");
-                    return false;
-
-                }
-                finally
-                {
-                    conexionBD.Close();
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Insert Error 2");
-                Console.WriteLine("Aqui -> " + ex);
-            }
-
-            return false;
-
-
-
-        }
     }
 
 }
