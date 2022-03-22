@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace backend_api_core.Data
 {
-    public class ProdottoData : IProdotto
+    public class BarcodeProdottoData : IBarcodeProdotto
     {
         private readonly IC_conexion _c_conexion;
 
-        public ProdottoData(IC_conexion c_conexion)
+        public BarcodeProdottoData(IC_conexion c_conexion)
         {
             this._c_conexion = c_conexion;
         }
@@ -22,9 +22,9 @@ namespace backend_api_core.Data
             try
             {
                 RespuestaDB respuesta = null;
-                string nombreFuncion = "sp_abm_prodotto";
+                string nombreFuncion = "sp_abm_barcodeprodotto";
 
-                respuesta = await this._c_conexion.abmObjeto<Prodotto>(nombreFuncion, AbmAccion.ELIMINAR_BAJA, new Prodotto { id = id });
+                respuesta = await this._c_conexion.abmObjeto<BarcodeProdotto>(nombreFuncion, AbmAccion.ELIMINAR_BAJA, new BarcodeProdotto { Id_BarcodeProdotto = id });
 
                 return respuesta;
             }
@@ -34,17 +34,17 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<Prodotto> FindById(int id)
+        public async Task<BarcodeProdotto> FindById(int id)
         {
             try
             {
-                Prodotto datos = new Prodotto();
-                string nombreFuncion = "sp_get_prodotto";
+                BarcodeProdotto datos = new BarcodeProdotto();
+                string nombreFuncion = "sp_get_barcodeprodotto";
 
                 Hashtable parametros = new Hashtable();
-                parametros.Add("id", id);
+                parametros.Add("Id", id);
 
-                datos = await this._c_conexion.traerObjeto<Prodotto>(nombreFuncion, parametros);
+                datos = await this._c_conexion.traerObjeto<BarcodeProdotto>(nombreFuncion, parametros);
 
                 return datos;
 
@@ -55,14 +55,14 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<RespuestaDB> Modify(Prodotto data)
+        public async Task<RespuestaDB> Modify(BarcodeProdotto data)
         {
             try
             {
                 RespuestaDB respuesta = new RespuestaDB();
-                string nombreFuncion = "sp_abm_prodotto";
+                string nombreFuncion = "sp_abm_barcodeprodotto";
 
-                respuesta = await this._c_conexion.abmObjeto<Prodotto>(nombreFuncion, AbmAccion.MODIFICAR, data);
+                respuesta = await this._c_conexion.abmObjeto<BarcodeProdotto>(nombreFuncion, AbmAccion.MODIFICAR, data);
 
                 return respuesta;
             }
@@ -72,24 +72,23 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<RespuestaDB> Save(Prodotto data)
+        public async Task<RespuestaDB> Save(BarcodeProdotto data)
         {
             try
             {
                 RespuestaDB respuesta = new RespuestaDB();
-                string nombreFuncion = "sp_abm_prodotto";
+                string nombreFuncion = "sp_abm_barcodeprodotto";
 
-                data.id = data.id== null ? 0 : data.id;
+                data.Id_BarcodeProdotto = data.Id_BarcodeProdotto == null ? 0 : data.Id_BarcodeProdotto;
 
                 Hashtable parametros = new Hashtable();
                 parametros.Add("action", AbmAccion.GUARDAR);
-                parametros.Add("Id", data.id);
-                parametros.Add("Nome", data.Nome);
-                parametros.Add("Id_UnitaMisura", data.Id_UnitaMisura);
-                parametros.Add("Id_TipologiaProdotto", data.Id_TipologiaProdotto);
-                parametros.Add("MinimoScortaMagazzino", data.MinimoScortaMagazzino);
-                
-                respuesta = await this._c_conexion.abmObjeto<Prodotto>(nombreFuncion, AbmAccion.GUARDAR, data);
+                parametros.Add("Id_BarcodeProdotto", data.Id_BarcodeProdotto);
+                parametros.Add("Barcode", data.Barcode);
+                parametros.Add("Id_Prodotto", data.Id_Prodotto);
+
+
+                respuesta = await this._c_conexion.abmObjeto<BarcodeProdotto>(nombreFuncion, AbmAccion.GUARDAR, data);
 
                 return respuesta;
             }
@@ -99,12 +98,12 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<IEnumerable<ProdottoList>> SearchList(string value, string parameter, int currentPageNumber, int amountShow)
+        public async Task<IEnumerable<BarcodeProdottoList>> SearchList(string value, string parameter, int currentPageNumber, int amountShow)
         {
             try
             {
-                IEnumerable<ProdottoList> arrayDatos = new ProdottoList[] { };
-                string nombreFuncion = "sp_list_prodotto";
+                IEnumerable<BarcodeProdottoList> arrayDatos = new BarcodeProdottoList[] { };
+                string nombreFuncion = "sp_list_barcode_prodotto";
 
                 Hashtable parametros = new Hashtable();
                 parametros.Add("bus_value", value == null ? "" : value);
@@ -112,7 +111,7 @@ namespace backend_api_core.Data
                 parametros.Add("currentPageNumber", currentPageNumber);
                 parametros.Add("amountShow", amountShow);
 
-                arrayDatos = await this._c_conexion.traerArrayObjeto<ProdottoList>(nombreFuncion, parametros);
+                arrayDatos = await this._c_conexion.traerArrayObjeto<BarcodeProdottoList>(nombreFuncion, parametros);
 
                 return arrayDatos;
 
