@@ -17,6 +17,7 @@ namespace Bilanza.Models
         public string CommandForWeight { get; set; }
         public string ParserFormat { get; set; }
         public decimal WeightConversion { get; set; }
+        public string Modello { get; set; }
 
 
     }
@@ -30,4 +31,13 @@ namespace Bilanza.Models
         public string Second { get; set; }
         public string Code { get; set; }
     }
+
+    public class BilanciaModel
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public string Codice { get; set; }
+        public int Id_Modello { get; set; }
+    }
+
 }

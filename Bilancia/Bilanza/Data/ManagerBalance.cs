@@ -11,12 +11,15 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Bilanza.Data;
 using Bilancia.DB;
+using System.Data;
+using System.Text.RegularExpressions;
 
 namespace Bilanza.Data
 {
     public class ManagerBalance
     {
         List<BalanceModel> _balanceList;
+        List<BilanciaModel> _bilanciaList;
         BalanceModel _balanceSelected = null;
         String _messageError = string.Empty;
         SerialPort serialPort1;
@@ -54,10 +57,20 @@ namespace Bilanza.Data
                 return _balanceList;
             }
         }
+
+        public List<BilanciaModel> BilanciaList
+        {
+            get
+            {
+                return _bilanciaList;
+            }
+        }
+
         public ManagerBalance(string configFilePath)
         {
 
             loadDataConfigurationBalanceJson(configFilePath);
+            
         }
 
         private void loadConfigurationInitial()
@@ -171,9 +184,13 @@ namespace Bilanza.Data
                     catch(Exception ex)
                     {
                         _error = true;
-                       
+                        serialPort1.Close();
                         _messageError = ex.Message;
                     }
+                }
+                else
+                {
+                    serialPort1.Close();
                 }
             }
             return retVal;
@@ -263,12 +280,22 @@ namespace Bilanza.Data
             if(!string.IsNullOrEmpty(dataValue))
             {
 
-                _balanceResultModel = GetParseData(dataValue, _balanceSelected.WeightConversion);
-                if (InsertBalance(_balanceResultModel))
+                //_balanceResultModel = GetParseData(dataValue, _balanceSelected.WeightConversion);
+
+                String name = "";
+                String[] netWeight;
+
+                String[] data = CodeToArray(dataValue);    
+
+                name = GetBalanceName(data);
+                netWeight = GetBalanceWeight(data);
+
+                if (InsertBalance(name, netWeight[0]))
                 {
-                    Console.WriteLine("-> " + dataValue);
-                    Console.WriteLine("Weight -> " + _balanceResultModel.WeightKg);
-                    Console.WriteLine("Weight Convert -> " + _balanceResultModel.Weight_100);
+                    
+                    Console.WriteLine("Name -> " + name);
+                    Console.WriteLine("Weight -> " + netWeight[0]);
+                   
                 }
                 else
                 {
@@ -285,7 +312,7 @@ namespace Bilanza.Data
 
         //JDJDJ_2345_20220311_123345
         //2345_11032022_123599
-        public BalanceResultModel GetParseData(string data, decimal weightConversion)
+        public static BalanceResultModel GetParseData(string data, decimal weightConversion)
         {
             BalanceResultModel _result = new BalanceResultModel();
             string[] partsDataValue = data.Split("_");
@@ -449,27 +476,33 @@ namespace Bilanza.Data
 
             return valRet;
         }
-
-        public bool InsertBalance(BalanceResultModel _balanceResultModel)
+        public static bool InsertBalance(string name, string weight)
         {
             try
             {
                 String idBilancia = "4";
-                String idProdotto = "2";
-                string peso = _balanceResultModel.Weight_100.ToString().Replace(",", ".");
-                String idFormulaProdotto = "2";
+                String idProdotto = "6";
+                string peso = weight;
+                String idFormulaProdotto = "4";
                 DateTime dataCreazione = DateTime.Now;
                 string dateFormart = dataCreazione.ToString("yy-MM-dd HH:mm:ss");
 
-                string sql = "INSERT INTO misurazione (Id_Bilancia, Id_Prodotto, Peso, Id_FormulaProdotto, DataCreazione) VALUES ('" + idBilancia + "', '" + idProdotto + "','" + peso + "','" + idFormulaProdotto + "','" + dateFormart + "')";
-
+                string sql = "INSERT INTO misurazione (Id_Bilancia, Id_Prodotto, Peso, Id_FormulaProdotto, Active, DataCreazione) VALUES (@idBilancia,@idProdotto,@peso,@idFormulaProdotto,@active,@date)";
+              
                 MySqlConnection connectionBD = ConnectionBD.connection();
                 connectionBD.Open();
 
                 try
                 {
-                    MySqlCommand comando = new MySqlCommand(sql, connectionBD);
-                    comando.ExecuteNonQuery();
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                    command.Parameters.AddWithValue("@idBilancia", idBilancia);
+                    command.Parameters.AddWithValue("@idProdotto", idProdotto);
+                    command.Parameters.AddWithValue("@peso", peso);
+                    command.Parameters.AddWithValue("@idFormulaProdotto", idFormulaProdotto);
+                    command.Parameters.AddWithValue("@active", 1);
+                    command.Parameters.AddWithValue("@date", dateFormart);
+
+                    command.ExecuteNonQuery();
                     Console.WriteLine("Insert Success");
 
                     return true;
@@ -495,8 +528,57 @@ namespace Bilanza.Data
 
             return false;
 
-
-
         }
+
+        public static String[] CodeToArray(String value)
+        {
+            String code = value;
+            code = code.Replace(" ", "");
+            code = code.Replace("\r\n", "|");
+            code = code.Replace("\\r\\n", "|");
+            String[] data = code.Split('|');
+
+            String[] array = new string[3];
+
+            //Position 3 (Nome) and 8 (Netto)
+            foreach (var sub in data)
+            {
+                if (sub.StartsWith("NomeBilancia"))
+                {
+                    array[0] = sub;
+                }
+
+                if (sub.StartsWith("Netto"))
+                {
+                    array[1] = sub;
+                }
+                Console.WriteLine($"Data: {sub}");
+            }
+
+            return array;
+        }
+
+        public static String GetBalanceName(String[] data)
+        {
+            string name  = data[0].Replace(":", ": ");
+            name = name.Replace("NomeBilancia:", "");
+            return name;
+        }
+
+        public static String[] GetBalanceWeight(String[] data)
+        {
+            string weight = data[1].Replace("Netto:", "");
+            String[] array = new string[2];
+
+            var resultWeight = Regex.Match(weight, @"(\d+(\.\d+)?)|(\.\d+)").Value;
+            var resulSymbol = new String(weight.SkipWhile(p => !Char.IsLetter(p)).ToArray());
+
+            array[0] = resultWeight;
+            array[1] = resulSymbol;
+
+            Console.WriteLine($"Weight {array[0]} ,symbol: {array[1]}");
+            return array;
+        }
+
     }
 }

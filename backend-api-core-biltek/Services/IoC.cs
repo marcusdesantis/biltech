@@ -25,6 +25,7 @@ namespace backend_api_core.Services
             services.AddTransient<IBarcodeProdotto, BarcodeProdottoData>();
             services.AddTransient<IMagazzino, MagazzinoData>();
             services.AddTransient<ITipologiaProdotto, TipologiaProdottoData>();
+            services.AddTransient<IReparto, RepartoData>();
 
             return services;
         }

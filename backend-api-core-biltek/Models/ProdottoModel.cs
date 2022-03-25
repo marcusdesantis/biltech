@@ -6,6 +6,7 @@
         public string Nome { get; set; }
         public int Id_UnitaMisura { get; set; }
         public int Id_TipologiaProdotto { get; set; }
+        public int Id_Reparto { get; set; }
         public decimal MinimoScortaMagazzino { get; set; }
 
         public bool Active { get; set; }
@@ -18,6 +19,7 @@
         public string Nome { get; set; }
         public int Id_UnitaMisura { get; set; }
         public int Id_TipologiaProdotto { get; set; }
+        public int Id_Reparto { get; set; }
         public decimal MinimoScortaMagazzino { get; set; }
         public bool Active { get; set; }
 

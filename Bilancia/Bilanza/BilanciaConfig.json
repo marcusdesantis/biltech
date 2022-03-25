@@ -9,7 +9,8 @@
       "HandShake": 0,
       "CommandForWeight": "SP,SP",
       "ParserFormat": "4450_051418_OHAUS3_15032022",
-      "WeightConversion": 100
+      "WeightConversion": 100,
+      "Modello": "PX3202" 
     },
     {
       "Balance": "OHAUS 2",
@@ -21,6 +22,8 @@
       "HandShake": 0,
       "CommandForWeight": "0P",
       "ParserFormat": "20220314_OHAUS2_2450_141005",
-      "WeightConversion": 1000
+      "WeightConversion": 1000,
+      "Modello": "PX3202"
+
     }
   ]

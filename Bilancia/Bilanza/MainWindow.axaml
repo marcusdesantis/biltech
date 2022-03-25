@@ -25,17 +25,22 @@
           <TextBlock x:Name="txtHandShake" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="5"></TextBlock>
           <Label Grid.Column="0" Grid.Row="6">Comando di pesatura stabile:</Label>
           <TextBlock x:Name="txtCommand" Text="" Margin="1,3" Grid.Column="1" Grid.Row="6"></TextBlock>
-          <Label Grid.Column="0" Grid.Row="7">Parser:</Label>
-          <TextBlock x:Name="txtParserFormat" Text="" Margin="1,3" Grid.Column="1" Grid.Row="7"></TextBlock>
-          <Label Grid.Column="0" Grid.Row="8">Weight conversion:</Label>
-          <TextBlock x:Name="txtWeightConvertion" Text="" Margin="1,3" Grid.Column="1" Grid.Row="8"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="7" IsVisible="False">Parser:</Label>
+          <TextBlock x:Name="txtParserFormat" Text="" Margin="1,3" Grid.Column="1" Grid.Row="7" IsVisible="False"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="7">Weight conversion:</Label>
+          <TextBlock x:Name="txtWeightConvertion" Text="" Margin="1,3" Grid.Column="1" Grid.Row="7"></TextBlock>
+		  <Label Grid.Column="0" Grid.Row="8">Modello:</Label>
+          <TextBlock x:Name="txtModello" Text="" Margin="1,3" Grid.Column="1" Grid.Row="8"></TextBlock>
         </Grid>
-        <StackPanel Orientation="Horizontal" Margin="20,20,20,20">
+        <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
           <Button x:Name="btnConnect" ClickMode="Press" >Collegare</Button>
           <Button x:Name="btnWeight" ClickMode="Press" IsVisible="False">Pesare</Button>
           <Button x:Name="btnDisconnect" ClickMode="Press" IsVisible="False">Disconetti</Button>
         </StackPanel>
-        <StackPanel Margin="20,20,20,20">
+        <StackPanel Margin="5,5,5,5">
+           <ComboBox x:Name="cbBalanciaDB" Width="200" Margin="1,3" SelectionChanged="ComboBox_SelectionChangedBilancia" IsVisible="False"></ComboBox>
+        </StackPanel>
+	    <StackPanel Margin="20,20,20,20">
           <TextBlock x:Name="txtErrorMessage" Foreground="Red" Text=""></TextBlock>
         </StackPanel>
 	 
