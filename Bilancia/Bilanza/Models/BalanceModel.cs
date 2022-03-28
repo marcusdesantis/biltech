@@ -32,12 +32,28 @@ namespace Bilanza.Models
         public string Code { get; set; }
     }
 
-    public class BilanciaModel
+    public class ProdottoModel
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Codice { get; set; }
-        public int Id_Modello { get; set; }
+        public int Id_UnitaMisura { get; set; }
+        public int Id_TipologiaProdotto { get; set; }
+        public int Id_Reparto { get; set; }
+        public decimal MinimoScortaMagazzino { get; set; }
+        public bool Active { get; set; }
+        public string DataCreazione { get; set; }
+    }
+
+    public class MisurazioneModel
+    {
+        public int Id { get; set; }
+        public int Id_Bilancia { get; set; }
+        public int Id_Prodotto { get; set; }
+        public string Peso { get; set; }
+        public int Id_FormulaProdotto { get; set; }
+        public bool Active { get; set; }
+        public string DataCreazione { get; set; }
+
     }
 
 }

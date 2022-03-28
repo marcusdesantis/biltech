@@ -15,16 +15,16 @@ namespace Bilanza
     public partial class MainWindow : Window
     {
         private ManagerBalance _balance = null;
-        private ManagerBalance _bilancia = null;
         private List<string> _listBalanceNames = new List<string>();
-        private List<string> _listBilanciaNames = new List<string>();
+        private List<string> _listProdottoNames = new List<string>();
         BalanceModel _selected = null;
-        BilanciaModel _selectedBilancia = null;
         bool handle = false;
         BalanceResultModel _balanceResultModel = new BalanceResultModel();
+        public static MainWindow _instance;
         public MainWindow()
         {
             InitializeComponent();
+            _instance = this;
 
             btnConnect.Click += BtnConnect_Click;
             btnWeight.Click += BtnWeight_Click;
@@ -47,9 +47,7 @@ namespace Bilanza
             
             btnDisconnect.IsVisible = false;
             btnConnect.IsVisible= true;
-            _listBilanciaNames = new List<string>();
-            cbBalanciaDB.Items = _listBilanciaNames;
-            cbBalanciaDB.IsVisible = false;
+            cbProdotto.IsVisible = false;
         }
 
         private void BtnWeight_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -62,8 +60,8 @@ namespace Bilanza
                     BalanceResultModel _result = new BalanceResultModel();
                     txtErrorMessage.Text = _balance.MessageError;
                    
-                    Console.WriteLine("Port -> " + Porto.Text);
-                    Console.WriteLine("Command -> " + txtWeightConvertion.Text);
+                    Console.WriteLine("Port: " + Porto.Text);
+                    Console.WriteLine("Command: " + txtWeightConvertion.Text);
 
                     _balance.DataSend(txtWeightConvertion.Text.ToString());
 
@@ -88,15 +86,15 @@ namespace Bilanza
             if (_selected != null)
             {
                 _balance.SelectBalance(_selected.Balance);
-                if(!_balance.OpenSelectedBalanceConnection())
+                if (!_balance.OpenSelectedBalanceConnection())
                 {
                     txtErrorMessage.Text = _balance.MessageError;
                 } 
                 else
                 {
                     btnWeight.IsVisible = false;
-                    cbBalanciaDB.IsVisible = true;
-                    GetBilanciaDB();
+                    cbProdotto.IsVisible = true;
+                    GetProdottoDB();
                     btnConnect.IsVisible = false;
                     btnDisconnect.IsVisible = true;
    
@@ -126,7 +124,7 @@ namespace Bilanza
                     txtWeightConvertion.Text = _selected.WeightConversion.ToString();
                     txtModello.Text = _selected.Modello.ToString();
                     spParameters.IsVisible = true;
-                    cbBalanciaDB.IsVisible = false;
+                    cbProdotto.IsVisible = false;
                     _balance.ClosSelectedBalanceConnection();
                 }
                 else
@@ -142,78 +140,85 @@ namespace Bilanza
             //Handle();
         }
 
-        private void ComboBox_SelectionChangedBilancia(object sender, SelectionChangedEventArgs e)
+        private void ComboBox_SelectionChangedProdotto(object sender, SelectionChangedEventArgs e)
         {
-            ComboBox cmb = (sender as ComboBox);
-            string selBal = cmb.SelectedItem.ToString();
-            txtErrorMessage.Text = string.Empty;
-
-            if (!string.IsNullOrEmpty(selBal))
+            try
             {
+                ComboBox cmb = (sender as ComboBox);
+                string selBal = cmb.SelectedItem.ToString();
 
-                if (selBal.Equals("PX3202"))
-                {
-                    Console.WriteLine("data is not sent");
-                }
-                else
-                {
-                    Console.WriteLine("data is sent");
+                txtErrorMessage.Text = string.Empty;
 
+                //_selectedProdotto = _balance.ProdottoList.Where(x => x.Nome.Equals(selBal)).FirstOrDefault();
 
-                    if (!_balance.IsPortAvailable())
+                if (!string.IsNullOrEmpty(selBal))
+                {                 
+
+                    if (selBal.Equals("PX3202"))
                     {
-
-                        Console.WriteLine("Port -> " + Porto.Text);
-                        Console.WriteLine("Command -> " + txtWeightConvertion.Text);
-
-                        _balance.DataSend(txtWeightConvertion.Text.ToString());
-
-                        spParameters.IsVisible = true;
-
+                        Console.WriteLine("data is not sent");
                     }
                     else
                     {
-                        txtFirst.Text = _balance.BalanceResult.First;
-                        txtWeight.Text = _balance.BalanceResult.WeightKg.ToString();
-                        txtWeight_100.Text = _balance.BalanceResult.Weight_100.ToString();
-                        txtDate.Text = _balance.BalanceResult.Date;
-                        txtSecond.Text = _balance.BalanceResult.Second;
-                        txtCode.Text = _balance.BalanceResult.Code;
+                        Console.WriteLine("data is sent");
 
+
+                        if (!_balance.IsPortAvailable())
+                        {
+
+                            Console.WriteLine("Port: " + Porto.Text);
+                            Console.WriteLine("Command: " + txtWeightConvertion.Text);
+
+                            _balance.DataSend(txtWeightConvertion.Text.ToString());
+
+                            spParameters.IsVisible = true;
+
+                        }
+                        else
+                        {
+                            txtFirst.Text = _balance.BalanceResult.First;
+                            txtWeight.Text = _balance.BalanceResult.WeightKg.ToString();
+                            txtWeight_100.Text = _balance.BalanceResult.Weight_100.ToString();
+                            txtDate.Text = _balance.BalanceResult.Date;
+                            txtSecond.Text = _balance.BalanceResult.Second;
+                            txtCode.Text = _balance.BalanceResult.Code;
+
+                        }
                     }
                 }
+                else
+                {
+                    spParameters.IsVisible = false;
+                }
             }
-            else
+            catch(Exception ex)
             {
-                spParameters.IsVisible = false;
+                Console.WriteLine(ex);
             }
-   
+           
         }
 
-        public bool GetBilanciaDB()
+        public bool GetProdottoDB()
         {
             try
             {
                
                 string sql = "SELECT * From prodotto WHERE Active=1";
-                MySqlConnection connectionBD = ConnectionBD.connection();
+                MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
 
                 try
                 {
-                    MySqlCommand comando = new MySqlCommand(sql, connectionBD);
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
 
-                    MySqlDataReader reader = comando.ExecuteReader();
-
-                    //cbBalanciaDB.Items = _listBilanciaNames;   
-                    _listBilanciaNames = new List<string>();
-
+                    MySqlDataReader reader = command.ExecuteReader(); 
+              
                     while (reader.Read())
                     {
-                        _listBilanciaNames.Add(reader.GetString("Nome"));
+                        _listProdottoNames.Add(reader.GetString("Nome"));
                     }
 
-                    cbBalanciaDB.Items = _listBilanciaNames;
+                    cbProdotto.Items = _listProdottoNames;
 
                     return true;
 
@@ -232,7 +237,7 @@ namespace Bilanza
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error -> " + ex);
+                Console.WriteLine("Error: " + ex);
             }
 
             return false;

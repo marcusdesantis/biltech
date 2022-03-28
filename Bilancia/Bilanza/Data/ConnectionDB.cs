@@ -10,21 +10,19 @@ using System.IO;
 
 namespace Bilancia.DB
 {
-    class ConnectionBD
+    class ConnectionDB
     {
         public static MySqlConnection connection()
         {
-           
-            string connectionString = CredentialDB.DB; 
             try
             {
-                MySqlConnection connectionBD = new MySqlConnection(connectionString);
+                MySqlConnection connectionBD = new MySqlConnection(CredentialDB.DB);
                 Console.WriteLine("Successful Connection");
                 return connectionBD;
             }
             catch (MySqlException ex)
             {
-                Console.WriteLine("Error -> " + ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
                 Console.WriteLine("Connection Failed");
                 return null;
             }

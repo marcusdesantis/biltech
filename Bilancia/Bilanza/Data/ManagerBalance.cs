@@ -13,20 +13,26 @@ using Bilanza.Data;
 using Bilancia.DB;
 using System.Data;
 using System.Text.RegularExpressions;
+using Avalonia.Controls;
+using Avalonia.Controls.Templates;
+using Avalonia;
 
 namespace Bilanza.Data
 {
     public class ManagerBalance
     {
         List<BalanceModel> _balanceList;
-        List<BilanciaModel> _bilanciaList;
+        List<ProdottoModel> _prodottoList;
         BalanceModel _balanceSelected = null;
+        
         String _messageError = string.Empty;
         SerialPort serialPort1;
         string dataValue = "";
         bool _error = false;
-        BalanceResultModel _balanceResultModel = new BalanceResultModel();
 
+        BalanceResultModel _balanceResultModel = new BalanceResultModel();
+        MisurazioneModel _misurazione = new MisurazioneModel();
+    
 
         public BalanceResultModel BalanceResult
         {
@@ -58,11 +64,11 @@ namespace Bilanza.Data
             }
         }
 
-        public List<BilanciaModel> BilanciaList
+        public List<ProdottoModel> ProdottoList
         {
             get
             {
-                return _bilanciaList;
+                return _prodottoList;
             }
         }
 
@@ -87,7 +93,7 @@ namespace Bilanza.Data
            }
             catch (Exception ex)
             {
-                Console.WriteLine("Error " + ex);
+                Console.WriteLine("Error: " + ex);
             }
         }
 
@@ -254,7 +260,7 @@ namespace Bilanza.Data
             {
                 _messageError = ex.Message;
             }
-        }
+        }   
 
 
         public void DataSend(String command)
@@ -266,7 +272,7 @@ namespace Bilanza.Data
                 
             }catch (Exception ex)
             {
-                Console.WriteLine("Error ->" + ex);
+                Console.WriteLine("Error: " + ex);
             }
             
 
@@ -279,28 +285,55 @@ namespace Bilanza.Data
             dataValue = serialPort1.ReadExisting();
             if(!string.IsNullOrEmpty(dataValue))
             {
+           
+                string select_prodotto = Convert.ToString(MainWindow._instance.cbProdotto.SelectedItem);
 
-                //_balanceResultModel = GetParseData(dataValue, _balanceSelected.WeightConversion);
-
-                String name = "";
-                String[] netWeight;
-
-                String[] data = CodeToArray(dataValue);    
-
-                name = GetBalanceName(data);
-                netWeight = GetBalanceWeight(data);
-
-                if (InsertBalance(name, netWeight[0]))
+                if (!select_prodotto.Equals(""))
                 {
-                    
-                    Console.WriteLine("Name -> " + name);
-                    Console.WriteLine("Weight -> " + netWeight[0]);
-                   
+                    string idProdotto = GetIdProdotto(select_prodotto);
+                    if (!idProdotto.Equals("0"))
+                    {
+
+                        String name;
+                        String[] netWeight;
+
+                        String[] data = CodeToArray(dataValue);
+
+                        name = GetBalanceName(data);
+                        netWeight = GetBalanceWeight(data);
+
+                        DateTime dataCreazione = DateTime.Now;
+                        string dateFormart = dataCreazione.ToString("yy-MM-dd HH:mm:ss");
+
+
+                        _misurazione.Id_Bilancia = 4;
+                        _misurazione.Id_Prodotto = Int32.Parse(idProdotto);
+                        _misurazione.Peso = netWeight[0];
+                        _misurazione.Id_FormulaProdotto = 4;
+                        _misurazione.Active = true;
+                        _misurazione.DataCreazione = dateFormart;
+
+                        if (InsertMisurazione(_misurazione))
+                        {
+                            Console.WriteLine("Name Bilancia: " + name);
+                            Console.WriteLine("Net Weight: " + netWeight[0]);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error inserting");
+                        }
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("The selected prodotto does not exist in the database");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Error inserting");
-                }
+                    Console.WriteLine("Please select the prodotto");
+                }                    
+             
             }
             else
             {
@@ -308,125 +341,6 @@ namespace Bilanza.Data
                 _messageError = "";
 
             }
-        }
-
-        //JDJDJ_2345_20220311_123345
-        //2345_11032022_123599
-        public static BalanceResultModel GetParseData(string data, decimal weightConversion)
-        {
-            BalanceResultModel _result = new BalanceResultModel();
-            string[] partsDataValue = data.Split("_");
-            var lengthPartsDataValue = partsDataValue.Length;
-
-            var FormatFirst = "";
-            var FormartWeight = "";
-            var FormatDate = "";
-            var FormatSeconds = "";
-
-            
-            if (partsDataValue[0].All(char.IsDigit))
-            {
-                if (partsDataValue[0].Length == 8)
-                {
-                        FormatDate = partsDataValue[0];
-                }
-                else
-                {
-                    if (partsDataValue[0].Length == 6)
-                    {
-                        FormatSeconds = partsDataValue[0];
-                    }
-                    else
-                    {
-                        FormartWeight = partsDataValue[0];
-                    }
-                }
-            }
-            else
-            {
-               FormatFirst = partsDataValue[0];
-            }
-
-            if (partsDataValue[1].All(char.IsDigit))
-            {
-                if (partsDataValue[1].Length == 8)
-                {
-                    FormatDate = partsDataValue[1];
-                }
-                else
-                {
-                    if (partsDataValue[1].Length == 6)
-                    {
-                        FormatSeconds = partsDataValue[1];
-                    }
-                    else
-                    {
-                        FormartWeight = partsDataValue[1];
-                    }
-                }
-            }
-            else
-            {
-                FormatFirst = partsDataValue[1];
-            }
-
-            if (partsDataValue[2].All(char.IsDigit))
-            {
-                if (partsDataValue[2].Length == 8)
-                {
-                    FormatDate = partsDataValue[2];
-                }
-                else
-                {
-                    if (partsDataValue[2].Length == 6)
-                    {
-                        FormatSeconds = partsDataValue[2];
-                    }
-                    else
-                    {
-                        FormartWeight = partsDataValue[2];
-                    }
-                }
-            }
-            else
-            {
-                FormatFirst = partsDataValue[2];
-            }
-
-            if (lengthPartsDataValue == 4)
-            {
-                if (partsDataValue[3].All(char.IsDigit))
-                {
-                    if (partsDataValue[3].Length == 8)
-                    {
-                        FormatDate = partsDataValue[3];
-                    }
-                    else
-                    {
-                        if (partsDataValue[3].Length == 6)
-                        {
-                            FormatSeconds = partsDataValue[3];
-                        }
-                        else
-                        {
-                            FormartWeight = partsDataValue[3];
-                        }
-                    }
-                }
-                else
-                {
-                    FormatFirst = partsDataValue[3];
-                }
-            }
-
-            _result.First = FormatFirst;
-            _result.WeightKg = decimal.Parse(FormartWeight);
-            _result.Weight_100 = (decimal.Parse(FormartWeight)/ weightConversion);
-            _result.Date = FormatDate;
-            _result.Second = FormatSeconds;
-
-            return _result;
-
         }
 
         public bool SelectBalance(string balanceName)
@@ -451,7 +365,8 @@ namespace Bilanza.Data
                 }
             }
             return retVal;
-        }
+        }     
+        
         public bool loadDataConfigurationBalanceJson(string rutaJson)
         {
             bool valRet = false;
@@ -466,6 +381,7 @@ namespace Bilanza.Data
                     r.Close();
                     r.Dispose();
                     _balanceList = JsonConvert.DeserializeObject<List<BalanceModel>>(jsonString);
+                    _prodottoList = JsonConvert.DeserializeObject<List<ProdottoModel>>(jsonString);
          
                 }
                 catch (Exception ex)
@@ -476,31 +392,25 @@ namespace Bilanza.Data
 
             return valRet;
         }
-        public static bool InsertBalance(string name, string weight)
+        public static bool InsertMisurazione(MisurazioneModel misurazione)
         {
             try
             {
-                String idBilancia = "4";
-                String idProdotto = "6";
-                string peso = weight;
-                String idFormulaProdotto = "4";
-                DateTime dataCreazione = DateTime.Now;
-                string dateFormart = dataCreazione.ToString("yy-MM-dd HH:mm:ss");
 
                 string sql = "INSERT INTO misurazione (Id_Bilancia, Id_Prodotto, Peso, Id_FormulaProdotto, Active, DataCreazione) VALUES (@idBilancia,@idProdotto,@peso,@idFormulaProdotto,@active,@date)";
               
-                MySqlConnection connectionBD = ConnectionBD.connection();
+                MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
 
                 try
                 {
                     MySqlCommand command = new MySqlCommand(sql, connectionBD);
-                    command.Parameters.AddWithValue("@idBilancia", idBilancia);
-                    command.Parameters.AddWithValue("@idProdotto", idProdotto);
-                    command.Parameters.AddWithValue("@peso", peso);
-                    command.Parameters.AddWithValue("@idFormulaProdotto", idFormulaProdotto);
-                    command.Parameters.AddWithValue("@active", 1);
-                    command.Parameters.AddWithValue("@date", dateFormart);
+                    command.Parameters.AddWithValue("@idBilancia", misurazione.Id_Bilancia);
+                    command.Parameters.AddWithValue("@idProdotto", misurazione.Id_Prodotto);
+                    command.Parameters.AddWithValue("@peso", misurazione.Peso);
+                    command.Parameters.AddWithValue("@idFormulaProdotto",misurazione.Id_FormulaProdotto);
+                    command.Parameters.AddWithValue("@active", misurazione.Active);
+                    command.Parameters.AddWithValue("@date", misurazione.DataCreazione);
 
                     command.ExecuteNonQuery();
                     Console.WriteLine("Insert Success");
@@ -510,7 +420,7 @@ namespace Bilanza.Data
                 }
                 catch (MySqlException ex)
                 {
-                    Console.WriteLine("Insert Error -> "+ ex);
+                    Console.WriteLine("Insert Error: "+ ex);
                     return false;
 
                 }
@@ -523,10 +433,54 @@ namespace Bilanza.Data
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error -> " + ex);
+                Console.WriteLine("Error: " + ex);
             }
 
             return false;
+
+        }
+
+        public static string GetIdProdotto(string nome)
+        {
+            string id="0";
+            try
+            {
+
+                string sql = "SELECT Id From prodotto WHERE Active=1 AND Nome=@parameter";
+                MySqlConnection connectionBD = ConnectionDB.connection();
+                connectionBD.Open();
+
+                try
+                {
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                    command.Parameters.AddWithValue("@parameter", nome);
+                    MySqlDataReader reader = command.ExecuteReader();
+
+
+                    while (reader.Read())
+                    {
+                        id = reader.GetString("Id");
+                    }
+                    
+
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine(ex);
+                    
+                }
+                finally
+                {
+                    connectionBD.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex);
+            }
+
+            return id;
 
         }
 
