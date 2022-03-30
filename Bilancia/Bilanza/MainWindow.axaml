@@ -7,43 +7,16 @@
         Title="Balance">
   <StackPanel Margin="10,10,10,10">
     <TextBlock Margin="27,0,0,0" Text="Balance"></TextBlock>
-    <ComboBox Margin="27,5,0,0" x:Name="cbBalances" Width="200" SelectionChanged="ComboBox_SelectionChanged"></ComboBox>
-    <Grid x:Name="grdMain" ColumnDefinitions="50*,50*" RowDefinitions="Auto">
-      <StackPanel x:Name="spParameters" IsVisible="false" Margin="20,20,20,20" Grid.Column="0" Grid.Row="0">
-        <Grid x:Name="grdSample" Width="500" HorizontalAlignment="Left" ColumnDefinitions="50*,50*" RowDefinitions="Auto,Auto,Auto,Auto, Auto, Auto, Auto,Auto, Auto"  Margin="4" ShowGridLines="False" >
-          <Label x:Name="lblPorto" Content="Porto:" Grid.Column="0" Grid.Row="0"></Label>
-          <TextBlock x:Name="Porto" Text="" Margin="1,3" Grid.Column="1" Grid.Row="0"></TextBlock>
-          <Label Grid.Column="0" Grid.Row="1">BoudRate:</Label>
-          <TextBlock x:Name="txtBaudRate" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="1"></TextBlock>
-          <Label Grid.Column="0" Grid.Row="2">Databits:</Label>
-          <TextBlock x:Name="txtDataBits" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="2"></TextBlock>
-          <Label Grid.Column="0" Grid.Row="3">Parity:</Label>
-          <TextBlock x:Name="txtParity" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="3"></TextBlock>
-          <Label Grid.Column="0" Grid.Row="4">StopBit:</Label>
-          <TextBlock x:Name="txtStopBits" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="4"></TextBlock>
-          <Label Grid.Column="0" Grid.Row="5">HandShake:</Label>
-          <TextBlock x:Name="txtHandShake" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="5"></TextBlock>
-          <Label Grid.Column="0" Grid.Row="6">Stable weighing command:</Label>
-          <TextBlock x:Name="txtCommand" Text="" Margin="1,3" Grid.Column="1" Grid.Row="6"></TextBlock>
-          <Label Grid.Column="0" Grid.Row="7" IsVisible="False">Parser:</Label>
-          <TextBlock x:Name="txtParserFormat" Text="" Margin="1,3" Grid.Column="1" Grid.Row="7" IsVisible="False"></TextBlock>
-          <Label Grid.Column="0" Grid.Row="7">Weight conversion:</Label>
-          <TextBlock x:Name="txtWeightConvertion" Text="" Margin="1,3" Grid.Column="1" Grid.Row="7"></TextBlock>
-		  <Label Grid.Column="0" Grid.Row="8">Modello:</Label>
-          <TextBlock x:Name="txtModello" Text="" Margin="1,3" Grid.Column="1" Grid.Row="8"></TextBlock>
-        </Grid>
-        <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-          <Button x:Name="btnConnect" ClickMode="Press" Width="100" HorizontalContentAlignment="Center" >Collegare</Button>
+	    <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+		  <ComboBox Margin="20,5,0,0" x:Name="cbBalances" Width="200" SelectionChanged="ComboBox_SelectionChanged"></ComboBox>
+          <Button x:Name="btnConnect" ClickMode="Press" Width="100" Margin="5,0,5,0" HorizontalContentAlignment="Center" IsVisible="False">Collegare</Button>
           <Button x:Name="btnWeight" ClickMode="Press" IsVisible="False">Pesare</Button>
-          <Button x:Name="btnDisconnect" ClickMode="Press" IsVisible="False" Width="100" HorizontalContentAlignment="Center">Disconetti</Button>
+          <Button x:Name="btnDisconnect" ClickMode="Press" IsVisible="False" Width="100" Margin="5,0,5,0" HorizontalContentAlignment="Center">Disconetti</Button>
         </StackPanel>
-		  
-	    <StackPanel Margin="20,20,20,20">
-          <TextBlock x:Name="txtErrorMessage" Foreground="Red" Text=""></TextBlock>
-        </StackPanel>
-	 
-      </StackPanel>
-      <StackPanel x:Name="spResults" Margin="20,20,20,20" Grid.Column="1" Grid.Row="0" IsVisible="True">
+    
+    <Grid x:Name="grdMain" ColumnDefinitions="50*,50*" RowDefinitions="Auto">
+     
+      <StackPanel x:Name="spResults" Margin="20,20,20,20" Grid.Column="0" Grid.Row="0" IsVisible="True">
 		  
 	     <StackPanel Margin="5,5,0,5">
 		   <Label>Select the product:</Label>
@@ -91,6 +64,36 @@
         </Grid>
 	  
       </StackPanel>
+		
+		 <StackPanel Margin="20,20,20,20">
+          <TextBlock x:Name="txtErrorMessage" Foreground="Red" Text=""></TextBlock>
+        </StackPanel>
+	
+       <StackPanel x:Name="spParameters" IsVisible="false" Margin="20,20,20,20" Grid.Column="1" Grid.Row="0">
+        <Grid x:Name="grdSample" Width="500" HorizontalAlignment="Left" ColumnDefinitions="50*,50*" RowDefinitions="Auto,Auto,Auto,Auto, Auto, Auto, Auto,Auto, Auto"  Margin="4" ShowGridLines="False" >
+          <Label x:Name="lblPorto" Content="Porto:" Grid.Column="0" Grid.Row="0"></Label>
+          <TextBlock x:Name="Porto" Text="" Margin="1,3" Grid.Column="1" Grid.Row="0"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="1">BoudRate:</Label>
+          <TextBlock x:Name="txtBaudRate" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="1"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="2">Databits:</Label>
+          <TextBlock x:Name="txtDataBits" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="2"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="3">Parity:</Label>
+          <TextBlock x:Name="txtParity" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="3"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="4">StopBit:</Label>
+          <TextBlock x:Name="txtStopBits" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="4"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="5">HandShake:</Label>
+          <TextBlock x:Name="txtHandShake" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="5"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="6">Stable weighing command:</Label>
+          <TextBlock x:Name="txtCommand" Text="" Margin="1,3" Grid.Column="1" Grid.Row="6"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="7" IsVisible="False">Parser:</Label>
+          <TextBlock x:Name="txtParserFormat" Text="" Margin="1,3" Grid.Column="1" Grid.Row="7" IsVisible="False"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="7">Weight conversion:</Label>
+          <TextBlock x:Name="txtWeightConvertion" Text="" Margin="1,3" Grid.Column="1" Grid.Row="7"></TextBlock>
+		  <Label Grid.Column="0" Grid.Row="8">Modello:</Label>
+          <TextBlock x:Name="txtModello" Text="" Margin="1,3" Grid.Column="1" Grid.Row="8"></TextBlock>
+        </Grid>	 
+      </StackPanel>
+  
     </Grid>
   </StackPanel>
 </Window>

@@ -32,6 +32,8 @@ namespace Bilanza
             btnSend.Click += BtnSend_Click;
             btnReset.Click += BtnReset_Click;
             btnTare.Click += BtnTare_Click;
+
+            spResults.IsVisible = false;
             //_balance = new ManagerBalance(@"C:\Projects\biltech\Bilancia\Bilanza\BilanciaConfig.json");
             _balance = new ManagerBalance(@"C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\Bilancia\Bilanza\BilanciaConfig.json");
             
@@ -50,7 +52,7 @@ namespace Bilanza
             
             btnDisconnect.IsVisible = false;
             btnConnect.IsVisible= true;
-            cbProdotto.IsVisible = false;
+            spResults.IsVisible = false;
         }
 
         private void BtnWeight_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -100,7 +102,8 @@ namespace Bilanza
                     GetProdottoDB();
                     btnConnect.IsVisible = false;
                     btnDisconnect.IsVisible = true;
-   
+                    spResults.IsVisible = true;
+
                 }
             }
         }
@@ -205,8 +208,10 @@ namespace Bilanza
                     txtWeightConvertion.Text = _selected.WeightConversion.ToString();
                     txtModello.Text = _selected.Modello.ToString();
                     boxCommand.Text = _selected.CommandForWeight.ToString();
-                    spParameters.IsVisible = true;
-                    cbProdotto.IsVisible = false;
+                    spParameters.IsVisible = false;
+                    spResults.IsVisible = false;
+                    btnConnect.IsVisible = true;
+                    btnDisconnect.IsVisible = false;
                     _balance.ClosSelectedBalanceConnection();
                 }
                 else
@@ -241,7 +246,7 @@ namespace Bilanza
 
                 if (!string.IsNullOrEmpty(selBal))
                 {
-                    spParameters.IsVisible = true;
+                    spParameters.IsVisible = false;
                 }
                 else
                 {
