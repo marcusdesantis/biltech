@@ -29,6 +29,9 @@ namespace Bilanza
             btnConnect.Click += BtnConnect_Click;
             btnWeight.Click += BtnWeight_Click;
             btnDisconnect.Click += BtnDisconnect_Click;
+            btnSend.Click += BtnSend_Click;
+            btnReset.Click += BtnReset_Click;
+            btnTare.Click += BtnTare_Click;
             //_balance = new ManagerBalance(@"C:\Projects\biltech\Bilancia\Bilanza\BilanciaConfig.json");
             _balance = new ManagerBalance(@"C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\Bilancia\Bilanza\BilanciaConfig.json");
             
@@ -102,6 +105,83 @@ namespace Bilanza
             }
         }
 
+        private void BtnSend_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            if (_selected != null)
+            {
+ 
+                if (!_balance.IsPortAvailable())
+                {
+                    txtErrorMessage.Text = _balance.MessageError;
+                    string select_prodotto = Convert.ToString(cbProdotto.SelectedItem);
+                    if (!select_prodotto.Equals(""))
+                    {
+                        string command = Convert.ToString(boxCommand.Text);
+                        Console.WriteLine("Command, ", command);
+                        if (string.IsNullOrEmpty(command))
+                        {
+                            Console.WriteLine("Please type the command to send");
+                        }
+                        else
+                        {
+                            if (txtModello.Text.Equals("PX3020"))
+                            {
+                                Console.WriteLine("The model of this scale cannot be shipped");
+                            }
+                            else
+                            {
+                                _balance.DataSend(command);
+                            }
+                                               
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please select the product");
+                    }
+                }
+                else
+                {
+
+                    Console.WriteLine("An error has occurred, cannot connect to the scale");
+                }
+            }
+        }
+
+        private void BtnReset_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            if (_selected != null)
+            {
+                if (!_balance.IsPortAvailable())
+                {
+                    txtErrorMessage.Text = _balance.MessageError;
+                    string command = "Z";
+                    _balance.DataSend(command);
+                }
+                else
+                {
+                    Console.WriteLine("An error has occurred, cannot connect to the scale");
+                }
+            }
+        }
+
+        private void BtnTare_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            if (_selected != null)
+            {
+                if (!_balance.IsPortAvailable())
+                {
+                    txtErrorMessage.Text = _balance.MessageError;
+                    string command = "T";
+                    _balance.DataSend(command);
+                }
+                else
+                {
+                    Console.WriteLine("An error has occurred, cannot connect to the scale");
+                }
+            }
+        }
+
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {            
             ComboBox cmb = (sender as ComboBox);
@@ -111,7 +191,8 @@ namespace Bilanza
             if(!string.IsNullOrEmpty(selBal)) 
             {
                 _selected = _balance.BalanceList.Where(x => x.Balance.Equals(selBal)).FirstOrDefault();
-                if(_selected != null)
+                
+                if (_selected != null)
                 {
                     Porto.Text = _selected.PortCOM;
                     txtBaudRate.Text = _selected.BaudRate.ToString();
@@ -123,6 +204,7 @@ namespace Bilanza
                     txtParserFormat.Text = _selected.ParserFormat;
                     txtWeightConvertion.Text = _selected.WeightConversion.ToString();
                     txtModello.Text = _selected.Modello.ToString();
+                    boxCommand.Text = _selected.CommandForWeight.ToString();
                     spParameters.IsVisible = true;
                     cbProdotto.IsVisible = false;
                     _balance.ClosSelectedBalanceConnection();
@@ -140,6 +222,12 @@ namespace Bilanza
             //Handle();
         }
 
+        public bool Result(string weight)
+        {
+            txtWeight.Text = "123";
+            return true;
+        }
+
         private void ComboBox_SelectionChangedProdotto(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -152,39 +240,8 @@ namespace Bilanza
                 //_selectedProdotto = _balance.ProdottoList.Where(x => x.Nome.Equals(selBal)).FirstOrDefault();
 
                 if (!string.IsNullOrEmpty(selBal))
-                {                 
-
-                    if (selBal.Equals("PX3202"))
-                    {
-                        Console.WriteLine("data is not sent");
-                    }
-                    else
-                    {
-                        Console.WriteLine("data is sent");
-
-
-                        if (!_balance.IsPortAvailable())
-                        {
-
-                            Console.WriteLine("Port: " + Porto.Text);
-                            Console.WriteLine("Command: " + txtWeightConvertion.Text);
-
-                            _balance.DataSend(txtWeightConvertion.Text.ToString());
-
-                            spParameters.IsVisible = true;
-
-                        }
-                        else
-                        {
-                            txtFirst.Text = _balance.BalanceResult.First;
-                            txtWeight.Text = _balance.BalanceResult.WeightKg.ToString();
-                            txtWeight_100.Text = _balance.BalanceResult.Weight_100.ToString();
-                            txtDate.Text = _balance.BalanceResult.Date;
-                            txtSecond.Text = _balance.BalanceResult.Second;
-                            txtCode.Text = _balance.BalanceResult.Code;
-
-                        }
-                    }
+                {
+                    spParameters.IsVisible = true;
                 }
                 else
                 {

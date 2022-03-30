@@ -27,7 +27,7 @@ namespace Bilanza.Data
         
         String _messageError = string.Empty;
         SerialPort serialPort1;
-        string dataValue = "";
+        string dataValue = null;
         bool _error = false;
 
         BalanceResultModel _balanceResultModel = new BalanceResultModel();
@@ -283,7 +283,8 @@ namespace Bilanza.Data
             Thread.Sleep(500);
 
             dataValue = serialPort1.ReadExisting();
-            if(!string.IsNullOrEmpty(dataValue))
+           
+            if(!string.IsNullOrEmpty(dataValue) && !dataValue.Equals("\n"))
             {
            
                 string select_prodotto = Convert.ToString(MainWindow._instance.cbProdotto.SelectedItem);
@@ -315,8 +316,12 @@ namespace Bilanza.Data
 
                         if (InsertMisurazione(_misurazione))
                         {
+                           
                             Console.WriteLine("Name Bilancia: " + name);
                             Console.WriteLine("Net Weight: " + netWeight[0]);
+
+                           
+
                         }
                         else
                         {
@@ -339,7 +344,7 @@ namespace Bilanza.Data
             {
                 _error = true;
                 _messageError = "";
-
+                 Console.WriteLine("The balance information is empty");
             }
         }
 

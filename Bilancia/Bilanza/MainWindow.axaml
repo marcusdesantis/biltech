@@ -2,12 +2,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
         x:Class="Bilanza.MainWindow"
-        Title="Bilanza">
+        Title="Balance">
   <StackPanel Margin="10,10,10,10">
-    <TextBlock Text="Bilancia"></TextBlock>
-    <ComboBox x:Name="cbBalances" Width="200" SelectionChanged="ComboBox_SelectionChanged"></ComboBox>
+    <TextBlock Margin="27,0,0,0" Text="Balance"></TextBlock>
+    <ComboBox Margin="27,5,0,0" x:Name="cbBalances" Width="200" SelectionChanged="ComboBox_SelectionChanged"></ComboBox>
     <Grid x:Name="grdMain" ColumnDefinitions="50*,50*" RowDefinitions="Auto">
       <StackPanel x:Name="spParameters" IsVisible="false" Margin="20,20,20,20" Grid.Column="0" Grid.Row="0">
         <Grid x:Name="grdSample" Width="500" HorizontalAlignment="Left" ColumnDefinitions="50*,50*" RowDefinitions="Auto,Auto,Auto,Auto, Auto, Auto, Auto,Auto, Auto"  Margin="4" ShowGridLines="False" >
@@ -23,7 +23,7 @@
           <TextBlock x:Name="txtStopBits" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="4"></TextBlock>
           <Label Grid.Column="0" Grid.Row="5">HandShake:</Label>
           <TextBlock x:Name="txtHandShake" Text="0" Margin="1,3" Grid.Column="1" Grid.Row="5"></TextBlock>
-          <Label Grid.Column="0" Grid.Row="6">Comando di pesatura stabile:</Label>
+          <Label Grid.Column="0" Grid.Row="6">Stable weighing command:</Label>
           <TextBlock x:Name="txtCommand" Text="" Margin="1,3" Grid.Column="1" Grid.Row="6"></TextBlock>
           <Label Grid.Column="0" Grid.Row="7" IsVisible="False">Parser:</Label>
           <TextBlock x:Name="txtParserFormat" Text="" Margin="1,3" Grid.Column="1" Grid.Row="7" IsVisible="False"></TextBlock>
@@ -33,38 +33,63 @@
           <TextBlock x:Name="txtModello" Text="" Margin="1,3" Grid.Column="1" Grid.Row="8"></TextBlock>
         </Grid>
         <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-          <Button x:Name="btnConnect" ClickMode="Press" >Collegare</Button>
+          <Button x:Name="btnConnect" ClickMode="Press" Width="100" HorizontalContentAlignment="Center" >Collegare</Button>
           <Button x:Name="btnWeight" ClickMode="Press" IsVisible="False">Pesare</Button>
-          <Button x:Name="btnDisconnect" ClickMode="Press" IsVisible="False">Disconetti</Button>
+          <Button x:Name="btnDisconnect" ClickMode="Press" IsVisible="False" Width="100" HorizontalContentAlignment="Center">Disconetti</Button>
         </StackPanel>
-        <StackPanel Margin="5,5,5,5">
-           <ComboBox x:Name="cbProdotto" Width="200" Margin="1,3" SelectionChanged="ComboBox_SelectionChangedProdotto" IsVisible="False"></ComboBox>
-        </StackPanel>
+		  
 	    <StackPanel Margin="20,20,20,20">
           <TextBlock x:Name="txtErrorMessage" Foreground="Red" Text=""></TextBlock>
         </StackPanel>
 	 
       </StackPanel>
-      <StackPanel x:Name="spResults" Margin="20,20,20,20" Grid.Column="1" Grid.Row="0" IsVisible="False">
-        <Grid x:Name="grdResults" ColumnDefinitions="50*,50*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
-          <Label Grid.Column="0" Grid.Row="0">First</Label>
-          <TextBlock x:Name="txtFirst" Grid.Column="1" Grid.Row="0"></TextBlock>
+      <StackPanel x:Name="spResults" Margin="20,20,20,20" Grid.Column="1" Grid.Row="0" IsVisible="True">
+		  
+	     <StackPanel Margin="5,5,0,5">
+		   <Label>Select the product:</Label>
+           <ComboBox x:Name="cbProdotto" Width="200" Margin="1,3" SelectionChanged="ComboBox_SelectionChangedProdotto" IsVisible="False"></ComboBox>
+		</StackPanel>
+		  
+		 <StackPanel Margin="5,5,5,5">
+		   <Label>Command to send:</Label>
+		</StackPanel>
+		  
+		 <StackPanel Margin="5,5,5,5" Orientation="Horizontal">
+           <TextBox  x:Name="boxCommand" Width="200" Margin="1,3"/>
+		</StackPanel>
+		  
+		 <StackPanel Margin="5,5,5,5">
+		   <Button x:Name="btnSend" Width="200" HorizontalContentAlignment="Center">Send</Button>
+		</StackPanel>
+		  
+		 <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+          <Button x:Name="btnReset" Width="100" HorizontalContentAlignment="Center">Reset</Button>
+          <Button x:Name="btnTare" Width="100" Margin="5,0,0,0" HorizontalContentAlignment="Center">Tare</Button>
+        </StackPanel>
+			  
+        <Grid x:Name="grdResults" ColumnDefinitions="50*,50*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" IsVisible="False">
+		 
+		  <Label Grid.Column="0" Grid.Row="0">Result</Label>	
+			
+          <Label Grid.Column="0" Grid.Row="1">First:</Label>
+          <TextBlock x:Name="txtFirst" Grid.Column="1" Grid.Row="1"></TextBlock>
           
-          <Label Grid.Column="0" Grid.Row="1">Weight</Label>
-          <TextBlock x:Name="txtWeight" Grid.Column="1" Grid.Row="1"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="2">Weight:</Label>
+          <TextBlock x:Name="txtWeight" Grid.Column="1" Grid.Row="2"></TextBlock>
           
-          <Label Grid.Column="0" Grid.Row="2">Weight/100</Label>
-          <TextBlock x:Name="txtWeight_100" Grid.Column="1" Grid.Row="2"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="3">Converted weight:</Label>
+          <TextBlock x:Name="txtWeight_100" Grid.Column="1" Grid.Row="3"></TextBlock>
 
-          <Label Grid.Column="0" Grid.Row="3">Date</Label>
-          <TextBlock x:Name="txtDate" Grid.Column="1" Grid.Row="3"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="4">Date:</Label>
+          <TextBlock x:Name="txtDate" Grid.Column="1" Grid.Row="4"></TextBlock>
 
-          <Label Grid.Column="0" Grid.Row="4">Second</Label>
-          <TextBlock x:Name="txtSecond" Grid.Column="1" Grid.Row="4"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="5">Second:</Label>
+          <TextBlock x:Name="txtSecond" Grid.Column="1" Grid.Row="5"></TextBlock>
 
-          <Label Grid.Column="0" Grid.Row="5">Code</Label>
-          <TextBlock x:Name="txtCode" Grid.Column="1" Grid.Row="5"></TextBlock>
+          <Label Grid.Column="0" Grid.Row="6">Code:</Label>
+          <TextBlock x:Name="txtCode" Grid.Column="1" Grid.Row="6"></TextBlock>
         </Grid>
+	  
       </StackPanel>
     </Grid>
   </StackPanel>
