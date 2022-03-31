@@ -1,0 +1,30 @@
+﻿[
+  {
+    "Balance": "OHAUS 1",
+    "PortCOM": "COM3",
+    "BaudRate": 9600,
+    "DataBits": 8,
+    "Parity": 0,
+    "StopBit": 1,
+    "HandShake": 0,
+    "CommandForWeight": "SP",
+    "ParserFormat": "4450_051418_OHAUS3_15032022",
+    "WeightConversion": 100,
+    "Modello": "PXABC1"
+  },
+  {
+    "Balance": "OHAUS 2",
+    "PortCOM": "COM4",
+    "BaudRate": 4800,
+    "DataBits": 8,
+    "Parity": 0,
+    "StopBit": 1,
+    "HandShake": 0,
+    "CommandForWeight": "0P",
+    "ParserFormat": "20220314_OHAUS2_2450_141005",
+    "WeightConversion": 1000,
+    "Modello": "PX3020"
+
+  }
+
+]
