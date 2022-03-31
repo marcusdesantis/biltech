@@ -117,37 +117,68 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="panelResultBalance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>283, 298</value>
+  <data name="&gt;&gt;lblPesoBalance.Name" xml:space="preserve">
+    <value>lblPesoBalance</value>
   </data>
-  <data name="panelResultBalance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>345, 171</value>
+  <data name="&gt;&gt;lblPesoBalance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPesoBalance.Parent" xml:space="preserve">
+    <value>panelBalance</value>
+  </data>
+  <data name="&gt;&gt;lblPesoBalance.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;balanceGauge.Name" xml:space="preserve">
+    <value>balanceGauge</value>
+  </data>
+  <data name="&gt;&gt;balanceGauge.Type" xml:space="preserve">
+    <value>AGaugeApp.AGauge, BalanceNetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;balanceGauge.Parent" xml:space="preserve">
+    <value>panelBalance</value>
+  </data>
+  <data name="&gt;&gt;balanceGauge.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="panelBalance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>317, 75</value>
+  </data>
+  <data name="panelBalance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>437, 399</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="panelResultBalance.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+  <data name="panelBalance.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
   </data>
-  <data name="&gt;&gt;panelResultBalance.Name" xml:space="preserve">
-    <value>panelResultBalance</value>
+  <data name="panelBalance.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;panelResultBalance.Type" xml:space="preserve">
+  <data name="&gt;&gt;panelBalance.Name" xml:space="preserve">
+    <value>panelBalance</value>
+  </data>
+  <data name="&gt;&gt;panelBalance.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panelResultBalance.Parent" xml:space="preserve">
+  <data name="&gt;&gt;panelBalance.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;panelResultBalance.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;panelBalance.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="lblPesoBalance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+    <value>Microsoft Sans Serif, 10pt, style=Bold</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblPesoBalance.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lblPesoBalance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 171</value>
+    <value>168, 341</value>
   </data>
   <data name="lblPesoBalance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 13</value>
+    <value>100, 26</value>
   </data>
   <data name="lblPesoBalance.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -170,59 +201,14 @@
   <data name="&gt;&gt;lblPesoBalance.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="balanceGauge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>49, 15</value>
-  </data>
-  <data name="balanceGauge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>249, 181</value>
-  </data>
-  <data name="balanceGauge.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="balanceGauge.Text" xml:space="preserve">
-    <value>aGauge1</value>
-  </data>
-  <data name="&gt;&gt;balanceGauge.Name" xml:space="preserve">
-    <value>balanceGauge</value>
-  </data>
-  <data name="&gt;&gt;balanceGauge.Type" xml:space="preserve">
-    <value>AGaugeApp.AGauge, BalanceNetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;balanceGauge.Parent" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;balanceGauge.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="panelBalance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>283, 75</value>
-  </data>
-  <data name="panelBalance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>345, 211</value>
-  </data>
-  <data name="panelBalance.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="panelBalance.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;panelBalance.Name" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;panelBalance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelBalance.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panelBalance.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="txtErrorMessage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="txtErrorMessage.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14pt</value>
+  </data>
+  <data name="txtErrorMessage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="txtErrorMessage.Location" type="System.Drawing.Point, System.Drawing">
     <value>345, 35</value>
@@ -243,7 +229,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtErrorMessage.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;btnTare.Name" xml:space="preserve">
     <value>btnTare</value>
@@ -333,7 +319,7 @@
     <value>17, 75</value>
   </data>
   <data name="panelProduct.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 169</value>
+    <value>260, 194</value>
   </data>
   <data name="panelProduct.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -351,13 +337,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panelProduct.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="btnTare.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
+  <data name="btnTare.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnTare.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 130</value>
+    <value>112, 162</value>
   </data>
   <data name="btnTare.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 30</value>
@@ -383,8 +372,11 @@
   <data name="btnReset.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
+  <data name="btnReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 130</value>
+    <value>7, 162</value>
   </data>
   <data name="btnReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 30</value>
@@ -410,8 +402,11 @@
   <data name="btnSend.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
+  <data name="btnSend.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnSend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 94</value>
+    <value>7, 123</value>
   </data>
   <data name="btnSend.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 30</value>
@@ -434,11 +429,14 @@
   <data name="&gt;&gt;btnSend.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="boxCommand.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="boxCommand.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 70</value>
+    <value>7, 86</value>
   </data>
   <data name="boxCommand.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 20</value>
+    <value>200, 26</value>
   </data>
   <data name="boxCommand.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -461,8 +459,11 @@
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt, style=Bold</value>
   </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 50</value>
+    <value>4, 61</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 17</value>
@@ -485,11 +486,14 @@
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="cbProduct.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="cbProduct.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 24</value>
+    <value>7, 28</value>
   </data>
   <data name="cbProduct.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 21</value>
+    <value>200, 28</value>
   </data>
   <data name="cbProduct.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -511,6 +515,9 @@
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt, style=Bold</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 4</value>
@@ -537,13 +544,16 @@
     <value>6</value>
   </data>
   <data name="btnConnect.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
+    <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="btnConnect.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btnConnect.Location" type="System.Drawing.Point, System.Drawing">
     <value>230, 38</value>
   </data>
   <data name="btnConnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 21</value>
+    <value>100, 30</value>
   </data>
   <data name="btnConnect.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -561,7 +571,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnConnect.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
+  </data>
+  <data name="cbBalance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="cbBalance.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -570,7 +583,7 @@
     <value>24, 38</value>
   </data>
   <data name="cbBalance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 21</value>
+    <value>200, 28</value>
   </data>
   <data name="cbBalance.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -585,7 +598,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cbBalance.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -593,8 +606,11 @@
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt, style=Bold</value>
   </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 18</value>
+    <value>21, 12</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 17</value>
@@ -615,7 +631,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;lblModello.Name" xml:space="preserve">
     <value>lblModello</value>
@@ -870,10 +886,10 @@
     <value>20</value>
   </data>
   <data name="panelConnectionInformation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 258</value>
+    <value>17, 275</value>
   </data>
   <data name="panelConnectionInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 216</value>
+    <value>260, 199</value>
   </data>
   <data name="panelConnectionInformation.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -891,13 +907,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panelConnectionInformation.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="lblModello.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lblModello.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="lblModello.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lblModello.Location" type="System.Drawing.Point, System.Drawing">
     <value>319, 117</value>
@@ -925,6 +944,9 @@
   </data>
   <data name="label19.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="label19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 117</value>
@@ -956,6 +978,9 @@
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 45</value>
   </data>
@@ -985,6 +1010,9 @@
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 92</value>
@@ -1016,6 +1044,9 @@
   <data name="lblParser.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
+  <data name="lblParser.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lblParser.Location" type="System.Drawing.Point, System.Drawing">
     <value>319, 69</value>
   </data>
@@ -1042,6 +1073,9 @@
   </data>
   <data name="lblWeightConvertion.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="lblWeightConvertion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lblWeightConvertion.Location" type="System.Drawing.Point, System.Drawing">
     <value>319, 92</value>
@@ -1070,6 +1104,9 @@
   <data name="lblCommand.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
+  <data name="lblCommand.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lblCommand.Location" type="System.Drawing.Point, System.Drawing">
     <value>319, 45</value>
   </data>
@@ -1097,6 +1134,9 @@
   <data name="lblHandShake.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
+  <data name="lblHandShake.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lblHandShake.Location" type="System.Drawing.Point, System.Drawing">
     <value>107, 167</value>
   </data>
@@ -1123,6 +1163,9 @@
   </data>
   <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="label16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 69</value>
@@ -1154,6 +1197,9 @@
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
+  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 167</value>
   </data>
@@ -1183,6 +1229,9 @@
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt, style=Bold</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 11</value>
@@ -1214,6 +1263,9 @@
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
+  <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 70</value>
   </data>
@@ -1243,6 +1295,9 @@
   </data>
   <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 94</value>
@@ -1274,6 +1329,9 @@
   <data name="labelS.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
+  <data name="labelS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="labelS.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 141</value>
   </data>
@@ -1304,6 +1362,9 @@
   <data name="lblParity.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
+  <data name="lblParity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lblParity.Location" type="System.Drawing.Point, System.Drawing">
     <value>107, 118</value>
   </data>
@@ -1330,6 +1391,9 @@
   </data>
   <data name="lblStopBit.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="lblStopBit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lblStopBit.Location" type="System.Drawing.Point, System.Drawing">
     <value>107, 141</value>
@@ -1358,6 +1422,9 @@
   <data name="lblDataBits.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
+  <data name="lblDataBits.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lblDataBits.Location" type="System.Drawing.Point, System.Drawing">
     <value>107, 94</value>
   </data>
@@ -1384,6 +1451,9 @@
   </data>
   <data name="lblBaudRate.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="lblBaudRate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lblBaudRate.Location" type="System.Drawing.Point, System.Drawing">
     <value>107, 70</value>
@@ -1412,6 +1482,9 @@
   <data name="lblPorto.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
+  <data name="lblPorto.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lblPorto.Location" type="System.Drawing.Point, System.Drawing">
     <value>107, 45</value>
   </data>
@@ -1438,6 +1511,9 @@
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 118</value>
@@ -1469,6 +1545,9 @@
   <data name="lblP.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
+  <data name="lblP.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lblP.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 45</value>
   </data>
@@ -1494,9 +1573,8 @@
     <value>20</value>
   </data>
   <data name="btnDisconnect.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
+    <value>Microsoft Sans Serif, 10pt</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnDisconnect.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1504,7 +1582,7 @@
     <value>230, 38</value>
   </data>
   <data name="btnDisconnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 21</value>
+    <value>100, 30</value>
   </data>
   <data name="btnDisconnect.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -1527,6 +1605,33 @@
   <data name="&gt;&gt;btnDisconnect.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="balanceGauge.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="balanceGauge.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="balanceGauge.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 7</value>
+  </data>
+  <data name="balanceGauge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>394, 347</value>
+  </data>
+  <data name="balanceGauge.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;balanceGauge.Name" xml:space="preserve">
+    <value>balanceGauge</value>
+  </data>
+  <data name="&gt;&gt;balanceGauge.Type" xml:space="preserve">
+    <value>AGaugeApp.AGauge, BalanceNetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;balanceGauge.Parent" xml:space="preserve">
+    <value>panelBalance</value>
+  </data>
+  <data name="&gt;&gt;balanceGauge.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -1535,6 +1640,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>777, 481</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Balance</value>

@@ -34,10 +34,10 @@ C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNe
 C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\System.Security.Permissions.xml
 C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\System.Security.Principal.Windows.xml
 C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.csproj.AssemblyReference.cache
+C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.MainWindow.resources
 C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.Properties.Resources.resources
 C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.csproj.GenerateResource.cache
 C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.csproj.CoreCompileInputs.cache
 C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.csproj.CopyComplete
 C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.exe
 C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.pdb
-C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.MainWindow.resources
