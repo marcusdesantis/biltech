@@ -15,7 +15,8 @@ namespace BalanceNetFramework.Data
 {
     public class ManagerBalance
     {
-        List<BalanceModel> _balanceList;
+        List<BalanceModel> _balanceList = new List<BalanceModel>();
+        
         List<ProdottoModel> _prodottoList;
         BalanceModel _balanceSelected = null;
 
@@ -68,10 +69,11 @@ namespace BalanceNetFramework.Data
             }
         }
 
-        public ManagerBalance(string configFilePath)
+        public ManagerBalance()
         {
 
-            loadDataConfigurationBalanceJson(configFilePath);
+            //loadDataConfigurationBalanceJson(configFilePath);
+            LoadDataConfigurationBalanceDB();
 
         }
 
@@ -283,7 +285,8 @@ namespace BalanceNetFramework.Data
 
             if (!string.IsNullOrEmpty(dataValue) && !dataValue.Equals("\n"))
             {
-                
+
+               
                 string idProdotto = Convert.ToString(MainWindow._instance.GetIdProduct());
 
                 if (!idProdotto.Equals("") && !idProdotto.Equals("0"))
@@ -338,7 +341,7 @@ namespace BalanceNetFramework.Data
             }
         }
 
-        public bool SelectBalance(string balanceName)
+        public bool SelectBalance(int idBalance)
         {
             bool retVal = false;
 
@@ -346,7 +349,8 @@ namespace BalanceNetFramework.Data
             {
                 if (_balanceList.Count > 0)
                 {
-                    BalanceModel _balance = _balanceList.Where(x => x.Balance.Equals(balanceName)).FirstOrDefault();
+   
+                    BalanceModel _balance = _balanceList.Where(x => x.Id.Equals(idBalance)).FirstOrDefault();
                     if (_balance != null)
                     {
                         _balanceSelected = _balance;
@@ -375,6 +379,7 @@ namespace BalanceNetFramework.Data
                     string jsonString = r.ReadToEnd();
                     r.Close();
                     r.Dispose();
+                  
                     _balanceList = JsonConvert.DeserializeObject<List<BalanceModel>>(jsonString);
                     _prodottoList = JsonConvert.DeserializeObject<List<ProdottoModel>>(jsonString);
 
@@ -387,8 +392,69 @@ namespace BalanceNetFramework.Data
 
             return valRet;
         }
+
+        public bool LoadDataConfigurationBalanceDB()
+        {
+            bool state = false;
+
+            try
+            {
+
+                string sql = "SELECT b.Id, b.Nome, b.Codice, b.PortCOM, b.BaudRate, b.DataBits, b.Parity, b.StopBit, b.HandShake, b.CommandForWeight, b.WeightConversion, m.Id as IdModello , m.Nome as NomeModello FROM bilancia as b INNER JOIN modello as m ON b.Id_Modello = m.Id";
+                MySqlConnection connectionBD = ConnectionDB.connection();
+                connectionBD.Open();
+
+                try
+                {
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                   
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        BalanceModel b = new BalanceModel();
+                        b.Id = Int32.Parse(reader.GetString("Id"));
+                        b.Nome = reader.GetString("Nome");
+                        b.Codice = reader.GetString("Codice");
+                        b.PortCOM = reader.GetString("PortCOM");
+                        b.BaudRate = Int32.Parse(reader.GetString("BaudRate"));
+                        b.DataBits = Int32.Parse(reader.GetString("DataBits"));
+                        b.Parity = Int32.Parse(reader.GetString("Parity"));
+                        b.StopBit = Int32.Parse(reader.GetString("StopBit"));
+                        b.HandShake = Int32.Parse(reader.GetString("HandShake"));
+                        b.CommandForWeight = reader.GetString("CommandForWeight");
+                        b.WeightConversion = Decimal.Parse(reader.GetString("WeightConversion"));
+                        b.IdModello = Int32.Parse(reader.GetString("IdModello"));
+                        b.NomeModello = reader.GetString("NomeModello");
+                        Console.WriteLine(b);
+                        _balanceList.Add(b);                      
+                    }
+
+                    //state = true;
+
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine(ex);
+                    state = false;
+
+                }
+                finally
+                {
+                    connectionBD.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex);
+            }
+
+            return state;
+        }
         public static bool InsertMisurazione(MisurazioneModel misurazione)
         {
+            bool state = false;
             try
             {
 
@@ -410,13 +476,13 @@ namespace BalanceNetFramework.Data
                     command.ExecuteNonQuery();
                     Console.WriteLine("Insert Success");
 
-                    return true;
+                    state = true;
 
                 }
                 catch (MySqlException ex)
                 {
                     Console.WriteLine("Insert Error: " + ex);
-                    return false;
+                    state = false;
 
                 }
                 finally
@@ -431,7 +497,7 @@ namespace BalanceNetFramework.Data
                 Console.WriteLine("Error: " + ex);
             }
 
-            return false;
+            return state;
 
         }
 

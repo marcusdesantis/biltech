@@ -633,282 +633,6 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;lblModello.Name" xml:space="preserve">
-    <value>lblModello</value>
-  </data>
-  <data name="&gt;&gt;lblModello.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblModello.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;lblModello.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label19.Name" xml:space="preserve">
-    <value>label19</value>
-  </data>
-  <data name="&gt;&gt;label19.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;lblParser.Name" xml:space="preserve">
-    <value>lblParser</value>
-  </data>
-  <data name="&gt;&gt;lblParser.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblParser.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;lblParser.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;lblWeightConvertion.Name" xml:space="preserve">
-    <value>lblWeightConvertion</value>
-  </data>
-  <data name="&gt;&gt;lblWeightConvertion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblWeightConvertion.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;lblWeightConvertion.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;lblCommand.Name" xml:space="preserve">
-    <value>lblCommand</value>
-  </data>
-  <data name="&gt;&gt;lblCommand.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblCommand.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;lblCommand.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;lblHandShake.Name" xml:space="preserve">
-    <value>lblHandShake</value>
-  </data>
-  <data name="&gt;&gt;lblHandShake.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblHandShake.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;lblHandShake.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;label16.Name" xml:space="preserve">
-    <value>label16</value>
-  </data>
-  <data name="&gt;&gt;label16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;label17.Name" xml:space="preserve">
-    <value>label17</value>
-  </data>
-  <data name="&gt;&gt;label17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;label13.Name" xml:space="preserve">
-    <value>label13</value>
-  </data>
-  <data name="&gt;&gt;label13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;labelS.Name" xml:space="preserve">
-    <value>labelS</value>
-  </data>
-  <data name="&gt;&gt;labelS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelS.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;labelS.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;lblParity.Name" xml:space="preserve">
-    <value>lblParity</value>
-  </data>
-  <data name="&gt;&gt;lblParity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblParity.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;lblParity.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;lblStopBit.Name" xml:space="preserve">
-    <value>lblStopBit</value>
-  </data>
-  <data name="&gt;&gt;lblStopBit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblStopBit.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;lblStopBit.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;lblDataBits.Name" xml:space="preserve">
-    <value>lblDataBits</value>
-  </data>
-  <data name="&gt;&gt;lblDataBits.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblDataBits.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;lblDataBits.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;lblBaudRate.Name" xml:space="preserve">
-    <value>lblBaudRate</value>
-  </data>
-  <data name="&gt;&gt;lblBaudRate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblBaudRate.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;lblBaudRate.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;lblPorto.Name" xml:space="preserve">
-    <value>lblPorto</value>
-  </data>
-  <data name="&gt;&gt;lblPorto.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPorto.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;lblPorto.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;lblP.Name" xml:space="preserve">
-    <value>lblP</value>
-  </data>
-  <data name="&gt;&gt;lblP.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblP.Parent" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;lblP.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="panelConnectionInformation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 275</value>
-  </data>
-  <data name="panelConnectionInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 199</value>
-  </data>
-  <data name="panelConnectionInformation.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="panelConnectionInformation.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;panelConnectionInformation.Name" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;panelConnectionInformation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelConnectionInformation.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panelConnectionInformation.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="lblModello.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1571,6 +1295,27 @@
   </data>
   <data name="&gt;&gt;lblP.ZOrder" xml:space="preserve">
     <value>20</value>
+  </data>
+  <data name="panelConnectionInformation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 275</value>
+  </data>
+  <data name="panelConnectionInformation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 199</value>
+  </data>
+  <data name="panelConnectionInformation.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;panelConnectionInformation.Name" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;panelConnectionInformation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelConnectionInformation.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelConnectionInformation.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="btnDisconnect.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>

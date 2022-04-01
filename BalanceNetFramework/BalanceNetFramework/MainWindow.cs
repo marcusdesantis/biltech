@@ -24,41 +24,52 @@ namespace BalanceNetFramework
         public static MainWindow _instance;
         string idProduct;
         string text;
+        int minValue = 0;
+        int maxValue = 0;
         public MainWindow()
         {
             InitializeComponent();
             _instance = this;
 
-            _balance = new ManagerBalance(@"C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNetFramework\BalanceConfig.json");
+           // _balance = new ManagerBalance(@"C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNetFramework\BalanceConfig.json");
+            _balance = new ManagerBalance();
 
+            
             foreach (BalanceModel b in _balance.BalanceList)
             {
-                _listBalanceNames.Add(b.Balance);
-                cbBalance.Items.Add(b.Balance);
+                _listBalanceNames.Add(b.Nome);               
+                //cbBalance.Items.Add(b.Nome);
             }
-           
+
+            cbBalance.DataSource = _balance.BalanceList;
+            cbBalance.DisplayMember = "Nome";
+            cbBalance.ValueMember = "Id";
+
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
             if (_selected != null)
             {
-                _balance.SelectBalance(_selected.Balance);
+                _balance.SelectBalance(_selected.Id);
                 if (!_balance.OpenSelectedBalanceConnection())
                 {
                     txtErrorMessage.Text = _balance.MessageError;
+                    Console.WriteLine("444444");
                 }
                 else
                 {
                     
                    GetProdottoDB();
                    panelProduct.Visible = true;
-                    panelBalance.Visible = true;
-                    btnDisconnect.Visible = true;
+                   panelBalance.Visible = true;
+                   btnDisconnect.Visible = true;
                    btnConnect.Visible = false;
+                    Console.WriteLine("12333");
 
                 }
             }
+            Console.WriteLine("555555");
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
@@ -76,12 +87,16 @@ namespace BalanceNetFramework
         private void cbBalance_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cmb = (sender as ComboBox);
-            string selBal = cmb.SelectedItem.ToString();
+            string selBal = cbBalance.SelectedValue.ToString();
+           
             txtErrorMessage.Text = string.Empty;
+            Console.WriteLine("El id es:", selBal);
 
             if (!string.IsNullOrEmpty(selBal))
             {
-                _selected = _balance.BalanceList.Where(x => x.Balance.Equals(selBal)).FirstOrDefault();
+                int selbal1 = Int32.Parse(selBal);
+                _selected =  _balance.BalanceList.Where(x => x.Id.Equals(selbal1)).FirstOrDefault();
+                Console.WriteLine("El id es:", selBal);
 
                 if (_selected != null)
                 {
@@ -92,11 +107,13 @@ namespace BalanceNetFramework
                     lblHandShake.Text = _selected.HandShake.ToString();
                     lblDataBits.Text = _selected.DataBits.ToString();
                     lblCommand.Text = _selected.CommandForWeight;
-                    lblParser.Text = _selected.ParserFormat;
+                    //lblParser.Text = _selected.ParserFormat;
                     lblWeightConvertion.Text = _selected.WeightConversion.ToString();
                     //lblModello.Text = _selected.Modello.ToString();
-                    lblModello.Invoke(new Action(() => lblModello.Text = _selected.Modello.ToString()));
+                    //lblModello.Invoke(new Action(() => lblModello.Text = _selected.Modello.ToString()));
                     boxCommand.Text = _selected.CommandForWeight.ToString();
+
+                    Console.WriteLine(lblPorto);
 
                     _balance.ClosSelectedBalanceConnection();
                     panelProduct.Visible = false;
@@ -123,6 +140,7 @@ namespace BalanceNetFramework
         private void cbProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
             idProduct = cbProduct.SelectedValue.ToString();
+            GetMinAndMaxValue(idProduct);
         }
 
         private void btnSend_Click(object sender, EventArgs e)
@@ -217,6 +235,7 @@ namespace BalanceNetFramework
 
         public bool GetProdottoDB()
         {
+            bool state = false;
             try
             {
 
@@ -232,19 +251,21 @@ namespace BalanceNetFramework
                     DataTable dt = new DataTable();
                     mysqldt.Fill(dt);
 
-                    lblModello.Invoke(new Action(() => cbProduct.ValueMember = "Id"));
-                    lblModello.Invoke(new Action(() => cbProduct.DisplayMember = "Nome"));
-                    lblModello.Invoke(new Action(() => cbProduct.DataSource = dt));
+                    cbProduct.Invoke(new Action(() => cbProduct.ValueMember = "Id"));
+                    cbProduct.Invoke(new Action(() => cbProduct.DisplayMember = "Nome"));
+                    cbProduct.Invoke(new Action(() => cbProduct.DataSource = dt));
 
                     idProduct = cbProduct.SelectedValue.ToString();
 
-                    return true;
+                    GetMinAndMaxValue(idProduct);
+
+                    state = true;
 
                 }
                 catch (MySqlException ex)
                 {
                     Console.WriteLine(ex);
-                    return false;
+                    state = false;
 
                 }
                 finally
@@ -258,9 +279,60 @@ namespace BalanceNetFramework
                 Console.WriteLine("Error: " + ex);
             }
 
-            return false;
+            return state;
 
         }
+
+        public bool GetMinAndMaxValue(string idProduct)
+        {
+            bool state = false;
+            try
+            {
+
+                string sql = "SELECT * From prodotto WHERE Id=@idProduct";
+                MySqlConnection connectionBD = ConnectionDB.connection();
+                connectionBD.Open();
+
+                try
+                {
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                    command.Parameters.AddWithValue("@idProduct", idProduct);
+
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        minValue = Int32.Parse(reader.GetString("SogliaMinima"));
+                        maxValue = Int32.Parse(reader.GetString("SogliaMassima"));
+                    }
+
+                    balanceGauge.MinValue = minValue;
+                    balanceGauge.MaxValue = maxValue;
+
+                    state = true;
+
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine(ex);
+                    state = false;
+
+                }
+                finally
+                {
+                    connectionBD.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex);
+            }
+
+            return state;
+
+        }
+
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
