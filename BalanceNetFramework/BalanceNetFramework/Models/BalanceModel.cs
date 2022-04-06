@@ -8,9 +8,7 @@ namespace BalanceNetFramework.Models
 {
     public class BalanceModel
     {
-        // eliminar 
-        public string Balance { get; set; }
-
+   
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Codice { get; set; }
@@ -21,15 +19,9 @@ namespace BalanceNetFramework.Models
         public int StopBit { get; set; }
         public int HandShake { get; set; }
         public string CommandForWeight { get; set; }
-
-        // eliminar
-        public string ParserFormat { get; set; }
-        public decimal WeightConversion { get; set; }
-        
-        public string Modello { get; set; }
+        public decimal WeightConversion { get; set; }       
         public int IdModello { get; set; }
         public string NomeModello { get; set; }
-
 
     }
 

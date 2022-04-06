@@ -32,6 +32,8 @@ namespace BalanceNetFramework
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.panelBalance = new System.Windows.Forms.Panel();
             this.lblPesoBalance = new System.Windows.Forms.Label();
+            this.detailProduct = new System.Windows.Forms.Label();
+            this.balanceGauge = new AGaugeApp.AGauge();
             this.txtErrorMessage = new System.Windows.Forms.Label();
             this.panelProduct = new System.Windows.Forms.Panel();
             this.btnTare = new System.Windows.Forms.Button();
@@ -67,15 +69,20 @@ namespace BalanceNetFramework
             this.label5 = new System.Windows.Forms.Label();
             this.lblP = new System.Windows.Forms.Label();
             this.btnDisconnect = new System.Windows.Forms.Button();
-            this.balanceGauge = new AGaugeApp.AGauge();
+            this.btnMeasurement = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelBalance.SuspendLayout();
             this.panelProduct.SuspendLayout();
             this.panelConnectionInformation.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelBalance
             // 
             this.panelBalance.Controls.Add(this.lblPesoBalance);
+            this.panelBalance.Controls.Add(this.detailProduct);
             this.panelBalance.Controls.Add(this.balanceGauge);
             resources.ApplyResources(this.panelBalance, "panelBalance");
             this.panelBalance.Name = "panelBalance";
@@ -84,6 +91,115 @@ namespace BalanceNetFramework
             // 
             resources.ApplyResources(this.lblPesoBalance, "lblPesoBalance");
             this.lblPesoBalance.Name = "lblPesoBalance";
+            // 
+            // detailProduct
+            // 
+            resources.ApplyResources(this.detailProduct, "detailProduct");
+            this.detailProduct.Name = "detailProduct";
+            // 
+            // balanceGauge
+            // 
+            resources.ApplyResources(this.balanceGauge, "balanceGauge");
+            this.balanceGauge.BaseArcColor = System.Drawing.Color.Gray;
+            this.balanceGauge.BaseArcRadius = 150;
+            this.balanceGauge.BaseArcStart = 135;
+            this.balanceGauge.BaseArcSweep = 270;
+            this.balanceGauge.BaseArcWidth = 2;
+            this.balanceGauge.Cap_Idx = ((byte)(1));
+            this.balanceGauge.CapColors = new System.Drawing.Color[] {
+        System.Drawing.Color.Black,
+        System.Drawing.Color.Black,
+        System.Drawing.Color.Black,
+        System.Drawing.Color.Black,
+        System.Drawing.Color.Black};
+            this.balanceGauge.CapPosition = new System.Drawing.Point(10, 10);
+            this.balanceGauge.CapsPosition = new System.Drawing.Point[] {
+        new System.Drawing.Point(10, 10),
+        new System.Drawing.Point(10, 10),
+        new System.Drawing.Point(10, 10),
+        new System.Drawing.Point(10, 10),
+        new System.Drawing.Point(10, 10)};
+            this.balanceGauge.CapsText = new string[] {
+        "",
+        "",
+        "",
+        "",
+        ""};
+            this.balanceGauge.CapText = "";
+            this.balanceGauge.Center = new System.Drawing.Point(190, 190);
+            this.balanceGauge.MaxValue = 400F;
+            this.balanceGauge.MinValue = 0F;
+            this.balanceGauge.Name = "balanceGauge";
+            this.balanceGauge.NeedleColor1 = AGaugeApp.AGauge.NeedleColorEnum.Gray;
+            this.balanceGauge.NeedleColor2 = System.Drawing.Color.DimGray;
+            this.balanceGauge.NeedleRadius = 160;
+            this.balanceGauge.NeedleType = 0;
+            this.balanceGauge.NeedleWidth = 5;
+            this.balanceGauge.Range_Idx = ((byte)(0));
+            this.balanceGauge.RangeColor = System.Drawing.Color.LightGreen;
+            this.balanceGauge.RangeEnabled = true;
+            this.balanceGauge.RangeEndValue = 300F;
+            this.balanceGauge.RangeInnerRadius = 130;
+            this.balanceGauge.RangeOuterRadius = 150;
+            this.balanceGauge.RangesColor = new System.Drawing.Color[] {
+        System.Drawing.Color.LightGreen,
+        System.Drawing.Color.Red,
+        System.Drawing.SystemColors.Control,
+        System.Drawing.SystemColors.Control,
+        System.Drawing.SystemColors.Control};
+            this.balanceGauge.RangesEnabled = new bool[] {
+        true,
+        true,
+        false,
+        false,
+        false};
+            this.balanceGauge.RangesEndValue = new float[] {
+        300F,
+        400F,
+        0F,
+        0F,
+        0F};
+            this.balanceGauge.RangesInnerRadius = new int[] {
+        130,
+        130,
+        70,
+        70,
+        70};
+            this.balanceGauge.RangesOuterRadius = new int[] {
+        150,
+        150,
+        80,
+        80,
+        80};
+            this.balanceGauge.RangesStartValue = new float[] {
+        0F,
+        300F,
+        0F,
+        0F,
+        0F};
+            this.balanceGauge.RangeStartValue = 0F;
+            this.balanceGauge.ScaleLinesInterColor = System.Drawing.Color.Black;
+            this.balanceGauge.ScaleLinesInterInnerRadius = 400;
+            this.balanceGauge.ScaleLinesInterOuterRadius = 80;
+            this.balanceGauge.ScaleLinesInterWidth = 100;
+            this.balanceGauge.ScaleLinesMajorColor = System.Drawing.Color.Black;
+            this.balanceGauge.ScaleLinesMajorInnerRadius = 150;
+            this.balanceGauge.ScaleLinesMajorOuterRadius = 130;
+            this.balanceGauge.ScaleLinesMajorStepValue = 50F;
+            this.balanceGauge.ScaleLinesMajorWidth = 2;
+            this.balanceGauge.ScaleLinesMinorColor = System.Drawing.Color.Black;
+            this.balanceGauge.ScaleLinesMinorInnerRadius = 150;
+            this.balanceGauge.ScaleLinesMinorNumOf = 10;
+            this.balanceGauge.ScaleLinesMinorOuterRadius = 130;
+            this.balanceGauge.ScaleLinesMinorWidth = 1;
+            this.balanceGauge.ScaleNumbersColor = System.Drawing.Color.Black;
+            this.balanceGauge.ScaleNumbersFormat = "";
+            this.balanceGauge.ScaleNumbersRadius = 175;
+            this.balanceGauge.ScaleNumbersRotation = 1;
+            this.balanceGauge.ScaleNumbersStartScaleLine = 1;
+            this.balanceGauge.ScaleNumbersStepScaleLines = 1;
+            this.balanceGauge.Tag = "aGauge1";
+            this.balanceGauge.Value = 0F;
             // 
             // txtErrorMessage
             // 
@@ -305,122 +421,38 @@ namespace BalanceNetFramework
             this.btnDisconnect.UseVisualStyleBackColor = true;
             this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
             // 
-            // balanceGauge
+            // btnMeasurement
             // 
-            resources.ApplyResources(this.balanceGauge, "balanceGauge");
-            this.balanceGauge.BaseArcColor = System.Drawing.Color.Gray;
-            this.balanceGauge.BaseArcRadius = 150;
-            this.balanceGauge.BaseArcStart = 135;
-            this.balanceGauge.BaseArcSweep = 270;
-            this.balanceGauge.BaseArcWidth = 2;
-            this.balanceGauge.Cap_Idx = ((byte)(1));
-            this.balanceGauge.CapColors = new System.Drawing.Color[] {
-        System.Drawing.Color.Black,
-        System.Drawing.Color.Black,
-        System.Drawing.Color.Black,
-        System.Drawing.Color.Black,
-        System.Drawing.Color.Black};
-            this.balanceGauge.CapPosition = new System.Drawing.Point(10, 10);
-            this.balanceGauge.CapsPosition = new System.Drawing.Point[] {
-        new System.Drawing.Point(10, 10),
-        new System.Drawing.Point(10, 10),
-        new System.Drawing.Point(10, 10),
-        new System.Drawing.Point(10, 10),
-        new System.Drawing.Point(10, 10)};
-            this.balanceGauge.CapsText = new string[] {
-        "",
-        "",
-        "",
-        "",
-        ""};
-            this.balanceGauge.CapText = "";
-            this.balanceGauge.Center = new System.Drawing.Point(190, 190);
-            this.balanceGauge.MaxValue = 400F;
-            this.balanceGauge.MinValue = 0F;
-            this.balanceGauge.Name = "balanceGauge";
-            this.balanceGauge.NeedleColor1 = AGaugeApp.AGauge.NeedleColorEnum.Gray;
-            this.balanceGauge.NeedleColor2 = System.Drawing.Color.DimGray;
-            this.balanceGauge.NeedleRadius = 160;
-            this.balanceGauge.NeedleType = 0;
-            this.balanceGauge.NeedleWidth = 5;
-            this.balanceGauge.Range_Idx = ((byte)(0));
-            this.balanceGauge.RangeColor = System.Drawing.Color.LightGreen;
-            this.balanceGauge.RangeEnabled = true;
-            this.balanceGauge.RangeEndValue = 400F;
-            this.balanceGauge.RangeInnerRadius = 130;
-            this.balanceGauge.RangeOuterRadius = 150;
-            this.balanceGauge.RangesColor = new System.Drawing.Color[] {
-        System.Drawing.Color.LightGreen,
-        System.Drawing.Color.Red,
-        System.Drawing.SystemColors.Control,
-        System.Drawing.SystemColors.Control,
-        System.Drawing.SystemColors.Control};
-            this.balanceGauge.RangesEnabled = new bool[] {
-        true,
-        true,
-        false,
-        false,
-        false};
-            this.balanceGauge.RangesEndValue = new float[] {
-        400F,
-        400F,
-        0F,
-        0F,
-        0F};
-            this.balanceGauge.RangesInnerRadius = new int[] {
-        130,
-        130,
-        70,
-        70,
-        70};
-            this.balanceGauge.RangesOuterRadius = new int[] {
-        150,
-        150,
-        80,
-        80,
-        80};
-            this.balanceGauge.RangesStartValue = new float[] {
-        0F,
-        300F,
-        0F,
-        0F,
-        0F};
-            this.balanceGauge.RangeStartValue = 0F;
-            this.balanceGauge.ScaleLinesInterColor = System.Drawing.Color.Black;
-            this.balanceGauge.ScaleLinesInterInnerRadius = 400;
-            this.balanceGauge.ScaleLinesInterOuterRadius = 80;
-            this.balanceGauge.ScaleLinesInterWidth = 100;
-            this.balanceGauge.ScaleLinesMajorColor = System.Drawing.Color.Black;
-            this.balanceGauge.ScaleLinesMajorInnerRadius = 150;
-            this.balanceGauge.ScaleLinesMajorOuterRadius = 130;
-            this.balanceGauge.ScaleLinesMajorStepValue = 50F;
-            this.balanceGauge.ScaleLinesMajorWidth = 2;
-            this.balanceGauge.ScaleLinesMinorColor = System.Drawing.Color.Black;
-            this.balanceGauge.ScaleLinesMinorInnerRadius = 150;
-            this.balanceGauge.ScaleLinesMinorNumOf = 10;
-            this.balanceGauge.ScaleLinesMinorOuterRadius = 130;
-            this.balanceGauge.ScaleLinesMinorWidth = 1;
-            this.balanceGauge.ScaleNumbersColor = System.Drawing.Color.Black;
-            this.balanceGauge.ScaleNumbersFormat = "";
-            this.balanceGauge.ScaleNumbersRadius = 175;
-            this.balanceGauge.ScaleNumbersRotation = 1;
-            this.balanceGauge.ScaleNumbersStartScaleLine = 1;
-            this.balanceGauge.ScaleNumbersStepScaleLines = 1;
-            this.balanceGauge.Tag = "aGauge1";
-            this.balanceGauge.Value = 150F;
+            resources.ApplyResources(this.btnMeasurement, "btnMeasurement");
+            this.btnMeasurement.Name = "btnMeasurement";
+            this.btnMeasurement.UseVisualStyleBackColor = true;
+            this.btnMeasurement.Click += new System.EventHandler(this.btnMeasurement_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.cbBalance);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.btnMeasurement);
+            this.panel1.Controls.Add(this.btnConnect);
+            this.panel1.Controls.Add(this.btnDisconnect);
+            this.panel1.Controls.Add(this.txtErrorMessage);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.panelProduct, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panelBalance, 1, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Controls.Add(this.btnDisconnect);
-            this.Controls.Add(this.panelBalance);
-            this.Controls.Add(this.txtErrorMessage);
-            this.Controls.Add(this.panelProduct);
-            this.Controls.Add(this.btnConnect);
-            this.Controls.Add(this.cbBalance);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelConnectionInformation);
             this.Name = "MainWindow";
             this.Load += new System.EventHandler(this.MainWindow_Load);
@@ -429,8 +461,10 @@ namespace BalanceNetFramework
             this.panelProduct.PerformLayout();
             this.panelConnectionInformation.ResumeLayout(false);
             this.panelConnectionInformation.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -473,6 +507,10 @@ namespace BalanceNetFramework
         private System.Windows.Forms.Button btnDisconnect;
         public System.Windows.Forms.Label lblPesoBalance;
         public AGaugeApp.AGauge balanceGauge;
+        private System.Windows.Forms.Button btnMeasurement;
+        public System.Windows.Forms.Label detailProduct;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 

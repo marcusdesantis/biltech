@@ -34,10 +34,10 @@ namespace Bilanza
             btnTare.Click += BtnTare_Click;
 
             spResults.IsVisible = false;
-            //_balance = new ManagerBalance(@"C:\Projects\biltech\Bilancia\Bilanza\BilanciaConfig.json");
-            _balance = new ManagerBalance(@"C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\Bilancia\Bilanza\BilanciaConfig.json");
-            
-            foreach(BalanceModel b in _balance.BalanceList)
+            _balance = new ManagerBalance(@"C:\Projets\biltech\Bilancia\Bilanza\BilanciaConfig.json");
+            //_balance = new ManagerBalance(@"C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\Bilancia\Bilanza\BilanciaConfig.json");
+
+            foreach (BalanceModel b in _balance.BalanceList)
             {
                 _listBalanceNames.Add(b.Balance);
             }

@@ -77,24 +77,6 @@ namespace BalanceNetFramework.Data
 
         }
 
-        private void loadConfigurationInitial()
-        {
-            try
-            {
-                serialPort1 = new SerialPort("COM3", 2400, Parity.None, 8, StopBits.One);
-                serialPort1.Handshake = Handshake.None;
-                serialPort1.DataReceived += new SerialDataReceivedEventHandler(DataReceived);
-                serialPort1.ReadTimeout = 500;
-                serialPort1.WriteTimeout = 500;
-                serialPort1.Open();
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex);
-            }
-        }
-
         private Parity Integer2Parity(int parity)
         {
             Parity _parity = Parity.None;
@@ -235,11 +217,6 @@ namespace BalanceNetFramework.Data
         {
             try
             {
-                // COM3 = puerto que ha capturado la conexion de la Balanza
-                // BaudRate = colocar el valor del manual de la balanza
-                // Parity = colocar el valor del manual de la balanza
-                // DataBits = colocar el valor del manual de la balanza
-                // StopBits = colocar el valor del manual de la balanza
 
                 serialPort1 = new SerialPort(balanceModel.PortCOM, balanceModel.BaudRate, Integer2Parity(balanceModel.Parity), balanceModel.DataBits, Integer2StopBits(balanceModel.StopBit));
 
@@ -248,11 +225,6 @@ namespace BalanceNetFramework.Data
                 serialPort1.ReadTimeout = 500;
                 serialPort1.WriteTimeout = 500;
 
-
-                //serialPort1.Open();
-
-                // Sending stable weight command
-                //serialPort1.Write(balanceModel.CommandForWeight);
             }
             catch (Exception ex)
             {
@@ -312,7 +284,7 @@ namespace BalanceNetFramework.Data
                         _misurazione.Active = true;
                         _misurazione.DataCreazione = dateFormart;
 
-                        MainWindow._instance.SetWeight(netWeight[0], netWeight[1]);
+                        MainWindow._instance.SetWeight(idProdotto, netWeight[0], netWeight[1]);
 
                         if (InsertMisurazione(_misurazione))
                             {
@@ -364,33 +336,6 @@ namespace BalanceNetFramework.Data
                 }
             }
             return retVal;
-        }
-
-        public bool loadDataConfigurationBalanceJson(string rutaJson)
-        {
-            bool valRet = false;
-
-            if (File.Exists(rutaJson))
-            {
-                try
-                {
-                    StreamReader r = new StreamReader(rutaJson);
-
-                    string jsonString = r.ReadToEnd();
-                    r.Close();
-                    r.Dispose();
-                  
-                    _balanceList = JsonConvert.DeserializeObject<List<BalanceModel>>(jsonString);
-                    _prodottoList = JsonConvert.DeserializeObject<List<ProdottoModel>>(jsonString);
-
-                }
-                catch (Exception ex)
-                {
-                    _messageError = ex.Message;
-                }
-            }
-
-            return valRet;
         }
 
         public bool LoadDataConfigurationBalanceDB()

@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,46 +17,49 @@ namespace BalanceNetFramework
     public partial class MainWindow : Form
     {
         private ManagerBalance _balance = null;
-        private List<string> _listBalanceNames = new List<string>();
-        private List<string> _listProdottoNames = new List<string>();
         BalanceModel _selected = null;
-        bool handle = false;
         BalanceResultModel _balanceResultModel = new BalanceResultModel();
         public static MainWindow _instance;
         string idProduct;
-        string text;
+        string idBalance;
         int minValue = 0;
         int maxValue = 0;
+
+        
         public MainWindow()
         {
             InitializeComponent();
+            this.CenterToScreen();
+           
+
+
             _instance = this;
 
-           // _balance = new ManagerBalance(@"C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNetFramework\BalanceConfig.json");
             _balance = new ManagerBalance();
-
-            
-            foreach (BalanceModel b in _balance.BalanceList)
-            {
-                _listBalanceNames.Add(b.Nome);               
-                //cbBalance.Items.Add(b.Nome);
-            }
 
             cbBalance.DataSource = _balance.BalanceList;
             cbBalance.DisplayMember = "Nome";
             cbBalance.ValueMember = "Id";
 
+            idBalance = cbBalance.SelectedValue.ToString();
+            SetFields(Int32.Parse(idBalance));
+
+        }
+
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+           
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            if (_selected != null)
+            if (Int32.Parse(idBalance) > 0)
             {
-                _balance.SelectBalance(_selected.Id);
+                _balance.SelectBalance(Int32.Parse(idBalance));
                 if (!_balance.OpenSelectedBalanceConnection())
                 {
                     txtErrorMessage.Text = _balance.MessageError;
-                    Console.WriteLine("444444");
+                
                 }
                 else
                 {
@@ -65,11 +69,10 @@ namespace BalanceNetFramework
                    panelBalance.Visible = true;
                    btnDisconnect.Visible = true;
                    btnConnect.Visible = false;
-                    Console.WriteLine("12333");
-
+                   
                 }
             }
-            Console.WriteLine("555555");
+            
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
@@ -81,39 +84,27 @@ namespace BalanceNetFramework
             btnConnect.Visible = true;
             balanceGauge.Value = 0;
             lblPesoBalance.Text = "0.00";
+            detailProduct.Text = "";
             //cbProduct.Items.Clear();
         }
 
         private void cbBalance_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cmb = (sender as ComboBox);
-            string selBal = cbBalance.SelectedValue.ToString();
-           
+            idBalance = cbBalance.SelectedValue.ToString();
+            int convertIdBalance = 0;
+
             txtErrorMessage.Text = string.Empty;
-            Console.WriteLine("El id es:", selBal);
 
-            if (!string.IsNullOrEmpty(selBal))
+            if (!string.IsNullOrEmpty(idBalance))
             {
-                int selbal1 = Int32.Parse(selBal);
-                _selected =  _balance.BalanceList.Where(x => x.Id.Equals(selbal1)).FirstOrDefault();
-                Console.WriteLine("El id es:", selBal);
-
-                if (_selected != null)
+                if(Regex.IsMatch(idBalance, @"^[0-9]+$"))
                 {
-                    lblPorto.Text = _selected.PortCOM;
-                    lblBaudRate.Text = _selected.BaudRate.ToString();
-                    lblParity.Text = _selected.Parity.ToString();
-                    lblStopBit.Text = _selected.StopBit.ToString();
-                    lblHandShake.Text = _selected.HandShake.ToString();
-                    lblDataBits.Text = _selected.DataBits.ToString();
-                    lblCommand.Text = _selected.CommandForWeight;
-                    //lblParser.Text = _selected.ParserFormat;
-                    lblWeightConvertion.Text = _selected.WeightConversion.ToString();
-                    //lblModello.Text = _selected.Modello.ToString();
-                    //lblModello.Invoke(new Action(() => lblModello.Text = _selected.Modello.ToString()));
-                    boxCommand.Text = _selected.CommandForWeight.ToString();
+                    convertIdBalance = Int32.Parse(idBalance);
+                }
 
-                    Console.WriteLine(lblPorto);
+                if (SetFields(convertIdBalance))
+                {
 
                     _balance.ClosSelectedBalanceConnection();
                     panelProduct.Visible = false;
@@ -122,16 +113,15 @@ namespace BalanceNetFramework
                     btnConnect.Visible = true;
                     balanceGauge.Value = 0;
                     lblPesoBalance.Text = "0.00";
-
+                    detailProduct.Text = "";
+                    
                 }
-                else
-                {
-                    //spParameters.IsVisible = false;
-                }
+               
+               
             }
             else
             {
-                ///*spParameters.IsVisible = false;
+                Console.WriteLine("Scale not found error");
             }
             //handle = !cmb.IsDropDownOpen;
             //Handle();
@@ -140,6 +130,8 @@ namespace BalanceNetFramework
         private void cbProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
             idProduct = cbProduct.SelectedValue.ToString();
+            detailProduct.Text = "";
+            lblPesoBalance.Text = "0.00";
             GetMinAndMaxValue(idProduct);
         }
 
@@ -193,8 +185,16 @@ namespace BalanceNetFramework
                 if (!_balance.IsPortAvailable())
                 {
                     txtErrorMessage.Text = _balance.MessageError;
-                    string command = "Z";
-                    _balance.DataSend(command);
+                    if (lblModello.Text.Equals("PX3020"))
+                    {
+                        Console.WriteLine("The model of this scale cannot be shipped");
+                    }
+                    else
+                    {
+                        string command = "Z";
+                        _balance.DataSend(command);
+                    }
+                   
                 }
                 else
                 {
@@ -210,8 +210,15 @@ namespace BalanceNetFramework
                 if (!_balance.IsPortAvailable())
                 {
                     txtErrorMessage.Text = _balance.MessageError;
-                    string command = "T";
-                    _balance.DataSend(command);
+                    if (lblModello.Text.Equals("PX3020"))
+                    {
+                        Console.WriteLine("The model of this scale cannot be shipped");
+                    }
+                    else
+                    {
+                        string command = "T";
+                        _balance.DataSend(command);
+                    }
                 }
                 else
                 {
@@ -224,13 +231,14 @@ namespace BalanceNetFramework
         { 
             return idProduct;
         } 
-        public void SetWeight(string weight, string sign)
+        public void SetWeight(string id, string weight, string sign)
         {
-            
+            String name = GetNameProduct(id);
             String[] data = weight.Split('.');
             lblPesoBalance.Invoke(new Action(() => lblPesoBalance.Text = weight + " " + sign.ToUpper()));
             balanceGauge.Invoke(new Action(() => balanceGauge.Value = Int32.Parse(data[0])));
-            
+            detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " " + weight + " " + sign.ToUpper()));
+
         }
 
         public bool GetProdottoDB()
@@ -333,12 +341,83 @@ namespace BalanceNetFramework
 
         }
 
-
-        private void MainWindow_Load(object sender, EventArgs e)
+        public string GetNameProduct(string idProduct)
         {
-            
+            string name = "";
+            try
+            {
+
+                string sql = "SELECT * From prodotto WHERE Id=@idProduct";
+                MySqlConnection connectionBD = ConnectionDB.connection();
+                connectionBD.Open();
+
+                try
+                {
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                    command.Parameters.AddWithValue("@idProduct", idProduct);
+
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        name = reader.GetString("Nome");
+                    }
+
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine(ex);                
+
+                }
+                finally
+                {
+                    connectionBD.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex);
+            }
+
+            return name;
+
         }
 
-     
+
+        public bool SetFields(int idBalance)
+        {
+            bool state = false;
+            _selected = _balance.BalanceList.Where(x => x.Id.Equals(idBalance)).FirstOrDefault();
+
+            if (_selected != null)
+            {
+
+                lblPorto.Text = _selected.PortCOM;
+                lblBaudRate.Text = _selected.BaudRate.ToString();
+                lblParity.Text = _selected.Parity.ToString();
+                lblStopBit.Text = _selected.StopBit.ToString();
+                lblHandShake.Text = _selected.HandShake.ToString();
+                lblDataBits.Text = _selected.DataBits.ToString();
+                lblCommand.Text = _selected.CommandForWeight;
+                lblWeightConvertion.Text = _selected.WeightConversion.ToString();
+                lblModello.Text = _selected.NomeModello.ToString();
+                boxCommand.Text = _selected.CommandForWeight.ToString();
+
+                state = true;
+
+            }
+            else
+            {
+                state = false;
+            }
+            return state;
+        }
+
+        private void btnMeasurement_Click(object sender, EventArgs e)
+        {
+            GraphicWindow g = new GraphicWindow();
+            g.Show();
+        }
     }
 }
