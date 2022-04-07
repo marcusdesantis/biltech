@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace backend_api_core.Data
 {
-    public class MisurazioneData : IMisurazione
+    public class UtenteData : IUtente
     {
         private readonly IC_conexion _c_conexion;
 
-        public MisurazioneData(IC_conexion c_conexion)
+        public UtenteData(IC_conexion c_conexion)
         {
             this._c_conexion = c_conexion;
         }
@@ -22,9 +22,9 @@ namespace backend_api_core.Data
             try
             {
                 RespuestaDB respuesta = null;
-                string nombreFuncion = "sp_abm_misurazione";
+                string nombreFuncion = "sp_abm_utente";
 
-                respuesta = await this._c_conexion.abmObjeto<Misurazione>(nombreFuncion, AbmAccion.ELIMINAR_BAJA, new Misurazione { id = id });
+                respuesta = await this._c_conexion.abmObjeto<Utente>(nombreFuncion, AbmAccion.ELIMINAR_BAJA, new Utente { Id = id });
 
                 return respuesta;
             }
@@ -34,17 +34,17 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<Misurazione> FindById(int id)
+        public async Task<Utente> FindById(int id)
         {
             try
             {
-                Misurazione datos = new Misurazione();
-                string nombreFuncion = "sp_get_misurazione";
+                Utente datos = new Utente();
+                string nombreFuncion = "sp_get_utente";
 
                 Hashtable parametros = new Hashtable();
-                parametros.Add("id", id);
+                parametros.Add("Id", id);
 
-                datos = await this._c_conexion.traerObjeto<Misurazione>(nombreFuncion, parametros);
+                datos = await this._c_conexion.traerObjeto<Utente>(nombreFuncion, parametros);
 
                 return datos;
 
@@ -55,14 +55,14 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<RespuestaDB> Modify(Misurazione data)
+        public async Task<RespuestaDB> Modify(Utente data)
         {
             try
             {
                 RespuestaDB respuesta = new RespuestaDB();
-                string nombreFuncion = "sp_abm_misurazione";
+                string nombreFuncion = "sp_abm_utente";
 
-                respuesta = await this._c_conexion.abmObjeto<Misurazione>(nombreFuncion, AbmAccion.MODIFICAR, data);
+                respuesta = await this._c_conexion.abmObjeto<Utente>(nombreFuncion, AbmAccion.MODIFICAR, data);
 
                 return respuesta;
             }
@@ -72,25 +72,23 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<RespuestaDB> Save(Misurazione data)
+        public async Task<RespuestaDB> Save(Utente data)
         {
             try
             {
                 RespuestaDB respuesta = new RespuestaDB();
-                string nombreFuncion = "sp_abm_misurazione";
+                string nombreFuncion = "sp_abm_utente";
 
-                data.id = data.id== null ? 0 : data.id;
+                data.Id = data.Id == null ? 0 : data.Id;
 
                 Hashtable parametros = new Hashtable();
                 parametros.Add("action", AbmAccion.GUARDAR);
-                parametros.Add("id", data.id);
-                parametros.Add("id_bilancia", data.id_bilancia);
-                parametros.Add("id_prodotto", data.id_prodotto);
-                parametros.Add("peso", data.peso);
-                parametros.Add("id_FormulaProdotto", data.id_FormulaProdotto);
-                parametros.Add("id_Utente", data.id_Utente);
+                parametros.Add("Id", data.Id);
+                parametros.Add("Utente", data.utente);
+                parametros.Add("Password", data.Password);
 
-                respuesta = await this._c_conexion.abmObjeto<Misurazione>(nombreFuncion, AbmAccion.GUARDAR, data);
+
+                respuesta = await this._c_conexion.abmObjeto<Utente>(nombreFuncion, AbmAccion.GUARDAR, data);
 
                 return respuesta;
             }
@@ -100,12 +98,12 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<IEnumerable<MisurazioneList>> SearchList(string value, string parameter, int currentPageNumber, int amountShow)
+        public async Task<IEnumerable<UtenteList>> SearchList(string value, string parameter, int currentPageNumber, int amountShow)
         {
             try
             {
-                IEnumerable<MisurazioneList> arrayDatos = new MisurazioneList[] { };
-                string nombreFuncion = "sp_list_misurazione";
+                IEnumerable<UtenteList> arrayDatos = new UtenteList[] { };
+                string nombreFuncion = "sp_list_utente";
 
                 Hashtable parametros = new Hashtable();
                 parametros.Add("bus_value", value == null ? "" : value);
@@ -113,7 +111,7 @@ namespace backend_api_core.Data
                 parametros.Add("currentPageNumber", currentPageNumber);
                 parametros.Add("amountShow", amountShow);
 
-                arrayDatos = await this._c_conexion.traerArrayObjeto<MisurazioneList>(nombreFuncion, parametros);
+                arrayDatos = await this._c_conexion.traerArrayObjeto<UtenteList>(nombreFuncion, parametros);
 
                 return arrayDatos;
 

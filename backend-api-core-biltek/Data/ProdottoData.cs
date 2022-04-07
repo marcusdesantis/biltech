@@ -89,6 +89,8 @@ namespace backend_api_core.Data
                 parametros.Add("Id_TipologiaProdotto", data.Id_TipologiaProdotto);
                 parametros.Add("Id_Reparto", data.Id_Reparto);
                 parametros.Add("MinimoScortaMagazzino", data.MinimoScortaMagazzino);
+                parametros.Add("SogliaMinima", data.SogliaMinima);
+                parametros.Add("SogliaMassima", data.SogliaMassima);
                 
                 respuesta = await this._c_conexion.abmObjeto<Prodotto>(nombreFuncion, AbmAccion.GUARDAR, data);
 

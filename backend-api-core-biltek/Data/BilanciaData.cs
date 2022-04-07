@@ -87,7 +87,14 @@ namespace backend_api_core.Data
                 parametros.Add("Nome", data.Nome);
                 parametros.Add("Codice", data.Codice);
                 parametros.Add("Id_Modello", data.Id_Modello);
-
+                parametros.Add("PortCOM", data.PortCOM);
+                parametros.Add("BaudRate", data.BaudRate);
+                parametros.Add("DataBits", data.DataBits);
+                parametros.Add("Parity", data.Parity);
+                parametros.Add("StopBit", data.StopBit);
+                parametros.Add("HandShake", data.HandShake);
+                parametros.Add("CommandForWeight", data.CommandForWeight);
+                parametros.Add("WeightConversion", data.WeightConversion);
 
                 respuesta = await this._c_conexion.abmObjeto<Bilancia>(nombreFuncion, AbmAccion.GUARDAR, data);
 

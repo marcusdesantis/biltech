@@ -7,6 +7,7 @@
         public int id_prodotto { get; set; }
         public int peso { get; set; }
         public int id_FormulaProdotto { get; set; }
+        public int id_Utente { get; set; }
         public bool Active { get; set; }
       
     }
@@ -18,6 +19,7 @@
         public int id_prodotto { get; set; }
         public int peso { get; set; }
         public int id_FormulaProdotto { get; set; }
+        public int id_Utente { get; set; }
         public bool Active { get; set; }
 
         public int total { get; set; }
