@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
@@ -487,6 +488,45 @@ namespace BalanceNetFramework.Data
             }
 
             return id;
+
+        }
+
+        public DataTable GetReport(DateTime fromDate, DateTime toDate)
+        {
+
+            string sql = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.DataCreazione BETWEEN @fromDate AND DATE_ADD(@toDate, INTERVAL 1 DAY)";
+            MySqlConnection connectionBD = ConnectionDB.connection();
+            connectionBD.Open();
+            var table = new DataTable();
+
+            try
+            {
+                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+
+                var dateStart = fromDate.ToString("yyyy-MM-dd");
+
+                command.Parameters.AddWithValue("@fromDate", dateStart);
+                command.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd"));
+
+                var u = fromDate.ToString("yyyy-MM-dd");
+                Console.WriteLine("41,", u);
+
+                var reader = command.ExecuteReader();
+                table.Load(reader);
+                reader.Dispose();
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                connectionBD.Close();
+
+            }
+
+            return table;
 
         }
 

@@ -416,8 +416,11 @@ namespace BalanceNetFramework
 
         private void btnMeasurement_Click(object sender, EventArgs e)
         {
+            
             GraphicWindow g = new GraphicWindow();
             g.Show();
+           /* Form2 f = new Form2();
+            f.Show();*/
         }
     }
 }
