@@ -38,6 +38,7 @@ namespace BalanceNetFramework
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.graphicMisurazione = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnReport = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -83,6 +84,7 @@ namespace BalanceNetFramework
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnReport, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 10);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -119,6 +121,20 @@ namespace BalanceNetFramework
             this.graphicMisurazione.TabIndex = 0;
             this.graphicMisurazione.Text = "chart1";
             // 
+            // btnReport
+            // 
+            this.btnReport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnReport.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnReport.Location = new System.Drawing.Point(680, 12);
+            this.btnReport.Margin = new System.Windows.Forms.Padding(3, 12, 3, 3);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(164, 30);
+            this.btnReport.TabIndex = 20;
+            this.btnReport.Text = "Report measurement";
+            this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnMeasurement_Click);
+            // 
             // GraphicWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -149,5 +165,6 @@ namespace BalanceNetFramework
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataVisualization.Charting.Chart graphicMisurazione;
+        private System.Windows.Forms.Button btnReport;
     }
 }

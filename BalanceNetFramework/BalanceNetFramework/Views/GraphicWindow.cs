@@ -77,5 +77,10 @@ namespace BalanceNetFramework
 
         }
 
+        private void btnMeasurement_Click(object sender, EventArgs e)
+        {
+            ReportWindow r = new ReportWindow();
+            r.Show();
+        }
     }
 }

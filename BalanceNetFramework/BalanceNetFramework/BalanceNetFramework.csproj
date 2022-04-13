@@ -171,22 +171,22 @@
     <Compile Include="Data\ConnectionDB.cs" />
     <Compile Include="Data\ManagerBalance.cs" />
     <Compile Include="DB\CredentialDB.cs" />
-    <Compile Include="ReportWindow.cs">
+    <Compile Include="Views\ReportWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReportWindow.Designer.cs">
+    <Compile Include="Views\ReportWindow.Designer.cs">
       <DependentUpon>ReportWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="GraphicWindow.cs">
+    <Compile Include="Views\GraphicWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GraphicWindow.Designer.cs">
+    <Compile Include="Views\GraphicWindow.Designer.cs">
       <DependentUpon>GraphicWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.cs">
+    <Compile Include="Views\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWindow.Designer.cs">
+    <Compile Include="Views\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\BalanceModel.cs" />
@@ -195,13 +195,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\MisurazioneList.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <EmbeddedResource Include="ReportWindow.resx">
+    <EmbeddedResource Include="Views\ReportWindow.resx">
       <DependentUpon>ReportWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GraphicWindow.resx">
+    <EmbeddedResource Include="Views\GraphicWindow.resx">
       <DependentUpon>GraphicWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainWindow.resx">
+    <EmbeddedResource Include="Views\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -250,5 +250,6 @@
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

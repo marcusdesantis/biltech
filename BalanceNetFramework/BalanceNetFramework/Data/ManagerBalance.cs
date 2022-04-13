@@ -281,7 +281,7 @@ namespace BalanceNetFramework.Data
                         _misurazione.Id_Bilancia = 4;
                         _misurazione.Id_Prodotto = Int32.Parse(idProdotto);
                         _misurazione.Peso = netWeight[0];
-                        _misurazione.Id_FormulaProdotto = 4;
+                        _misurazione.Id_FormulaProdotto = 5;
                         _misurazione.Active = true;
                         _misurazione.DataCreazione = dateFormart;
 
@@ -491,29 +491,42 @@ namespace BalanceNetFramework.Data
 
         }
 
-        public DataTable GetReport(DateTime fromDate, DateTime toDate)
+        public DataTable GetReport(DateTime fromDate, DateTime toDate, int? idBilancia)
         {
 
-            string sql = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.DataCreazione BETWEEN @fromDate AND DATE_ADD(@toDate, INTERVAL 1 DAY)";
+           
             MySqlConnection connectionBD = ConnectionDB.connection();
             connectionBD.Open();
             var table = new DataTable();
 
             try
             {
-                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                int option = ReportWindow._instance.GetOption();
 
-                var dateStart = fromDate.ToString("yyyy-MM-dd");
+                if(option == 1)
+                {
+                    string sql = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.DataCreazione BETWEEN @fromDate AND DATE_ADD(@toDate, INTERVAL 1 DAY)";
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                    command.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd"));
+                    command.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd"));
+                    var reader = command.ExecuteReader();
+                    table.Load(reader);
+                    reader.Dispose();
 
-                command.Parameters.AddWithValue("@fromDate", dateStart);
-                command.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd"));
+                }
 
-                var u = fromDate.ToString("yyyy-MM-dd");
-                Console.WriteLine("41,", u);
+                if(option == 2)
+                {
+                    string sql = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Bilancia=@idBilancia";
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                    command.Parameters.AddWithValue("@idBilancia", idBilancia);
+                    var reader = command.ExecuteReader();
+                    table.Load(reader);
+                    reader.Dispose();
+                }
 
-                var reader = command.ExecuteReader();
-                table.Load(reader);
-                reader.Dispose();
+           
+               
 
             }
             catch (MySqlException ex)

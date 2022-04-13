@@ -30,8 +30,6 @@ namespace BalanceNetFramework
         {
             InitializeComponent();
             this.CenterToScreen();
-           
-
 
             _instance = this;
 
@@ -419,8 +417,7 @@ namespace BalanceNetFramework
             
             GraphicWindow g = new GraphicWindow();
             g.Show();
-           /* Form2 f = new Form2();
-            f.Show();*/
+
         }
     }
 }

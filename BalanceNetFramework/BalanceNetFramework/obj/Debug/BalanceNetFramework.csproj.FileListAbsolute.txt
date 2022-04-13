@@ -185,3 +185,4 @@ C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNe
 C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.ReportWindow.resources
+C:\Users\alex\Documents\abisoft\Bilanza v2\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.csproj.AssemblyReference.cache
