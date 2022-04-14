@@ -36,10 +36,10 @@ namespace BalanceNetFramework
 
         }
 
-        private void GetReport(DateTime startDate, DateTime endDate, int? idBilancia)
+        private void GetReport(DateTime startDate, DateTime endDate, int? idBalance, int? idProduct)
         {
             ReportModel reportModel = new ReportModel();
-            reportModel.CreateReport(startDate, endDate, idBilancia);
+            reportModel.CreateReport(startDate, endDate, idBalance, idProduct);
 
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("misurazioneReport", reportModel.ListMisurazione));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("misurazioneList", reportModel.ListMisurazione));
@@ -55,45 +55,133 @@ namespace BalanceNetFramework
             var dataStart = fromDate.ToString("yyyy-MM-dd");
             var dataEnd = toDate.ToString("yyyy-MM-dd");
 
-            if(cbBalanceR.SelectedValue == null && cbProductR.SelectedValue == null && checkFilterDate.Checked)
+            if (cbBalanceR.SelectedValue == null && cbProductR.SelectedValue == null && checkFilterDate.Checked == false)
+            {
+
+                MessageBox.Show("Seleziona un filtro.");
+
+            }
+
+            if (cbBalanceR.SelectedValue == null && cbProductR.SelectedValue == null && checkFilterDate.Checked)
             {
                 if (fromDate > toDate)
                 {
                     if (dataStart.Equals(dataEnd))
                     {
                         option = 1;
-                        //int idBilancia = Convert.ToInt32(cbBalanceR.SelectedValue.ToString());
-                        GetReport(fromDate, toDate, 0);
+                        GetReport(fromDate, toDate, 0, 0);
                     }
                     else
                     {
-                        MessageBox.Show("The start date cannot be later than the end date.");
+                        MessageBox.Show("La data di inizio non può essere successiva alla data fine.");
                     }
 
                 }
                 else
                 {
                     option = 1;
-                    //int idBilancia = Convert.ToInt32(cbBalanceR.SelectedValue.ToString());
-                    GetReport(fromDate, toDate, 0);
+                    GetReport(fromDate, toDate, 0, 0);
                 }
-            }
-            if (cbBalanceR.SelectedValue == null && cbProductR.SelectedValue == null && checkFilterDate.Checked==false)
-            {
-               
-                MessageBox.Show("Please select a filter.");
-              
             }
 
             if (cbBalanceR.SelectedValue != null && cbProductR.SelectedValue == null && checkFilterDate.Checked == false)
             {
                 option = 2;
-                int idBilancia = Convert.ToInt32(cbBalanceR.SelectedValue.ToString());
-                GetReport(fromDate, toDate, idBilancia);
+                int idBalance = Convert.ToInt32(cbBalanceR.SelectedValue.ToString());
+                GetReport(fromDate, toDate, idBalance, 0);
             }
 
+            if (cbBalanceR.SelectedValue == null && cbProductR.SelectedValue != null && checkFilterDate.Checked == false)
+            {
+                option = 3;
+                int idProduct = Convert.ToInt32(cbProductR.SelectedValue.ToString());
+                GetReport(fromDate, toDate, 0, idProduct);
+            }
 
+            if (cbBalanceR.SelectedValue != null && cbProductR.SelectedValue != null && checkFilterDate.Checked == false)
+            {
+                option = 4;
+                int idBalance = Convert.ToInt32(cbBalanceR.SelectedValue.ToString());
+                int idProduct = Convert.ToInt32(cbProductR.SelectedValue.ToString());
+                GetReport(fromDate, toDate, idBalance, idProduct);
+            }
 
+            if (cbBalanceR.SelectedValue != null && cbProductR.SelectedValue == null && checkFilterDate.Checked)
+            {
+                if (fromDate > toDate)
+                {
+                    if (dataStart.Equals(dataEnd))
+                    {
+                        option = 5;
+                        int idBalance = Convert.ToInt32(cbBalanceR.SelectedValue.ToString());
+                        GetReport(fromDate, toDate, idBalance, 0);
+                    }
+                    else
+                    {
+                        MessageBox.Show("La data di inizio non può essere successiva alla data fine.");
+                    }
+
+                }
+                else
+                {
+                    option = 5;
+                    int idBalance = Convert.ToInt32(cbBalanceR.SelectedValue.ToString());
+                    GetReport(fromDate, toDate, idBalance, 0);
+                }
+                
+            }
+
+            if (cbBalanceR.SelectedValue == null && cbProductR.SelectedValue != null && checkFilterDate.Checked)
+            {
+                if (fromDate > toDate)
+                {
+                    if (dataStart.Equals(dataEnd))
+                    {
+                        option = 6;
+                        int idProduct = Convert.ToInt32(cbProductR.SelectedValue.ToString());
+                        GetReport(fromDate, toDate, 0, idProduct);
+                    }
+                    else
+                    {
+                        MessageBox.Show("La data di inizio non può essere successiva alla data fine.");
+                    }
+
+                }
+                else
+                {
+                    option = 6;
+                    int idProduct = Convert.ToInt32(cbProductR.SelectedValue.ToString());
+                    GetReport(fromDate, toDate, 0, idProduct);
+                }
+
+            }
+
+            if (cbBalanceR.SelectedValue != null && cbProductR.SelectedValue != null && checkFilterDate.Checked)
+            {
+                if (fromDate > toDate)
+                {
+                    if (dataStart.Equals(dataEnd))
+                    {
+                        option = 7;
+                        int idBalance = Convert.ToInt32(cbBalanceR.SelectedValue.ToString());
+                        int idProduct = Convert.ToInt32(cbProductR.SelectedValue.ToString());
+                        GetReport(fromDate, toDate, idBalance, idProduct);
+                    }
+                    else
+                    {
+                        MessageBox.Show("La data di inizio non può essere successiva alla data fine.");
+                    }
+
+                }
+                else
+                {
+                    option = 7;
+                    int idBalance = Convert.ToInt32(cbBalanceR.SelectedValue.ToString());
+                    int idProduct = Convert.ToInt32(cbProductR.SelectedValue.ToString());
+                    GetReport(fromDate, toDate, idBalance, idProduct);
+                }
+
+            }
 
         }
 

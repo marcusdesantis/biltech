@@ -16,14 +16,14 @@ namespace BalanceNetFramework.Models
         public List<MisurazioneList> ListMisurazione { get; set; }
         public List<MisurazioneModel> ReportByDatePeriod { get; set; }
 
-        public void CreateReport(DateTime fromDate, DateTime toDate, int? idBilancia)
+        public void CreateReport(DateTime fromDate, DateTime toDate, int? idBalance, int? idProduct)
         {
             ReportDate = DateTime.Now;
             StartDate = fromDate;
             EndDate = toDate;
 
             var getReport = new ManagerBalance();
-            var result = getReport.GetReport(fromDate, toDate, idBilancia);
+            var result = getReport.GetReport(fromDate, toDate, idBalance, idProduct);
 
             ListMisurazione = new List<MisurazioneList>();
             foreach (System.Data.DataRow rows in result.Rows)

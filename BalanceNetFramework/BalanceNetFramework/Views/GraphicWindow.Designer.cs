@@ -29,9 +29,9 @@ namespace BalanceNetFramework
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -63,9 +63,9 @@ namespace BalanceNetFramework
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(326, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(211, 20);
+            this.label1.Size = new System.Drawing.Size(235, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "The last 5 measurements";
+            this.label1.Text = "Le ultime cinque misurazioni";
             // 
             // panel2
             // 
@@ -104,19 +104,19 @@ namespace BalanceNetFramework
             // 
             // graphicMisurazione
             // 
-            chartArea1.Name = "ChartArea1";
-            this.graphicMisurazione.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.graphicMisurazione.ChartAreas.Add(chartArea2);
             this.graphicMisurazione.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.graphicMisurazione.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.graphicMisurazione.Legends.Add(legend2);
             this.graphicMisurazione.Location = new System.Drawing.Point(0, 0);
             this.graphicMisurazione.Margin = new System.Windows.Forms.Padding(0);
             this.graphicMisurazione.Name = "graphicMisurazione";
             this.graphicMisurazione.Padding = new System.Windows.Forms.Padding(3);
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Measurement";
-            this.graphicMisurazione.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Peso";
+            this.graphicMisurazione.Series.Add(series2);
             this.graphicMisurazione.Size = new System.Drawing.Size(671, 453);
             this.graphicMisurazione.TabIndex = 0;
             this.graphicMisurazione.Text = "chart1";
@@ -131,7 +131,7 @@ namespace BalanceNetFramework
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(164, 30);
             this.btnReport.TabIndex = 20;
-            this.btnReport.Text = "Report measurement";
+            this.btnReport.Text = "Segnala il peso";
             this.btnReport.UseVisualStyleBackColor = true;
             this.btnReport.Click += new System.EventHandler(this.btnMeasurement_Click);
             // 

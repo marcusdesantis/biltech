@@ -96,7 +96,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Rapporto delle pesate</Value>
+                    <Value>Riepilogo del peso</Value>
                     <Style>
                       <FontSize>14pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -448,7 +448,7 @@
         <Height>3cm</Height>
         <Style />
       </Body>
-      <Width>23.10787cm</Width>
+      <Width>21cm</Width>
       <Page>
         <PageHeader>
           <Height>2.80169cm</Height>
@@ -462,7 +462,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Repporto</Value>
+                      <Value>Riepilogo</Value>
                       <Style>
                         <FontSize>14pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -530,11 +530,11 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>="From "+First(Fields!StartDate.Value, "misurazioneList") + " to " + First(Fields!EndDate.Value, "misurazioneList")</Value>
+                      <Value>="Da "+First(Fields!StartDate.Value, "misurazioneList") + " fino a " + First(Fields!EndDate.Value, "misurazioneList")</Value>
                       <Style>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Format>dddd, d' de 'MMMM' de 'yyyy</Format>
+                        <Format>dd/MM/yyyy</Format>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -567,7 +567,7 @@
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
-                  <Color>DimGray</Color>
+                  <Color>Silver</Color>
                   <Style>Solid</Style>
                 </Border>
               </Style>

@@ -18,7 +18,7 @@ namespace BalanceNetFramework
     {
         private ManagerBalance _balance = null;
         BalanceModel _selected = null;
-        BalanceResultModel _balanceResultModel = new BalanceResultModel();
+        //BalanceResultModel _balanceResultModel = new BalanceResultModel();
         public static MainWindow _instance;
         string idProduct;
         string idBalance;
@@ -231,11 +231,32 @@ namespace BalanceNetFramework
         } 
         public void SetWeight(string id, string weight, string sign)
         {
-            String name = GetNameProduct(id);
-            String[] data = weight.Split('.');
-            lblPesoBalance.Invoke(new Action(() => lblPesoBalance.Text = weight + " " + sign.ToUpper()));
-            balanceGauge.Invoke(new Action(() => balanceGauge.Value = Int32.Parse(data[0])));
-            detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " " + weight + " " + sign.ToUpper()));
+            try
+            {
+                String name = GetNameProduct(id);
+                String[] data = weight.Split('.');
+               
+                if (data[0].Length > 0)
+                {
+                    lblPesoBalance.Invoke(new Action(() => lblPesoBalance.Text = weight + " " + sign.ToUpper()));
+                    balanceGauge.Invoke(new Action(() => balanceGauge.Value = Int32.Parse(data[0])));
+                    detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " " + weight + " " + sign.ToUpper()));
+                }
+                else
+                {
+                    lblPesoBalance.Invoke(new Action(() => lblPesoBalance.Text = "0.00"));
+                    balanceGauge.Invoke(new Action(() => balanceGauge.Value = 0));
+                    detailProduct.Invoke(new Action(() => detailProduct.Text = ""));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: ", ex.Message);
+                /*System.IO.StreamWriter sr = new System.IO.StreamWriter("error.log", true);
+                sr.WriteLine(ex.Message);*/
+
+            }  
+            //detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " " + weight + " " + sign.ToUpper()));
 
         }
 

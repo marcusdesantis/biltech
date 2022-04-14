@@ -214,7 +214,7 @@
     <value>292, 3</value>
   </data>
   <data name="panelBalance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>572, 418</value>
+    <value>572, 422</value>
   </data>
   <data name="panelBalance.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -280,7 +280,7 @@
     <value>6</value>
   </data>
   <data name="btnTare.Text" xml:space="preserve">
-    <value>Tare</value>
+    <value>Tara</value>
   </data>
   <data name="&gt;&gt;btnTare.Name" xml:space="preserve">
     <value>btnTare</value>
@@ -310,7 +310,7 @@
     <value>5</value>
   </data>
   <data name="btnReset.Text" xml:space="preserve">
-    <value>Reset</value>
+    <value>Ripristina</value>
   </data>
   <data name="&gt;&gt;btnReset.Name" xml:space="preserve">
     <value>btnReset</value>
@@ -340,7 +340,7 @@
     <value>4</value>
   </data>
   <data name="btnSend.Text" xml:space="preserve">
-    <value>Send</value>
+    <value>Inviare</value>
   </data>
   <data name="&gt;&gt;btnSend.Name" xml:space="preserve">
     <value>btnSend</value>
@@ -391,13 +391,13 @@
     <value>4, 61</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 17</value>
+    <value>157, 17</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Command to send:</value>
+    <value>Comando da inviare:</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
@@ -448,13 +448,13 @@
     <value>4, 4</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 17</value>
+    <value>163, 17</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Select the product:</value>
+    <value>Seleziona il prodotto:</value>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
@@ -478,7 +478,7 @@
     <value>13, 3, 3, 3</value>
   </data>
   <data name="panelProduct.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 418</value>
+    <value>273, 422</value>
   </data>
   <data name="panelProduct.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -514,7 +514,7 @@
     <value>13</value>
   </data>
   <data name="btnConnect.Text" xml:space="preserve">
-    <value>Connect</value>
+    <value>Collegarsi</value>
   </data>
   <data name="&gt;&gt;btnConnect.Name" xml:space="preserve">
     <value>btnConnect</value>
@@ -568,13 +568,13 @@
     <value>16, 22</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 17</value>
+    <value>65, 17</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Balance</value>
+    <value>Bilancia</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
@@ -664,13 +664,13 @@
     <value>185, 45</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 17</value>
+    <value>72, 17</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>Command:</value>
+    <value>Comando:</value>
   </data>
   <data name="&gt;&gt;label7.Name" xml:space="preserve">
     <value>label7</value>
@@ -697,13 +697,13 @@
     <value>185, 92</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 17</value>
+    <value>149, 17</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
-    <value>Weight conversion:</value>
+    <value>Conversione del peso:</value>
   </data>
   <data name="&gt;&gt;label8.Name" xml:space="preserve">
     <value>label8</value>
@@ -850,13 +850,13 @@
     <value>185, 69</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 17</value>
+    <value>90, 17</value>
   </data>
   <data name="label16.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
-    <value>Parser:</value>
+    <value>Analizzatore:</value>
   </data>
   <data name="&gt;&gt;label16.Name" xml:space="preserve">
     <value>label16</value>
@@ -916,13 +916,13 @@
     <value>15, 11</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 17</value>
+    <value>210, 17</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Connection information</value>
+    <value>Informazioni di connessione</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -982,13 +982,13 @@
     <value>15, 94</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 17</value>
+    <value>37, 17</value>
   </data>
   <data name="label12.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
-    <value>Databits:</value>
+    <value>Dati:</value>
   </data>
   <data name="&gt;&gt;label12.Name" xml:space="preserve">
     <value>label12</value>
@@ -1015,13 +1015,13 @@
     <value>15, 141</value>
   </data>
   <data name="labelS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 17</value>
+    <value>74, 17</value>
   </data>
   <data name="labelS.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
   <data name="labelS.Text" xml:space="preserve">
-    <value>StopBit:</value>
+    <value>ArrestoBit:</value>
   </data>
   <data name="&gt;&gt;labelS.Name" xml:space="preserve">
     <value>labelS</value>
@@ -1198,13 +1198,13 @@
     <value>15, 118</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 17</value>
+    <value>49, 17</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>Parity:</value>
+    <value>Parità:</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -1255,10 +1255,10 @@
     <value>Bottom</value>
   </data>
   <data name="panelConnectionInformation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 509</value>
+    <value>0, 513</value>
   </data>
   <data name="panelConnectionInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>867, 14</value>
+    <value>867, 10</value>
   </data>
   <data name="panelConnectionInformation.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1294,7 +1294,7 @@
     <value>18</value>
   </data>
   <data name="btnDisconnect.Text" xml:space="preserve">
-    <value>Disconnect</value>
+    <value>Scollegarsi </value>
   </data>
   <data name="btnDisconnect.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1318,7 +1318,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnMeasurement.Location" type="System.Drawing.Point, System.Drawing">
-    <value>351, 48</value>
+    <value>344, 48</value>
   </data>
   <data name="btnMeasurement.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 30</value>
@@ -1327,7 +1327,7 @@
     <value>19</value>
   </data>
   <data name="btnMeasurement.Text" xml:space="preserve">
-    <value>Measurement</value>
+    <value>Misurazione</value>
   </data>
   <data name="&gt;&gt;btnMeasurement.Name" xml:space="preserve">
     <value>btnMeasurement</value>
@@ -1378,7 +1378,7 @@
     <value>1</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>867, 424</value>
+    <value>867, 428</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -1411,7 +1411,7 @@
     <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Balance</value>
+    <value>Bilancia</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainWindow</value>

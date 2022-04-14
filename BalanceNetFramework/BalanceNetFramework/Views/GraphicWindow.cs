@@ -50,7 +50,7 @@ namespace BalanceNetFramework
 
                     while (reader.Read())
                     {
-                        graphicMisurazione.Series["Measurement"].Points.AddXY(reader["Nome"].ToString().ToUpper(), reader.GetInt32("Peso"));                      
+                        graphicMisurazione.Series["Peso"].Points.AddXY(reader["Nome"].ToString().ToUpper(), reader.GetInt32("Peso"));                      
                     }
                  
                     state = true;

@@ -18,15 +18,13 @@ namespace BalanceNetFramework.Data
     {
         List<BalanceModel> _balanceList = new List<BalanceModel>();
         
-        List<ProdottoModel> _prodottoList;
+        List<ProdottoModel> _productList;
         BalanceModel _balanceSelected = null;
 
         String _messageError = string.Empty;
         SerialPort serialPort1;
         string dataValue = null;
         bool _error = false;
-
-        public static MainWindow frm;
 
         BalanceResultModel _balanceResultModel = new BalanceResultModel();
         MisurazioneModel _misurazione = new MisurazioneModel();
@@ -62,11 +60,11 @@ namespace BalanceNetFramework.Data
             }
         }
 
-        public List<ProdottoModel> ProdottoList
+        public List<ProdottoModel> ProductList
         {
             get
             {
-                return _prodottoList;
+                return _productList;
             }
         }
 
@@ -265,29 +263,39 @@ namespace BalanceNetFramework.Data
                 if (!idProdotto.Equals("") && !idProdotto.Equals("0"))
                 {
 
+                    try
+                    {
 
-                        String name;
+
+                        /*String name;
                         String[] netWeight;
 
                         String[] data = CodeToArray(dataValue);
 
                         name = GetBalanceName(data);
-                        netWeight = GetBalanceWeight(data);
+                        netWeight = GetBalanceWeight(data);*/
 
-                        DateTime dataCreazione = DateTime.Now;
+                        /*DateTime dataCreazione = DateTime.Now;
                         string dateFormart = dataCreazione.ToString("yy-MM-dd HH:mm:ss");
-
 
                         _misurazione.Id_Bilancia = 4;
                         _misurazione.Id_Prodotto = Int32.Parse(idProdotto);
                         _misurazione.Peso = netWeight[0];
                         _misurazione.Id_FormulaProdotto = 5;
                         _misurazione.Active = true;
-                        _misurazione.DataCreazione = dateFormart;
+                        _misurazione.DataCreazione = dateFormart;*/
+                        String[] weight = GetDataBalance(dataValue);
+                        MainWindow._instance.SetWeight(idProdotto, weight[0], weight[1]);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error: ", ex.Message);
+                        /*System.IO.StreamWriter sr = new System.IO.StreamWriter("error.log", true);
+                        sr.WriteLine(ex.Message);*/
 
-                        MainWindow._instance.SetWeight(idProdotto, netWeight[0], netWeight[1]);
+                    }                   
 
-                        if (InsertMisurazione(_misurazione))
+                        /*if (InsertMisurazione(_misurazione))
                             {
 
                             Console.WriteLine("Name Bilancia: " + name);
@@ -297,7 +305,7 @@ namespace BalanceNetFramework.Data
                         else
                         {
                             Console.WriteLine("Error inserting");
-                        }
+                        }*/
 
                 }
                 else
@@ -491,7 +499,7 @@ namespace BalanceNetFramework.Data
 
         }
 
-        public DataTable GetReport(DateTime fromDate, DateTime toDate, int? idBilancia)
+        public DataTable GetReport(DateTime fromDate, DateTime toDate, int? idBalance, int? idProduct)
         {
 
            
@@ -503,30 +511,83 @@ namespace BalanceNetFramework.Data
             {
                 int option = ReportWindow._instance.GetOption();
 
-                if(option == 1)
+                switch (option)
                 {
-                    string sql = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.DataCreazione BETWEEN @fromDate AND DATE_ADD(@toDate, INTERVAL 1 DAY)";
-                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
-                    command.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd"));
-                    command.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd"));
-                    var reader = command.ExecuteReader();
-                    table.Load(reader);
-                    reader.Dispose();
+                    case 1:
+                        string sql = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.DataCreazione BETWEEN @fromDate AND DATE_ADD(@toDate, INTERVAL 1 DAY)";
+                        MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                        command.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd"));
+                        command.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd"));
+                        var reader = command.ExecuteReader();
+                        table.Load(reader);
+                        reader.Dispose();
+                        break;
 
+                    case 2:
+                        string sql1 = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Bilancia=@idBilancia";
+                        MySqlCommand command1 = new MySqlCommand(sql1, connectionBD);
+                        command1.Parameters.AddWithValue("@idBilancia", idBalance);
+                        var reader1 = command1.ExecuteReader();
+                        table.Load(reader1);
+                        reader1.Dispose();
+                        break;
+
+                    case 3:
+                        string sql2 = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Prodotto=@idProdotto";
+                        MySqlCommand command2 = new MySqlCommand(sql2, connectionBD);
+                        command2.Parameters.AddWithValue("@idProdotto", idProduct);
+                        var reader2 = command2.ExecuteReader();
+                        table.Load(reader2);
+                        reader2.Dispose();
+                        break;
+
+                    case 4:
+                        string sql3 = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Bilancia=@idBilancia AND m.Id_Prodotto=@idProdotto";
+                        MySqlCommand command3 = new MySqlCommand(sql3, connectionBD);
+                        command3.Parameters.AddWithValue("@idBilancia", idBalance);
+                        command3.Parameters.AddWithValue("@idProdotto", idProduct);
+                        var reader3 = command3.ExecuteReader();
+                        table.Load(reader3);
+                        reader3.Dispose();
+                        break;
+
+                    case 5:
+                        string sql4 = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Bilancia=@idBilancia AND m.DataCreazione BETWEEN @fromDate AND DATE_ADD(@toDate, INTERVAL 1 DAY)";
+                        MySqlCommand command4 = new MySqlCommand(sql4, connectionBD);
+                        command4.Parameters.AddWithValue("@idBilancia", idBalance);
+                        command4.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd"));
+                        command4.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd"));
+                        var reader4 = command4.ExecuteReader();
+                        table.Load(reader4);
+                        reader4.Dispose();
+                        break;
+
+                    case 6:
+                        string sql5 = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Prodotto=@idProdotto AND m.DataCreazione BETWEEN @fromDate AND DATE_ADD(@toDate, INTERVAL 1 DAY)";
+                        MySqlCommand command5 = new MySqlCommand(sql5, connectionBD);
+                        command5.Parameters.AddWithValue("@idProdotto", idProduct);
+                        command5.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd"));
+                        command5.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd"));
+                        var reader5 = command5.ExecuteReader();
+                        table.Load(reader5);
+                        reader5.Dispose();
+                        break;
+
+                    case 7:
+                        string sql6 = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Bilancia=@idBilancia AND m.Id_Prodotto=@idProdotto AND m.DataCreazione BETWEEN @fromDate AND DATE_ADD(@toDate, INTERVAL 1 DAY)";
+                        MySqlCommand command6 = new MySqlCommand(sql6, connectionBD);
+                        command6.Parameters.AddWithValue("@idBilancia", idBalance);
+                        command6.Parameters.AddWithValue("@idProdotto", idProduct);
+                        command6.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd"));
+                        command6.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd"));
+                        var reader6 = command6.ExecuteReader();
+                        table.Load(reader6);
+                        reader6.Dispose();
+                        break;
+
+                    default:
+                        break;
                 }
-
-                if(option == 2)
-                {
-                    string sql = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Bilancia=@idBilancia";
-                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
-                    command.Parameters.AddWithValue("@idBilancia", idBilancia);
-                    var reader = command.ExecuteReader();
-                    table.Load(reader);
-                    reader.Dispose();
-                }
-
-           
-               
 
             }
             catch (MySqlException ex)
@@ -545,27 +606,34 @@ namespace BalanceNetFramework.Data
 
         public static String[] CodeToArray(String value)
         {
-            String code = value;
-            code = code.Replace(" ", "");
-            code = code.Replace("\r\n", "|");
-            code = code.Replace("\\r\\n", "|");
-            String[] data = code.Split('|');
-
             String[] array = new string[3];
-
-            //Position 3 (Nome) and 8 (Netto)
-            foreach (var sub in data)
+            try
             {
-                if (sub.StartsWith("NomeBilancia"))
-                {
-                    array[0] = sub;
-                }
+                String code = value;
+                code = code.Replace(" ", "");
+                code = code.Replace("\r\n", "|");
+                code = code.Replace("\\r\\n", "|");
+                String[] data = code.Split('|');
 
-                if (sub.StartsWith("Netto"))
+                foreach (var sub in data)
                 {
-                    array[1] = sub;
+                    if (sub.StartsWith("NomeBilancia"))
+                    {
+                        array[0] = sub;
+                    }
+
+                    if (sub.StartsWith("Netto"))
+                    {
+                        array[1] = sub;
+                    }
+                    Console.WriteLine($"Data: {sub}");
                 }
-                Console.WriteLine($"Data: {sub}");
+            }
+            catch (Exception ex)
+            {
+                System.IO.StreamWriter sr = new System.IO.StreamWriter("error.log", true);
+                sr.WriteLine(ex.Message);
+
             }
 
             return array;
@@ -573,25 +641,82 @@ namespace BalanceNetFramework.Data
 
         public static String GetBalanceName(String[] data)
         {
-            string name = data[0].Replace(":", ": ");
-            name = name.Replace("NomeBilancia:", "");
+            string name = "";
+            try
+            {
+                if (data[0] != null)
+                {
+                    name = data[0].Replace(":", ": ");
+                    name = name.Replace("NomeBilancia:", "");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                System.IO.StreamWriter sr = new System.IO.StreamWriter("error.log", true);
+                sr.WriteLine(ex.Message);
+
+            }           
             return name;
         }
 
         public static String[] GetBalanceWeight(String[] data)
         {
-            string weight = data[1].Replace("Netto:", "");
             String[] array = new string[2];
+            try
+            {
+                if (data[1] != null)
+                {
+                    string weight = data[1].Replace("Netto:", "");
 
-            var resultWeight = Regex.Match(weight, @"(\d+(\.\d+)?)|(\.\d+)").Value;
-            var resulSymbol = new String(weight.SkipWhile(p => !Char.IsLetter(p)).ToArray());
+                    var resultWeight = Regex.Match(weight, @"(\d+(\.\d+)?)|(\.\d+)").Value;
+                    var resulSymbol = new String(weight.SkipWhile(p => !Char.IsLetter(p)).ToArray());
 
-            array[0] = resultWeight;
-            array[1] = resulSymbol;
+                    array[0] = resultWeight;
+                    array[1] = resulSymbol;
+                }
 
-            Console.WriteLine($"Weight {array[0]} ,symbol: {array[1]}");
+            }
+            catch (Exception ex)
+            {
+                System.IO.StreamWriter sr = new System.IO.StreamWriter("error.log", true);
+                sr.WriteLine(ex.Message);
+
+            }
             return array;
         }
 
+        public static String[] GetDataBalance(String value)
+        {
+            String[] array = new string[2];
+            var resultWeight = "";
+            var resulSymbol = "";
+            try
+            {
+                String data = value;
+                data = data.Replace(" ", "");
+                data = data.Replace("\r\n", "");
+                data = data.Replace("\\r\\n", "");
+                data = data.Replace("S", "");
+                data = data.Replace("s", "");
+                data = data.Replace("?", "");
+                data = data.Replace("R", "");
+
+                resultWeight = Regex.Match(data, @"(\d+(\.\d+)?)|(\.\d+)").Value;
+                resulSymbol = new String(data.SkipWhile(p => !Char.IsLetter(p)).ToArray());
+
+                array[0] = resultWeight;
+                array[1] = resulSymbol;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: ", ex.Message);
+                /*System.IO.StreamWriter sr = new System.IO.StreamWriter("error.log", true);
+                sr.WriteLine(ex.Message);*/
+
+            }
+            return array;
+        }
     }
 }
