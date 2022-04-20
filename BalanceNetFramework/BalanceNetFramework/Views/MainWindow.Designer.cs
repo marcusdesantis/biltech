@@ -32,7 +32,6 @@ namespace BalanceNetFramework
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.panelBalance = new System.Windows.Forms.Panel();
             this.lblPesoBalance = new System.Windows.Forms.Label();
-            this.detailProduct = new System.Windows.Forms.Label();
             this.txtErrorMessage = new System.Windows.Forms.Label();
             this.panelProduct = new System.Windows.Forms.Panel();
             this.btnTare = new System.Windows.Forms.Button();
@@ -71,6 +70,8 @@ namespace BalanceNetFramework
             this.btnMeasurement = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.detailProduct = new System.Windows.Forms.Label();
+            this.lblAlerta = new System.Windows.Forms.Label();
             this.balanceGauge = new AGaugeApp.AGauge();
             this.panelBalance.SuspendLayout();
             this.panelProduct.SuspendLayout();
@@ -81,8 +82,9 @@ namespace BalanceNetFramework
             // 
             // panelBalance
             // 
-            this.panelBalance.Controls.Add(this.lblPesoBalance);
+            this.panelBalance.Controls.Add(this.lblAlerta);
             this.panelBalance.Controls.Add(this.detailProduct);
+            this.panelBalance.Controls.Add(this.lblPesoBalance);
             this.panelBalance.Controls.Add(this.balanceGauge);
             resources.ApplyResources(this.panelBalance, "panelBalance");
             this.panelBalance.Name = "panelBalance";
@@ -91,11 +93,6 @@ namespace BalanceNetFramework
             // 
             resources.ApplyResources(this.lblPesoBalance, "lblPesoBalance");
             this.lblPesoBalance.Name = "lblPesoBalance";
-            // 
-            // detailProduct
-            // 
-            resources.ApplyResources(this.detailProduct, "detailProduct");
-            this.detailProduct.Name = "detailProduct";
             // 
             // txtErrorMessage
             // 
@@ -342,6 +339,16 @@ namespace BalanceNetFramework
             this.tableLayoutPanel1.Controls.Add(this.panelBalance, 1, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
+            // detailProduct
+            // 
+            resources.ApplyResources(this.detailProduct, "detailProduct");
+            this.detailProduct.Name = "detailProduct";
+            // 
+            // lblAlerta
+            // 
+            resources.ApplyResources(this.lblAlerta, "lblAlerta");
+            this.lblAlerta.Name = "lblAlerta";
+            // 
             // balanceGauge
             // 
             resources.ApplyResources(this.balanceGauge, "balanceGauge");
@@ -506,11 +513,12 @@ namespace BalanceNetFramework
         public System.Windows.Forms.Label lblModello;
         private System.Windows.Forms.Button btnDisconnect;
         public System.Windows.Forms.Label lblPesoBalance;
-        public AGaugeApp.AGauge balanceGauge;
         private System.Windows.Forms.Button btnMeasurement;
-        public System.Windows.Forms.Label detailProduct;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        public AGaugeApp.AGauge balanceGauge;
+        public System.Windows.Forms.Label detailProduct;
+        public System.Windows.Forms.Label lblAlerta;
     }
 }
 

@@ -24,6 +24,7 @@ namespace BalanceNetFramework
         string idBalance;
         int minValue = 0;
         int maxValue = 0;
+        decimal Tolerance = 0;
 
         
         public MainWindow()
@@ -238,9 +239,23 @@ namespace BalanceNetFramework
                
                 if (data[0].Length > 0)
                 {
+                    float _min = balanceGauge.MinValue;
+                    float _max = balanceGauge.MaxValue;
+                    float _value = Int32.Parse(data[0]);
+
                     lblPesoBalance.Invoke(new Action(() => lblPesoBalance.Text = weight + " " + sign.ToUpper()));
-                    balanceGauge.Invoke(new Action(() => balanceGauge.Value = Int32.Parse(data[0])));
+                    balanceGauge.Invoke(new Action(() => balanceGauge.Value = _value));
                     detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " " + weight + " " + sign.ToUpper()));
+                    if(_value > _max || _value < _min)
+                    {
+                        lblAlerta.Invoke(new Action(()=>
+                        {
+                            lblAlerta.Text = string.Format("La pesatura viola i limiti di tolleranza del prodotto {0}.", name);
+                            lblAlerta.ForeColor = Color.Red;
+                            System.Threading.Thread.Sleep(2000);
+                            lblAlerta.Text = string.Empty;
+                        }));
+                    }
                 }
                 else
                 {
@@ -313,6 +328,7 @@ namespace BalanceNetFramework
         public bool GetMinAndMaxValue(string idProduct)
         {
             bool state = false;
+            decimal _porcTolerance = 0;
             try
             {
 
@@ -331,11 +347,36 @@ namespace BalanceNetFramework
                     {
                         minValue = Int32.Parse(reader.GetString("SogliaMinima"));
                         maxValue = Int32.Parse(reader.GetString("SogliaMassima"));
+                        if(decimal.TryParse(reader.GetString("Tolleranza"), out _porcTolerance))
+                        {
+                            Tolerance = (int)(maxValue * (_porcTolerance / 100));
+                        }
+                        else
+                        {
+                            Tolerance = 0;
+                        }
                     }
-
-                    balanceGauge.MinValue = minValue;
-                    balanceGauge.MaxValue = maxValue;
-
+                    if(Tolerance > 0)
+                    {
+                        balanceGauge.MinValue = maxValue - (int)Tolerance;
+                        balanceGauge.MaxValue = maxValue + (int)Tolerance;
+                    }
+                    else
+                    {
+                        balanceGauge.MinValue = minValue;
+                        balanceGauge.MaxValue = maxValue;
+                    }
+                    /*
+                    balanceGauge.RangesStartValue[0] = (int)porcTolerance;
+                    balanceGauge.RangesEndValue[0] = maxValue;
+                    balanceGauge.RangesStartValue[1] = 0;
+                    balanceGauge.RangesEndValue[1] = (int)(porcTolerance - 1);*/
+                    cleanRanges(balanceGauge.RangesStartValue);
+                    cleanRanges(balanceGauge.RangesEndValue);
+                    balanceGauge.RangesStartValue[0] = balanceGauge.MinValue;
+                    balanceGauge.RangesEndValue[0] = balanceGauge.MaxValue;
+                    balanceGauge.Value = balanceGauge.MinValue;
+                    balanceGauge.Value = 0;
                     state = true;
 
                 }
@@ -360,6 +401,13 @@ namespace BalanceNetFramework
 
         }
 
+        void cleanRanges(float[] range)
+        {
+            for(int i = 0; i < range.Length; i++)
+            {
+                range[i] = 0;
+            }
+        }
         public string GetNameProduct(string idProduct)
         {
             string name = "";
