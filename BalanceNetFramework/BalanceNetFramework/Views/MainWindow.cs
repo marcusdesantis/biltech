@@ -386,7 +386,7 @@ namespace BalanceNetFramework
                             var r = result.ToString().Length;
 
 
-                            if (r == 2)
+                            if (r == 2 || r == 1)
                             {                               
                                 range = false;
                             } 
@@ -412,7 +412,7 @@ namespace BalanceNetFramework
                             var r = result.ToString().Length;
 
 
-                            if (r == 2)
+                            if (r == 2 || r == 1)
                             {
                                 range = false;
                             }
