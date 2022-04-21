@@ -10,6 +10,7 @@
         public decimal MinimoScortaMagazzino { get; set; }
         public int SogliaMinima { get; set; }
         public int SogliaMassima { get; set; }
+        public decimal Tolleranza { get; set; }
 
         public bool Active { get; set; }
       
@@ -25,6 +26,7 @@
         public decimal MinimoScortaMagazzino { get; set; }
         public int SogliaMinima { get; set; }
         public int SogliaMassima { get; set; }
+        public decimal Tolleranza { get; set; }
         public bool Active { get; set; }
 
         public int total { get; set; }

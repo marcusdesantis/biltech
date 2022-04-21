@@ -31,6 +31,7 @@ namespace BalanceNetFramework
         {
             InitializeComponent();
             this.CenterToScreen();
+            this.MaximizeBox = false;
 
             _instance = this;
 
@@ -47,7 +48,7 @@ namespace BalanceNetFramework
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-           
+            
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -242,19 +243,29 @@ namespace BalanceNetFramework
                     float _min = balanceGauge.MinValue;
                     float _max = balanceGauge.MaxValue;
                     float _value = Int32.Parse(data[0]);
-
-                    lblPesoBalance.Invoke(new Action(() => lblPesoBalance.Text = weight + " " + sign.ToUpper()));
-                    balanceGauge.Invoke(new Action(() => balanceGauge.Value = _value));
-                    detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " " + weight + " " + sign.ToUpper()));
-                    if(_value > _max || _value < _min)
+                  
+                    
+                    if(_value > _max || _min > _value   )
                     {
+
                         lblAlerta.Invoke(new Action(()=>
                         {
+                            lblPesoBalance.Invoke(new Action(() => lblPesoBalance.Text = "0.00"));
+                            balanceGauge.Invoke(new Action(() => balanceGauge.Value = 0));
+                            detailProduct.Invoke(new Action(() => detailProduct.Text = ""));
+
                             lblAlerta.Text = string.Format("La pesatura viola i limiti di tolleranza del prodotto {0}.", name);
                             lblAlerta.ForeColor = Color.Red;
-                            System.Threading.Thread.Sleep(2000);
-                            //lblAlerta.Text = string.Empty;
                         }));
+                        System.Threading.Thread.Sleep(2000);
+                        lblAlerta.Invoke(new Action(() => lblAlerta.Text = string.Empty));
+
+                    }
+                    else
+                    {
+                        lblPesoBalance.Invoke(new Action(() => lblPesoBalance.Text = weight + " " + sign.ToUpper()));
+                        balanceGauge.Invoke(new Action(() => balanceGauge.Value = _value));
+                        detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " - " + weight + " " + sign.ToUpper()));
                     }
                 }
                 else
@@ -328,7 +339,9 @@ namespace BalanceNetFramework
         public bool GetMinAndMaxValue(string idProduct)
         {
             bool state = false;
+            bool range = true;
             decimal _porcTolerance = 0;
+            decimal _rangeRed = 0;
             try
             {
 
@@ -358,13 +371,56 @@ namespace BalanceNetFramework
                     }
                     if(Tolerance > 0)
                     {
+                        
                         balanceGauge.MinValue = maxValue - (int)Tolerance;
-                        balanceGauge.MaxValue = maxValue + (int)Tolerance;
+                        balanceGauge.MaxValue = maxValue + (int)Tolerance;                      
+                        balanceGauge.RangeStartValue = maxValue - (int)Tolerance;
+                        balanceGauge.RangeEndValue = maxValue + (int)Tolerance;
+                        _rangeRed = ((maxValue + (int)Tolerance) - (maxValue - (int)Tolerance));
+                        int i =11;
+                        decimal result;
+                        do
+                        {
+                            i--;
+                            result = _rangeRed / i;
+                            var r = result.ToString().Length;
+
+
+                            if (r == 2)
+                            {                               
+                                range = false;
+                            } 
+
+                        } while (range);
+
+                        balanceGauge.ScaleLinesMajorStepValue = i;
+                       
                     }
                     else
                     {
                         balanceGauge.MinValue = minValue;
                         balanceGauge.MaxValue = maxValue;
+                        balanceGauge.RangeStartValue = minValue;
+                        balanceGauge.RangeEndValue = maxValue;
+                        _rangeRed = ((maxValue + (int)Tolerance) - (maxValue - (int)Tolerance));
+                        int i = 11;
+                        decimal result;
+                        do
+                        {
+                            i--;
+                            result = _rangeRed / i;
+                            var r = result.ToString().Length;
+
+
+                            if (r == 2)
+                            {
+                                range = false;
+                            }
+
+                        } while (range);
+
+                        balanceGauge.ScaleLinesMajorStepValue = i;
+
                     }
                     /*
                     balanceGauge.RangesStartValue[0] = (int)porcTolerance;

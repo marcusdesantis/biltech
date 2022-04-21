@@ -91,6 +91,7 @@ namespace backend_api_core.Data
                 parametros.Add("MinimoScortaMagazzino", data.MinimoScortaMagazzino);
                 parametros.Add("SogliaMinima", data.SogliaMinima);
                 parametros.Add("SogliaMassima", data.SogliaMassima);
+                parametros.Add("Tolleranza", data.Tolleranza);
                 
                 respuesta = await this._c_conexion.abmObjeto<Prodotto>(nombreFuncion, AbmAccion.GUARDAR, data);
 
