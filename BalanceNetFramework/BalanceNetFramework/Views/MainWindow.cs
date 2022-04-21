@@ -253,7 +253,7 @@ namespace BalanceNetFramework
                             lblAlerta.Text = string.Format("La pesatura viola i limiti di tolleranza del prodotto {0}.", name);
                             lblAlerta.ForeColor = Color.Red;
                             System.Threading.Thread.Sleep(2000);
-                            lblAlerta.Text = string.Empty;
+                            //lblAlerta.Text = string.Empty;
                         }));
                     }
                 }

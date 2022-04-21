@@ -126,7 +126,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblAlerta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 398</value>
+    <value>10, 417</value>
   </data>
   <data name="lblAlerta.Size" type="System.Drawing.Size, System.Drawing">
     <value>565, 24</value>
@@ -157,7 +157,7 @@
     <value>NoControl</value>
   </data>
   <data name="detailProduct.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 314</value>
+    <value>4, 333</value>
   </data>
   <data name="detailProduct.Size" type="System.Drawing.Size, System.Drawing">
     <value>350, 26</value>
@@ -187,7 +187,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPesoBalance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 349</value>
+    <value>5, 368</value>
   </data>
   <data name="lblPesoBalance.Size" type="System.Drawing.Size, System.Drawing">
     <value>331, 26</value>
@@ -217,10 +217,10 @@
     <value>Center</value>
   </data>
   <data name="balanceGauge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 2</value>
+    <value>4, 2</value>
   </data>
   <data name="balanceGauge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 309</value>
+    <value>582, 328</value>
   </data>
   <data name="balanceGauge.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1436,9 +1436,6 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>945, 737</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Bilancia</value>
