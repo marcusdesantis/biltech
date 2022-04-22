@@ -16,6 +16,9 @@ namespace BalanceNetFramework.Data
 {
     public class ManagerBalance
     {
+
+        public static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         List<BalanceModel> _balanceList = new List<BalanceModel>();
         
         List<ProdottoModel> _productList;
@@ -205,6 +208,7 @@ namespace BalanceNetFramework.Data
                 {
                     _error = true;
                     _messageError = ex.Message;
+                    ManagerBalance.log.Error(ex.Message);
                 }
             }
 
@@ -227,6 +231,7 @@ namespace BalanceNetFramework.Data
             }
             catch (Exception ex)
             {
+                ManagerBalance.log.Error(ex.Message);
                 _messageError = ex.Message;
             }
         }
@@ -242,7 +247,8 @@ namespace BalanceNetFramework.Data
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex);
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
             }
 
 
@@ -289,6 +295,7 @@ namespace BalanceNetFramework.Data
                     }
                     catch (Exception ex)
                     {
+                        ManagerBalance.log.Error(ex.Message);
                         Console.WriteLine("Error: ", ex.Message);
                         /*System.IO.StreamWriter sr = new System.IO.StreamWriter("error.log", true);
                         sr.WriteLine(ex.Message);*/
@@ -310,6 +317,7 @@ namespace BalanceNetFramework.Data
                 }
                 else
                 {
+                    ManagerBalance.log.Error("Please select the prodotto");
                     Console.WriteLine("Please select the prodotto");
                 }
 
@@ -318,6 +326,7 @@ namespace BalanceNetFramework.Data
             {
                 _error = true;
                 _messageError = "";
+                ManagerBalance.log.Error("The balance information is empty");
                 Console.WriteLine("The balance information is empty");
             }
         }
@@ -340,6 +349,7 @@ namespace BalanceNetFramework.Data
                     }
                     else
                     {
+                        ManagerBalance.log.Error("It is not possible to obtain information about your configuration");
                         _messageError = "It is not possible to obtain information about your configuration";
                     }
                 }
@@ -380,16 +390,16 @@ namespace BalanceNetFramework.Data
                         b.WeightConversion = Decimal.Parse(reader.GetString("WeightConversion"));
                         b.IdModello = Int32.Parse(reader.GetString("IdModello"));
                         b.NomeModello = reader.GetString("NomeModello");
-                        Console.WriteLine(b);
                         _balanceList.Add(b);                      
                     }
 
-                    //state = true;
+                    state = true;
 
                 }
-                catch (MySqlException ex)
+                catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    ManagerBalance.log.Error(ex.Message);
+                    Console.WriteLine(ex.Message);
                     state = false;
 
                 }
@@ -401,7 +411,8 @@ namespace BalanceNetFramework.Data
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex);
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
             }
 
             return state;
@@ -433,9 +444,10 @@ namespace BalanceNetFramework.Data
                     state = true;
 
                 }
-                catch (MySqlException ex)
+                catch (Exception ex)
                 {
-                    Console.WriteLine("Insert Error: " + ex);
+                    ManagerBalance.log.Error(ex.Message);
+                    Console.WriteLine("Insert Error: " + ex.Message);
                     state = false;
 
                 }
@@ -448,7 +460,8 @@ namespace BalanceNetFramework.Data
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex);
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
             }
 
             return state;
@@ -479,9 +492,10 @@ namespace BalanceNetFramework.Data
 
 
                 }
-                catch (MySqlException ex)
+                catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    ManagerBalance.log.Error(ex.Message);
+                    Console.WriteLine(ex.Message);
 
                 }
                 finally
@@ -492,7 +506,8 @@ namespace BalanceNetFramework.Data
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex);
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
             }
 
             return id;
@@ -503,12 +518,12 @@ namespace BalanceNetFramework.Data
         {
 
            
-            MySqlConnection connectionBD = ConnectionDB.connection();
-            connectionBD.Open();
+            MySqlConnection connectionBD = ConnectionDB.connection();          
             var table = new DataTable();
 
             try
             {
+                connectionBD.Open();
                 int option = ReportWindow._instance.GetOption();
 
                 switch (option)
@@ -590,9 +605,10 @@ namespace BalanceNetFramework.Data
                 }
 
             }
-            catch (MySqlException ex)
+            catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine(ex.Message);
             }
             finally
             {
@@ -631,8 +647,7 @@ namespace BalanceNetFramework.Data
             }
             catch (Exception ex)
             {
-                System.IO.StreamWriter sr = new System.IO.StreamWriter("error.log", true);
-                sr.WriteLine(ex.Message);
+                ManagerBalance.log.Error(ex.Message);
 
             }
 
@@ -653,8 +668,7 @@ namespace BalanceNetFramework.Data
             }
             catch (Exception ex)
             {
-                System.IO.StreamWriter sr = new System.IO.StreamWriter("error.log", true);
-                sr.WriteLine(ex.Message);
+                ManagerBalance.log.Error(ex.Message);
 
             }           
             return name;
@@ -679,8 +693,7 @@ namespace BalanceNetFramework.Data
             }
             catch (Exception ex)
             {
-                System.IO.StreamWriter sr = new System.IO.StreamWriter("error.log", true);
-                sr.WriteLine(ex.Message);
+                ManagerBalance.log.Error(ex.Message);
 
             }
             return array;
@@ -711,10 +724,8 @@ namespace BalanceNetFramework.Data
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: ", ex.Message);
-                /*System.IO.StreamWriter sr = new System.IO.StreamWriter("error.log", true);
-                sr.WriteLine(ex.Message);*/
-
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: ", ex.Message);              
             }
             return array;
         }

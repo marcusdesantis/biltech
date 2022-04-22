@@ -156,7 +156,7 @@ namespace BalanceNetFramework
         System.Drawing.SystemColors.Control};
             this.balanceGauge.RangesEnabled = new bool[] {
         true,
-        true,
+        false,
         false,
         false,
         false};

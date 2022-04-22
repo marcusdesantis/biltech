@@ -1561,8 +1561,8 @@ namespace AGaugeApp
                         case NeedleColorEnum.Gray:
                             brush1 = new SolidBrush(Color.FromArgb(80 + subcol, 80 + subcol, 80 + subcol));
                             brush2 = new SolidBrush(Color.FromArgb(180 - subcol, 180 - subcol, 180 - subcol));
-                            brush3 = new SolidBrush(Color.FromArgb(80 + subcol2, 80 + subcol2, 80 + subcol2));
-                            brush4 = new SolidBrush(Color.FromArgb(180 - subcol2, 180 - subcol2, 180 - subcol2));
+                            brush3 = new SolidBrush(Color.FromArgb(180 - subcol, 180 - subcol, 180 - subcol));
+                            brush4 = new SolidBrush(Color.FromArgb(180 - subcol, 180 - subcol, 180 - subcol));
                             pe.Graphics.DrawEllipse(Pens.Gray, Center.X - m_NeedleWidth * 3, Center.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
                             break;
                         case NeedleColorEnum.Red:

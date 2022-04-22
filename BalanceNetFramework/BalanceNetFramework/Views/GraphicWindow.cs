@@ -56,9 +56,9 @@ namespace BalanceNetFramework
                     state = true;
 
                 }
-                catch (MySqlException ex)
+                catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    ManagerBalance.log.Error(ex.Message);                  
                     state = false;
 
                 }
@@ -70,7 +70,7 @@ namespace BalanceNetFramework
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex);
+                ManagerBalance.log.Error(ex.Message);
             }
 
             return state;

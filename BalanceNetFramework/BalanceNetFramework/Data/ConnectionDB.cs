@@ -15,12 +15,11 @@ namespace BalanceNetFramework.Data
             try
             {
                 MySqlConnection connectionBD = new MySqlConnection(CredentialDB.DB);
-                Console.WriteLine("Successful Connection");
                 return connectionBD;
             }
-            catch (MySqlException ex)
+            catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
+                ManagerBalance.log.Error(ex.Message);             
                 Console.WriteLine("Connection Failed");
                 return null;
             }

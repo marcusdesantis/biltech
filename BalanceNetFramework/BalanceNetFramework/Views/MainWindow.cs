@@ -15,7 +15,7 @@ using System.Windows.Forms;
 namespace BalanceNetFramework
 {
     public partial class MainWindow : Form
-    {
+    {       
         private ManagerBalance _balance = null;
         BalanceModel _selected = null;
         //BalanceResultModel _balanceResultModel = new BalanceResultModel();
@@ -40,9 +40,18 @@ namespace BalanceNetFramework
             cbBalance.DataSource = _balance.BalanceList;
             cbBalance.DisplayMember = "Nome";
             cbBalance.ValueMember = "Id";
+            try
+            {
 
-            idBalance = cbBalance.SelectedValue.ToString();
-            SetFields(Int32.Parse(idBalance));
+                idBalance = cbBalance.SelectedValue.ToString();
+                SetFields(Int32.Parse(idBalance));
+            }
+            catch(Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+            }
+            
+            
 
         }
 
@@ -53,25 +62,34 @@ namespace BalanceNetFramework
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            if (Int32.Parse(idBalance) > 0)
+            try
             {
-                _balance.SelectBalance(Int32.Parse(idBalance));
-                if (!_balance.OpenSelectedBalanceConnection())
+                if (Int32.Parse(idBalance) > 0)
                 {
-                    txtErrorMessage.Text = _balance.MessageError;
-                
-                }
-                else
-                {
-                    
-                   GetProdottoDB();
-                   panelProduct.Visible = true;
-                   panelBalance.Visible = true;
-                   btnDisconnect.Visible = true;
-                   btnConnect.Visible = false;
-                   
+                    _balance.SelectBalance(Int32.Parse(idBalance));
+                    if (!_balance.OpenSelectedBalanceConnection())
+                    {
+                        txtErrorMessage.Text = _balance.MessageError;
+                        ManagerBalance.log.Error(_balance.MessageError);
+
+                    }
+                    else
+                    {
+
+                        GetProdottoDB();
+                        panelProduct.Visible = true;
+                        panelBalance.Visible = true;
+                        btnDisconnect.Visible = true;
+                        btnConnect.Visible = false;
+
+                    }
                 }
             }
+            catch(Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+            }
+           
             
         }
 
@@ -96,33 +114,42 @@ namespace BalanceNetFramework
 
             txtErrorMessage.Text = string.Empty;
 
-            if (!string.IsNullOrEmpty(idBalance))
+            try
             {
-                if(Regex.IsMatch(idBalance, @"^[0-9]+$"))
+                if (!string.IsNullOrEmpty(idBalance))
                 {
-                    convertIdBalance = Int32.Parse(idBalance);
-                }
+                    if (Regex.IsMatch(idBalance, @"^[0-9]+$"))
+                    {
+                        convertIdBalance = Int32.Parse(idBalance);
+                    }
 
-                if (SetFields(convertIdBalance))
+                    if (SetFields(convertIdBalance))
+                    {
+
+                        _balance.ClosSelectedBalanceConnection();
+                        panelProduct.Visible = false;
+                        panelBalance.Visible = false;
+                        btnDisconnect.Visible = false;
+                        btnConnect.Visible = true;
+                        balanceGauge.Value = 0;
+                        lblPesoBalance.Text = "0.00";
+                        detailProduct.Text = "";
+
+                    }
+
+
+                }
+                else
                 {
-
-                    _balance.ClosSelectedBalanceConnection();
-                    panelProduct.Visible = false;
-                    panelBalance.Visible = false;
-                    btnDisconnect.Visible = false;
-                    btnConnect.Visible = true;
-                    balanceGauge.Value = 0;
-                    lblPesoBalance.Text = "0.00";
-                    detailProduct.Text = "";
-                    
+                    ManagerBalance.log.Error("Scale not found error");
                 }
-               
-               
             }
-            else
+            catch(Exception ex)
             {
-                Console.WriteLine("Scale not found error");
+                ManagerBalance.log.Error(ex.Message);
             }
+
+           
             //handle = !cmb.IsDropDownOpen;
             //Handle();
         }
@@ -139,92 +166,122 @@ namespace BalanceNetFramework
         {
             if (_selected != null)
             {
-
-                if (!_balance.IsPortAvailable())
+                try
                 {
-                    txtErrorMessage.Text = _balance.MessageError;
-                    string select_prodotto = Convert.ToString(cbProduct.SelectedItem);
-                    if (!select_prodotto.Equals(""))
+                    if (!_balance.IsPortAvailable())
                     {
-                        string command = Convert.ToString(boxCommand.Text);
-                        if (string.IsNullOrEmpty(command))
+                        txtErrorMessage.Text = _balance.MessageError;
+                        string select_prodotto = Convert.ToString(cbProduct.SelectedItem);
+                        if (!select_prodotto.Equals(""))
                         {
-                            Console.WriteLine("Please type the command to send");
-                        }
-                        else
-                        {
-                            if (lblModello.Text.Equals("PX3020"))
+                            string command = Convert.ToString(boxCommand.Text);
+                            if (string.IsNullOrEmpty(command))
                             {
-                                Console.WriteLine("The model of this scale cannot be shipped");
+                                Console.WriteLine("Please type the command to send");
                             }
                             else
                             {
-                                Console.WriteLine("Sent command");
-                                _balance.DataSend(command);
-                            }
+                                if (lblModello.Text.Equals("PX3020"))
+                                {
+                                    ManagerBalance.log.Error("The model of this scale cannot be shipped");
+                                    Console.WriteLine("The model of this scale cannot be shipped");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Sent command");
+                                    _balance.DataSend(command);
+                                }
 
+                            }
+                        }
+                        else
+                        {
+                            ManagerBalance.log.Error("Please select the product");
+                            Console.WriteLine("Please select the product");
                         }
                     }
                     else
                     {
-                        Console.WriteLine("Please select the product");
+                        ManagerBalance.log.Error("An error has occurred, cannot connect to the scale");
+                        Console.WriteLine("An error has occurred, cannot connect to the scale");
                     }
                 }
-                else
+                catch(Exception ex)
                 {
-
-                    Console.WriteLine("An error has occurred, cannot connect to the scale");
+                    ManagerBalance.log.Error(ex.Message);
                 }
+                
             }
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            if (_selected != null)
+            try
             {
-                if (!_balance.IsPortAvailable())
+                if (_selected != null)
                 {
-                    txtErrorMessage.Text = _balance.MessageError;
-                    if (lblModello.Text.Equals("PX3020"))
+                    if (!_balance.IsPortAvailable())
                     {
-                        Console.WriteLine("The model of this scale cannot be shipped");
+                        txtErrorMessage.Text = _balance.MessageError;
+                        if (lblModello.Text.Equals("PX3020"))
+                        {
+                            ManagerBalance.log.Error("The model of this scale cannot be shipped");
+                            Console.WriteLine("The model of this scale cannot be shipped");
+
+                        }
+                        else
+                        {
+                            string command = "Z";
+                            _balance.DataSend(command);
+                        }
+
                     }
                     else
                     {
-                        string command = "Z";
-                        _balance.DataSend(command);
+                        ManagerBalance.log.Error("An error has occurred, cannot connect to the scale");
+                        Console.WriteLine("An error has occurred, cannot connect to the scale");
                     }
-                   
-                }
-                else
-                {
-                    Console.WriteLine("An error has occurred, cannot connect to the scale");
                 }
             }
+            catch(Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+            }
+           
         }
 
         private void btnTare_Click(object sender, EventArgs e)
         {
-            if (_selected != null)
+            try
             {
-                if (!_balance.IsPortAvailable())
+                if (_selected != null)
                 {
-                    txtErrorMessage.Text = _balance.MessageError;
-                    if (lblModello.Text.Equals("PX3020"))
+                    if (!_balance.IsPortAvailable())
                     {
-                        Console.WriteLine("The model of this scale cannot be shipped");
+                        txtErrorMessage.Text = _balance.MessageError;
+                        if (lblModello.Text.Equals("PX3020"))
+                        {
+                            ManagerBalance.log.Error("The model of this scale cannot be shipped");
+                            Console.WriteLine("The model of this scale cannot be shipped");
+                        }
+                        else
+                        {
+                            string command = "T";
+                            _balance.DataSend(command);
+                        }
                     }
                     else
                     {
-                        string command = "T";
-                        _balance.DataSend(command);
+                        ManagerBalance.log.Error("An error has occurred, cannot connect to the scale");
+                        Console.WriteLine("An error has occurred, cannot connect to the scale");
                     }
                 }
-                else
-                {
-                    Console.WriteLine("An error has occurred, cannot connect to the scale");
-                }
             }
+            catch(Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+            }
+           
         }
 
         public string GetIdProduct()
@@ -277,13 +334,11 @@ namespace BalanceNetFramework
             }
             catch (Exception ex)
             {
+                ManagerBalance.log.Error(ex.Message);
                 Console.WriteLine("Error: ", ex.Message);
-                /*System.IO.StreamWriter sr = new System.IO.StreamWriter("error.log", true);
-                sr.WriteLine(ex.Message);*/
-
+               
             }  
-            //detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " " + weight + " " + sign.ToUpper()));
-
+          
         }
 
         public bool GetProdottoDB()
@@ -315,9 +370,10 @@ namespace BalanceNetFramework
                     state = true;
 
                 }
-                catch (MySqlException ex)
+                catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    ManagerBalance.log.Error(ex.Message);
+                    Console.WriteLine(ex.Message);
                     state = false;
 
                 }
@@ -329,7 +385,8 @@ namespace BalanceNetFramework
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex);
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
             }
 
             return state;
@@ -436,9 +493,10 @@ namespace BalanceNetFramework
                     state = true;
 
                 }
-                catch (MySqlException ex)
+                catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    ManagerBalance.log.Error(ex.Message);
+                    Console.WriteLine(ex.Message);
                     state = false;
 
                 }
@@ -450,7 +508,8 @@ namespace BalanceNetFramework
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex);
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
             }
 
             return state;
@@ -487,9 +546,10 @@ namespace BalanceNetFramework
                     }
 
                 }
-                catch (MySqlException ex)
+                catch (Exception ex)
                 {
-                    Console.WriteLine(ex);                
+                    ManagerBalance.log.Error(ex.Message);
+                    Console.WriteLine(ex.Message);                
 
                 }
                 finally
@@ -500,7 +560,8 @@ namespace BalanceNetFramework
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex);
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
             }
 
             return name;

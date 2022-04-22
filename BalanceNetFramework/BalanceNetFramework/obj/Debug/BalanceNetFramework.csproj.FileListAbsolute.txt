@@ -2,6 +2,7 @@ C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\SqlServerT
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\SqlServerTypes\x86\msvcr120.dll
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
+C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\log4net.config
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\BalanceNetFramework.exe.config
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\BalanceNetFramework.exe
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\BalanceNetFramework.pdb
@@ -10,6 +11,7 @@ C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\Google.Pro
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\K4os.Compression.LZ4.dll
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\K4os.Compression.LZ4.Streams.dll
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\K4os.Hash.xxHash.dll
+C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\log4net.dll
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
@@ -52,6 +54,7 @@ C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\Google.Pro
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\K4os.Compression.LZ4.xml
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\K4os.Compression.LZ4.Streams.xml
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\K4os.Hash.xxHash.xml
+C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\log4net.xml
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
@@ -112,7 +115,6 @@ C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\pt\Microso
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\ru\Microsoft.ReportViewer.DataVisualization.resources.dll
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
-C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.csproj.AssemblyReference.cache
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.ReportWindow.resources
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.GraphicWindow.resources
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.MainWindow.resources
@@ -122,3 +124,4 @@ C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNet
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.csproj.CopyComplete
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.exe
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.pdb
+C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.csproj.AssemblyReference.cache

@@ -8,6 +8,6 @@ namespace BalanceNetFramework.DB
 {
     class CredentialDB
     {
-        public static string DB = "Database=biltek_bd ; Data Source=localhost; User Id=root ; Password='rootapp' ";
+        public static string DB = "Database=biltek_bd ; Data Source=localhost; User Id=root ; Password=rootapp ";
     }
 }
