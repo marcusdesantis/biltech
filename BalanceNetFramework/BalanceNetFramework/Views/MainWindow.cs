@@ -330,6 +330,9 @@ namespace BalanceNetFramework
                     lblPesoBalance.Invoke(new Action(() => lblPesoBalance.Text = "0.00"));
                     balanceGauge.Invoke(new Action(() => balanceGauge.Value = 0));
                     detailProduct.Invoke(new Action(() => detailProduct.Text = ""));
+                    ManagerBalance.log.Error("The format sent by the scale is different or incorrect");
+                    Console.WriteLine("Error: The format sent by the scale is different or incorrect");
+
                 }
             }
             catch (Exception ex)

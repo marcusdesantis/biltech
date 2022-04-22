@@ -1,0 +1,3 @@
+2022-04-22 14:47:23,113 [10] ERROR BalanceNetFramework.Data.ManagerBalance - The balance information is empty
+2022-04-22 14:56:57,893 [5] ERROR BalanceNetFramework.Data.ManagerBalance - The format sent by the scale is different or incorrect
+2022-04-22 14:58:55,078 [6] ERROR BalanceNetFramework.Data.ManagerBalance - The format sent by the scale is different or incorrect
