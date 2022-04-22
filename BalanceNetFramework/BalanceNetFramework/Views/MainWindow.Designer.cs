@@ -141,7 +141,7 @@ namespace BalanceNetFramework
             this.balanceGauge.NeedleColor2 = System.Drawing.Color.DimGray;
             this.balanceGauge.NeedleRadius = 270;
             this.balanceGauge.NeedleType = 0;
-            this.balanceGauge.NeedleWidth = 7;
+            this.balanceGauge.NeedleWidth = 14;
             this.balanceGauge.Range_Idx = ((byte)(0));
             this.balanceGauge.RangeColor = System.Drawing.Color.LightGreen;
             this.balanceGauge.RangeEnabled = true;
