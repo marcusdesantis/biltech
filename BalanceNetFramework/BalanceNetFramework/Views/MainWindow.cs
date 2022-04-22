@@ -141,7 +141,8 @@ namespace BalanceNetFramework
                 }
                 else
                 {
-                    ManagerBalance.log.Error("Scale not found error");
+                    ManagerBalance.log.Error("Scale not found error.");
+                    Console.WriteLine("Scale not found error.");
                 }
             }
             catch(Exception ex)
@@ -177,18 +178,18 @@ namespace BalanceNetFramework
                             string command = Convert.ToString(boxCommand.Text);
                             if (string.IsNullOrEmpty(command))
                             {
-                                Console.WriteLine("Please type the command to send");
+                                Console.WriteLine("Please type the command to send.");
                             }
                             else
                             {
                                 if (lblModello.Text.Equals("PX3020"))
                                 {
-                                    ManagerBalance.log.Error("The model of this scale cannot be shipped");
-                                    Console.WriteLine("The model of this scale cannot be shipped");
+                                    ManagerBalance.log.Error("The model of this scale cannot be shipped.");
+                                    Console.WriteLine("The model of this scale cannot be shipped.");
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Sent command");
+                                    Console.WriteLine("Sent command.");
                                     _balance.DataSend(command);
                                 }
 
@@ -196,14 +197,14 @@ namespace BalanceNetFramework
                         }
                         else
                         {
-                            ManagerBalance.log.Error("Please select the product");
-                            Console.WriteLine("Please select the product");
+                            ManagerBalance.log.Error("Please select the product.");
+                            Console.WriteLine("Please select the product.");
                         }
                     }
                     else
                     {
-                        ManagerBalance.log.Error("An error has occurred, cannot connect to the scale");
-                        Console.WriteLine("An error has occurred, cannot connect to the scale");
+                        ManagerBalance.log.Error("An error has occurred, cannot connect to the scale.");
+                        Console.WriteLine("An error has occurred, cannot connect to the scale.");
                     }
                 }
                 catch(Exception ex)
@@ -225,21 +226,22 @@ namespace BalanceNetFramework
                         txtErrorMessage.Text = _balance.MessageError;
                         if (lblModello.Text.Equals("PX3020"))
                         {
-                            ManagerBalance.log.Error("The model of this scale cannot be shipped");
-                            Console.WriteLine("The model of this scale cannot be shipped");
+                            ManagerBalance.log.Error("The model of this scale cannot be shipped.");
+                            Console.WriteLine("The model of this scale cannot be shipped.");
 
                         }
                         else
                         {
-                            string command = "Z";
+                            string command = "Z";                           
                             _balance.DataSend(command);
+                            Console.WriteLine("Sent Z.");
                         }
 
                     }
                     else
                     {
-                        ManagerBalance.log.Error("An error has occurred, cannot connect to the scale");
-                        Console.WriteLine("An error has occurred, cannot connect to the scale");
+                        ManagerBalance.log.Error("An error has occurred, cannot connect to the scale.");
+                        Console.WriteLine("An error has occurred, cannot connect to the scale.");
                     }
                 }
             }
@@ -261,19 +263,20 @@ namespace BalanceNetFramework
                         txtErrorMessage.Text = _balance.MessageError;
                         if (lblModello.Text.Equals("PX3020"))
                         {
-                            ManagerBalance.log.Error("The model of this scale cannot be shipped");
-                            Console.WriteLine("The model of this scale cannot be shipped");
+                            ManagerBalance.log.Error("The model of this scale cannot be shipped.");
+                            Console.WriteLine("The model of this scale cannot be shipped.");
                         }
                         else
                         {
                             string command = "T";
                             _balance.DataSend(command);
+                            Console.WriteLine("Sent T.");
                         }
                     }
                     else
                     {
-                        ManagerBalance.log.Error("An error has occurred, cannot connect to the scale");
-                        Console.WriteLine("An error has occurred, cannot connect to the scale");
+                        ManagerBalance.log.Error("An error has occurred, cannot connect to the scale.");
+                        Console.WriteLine("An error has occurred, cannot connect to the scale.");
                     }
                 }
             }
@@ -315,6 +318,7 @@ namespace BalanceNetFramework
                             lblAlerta.ForeColor = Color.Red;
                         }));
                         System.Threading.Thread.Sleep(2000);
+                        ManagerBalance.log.Error($"La pesatura viola i limiti di tolleranza del prodotto {name}.");
                         lblAlerta.Invoke(new Action(() => lblAlerta.Text = string.Empty));
 
                     }
@@ -330,8 +334,8 @@ namespace BalanceNetFramework
                     lblPesoBalance.Invoke(new Action(() => lblPesoBalance.Text = "0.00"));
                     balanceGauge.Invoke(new Action(() => balanceGauge.Value = 0));
                     detailProduct.Invoke(new Action(() => detailProduct.Text = ""));
-                    ManagerBalance.log.Error("The format sent by the scale is different or incorrect");
-                    Console.WriteLine("Error: The format sent by the scale is different or incorrect");
+                    ManagerBalance.log.Error("The format sent by the scale is different or incorrect.");
+                    Console.WriteLine("Error: The format sent by the scale is different or incorrect.");
 
                 }
             }
@@ -401,7 +405,7 @@ namespace BalanceNetFramework
             bool state = false;
             bool range = true;
             decimal _porcTolerance = 0;
-            decimal _rangeRed = 0;
+            decimal _numberRange = 0;
             try
             {
 
@@ -436,13 +440,13 @@ namespace BalanceNetFramework
                         balanceGauge.MaxValue = maxValue + (int)Tolerance;                      
                         balanceGauge.RangeStartValue = maxValue - (int)Tolerance;
                         balanceGauge.RangeEndValue = maxValue + (int)Tolerance;
-                        _rangeRed = ((maxValue + (int)Tolerance) - (maxValue - (int)Tolerance));
+                        _numberRange = ((maxValue + (int)Tolerance) - (maxValue - (int)Tolerance));
                         int i =11;
                         decimal result;
                         do
                         {
                             i--;
-                            result = _rangeRed / i;
+                            result = _numberRange / i;
                             var r = result.ToString().Length;
 
 
@@ -462,13 +466,13 @@ namespace BalanceNetFramework
                         balanceGauge.MaxValue = maxValue;
                         balanceGauge.RangeStartValue = minValue;
                         balanceGauge.RangeEndValue = maxValue;
-                        _rangeRed = ((maxValue + (int)Tolerance) - (maxValue - (int)Tolerance));
+                        _numberRange = ((maxValue + (int)Tolerance) - (maxValue - (int)Tolerance));
                         int i = 11;
                         decimal result;
                         do
                         {
                             i--;
-                            result = _rangeRed / i;
+                            result = _numberRange / i;
                             var r = result.ToString().Length;
 
 

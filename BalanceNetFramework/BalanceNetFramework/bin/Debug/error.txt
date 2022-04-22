@@ -1,3 +1,6 @@
 2022-04-22 14:47:23,113 [10] ERROR BalanceNetFramework.Data.ManagerBalance - The balance information is empty
 2022-04-22 14:56:57,893 [5] ERROR BalanceNetFramework.Data.ManagerBalance - The format sent by the scale is different or incorrect
 2022-04-22 14:58:55,078 [6] ERROR BalanceNetFramework.Data.ManagerBalance - The format sent by the scale is different or incorrect
+2022-04-22 15:09:31,036 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto prodotto1.
+2022-04-22 15:31:06,755 [11] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto prodotto1.
+2022-04-22 15:31:22,691 [11] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto prodotto1.

@@ -317,8 +317,8 @@ namespace BalanceNetFramework.Data
                 }
                 else
                 {
-                    ManagerBalance.log.Error("Please select the prodotto");
-                    Console.WriteLine("Please select the prodotto");
+                    ManagerBalance.log.Error("Please select the prodotto.");
+                    Console.WriteLine("Please select the prodotto.");
                 }
 
             }
@@ -326,8 +326,8 @@ namespace BalanceNetFramework.Data
             {
                 _error = true;
                 _messageError = "";
-                ManagerBalance.log.Error("The balance information is empty");
-                Console.WriteLine("The balance information is empty");
+                ManagerBalance.log.Error("The balance information is empty.");
+                Console.WriteLine("The balance information is empty.");
             }
         }
 
@@ -349,8 +349,8 @@ namespace BalanceNetFramework.Data
                     }
                     else
                     {
-                        ManagerBalance.log.Error("It is not possible to obtain information about your configuration");
-                        _messageError = "It is not possible to obtain information about your configuration";
+                        ManagerBalance.log.Error("It is not possible to obtain information about your configuration.");
+                        _messageError = "It is not possible to obtain information about your configuration.";
                     }
                 }
             }
