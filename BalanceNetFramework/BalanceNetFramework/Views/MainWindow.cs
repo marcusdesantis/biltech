@@ -492,19 +492,20 @@ namespace BalanceNetFramework
                     {
                         minValue = Int32.Parse(reader.GetString("SogliaMinima"));
                         maxValue = Int32.Parse(reader.GetString("SogliaMassima"));
-                        if(decimal.TryParse(reader.GetString("Tolleranza"), out _porcTolerance))
+                        if (decimal.TryParse(reader.GetString("PesoStandard"), out _pesoStandard))
                         {
-                            Tolerance = (int)(maxValue * (_porcTolerance / 100));
+                            PesoStandard = _pesoStandard;
+                        }
+                        if (decimal.TryParse(reader.GetString("Tolleranza"), out _porcTolerance))
+                        {
+                            Tolerance = (int)(PesoStandard * (_porcTolerance / 100));
                         }
                         else
                         {
                             Tolerance = 0;
                         } 
 
-                        if(decimal.TryParse(reader.GetString("PesoStandard"), out _pesoStandard))
-                        {
-                            PesoStandard = _pesoStandard;
-                        }
+                        
 
                     }
                     

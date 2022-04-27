@@ -67,3 +67,7 @@
 2022-04-27 14:19:00,188 [11] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
 2022-04-27 14:19:55,824 [12] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
 2022-04-27 14:19:59,922 [12] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-27 16:00:05,878 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-27 16:00:21,572 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-27 16:21:19,789 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-27 16:21:42,590 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
