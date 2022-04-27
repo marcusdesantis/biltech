@@ -417,13 +417,13 @@ namespace BalanceNetFramework.Data
 
             return state;
         }
-        public static bool InsertMisurazione(MisurazioneModel misurazione)
+        public bool InsertMisurazione(MisurazioneModel misurazione)
         {
             bool state = false;
             try
             {
 
-                string sql = "INSERT INTO misurazione (Id_Bilancia, Id_Prodotto, Peso, Id_FormulaProdotto, Active, DataCreazione) VALUES (@idBilancia,@idProdotto,@peso,@idFormulaProdotto,@active,@date)";
+                string sql = "INSERT INTO misurazione (Id_Bilancia, Id_Prodotto, Peso, Id_FormulaProdotto, Id_Utente, Active, DataCreazione) VALUES (@idBilancia,@idProdotto,@peso,@idFormulaProdotto,@idUtente,@active,@date)";
 
                 MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
@@ -435,6 +435,7 @@ namespace BalanceNetFramework.Data
                     command.Parameters.AddWithValue("@idProdotto", misurazione.Id_Prodotto);
                     command.Parameters.AddWithValue("@peso", misurazione.Peso);
                     command.Parameters.AddWithValue("@idFormulaProdotto", misurazione.Id_FormulaProdotto);
+                    command.Parameters.AddWithValue("@idUtente", misurazione.Id_Utente);
                     command.Parameters.AddWithValue("@active", misurazione.Active);
                     command.Parameters.AddWithValue("@date", misurazione.DataCreazione);
 

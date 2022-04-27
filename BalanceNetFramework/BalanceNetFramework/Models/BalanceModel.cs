@@ -54,6 +54,7 @@ namespace BalanceNetFramework.Models
         public int Id_Prodotto { get; set; }
         public string Peso { get; set; }
         public int Id_FormulaProdotto { get; set; }
+        public int Id_Utente { get; set; }
         public bool Active { get; set; }
         public string DataCreazione { get; set; }
 
