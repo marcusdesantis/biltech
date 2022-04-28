@@ -30,6 +30,9 @@ namespace BalanceNetFramework
         decimal toleranceMax = 0;
         decimal toleranceMin = 0;
         string weightStandard = "";
+        int numeroPesateControllo = 0;
+        int numeroControllo = 0;
+        int numeroPesata = 0;
 
 
 
@@ -172,6 +175,12 @@ namespace BalanceNetFramework
                 detailProduct.Text = "";
                 lblPesoBalance.Text = "0.00 " + data[1];
                 GetMinAndMaxValue(idProduct);
+                GetNumberPesateControllo(idProduct);
+                if (numeroPesata > 0)
+                {
+                    repeatPesata.Visible = true;
+                }
+
             }
             catch (Exception ex)
             {
@@ -326,9 +335,10 @@ namespace BalanceNetFramework
 
                         lblAlerta.Invoke(new Action(() =>
                         {
-                            lblPesoBalance.Invoke(new Action(() => lblPesoBalance.Text = "0.00 " + nameUnitaMisura));
-                            balanceGauge.Invoke(new Action(() => balanceGauge.Value = 0));
-                            detailProduct.Invoke(new Action(() => detailProduct.Text = ""));
+                            weightStandard = weight;
+                            lblPesoBalance.Invoke(new Action(() => lblPesoBalance.Text = weight + " " + nameUnitaMisura));
+                            balanceGauge.Invoke(new Action(() => balanceGauge.Value = Convert.ToInt32(_value)));
+                            detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " - " + weight + " " + nameUnitaMisura));
 
                             lblAlerta.Text = string.Format("La pesatura viola i limiti di tolleranza del prodotto {0}.", name);
                             lblAlerta.ForeColor = Color.Red;
@@ -564,6 +574,109 @@ namespace BalanceNetFramework
 
         }
 
+        public bool GetNumberPesateControllo(string idProduct)
+        {
+            bool state = false;
+
+            try
+            {
+
+                string sql = "SELECT s.NumeroControllo, p.NumeroPesateControllo FROM biltek_bd.schedulercontrollo as s INNER JOIN  biltek_bd.prodotto as p ON s.Id_Prodotto = p.Id WHERE id_prodotto =@idProduct AND DATE_FORMAT(Ora,'%H:%i:%s') <= curtime() order by Ora desc limit 1; ";             
+                MySqlConnection connectionBD = ConnectionDB.connection();
+                connectionBD.Open();
+
+                try
+                {
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                    command.Parameters.AddWithValue("@idProduct", idProduct);                   
+
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        numeroPesateControllo = Int32.Parse(reader.GetString("NumeroPesateControllo"));
+                        numeroControllo = Int32.Parse(reader.GetString("NumeroControllo"));
+                      
+                    } 
+                                
+                    state = true;
+
+                }
+                catch (Exception ex)
+                {
+                    ManagerBalance.log.Error(ex.Message);
+                    Console.WriteLine(ex.Message);
+                    state = false;
+
+                }
+                finally
+                {
+                    connectionBD.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            try
+            {
+               
+                string sqlControllo = "SELECT ifnull(NumeroPesata,0) NumeroPesata FROM biltek_bd.controllopesate WHERE id_prodotto=@idProduct AND DATE_FORMAT(DataOra,'%d:%m:%Y') = DATE_FORMAT(Now(), '%d:%m:%Y') AND Annullato is null AND NumeroControllo=@numberControllo Order by DataOra desc Limit 1; ";
+                MySqlConnection connectionBD = ConnectionDB.connection();
+                connectionBD.Open();
+
+                try
+                {
+                    MySqlCommand commandControllo = new MySqlCommand(sqlControllo, connectionBD);                  
+                    commandControllo.Parameters.AddWithValue("@idProduct", idProduct);
+                    commandControllo.Parameters.AddWithValue("@numberControllo", numeroControllo);
+
+                    MySqlDataReader readerControllo = commandControllo.ExecuteReader();
+
+                    while (readerControllo.Read())
+                    {
+                        numeroPesata = Int32.Parse(readerControllo.GetString("NumeroPesata"));
+
+                    }
+
+                    state = true;
+
+                }
+                catch (Exception ex)
+                {
+                    ManagerBalance.log.Error(ex.Message);
+                    Console.WriteLine(ex.Message);
+                    state = false;
+
+                }
+                finally
+                {
+                    connectionBD.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            if (state)
+            {
+                btnPesata.Text = $"Prendere pesata di controllo ({numeroPesata}/{numeroPesateControllo})  Controllo ({numeroControllo})";
+            }
+            else
+            {
+                btnPesata.Visible = false;
+            }
+
+            return state;
+
+        }
+
         void cleanRanges(float[] range)
         {
             for(int i = 0; i < range.Length; i++)
@@ -616,6 +729,52 @@ namespace BalanceNetFramework
 
         }
 
+        public string GetIdLatestcontrollopesate(string idProduct, int numeroControllo)
+        {
+            string id = "";
+            try
+            {
+
+                string sql = "SELECT * FROM biltek_bd.controllopesate WHERE id_prodotto =@idProduct AND NumeroControllo =@numeroControllo AND DATE_FORMAT(DataOra, '%d:%m:%Y') = DATE_FORMAT(Now(), '%d:%m:%Y') AND Annullato is null Order by DataOra desc Limit 1; ";
+                MySqlConnection connectionBD = ConnectionDB.connection();
+                connectionBD.Open();
+
+                try
+                {
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                    command.Parameters.AddWithValue("@idProduct", idProduct);
+                    command.Parameters.AddWithValue("@numeroControllo", numeroControllo);
+
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        id = reader.GetString("Id");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    ManagerBalance.log.Error(ex.Message);
+                    Console.WriteLine(ex.Message);
+
+                }
+                finally
+                {
+                    connectionBD.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            return id;
+
+        }
+
 
         public bool SetFields(int idBalance)
         {
@@ -656,17 +815,113 @@ namespace BalanceNetFramework
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MisurazioneModel _misurazione = new MisurazioneModel();
-            DateTime dataCreazione = DateTime.Now;
-            string dateFormart = dataCreazione.ToString("yy-MM-dd HH:mm:ss");
-            _misurazione.Id_Bilancia = Convert.ToInt32(idBalance);
-            _misurazione.Id_Prodotto = Convert.ToInt32(idProduct);
-            _misurazione.Peso = weightStandard;
-            _misurazione.Id_FormulaProdotto = 5;
-            _misurazione.Id_Utente = 1;
-            _misurazione.Active = true;
-            _misurazione.DataCreazione = dateFormart;
-            _balance.InsertMisurazione(_misurazione);
+            decimal _min = toleranceMin;
+            decimal _max = toleranceMax;
+            decimal pesate = 0;
+
+            if (numeroPesata == numeroPesateControllo)
+            {
+                var message = _balance.GetMessagePesare(idProduct,numeroControllo);
+                if (message.Equals("0"))
+                {
+                    lbMessage.Text = "Il prodotto è adatto. Tutte le pesate sono nel margine di tolleranza.";
+                    lbMessage.BackColor = Color.Green;
+                    lbMessage.ForeColor = Color.White;
+                }
+                else
+                {
+                    lbMessage.Text = $"Il prodotto non è adatto. {message} delle pesate sono fuori dal margine di tolleranza.";
+                    lbMessage.BackColor = Color.Red;
+                    lbMessage.ForeColor = Color.White;
+                }
+                lbMessage.Visible = true;
+                btnResetPesare.Visible = true;
+            }
+            else
+            {
+                MisurazioneModel _misurazione = new MisurazioneModel();
+                DateTime dataCreazione = DateTime.Now;
+                string dateFormart = dataCreazione.ToString("yy-MM-dd HH:mm:ss");
+                /*_misurazione.Id_Bilancia = Convert.ToInt32(idBalance);
+                _misurazione.Id_Prodotto = Convert.ToInt32(idProduct);
+                _misurazione.Peso = weightStandard;
+                _misurazione.Id_FormulaProdotto = 5;
+                _misurazione.Id_Utente = 1;
+                _misurazione.Active = true;
+                _misurazione.DataCreazione = dateFormart;
+                _balance.InsertMisurazione(_misurazione);*/
+
+                if (decimal.TryParse(weightStandard, out pesate))
+                {
+
+                }
+
+                ControlloPesateModel _pesate = new ControlloPesateModel();
+                _pesate.Id_Prodotto = Int32.Parse(idProduct);
+                _pesate.NumeroControllo = numeroControllo;
+                _pesate.DataOra = dateFormart;
+                _pesate.Pesata = weightStandard;
+                _pesate.NumeroPesata = numeroPesata + 1;
+                if (pesate > _max || _min > pesate)
+                {
+                    _pesate.Conforme = false;
+                }
+                else
+                {
+                    _pesate.Conforme = true;
+                }
+                // _pesate.Annullato= "";
+                _pesate.Active = true;
+                _balance.InsertControllopesate(_pesate);
+                GetNumberPesateControllo(idProduct);
+                if (numeroPesata == 0)
+                {
+                    repeatPesata.Visible = false;
+                }
+                else
+                {
+                    repeatPesata.Visible = true;
+                }
+
+            }
+
+           
+
+        }
+
+        private void balanceGauge_ValueInRangeChanged(object sender, AGaugeApp.AGauge.ValueInRangeChangedEventArgs e)
+        {
+
+        }
+
+        private void repeatPesata_Click(object sender, EventArgs e)
+        {
+
+            if (numeroPesata >= 0)
+            {
+                repeatPesata.Visible = true;
+                var idControlloPesate = GetIdLatestcontrollopesate(idProduct,numeroControllo);
+                if (_balance.UpdateLastedControlloPesate(idControlloPesate, numeroPesata))
+                {
+                    GetNumberPesateControllo(idProduct);                   
+                }
+            }
+            else
+            {
+                repeatPesata.Visible = false;
+            }
+
+        }
+
+        private void btnResetPesare_Click(object sender, EventArgs e)
+        {
+            if(_balance.ResetControlloPesate(idProduct, numeroControllo))
+            {
+                lbMessage.Visible = false;
+                btnResetPesare.Visible = false;
+                GetNumberPesateControllo(idProduct);
+            }
+            
         }
     }
 }

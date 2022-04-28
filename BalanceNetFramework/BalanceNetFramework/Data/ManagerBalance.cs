@@ -469,6 +469,209 @@ namespace BalanceNetFramework.Data
 
         }
 
+        public bool InsertControllopesate(ControlloPesateModel controlPesate)
+        {
+            bool state = false;
+            try
+            {
+
+                string sql = "INSERT INTO controllopesate (Id_Prodotto, NumeroControllo, DataOra, Pesata, NumeroPesata, Conforme, Annullato, Active) VALUES (@Id_Prodotto, @NumeroControllo, @DataOra, @Pesata, @NumeroPesata, @Conforme, @Annullato, @Active)";
+
+                MySqlConnection connectionBD = ConnectionDB.connection();
+                connectionBD.Open();
+
+                try
+                {
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                    command.Parameters.AddWithValue("@Id_Prodotto", controlPesate.Id_Prodotto);
+                    command.Parameters.AddWithValue("@NumeroControllo", controlPesate.NumeroControllo);
+                    command.Parameters.AddWithValue("@DataOra", controlPesate.DataOra);
+                    command.Parameters.AddWithValue("@Pesata", controlPesate.Pesata);
+                    command.Parameters.AddWithValue("@NumeroPesata", controlPesate.NumeroPesata);
+                    command.Parameters.AddWithValue("@Conforme", controlPesate.Conforme);
+                    command.Parameters.AddWithValue("@Annullato", controlPesate.Annullato);
+                    command.Parameters.AddWithValue("@Active", controlPesate.Active);
+
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("Insert Success");
+
+                    state = true;
+
+                }
+                catch (Exception ex)
+                {
+                    ManagerBalance.log.Error(ex.Message);
+                    Console.WriteLine("Insert Error: " + ex.Message);
+                    state = false;
+
+                }
+                finally
+                {
+                    connectionBD.Close();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            return state;
+
+        }
+
+        public bool UpdateLastedControlloPesate(string id, int numeroPesate)
+        {
+            bool state = false;
+            try
+            {
+
+                string sql = "update biltek_bd.controllopesate set Annullato=@annullato, NumeroPesata=@numeroPesata where Id=@id";
+
+                MySqlConnection connectionBD = ConnectionDB.connection();
+                connectionBD.Open();
+                
+                DateTime dataCreazione = DateTime.Now;
+                string dateFormart = dataCreazione.ToString("yy-MM-dd HH:mm:ss");
+
+                try
+                {
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                    command.Parameters.AddWithValue("@id", id);
+                    command.Parameters.AddWithValue("@Annullato", dateFormart);                
+                    command.Parameters.AddWithValue("@numeroPesata", numeroPesate-1);                
+
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("update Success");
+
+                    state = true;
+
+                }
+                catch (Exception ex)
+                {
+                    ManagerBalance.log.Error(ex.Message);
+                    Console.WriteLine("Insert Error: " + ex.Message);
+                    state = false;
+
+                }
+                finally
+                {
+                    connectionBD.Close();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            return state;
+
+        }
+
+        public bool ResetControlloPesate(string id, int numeroControllo)
+        {
+            bool state = false;
+            try
+            {
+
+                string sql = "update biltek_bd.controllopesate set Annullato=@annulla WHERE Id_Prodotto=@idProduct and NumeroControllo=@numeroControllo and DATE_FORMAT(DataOra,'%d:%m:%Y') = DATE_FORMAT(Now(), '%d:%m:%Y') and Annullato is null; ";
+
+                MySqlConnection connectionBD = ConnectionDB.connection();
+                connectionBD.Open();
+
+                DateTime dataCreazione = DateTime.Now;
+                string dateFormart = dataCreazione.ToString("yy-MM-dd HH:mm:ss");
+
+                try
+                {
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                    command.Parameters.AddWithValue("@annulla", dateFormart);
+                    command.Parameters.AddWithValue("@idProduct", id);
+                    command.Parameters.AddWithValue("@numeroControllo", numeroControllo);
+
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("update Success");
+
+                    state = true;
+
+                }
+                catch (Exception ex)
+                {
+                    ManagerBalance.log.Error(ex.Message);
+                    Console.WriteLine("Insert Error: " + ex.Message);
+                    state = false;
+
+                }
+                finally
+                {
+                    connectionBD.Close();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            return state;
+
+        }
+
+    
+        public string GetMessagePesare(string idProduct, int numeroControllo)
+        {
+            string message = "";
+            try
+            {
+
+                string sql = "SELECT count(* ) noConforme FROM biltek_bd.controllopesate where id_prodotto =@idProduct and Annullato is null and conforme = 0 and NumeroControllo=@numeroControllo and DATE_FORMAT(DataOra,'%d:%m:%Y') = DATE_FORMAT(Now(), '%d:%m:%Y'); ";
+
+                MySqlConnection connectionBD = ConnectionDB.connection();
+                connectionBD.Open();
+
+                try
+                {
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                    command.Parameters.AddWithValue("@idProduct", idProduct);
+                    command.Parameters.AddWithValue("@numeroControllo", numeroControllo);
+
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        message = reader.GetString("noConforme");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    ManagerBalance.log.Error(ex.Message);
+                    Console.WriteLine(ex.Message);
+
+                }
+                finally
+                {
+                    connectionBD.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            return message;
+
+        }
+
         public static string GetIdProdotto(string nome)
         {
             string id = "0";

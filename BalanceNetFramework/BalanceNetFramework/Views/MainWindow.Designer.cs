@@ -31,6 +31,7 @@ namespace BalanceNetFramework
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.panelBalance = new System.Windows.Forms.Panel();
+            this.btnPesata = new System.Windows.Forms.Button();
             this.lblAlerta = new System.Windows.Forms.Label();
             this.detailProduct = new System.Windows.Forms.Label();
             this.lblPesoBalance = new System.Windows.Forms.Label();
@@ -72,8 +73,10 @@ namespace BalanceNetFramework
             this.btnMeasurement = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
             this.balanceGauge = new AGaugeApp.AGauge();
+            this.lbMessage = new System.Windows.Forms.Label();
+            this.btnResetPesare = new System.Windows.Forms.Button();
+            this.repeatPesata = new System.Windows.Forms.Button();
             this.panelBalance.SuspendLayout();
             this.panelProduct.SuspendLayout();
             this.panelConnectionInformation.SuspendLayout();
@@ -83,13 +86,23 @@ namespace BalanceNetFramework
             // 
             // panelBalance
             // 
-            this.panelBalance.Controls.Add(this.button1);
+            this.panelBalance.Controls.Add(this.repeatPesata);
+            this.panelBalance.Controls.Add(this.btnResetPesare);
+            this.panelBalance.Controls.Add(this.lbMessage);
+            this.panelBalance.Controls.Add(this.btnPesata);
             this.panelBalance.Controls.Add(this.lblAlerta);
             this.panelBalance.Controls.Add(this.detailProduct);
             this.panelBalance.Controls.Add(this.lblPesoBalance);
             this.panelBalance.Controls.Add(this.balanceGauge);
             resources.ApplyResources(this.panelBalance, "panelBalance");
             this.panelBalance.Name = "panelBalance";
+            // 
+            // btnPesata
+            // 
+            resources.ApplyResources(this.btnPesata, "btnPesata");
+            this.btnPesata.Name = "btnPesata";
+            this.btnPesata.UseVisualStyleBackColor = true;
+            this.btnPesata.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblAlerta
             // 
@@ -351,13 +364,6 @@ namespace BalanceNetFramework
             this.tableLayoutPanel1.Controls.Add(this.panelBalance, 1, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
-            // button1
-            // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // balanceGauge
             // 
             resources.ApplyResources(this.balanceGauge, "balanceGauge");
@@ -461,6 +467,28 @@ namespace BalanceNetFramework
             this.balanceGauge.ScaleNumbersStepScaleLines = 1;
             this.balanceGauge.Tag = "aGauge1";
             this.balanceGauge.Value = 0F;
+            this.balanceGauge.ValueInRangeChanged += new AGaugeApp.AGauge.ValueInRangeChangedDelegate(this.balanceGauge_ValueInRangeChanged);
+            // 
+            // lbMessage
+            // 
+            this.lbMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(208)))), ((int)(((byte)(80)))));
+            resources.ApplyResources(this.lbMessage, "lbMessage");
+            this.lbMessage.Name = "lbMessage";
+            this.lbMessage.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnResetPesare
+            // 
+            resources.ApplyResources(this.btnResetPesare, "btnResetPesare");
+            this.btnResetPesare.Name = "btnResetPesare";
+            this.btnResetPesare.UseVisualStyleBackColor = true;
+            this.btnResetPesare.Click += new System.EventHandler(this.btnResetPesare_Click);
+            // 
+            // repeatPesata
+            // 
+            resources.ApplyResources(this.repeatPesata, "repeatPesata");
+            this.repeatPesata.Name = "repeatPesata";
+            this.repeatPesata.UseVisualStyleBackColor = true;
+            this.repeatPesata.Click += new System.EventHandler(this.repeatPesata_Click);
             // 
             // MainWindow
             // 
@@ -528,7 +556,10 @@ namespace BalanceNetFramework
         public AGaugeApp.AGauge balanceGauge;
         public System.Windows.Forms.Label detailProduct;
         public System.Windows.Forms.Label lblAlerta;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPesata;
+        private System.Windows.Forms.Button btnResetPesare;
+        private System.Windows.Forms.Label lbMessage;
+        private System.Windows.Forms.Button repeatPesata;
     }
 }
 
