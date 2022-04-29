@@ -199,7 +199,14 @@ namespace BalanceNetFramework
                     }
                     else
                     {
-                        lbMessage.Text = $"Il peso del prodotto non è adecuato. {message} dei pesi sono fuori dal margine di tolleranza.";
+                        if (message.Equals("1"))
+                        {
+                            lbMessage.Text = $"Il peso del prodotto non è adecuato. {message} dei pesi è fuori dal margine di tolleranza.";
+                        }
+                        else
+                        {
+                            lbMessage.Text = $"Il peso del prodotto non è adecuato. {message} dei pesi sono fuori dal margine di tolleranza.";
+                        }
                         lbMessage.BackColor = Color.Red;
                         lbMessage.ForeColor = Color.White;
                     }
@@ -870,7 +877,14 @@ namespace BalanceNetFramework
                     }
                     else
                     {
-                        lbMessage.Text = $"Il peso del prodotto non è adecuato. {message} dei pesi sono fuori dal margine di tolleranza.";
+                        if (message.Equals("1"))
+                        {
+                            lbMessage.Text = $"Il peso del prodotto non è adecuato. {message} dei pesi è fuori dal margine di tolleranza.";
+                        }
+                        else
+                        {
+                            lbMessage.Text = $"Il peso del prodotto non è adecuato. {message} dei pesi sono fuori dal margine di tolleranza.";
+                        }                        
                         lbMessage.BackColor = Color.Red;
                         lbMessage.ForeColor = Color.White;
                     }
@@ -931,7 +945,14 @@ namespace BalanceNetFramework
                         }
                         else
                         {
-                            lbMessage.Text = $"Il peso del prodotto non è adecuato. {message} dei pesi sono fuori dal margine di tolleranza.";
+                            if (message.Equals("1"))
+                            {
+                                lbMessage.Text = $"Il peso del prodotto non è adecuato. {message} dei pesi è fuori dal margine di tolleranza.";
+                            }
+                            else
+                            {
+                                lbMessage.Text = $"Il peso del prodotto non è adecuato. {message} dei pesi sono fuori dal margine di tolleranza.";
+                            }
                             lbMessage.BackColor = Color.Red;
                             lbMessage.ForeColor = Color.White;
                         }

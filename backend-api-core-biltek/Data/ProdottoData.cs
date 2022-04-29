@@ -92,6 +92,9 @@ namespace backend_api_core.Data
                 parametros.Add("SogliaMinima", data.SogliaMinima);
                 parametros.Add("SogliaMassima", data.SogliaMassima);
                 parametros.Add("Tolleranza", data.Tolleranza);
+                parametros.Add("PesoStandard", data.PesoStandard);
+                parametros.Add("NumeroPesateControllo", data.NumeroPesateControllo);
+                parametros.Add("NumeroControllo", data.NumeroControllo);
                 
                 respuesta = await this._c_conexion.abmObjeto<Prodotto>(nombreFuncion, AbmAccion.GUARDAR, data);
 

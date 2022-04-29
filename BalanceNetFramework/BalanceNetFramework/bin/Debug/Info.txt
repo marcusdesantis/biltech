@@ -142,3 +142,11 @@
 2022-04-29 10:03:46,204 [11] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
 2022-04-29 10:04:04,493 [11] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
 2022-04-29 10:13:51,077 [12] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-04-29 11:21:07,426 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-04-29 11:21:12,019 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-04-29 11:21:14,540 [6] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-04-29 11:21:17,068 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-04-29 11:21:19,592 [6] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-04-29 11:21:22,116 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-04-29 11:24:45,730 [20] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-04-29 11:29:00,202 [13] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.

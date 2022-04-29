@@ -11,6 +11,9 @@
         public int SogliaMinima { get; set; }
         public int SogliaMassima { get; set; }
         public decimal Tolleranza { get; set; }
+        public decimal PesoStandard { get; set; }
+        public int NumeroPesateControllo { get; set; }
+        public int NumeroControllo { get; set; }
 
         public bool Active { get; set; }
       
@@ -27,6 +30,9 @@
         public int SogliaMinima { get; set; }
         public int SogliaMassima { get; set; }
         public decimal Tolleranza { get; set; }
+        public decimal PesoStandard { get; set; }
+        public int NumeroPesateControllo { get; set; }
+        public int NumeroControllo { get; set; }
         public bool Active { get; set; }
 
         public int total { get; set; }

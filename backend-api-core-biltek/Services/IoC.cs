@@ -27,6 +27,8 @@ namespace backend_api_core.Services
             services.AddTransient<ITipologiaProdotto, TipologiaProdottoData>();
             services.AddTransient<IReparto, RepartoData>();
             services.AddTransient<IUtente, UtenteData>();
+            services.AddTransient<IControlloPesate, ControlloPesateData>();
+            services.AddTransient<ISchedulerControllo, SchedulerControlloData>();
 
             return services;
         }

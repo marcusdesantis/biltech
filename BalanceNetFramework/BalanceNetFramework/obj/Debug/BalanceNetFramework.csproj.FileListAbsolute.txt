@@ -1,3 +1,5 @@
+C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
+C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\SqlServerTypes\x64\msvcr120.dll
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\SqlServerTypes\x86\msvcr120.dll
@@ -113,8 +115,7 @@ C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\ja\Microso
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\ko\Microsoft.ReportViewer.DataVisualization.resources.dll
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\pt\Microsoft.ReportViewer.DataVisualization.resources.dll
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\ru\Microsoft.ReportViewer.DataVisualization.resources.dll
-C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
-C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\bin\Debug\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
+C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.csproj.AssemblyReference.cache
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.ReportWindow.resources
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.GraphicWindow.resources
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.MainWindow.resources
@@ -124,4 +125,3 @@ C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNet
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.csproj.CopyComplete
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.exe
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.pdb
-C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.csproj.AssemblyReference.cache
