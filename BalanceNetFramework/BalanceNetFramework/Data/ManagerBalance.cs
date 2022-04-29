@@ -469,7 +469,7 @@ namespace BalanceNetFramework.Data
 
         }
 
-        public bool InsertControllopesate(ControlloPesateModel controlPesate)
+        public async Task<bool> InsertControllopesate(ControlloPesateModel controlPesate)
         {
             bool state = false;
             try
@@ -492,7 +492,7 @@ namespace BalanceNetFramework.Data
                     command.Parameters.AddWithValue("@Annullato", controlPesate.Annullato);
                     command.Parameters.AddWithValue("@Active", controlPesate.Active);
 
-                    command.ExecuteNonQuery();
+                    await command.ExecuteNonQueryAsync();
                     Console.WriteLine("Insert Success");
 
                     state = true;
@@ -642,7 +642,7 @@ namespace BalanceNetFramework.Data
                     command.Parameters.AddWithValue("@idProduct", idProduct);
                     command.Parameters.AddWithValue("@numeroControllo", numeroControllo);
 
-                    MySqlDataReader reader = command.ExecuteReader();
+                    MySqlDataReader reader =  command.ExecuteReader();
 
                     while (reader.Read())
                     {

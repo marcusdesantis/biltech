@@ -99,3 +99,46 @@
 2022-04-28 15:22:59,482 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Fatal error encountered during command execution.
 2022-04-28 15:23:01,675 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Fatal error encountered during command execution.
 2022-04-28 16:01:40,536 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-29 07:12:25,345 [8] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-29 07:35:19,624 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-29 07:37:24,569 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-29 07:55:52,883 [13] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-29 08:02:28,805 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-29 08:05:11,727 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-29 08:10:29,036 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-29 08:12:20,569 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-29 08:27:19,928 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-29 08:27:28,471 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-29 08:27:33,266 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-29 08:27:38,506 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-29 08:27:44,033 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-29 08:27:48,173 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-29 08:27:59,956 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-29 08:28:05,158 [5] ERROR BalanceNetFramework.Data.ManagerBalance - La pesatura viola i limiti di tolleranza del prodotto Queso.
+2022-04-29 08:31:38,274 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta i limiti  tollerato per il prodotto Queso.
+2022-04-29 08:31:44,348 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta i limiti  tollerato per il prodotto Queso.
+2022-04-29 08:33:40,470 [6] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta i limiti  tollerato per il prodotto Queso.
+2022-04-29 08:45:07,279 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta i limiti  tollerato per il prodotto Formaggio.
+2022-04-29 09:05:10,957 [14] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta i limiti  tollerato per il prodotto Burro.
+2022-04-29 09:25:48,501 [13] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta i limiti  tollerato per il prodotto Burro.
+2022-04-29 09:52:04,804 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta i limiti tollerato per il prodotto Burro.
+2022-04-29 09:52:12,193 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta i limiti tollerato per il prodotto Burro.
+2022-04-29 09:52:16,338 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta i limiti tollerato per il prodotto Burro.
+2022-04-29 09:52:19,602 [13] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta i limiti tollerato per il prodotto Burro.
+2022-04-29 09:52:22,890 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta i limiti tollerato per il prodotto Burro.
+2022-04-29 09:52:26,643 [13] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta i limiti tollerato per il prodotto Burro.
+2022-04-29 09:52:32,076 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta i limiti tollerato per il prodotto Burro.
+2022-04-29 09:52:36,054 [13] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta i limiti tollerato per il prodotto Burro.
+2022-04-29 09:52:38,741 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta i limiti tollerato per il prodotto Burro.
+2022-04-29 09:52:41,260 [13] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta i limiti tollerato per il prodotto Burro.
+2022-04-29 09:52:43,779 [14] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta i limiti tollerato per il prodotto Burro.
+2022-04-29 09:52:49,828 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta i limiti tollerato per il prodotto Burro.
+2022-04-29 09:56:39,873 [12] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-04-29 09:56:43,788 [16] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-04-29 09:56:46,319 [12] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-04-29 09:56:48,851 [16] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-04-29 09:56:51,372 [12] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-04-29 10:03:30,571 [11] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-04-29 10:03:46,204 [11] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-04-29 10:04:04,493 [11] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-04-29 10:13:51,077 [12] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.

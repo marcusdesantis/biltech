@@ -29,8 +29,12 @@ namespace BalanceNetFramework
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.panelBalance = new System.Windows.Forms.Panel();
+            this.repeatPesata = new System.Windows.Forms.Button();
+            this.btnResetPesare = new System.Windows.Forms.Button();
+            this.lbMessage = new System.Windows.Forms.Label();
             this.btnPesata = new System.Windows.Forms.Button();
             this.lblAlerta = new System.Windows.Forms.Label();
             this.detailProduct = new System.Windows.Forms.Label();
@@ -73,10 +77,9 @@ namespace BalanceNetFramework
             this.btnMeasurement = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.standardPeso = new System.Windows.Forms.Label();
             this.balanceGauge = new AGaugeApp.AGauge();
-            this.lbMessage = new System.Windows.Forms.Label();
-            this.btnResetPesare = new System.Windows.Forms.Button();
-            this.repeatPesata = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelBalance.SuspendLayout();
             this.panelProduct.SuspendLayout();
             this.panelConnectionInformation.SuspendLayout();
@@ -86,6 +89,7 @@ namespace BalanceNetFramework
             // 
             // panelBalance
             // 
+            this.panelBalance.Controls.Add(this.standardPeso);
             this.panelBalance.Controls.Add(this.repeatPesata);
             this.panelBalance.Controls.Add(this.btnResetPesare);
             this.panelBalance.Controls.Add(this.lbMessage);
@@ -96,6 +100,27 @@ namespace BalanceNetFramework
             this.panelBalance.Controls.Add(this.balanceGauge);
             resources.ApplyResources(this.panelBalance, "panelBalance");
             this.panelBalance.Name = "panelBalance";
+            // 
+            // repeatPesata
+            // 
+            resources.ApplyResources(this.repeatPesata, "repeatPesata");
+            this.repeatPesata.Name = "repeatPesata";
+            this.repeatPesata.UseVisualStyleBackColor = true;
+            this.repeatPesata.Click += new System.EventHandler(this.repeatPesata_Click);
+            // 
+            // btnResetPesare
+            // 
+            resources.ApplyResources(this.btnResetPesare, "btnResetPesare");
+            this.btnResetPesare.Name = "btnResetPesare";
+            this.btnResetPesare.UseVisualStyleBackColor = true;
+            this.btnResetPesare.Click += new System.EventHandler(this.btnResetPesare_Click);
+            // 
+            // lbMessage
+            // 
+            this.lbMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(208)))), ((int)(((byte)(80)))));
+            resources.ApplyResources(this.lbMessage, "lbMessage");
+            this.lbMessage.Name = "lbMessage";
+            this.lbMessage.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnPesata
             // 
@@ -364,6 +389,11 @@ namespace BalanceNetFramework
             this.tableLayoutPanel1.Controls.Add(this.panelBalance, 1, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
+            // standardPeso
+            // 
+            resources.ApplyResources(this.standardPeso, "standardPeso");
+            this.standardPeso.Name = "standardPeso";
+            // 
             // balanceGauge
             // 
             resources.ApplyResources(this.balanceGauge, "balanceGauge");
@@ -469,26 +499,9 @@ namespace BalanceNetFramework
             this.balanceGauge.Value = 0F;
             this.balanceGauge.ValueInRangeChanged += new AGaugeApp.AGauge.ValueInRangeChangedDelegate(this.balanceGauge_ValueInRangeChanged);
             // 
-            // lbMessage
+            // timer1
             // 
-            this.lbMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(208)))), ((int)(((byte)(80)))));
-            resources.ApplyResources(this.lbMessage, "lbMessage");
-            this.lbMessage.Name = "lbMessage";
-            this.lbMessage.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnResetPesare
-            // 
-            resources.ApplyResources(this.btnResetPesare, "btnResetPesare");
-            this.btnResetPesare.Name = "btnResetPesare";
-            this.btnResetPesare.UseVisualStyleBackColor = true;
-            this.btnResetPesare.Click += new System.EventHandler(this.btnResetPesare_Click);
-            // 
-            // repeatPesata
-            // 
-            resources.ApplyResources(this.repeatPesata, "repeatPesata");
-            this.repeatPesata.Name = "repeatPesata";
-            this.repeatPesata.UseVisualStyleBackColor = true;
-            this.repeatPesata.Click += new System.EventHandler(this.repeatPesata_Click);
+            this.timer1.Interval = 300000;
             // 
             // MainWindow
             // 
@@ -501,6 +514,7 @@ namespace BalanceNetFramework
             this.Name = "MainWindow";
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.panelBalance.ResumeLayout(false);
+            this.panelBalance.PerformLayout();
             this.panelProduct.ResumeLayout(false);
             this.panelProduct.PerformLayout();
             this.panelConnectionInformation.ResumeLayout(false);
@@ -560,6 +574,8 @@ namespace BalanceNetFramework
         private System.Windows.Forms.Button btnResetPesare;
         private System.Windows.Forms.Label lbMessage;
         private System.Windows.Forms.Button repeatPesata;
+        private System.Windows.Forms.Label standardPeso;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

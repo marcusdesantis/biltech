@@ -15,7 +15,7 @@ using System.Windows.Forms;
 namespace BalanceNetFramework
 {
     public partial class MainWindow : Form
-    {       
+    {
         private ManagerBalance _balance = null;
         BalanceModel _selected = null;
         //BalanceResultModel _balanceResultModel = new BalanceResultModel();
@@ -55,18 +55,18 @@ namespace BalanceNetFramework
                 idBalance = cbBalance.SelectedValue.ToString();
                 SetFields(Int32.Parse(idBalance));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ManagerBalance.log.Error(ex.Message);
             }
-            
-            
+
+
 
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -94,12 +94,12 @@ namespace BalanceNetFramework
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ManagerBalance.log.Error(ex.Message);
             }
-           
-            
+
+
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
@@ -154,12 +154,12 @@ namespace BalanceNetFramework
                     Console.WriteLine("Scale not found error.");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ManagerBalance.log.Error(ex.Message);
             }
 
-           
+
             //handle = !cmb.IsDropDownOpen;
             //Handle();
         }
@@ -168,17 +168,43 @@ namespace BalanceNetFramework
         {
             try
             {
+                lbMessage.Visible = false;
+                btnResetPesare.Visible = false;
                 idProduct = cbProduct.SelectedValue.ToString();
                 var name = GetNameUnitaMisura(idProduct);
                 String[] data = name.Split('-');
                 nameUnitaMisura = data[1];
                 detailProduct.Text = "";
                 lblPesoBalance.Text = "0.00 " + data[1];
+                standardPeso.Text = "Peso Standard: " + data[2]+ data[1]; 
                 GetMinAndMaxValue(idProduct);
                 GetNumberPesateControllo(idProduct);
                 if (numeroPesata > 0)
                 {
                     repeatPesata.Visible = true;
+                }
+                else
+                {
+                    repeatPesata.Visible = false;
+                }
+
+                if (numeroPesata == numeroPesateControllo)
+                {
+                    var message = _balance.GetMessagePesare(idProduct, numeroControllo);
+                    if (message.Equals("0"))
+                    {
+                        lbMessage.Text = "Il peso del prodotto è adecuato. Tutti i pesi sono nel margine di tolleranza.";
+                        lbMessage.BackColor = Color.Green;
+                        lbMessage.ForeColor = Color.White;
+                    }
+                    else
+                    {
+                        lbMessage.Text = $"Il peso del prodotto non è adecuato. {message} dei pesi sono fuori dal margine di tolleranza.";
+                        lbMessage.BackColor = Color.Red;
+                        lbMessage.ForeColor = Color.White;
+                    }
+                    lbMessage.Visible = true;
+                    btnResetPesare.Visible = true;
                 }
 
             }
@@ -232,11 +258,11 @@ namespace BalanceNetFramework
                         Console.WriteLine("An error has occurred, cannot connect to the scale.");
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     ManagerBalance.log.Error(ex.Message);
                 }
-                
+
             }
         }
 
@@ -257,7 +283,7 @@ namespace BalanceNetFramework
                         }
                         else
                         {
-                            string command = "Z";                           
+                            string command = "Z";
                             _balance.DataSend(command);
                             Console.WriteLine("Sent Z.");
                         }
@@ -270,11 +296,11 @@ namespace BalanceNetFramework
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ManagerBalance.log.Error(ex.Message);
             }
-           
+
         }
 
         private void btnTare_Click(object sender, EventArgs e)
@@ -305,15 +331,15 @@ namespace BalanceNetFramework
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ManagerBalance.log.Error(ex.Message);
             }
-           
+
         }
 
         public string GetIdProduct()
-        { 
+        {
             return idProduct;
         }
         public void SetWeight(string id, string weight, string sign)
@@ -340,21 +366,21 @@ namespace BalanceNetFramework
                             balanceGauge.Invoke(new Action(() => balanceGauge.Value = Convert.ToInt32(_value)));
                             detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " - " + weight + " " + nameUnitaMisura));
 
-                            lblAlerta.Text = string.Format("La pesatura viola i limiti di tolleranza del prodotto {0}.", name);
+                            lblAlerta.Text = string.Format("Il peso non rispetta il limite consentito per il prodotto {0}.", name);
                             lblAlerta.ForeColor = Color.Red;
                         }));
                         System.Threading.Thread.Sleep(2000);
-                        ManagerBalance.log.Error($"La pesatura viola i limiti di tolleranza del prodotto {name}.");
+                        ManagerBalance.log.Error($"Il peso non rispetta il limite consentito per il prodotto {name}.");
                         lblAlerta.Invoke(new Action(() => lblAlerta.Text = string.Empty));
 
                     }
                     else
                     {
-                         weightStandard = weight;
-                         lblPesoBalance.Invoke(new Action(() => lblPesoBalance.Text = weight + " " + nameUnitaMisura));
-                         balanceGauge.Invoke(new Action(() => balanceGauge.Value = Convert.ToInt32(_value)));
-                         detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " - " + weight + " " + nameUnitaMisura));
-                        
+                        weightStandard = weight;
+                        lblPesoBalance.Invoke(new Action(() => lblPesoBalance.Text = weight + " " + nameUnitaMisura));
+                        balanceGauge.Invoke(new Action(() => balanceGauge.Value = Convert.ToInt32(_value)));
+                        detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " - " + weight + " " + nameUnitaMisura));
+
                     }
                 }
                 else
@@ -433,6 +459,7 @@ namespace BalanceNetFramework
             string name = "";
             string id = "";
             string peso = "";
+
             try
             {
 
@@ -482,8 +509,8 @@ namespace BalanceNetFramework
             bool state = false;
             bool range = true;
             decimal _porcTolerance = 0;
-            decimal _numberRange = 0;        
-            decimal _pesoStandard = 0;        
+            decimal _numberRange = 0;
+            decimal _pesoStandard = 0;
             try
             {
 
@@ -513,24 +540,24 @@ namespace BalanceNetFramework
                         else
                         {
                             Tolerance = 0;
-                        } 
+                        }
 
-                        
+
 
                     }
-                    
-                    if(Tolerance > 0)
+
+                    if (Tolerance > 0)
                     {
                         toleranceMax = PesoStandard + (int)Tolerance;
                         toleranceMin = PesoStandard - (int)Tolerance;
-                  
+
                     }
-                                    
+
                     balanceGauge.MinValue = minValue;
                     balanceGauge.MaxValue = maxValue;
                     balanceGauge.RangeStartValue = minValue;
                     balanceGauge.RangeEndValue = maxValue;
-                    _numberRange = (maxValue  - minValue);
+                    _numberRange = (maxValue - minValue);
                     int i = 51;
                     decimal result;
                     do
@@ -574,31 +601,31 @@ namespace BalanceNetFramework
 
         }
 
-        public bool GetNumberPesateControllo(string idProduct)
+        public async Task<bool> GetNumberPesateControllo(string idProduct)
         {
             bool state = false;
 
             try
             {
 
-                string sql = "SELECT s.NumeroControllo, p.NumeroPesateControllo FROM biltek_bd.schedulercontrollo as s INNER JOIN  biltek_bd.prodotto as p ON s.Id_Prodotto = p.Id WHERE id_prodotto =@idProduct AND DATE_FORMAT(Ora,'%H:%i:%s') <= curtime() order by Ora desc limit 1; ";             
+                string sql = "SELECT s.NumeroControllo, p.NumeroPesateControllo FROM biltek_bd.schedulercontrollo as s INNER JOIN  biltek_bd.prodotto as p ON s.Id_Prodotto = p.Id WHERE id_prodotto =@idProduct AND DATE_FORMAT(Ora,'%H:%i:%s') <= curtime() order by Ora desc limit 1; ";
                 MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
 
                 try
                 {
                     MySqlCommand command = new MySqlCommand(sql, connectionBD);
-                    command.Parameters.AddWithValue("@idProduct", idProduct);                   
+                    command.Parameters.AddWithValue("@idProduct", idProduct);
 
-                    MySqlDataReader reader = command.ExecuteReader();
+                    MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync();
 
                     while (reader.Read())
                     {
                         numeroPesateControllo = Int32.Parse(reader.GetString("NumeroPesateControllo"));
                         numeroControllo = Int32.Parse(reader.GetString("NumeroControllo"));
-                      
-                    } 
-                                
+
+                    }
+
                     state = true;
 
                 }
@@ -623,23 +650,28 @@ namespace BalanceNetFramework
 
             try
             {
-               
+
                 string sqlControllo = "SELECT ifnull(NumeroPesata,0) NumeroPesata FROM biltek_bd.controllopesate WHERE id_prodotto=@idProduct AND DATE_FORMAT(DataOra,'%d:%m:%Y') = DATE_FORMAT(Now(), '%d:%m:%Y') AND Annullato is null AND NumeroControllo=@numberControllo Order by DataOra desc Limit 1; ";
                 MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
 
                 try
                 {
-                    MySqlCommand commandControllo = new MySqlCommand(sqlControllo, connectionBD);                  
+                    MySqlCommand commandControllo = new MySqlCommand(sqlControllo, connectionBD);
                     commandControllo.Parameters.AddWithValue("@idProduct", idProduct);
                     commandControllo.Parameters.AddWithValue("@numberControllo", numeroControllo);
 
-                    MySqlDataReader readerControllo = commandControllo.ExecuteReader();
+                    MySqlDataReader readerControllo = (MySqlDataReader)await commandControllo.ExecuteReaderAsync();
 
                     while (readerControllo.Read())
                     {
                         numeroPesata = Int32.Parse(readerControllo.GetString("NumeroPesata"));
 
+                    }
+
+                    if (readerControllo.HasRows == false)
+                    {
+                        numeroPesata = 0;
                     }
 
                     state = true;
@@ -666,7 +698,7 @@ namespace BalanceNetFramework
 
             if (state)
             {
-                btnPesata.Text = $"Prendere pesata di controllo ({numeroPesata}/{numeroPesateControllo})  Controllo ({numeroControllo})";
+                btnPesata.Text = $"Prendere peso di controllo ({numeroPesata}/{numeroPesateControllo})  Controllo ({numeroControllo})";
             }
             else
             {
@@ -679,7 +711,7 @@ namespace BalanceNetFramework
 
         void cleanRanges(float[] range)
         {
-            for(int i = 0; i < range.Length; i++)
+            for (int i = 0; i < range.Length; i++)
             {
                 range[i] = 0;
             }
@@ -710,7 +742,7 @@ namespace BalanceNetFramework
                 catch (Exception ex)
                 {
                     ManagerBalance.log.Error(ex.Message);
-                    Console.WriteLine(ex.Message);                
+                    Console.WriteLine(ex.Message);
 
                 }
                 finally
@@ -807,85 +839,111 @@ namespace BalanceNetFramework
 
         private void btnMeasurement_Click(object sender, EventArgs e)
         {
-            
+
             GraphicWindow g = new GraphicWindow();
             g.Show();
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;
             decimal _min = toleranceMin;
             decimal _max = toleranceMax;
             decimal pesate = 0;
 
-            if (numeroPesata == numeroPesateControllo)
+            if (String.IsNullOrEmpty(weightStandard))
             {
-                var message = _balance.GetMessagePesare(idProduct,numeroControllo);
-                if (message.Equals("0"))
-                {
-                    lbMessage.Text = "Il prodotto è adatto. Tutte le pesate sono nel margine di tolleranza.";
-                    lbMessage.BackColor = Color.Green;
-                    lbMessage.ForeColor = Color.White;
-                }
-                else
-                {
-                    lbMessage.Text = $"Il prodotto non è adatto. {message} delle pesate sono fuori dal margine di tolleranza.";
-                    lbMessage.BackColor = Color.Red;
-                    lbMessage.ForeColor = Color.White;
-                }
-                lbMessage.Visible = true;
-                btnResetPesare.Visible = true;
+                MessageBox.Show("Non ci sono valori da pesare.");
             }
             else
             {
-                MisurazioneModel _misurazione = new MisurazioneModel();
-                DateTime dataCreazione = DateTime.Now;
-                string dateFormart = dataCreazione.ToString("yy-MM-dd HH:mm:ss");
-                /*_misurazione.Id_Bilancia = Convert.ToInt32(idBalance);
-                _misurazione.Id_Prodotto = Convert.ToInt32(idProduct);
-                _misurazione.Peso = weightStandard;
-                _misurazione.Id_FormulaProdotto = 5;
-                _misurazione.Id_Utente = 1;
-                _misurazione.Active = true;
-                _misurazione.DataCreazione = dateFormart;
-                _balance.InsertMisurazione(_misurazione);*/
 
-                if (decimal.TryParse(weightStandard, out pesate))
+                if (numeroPesata == numeroPesateControllo)
                 {
-
-                }
-
-                ControlloPesateModel _pesate = new ControlloPesateModel();
-                _pesate.Id_Prodotto = Int32.Parse(idProduct);
-                _pesate.NumeroControllo = numeroControllo;
-                _pesate.DataOra = dateFormart;
-                _pesate.Pesata = weightStandard;
-                _pesate.NumeroPesata = numeroPesata + 1;
-                if (pesate > _max || _min > pesate)
-                {
-                    _pesate.Conforme = false;
+                    var message = _balance.GetMessagePesare(idProduct, numeroControllo);
+                    if (message.Equals("0"))
+                    {
+                        lbMessage.Text = "Il peso del prodotto è adecuato. Tutti i pesi sono nel margine di tolleranza.";
+                        lbMessage.BackColor = Color.Green;
+                        lbMessage.ForeColor = Color.White;
+                    }
+                    else
+                    {
+                        lbMessage.Text = $"Il peso del prodotto non è adecuato. {message} dei pesi sono fuori dal margine di tolleranza.";
+                        lbMessage.BackColor = Color.Red;
+                        lbMessage.ForeColor = Color.White;
+                    }
+                    lbMessage.Visible = true;
+                    btnResetPesare.Visible = true;
                 }
                 else
                 {
-                    _pesate.Conforme = true;
-                }
-                // _pesate.Annullato= "";
-                _pesate.Active = true;
-                _balance.InsertControllopesate(_pesate);
-                GetNumberPesateControllo(idProduct);
-                if (numeroPesata == 0)
-                {
-                    repeatPesata.Visible = false;
-                }
-                else
-                {
-                    repeatPesata.Visible = true;
-                }
+                    MisurazioneModel _misurazione = new MisurazioneModel();
+                    DateTime dataCreazione = DateTime.Now;
+                    string dateFormart = dataCreazione.ToString("yy-MM-dd HH:mm:ss");
+                    /*_misurazione.Id_Bilancia = Convert.ToInt32(idBalance);
+                    _misurazione.Id_Prodotto = Convert.ToInt32(idProduct);
+                    _misurazione.Peso = weightStandard;
+                    _misurazione.Id_FormulaProdotto = 5;
+                    _misurazione.Id_Utente = 1;
+                    _misurazione.Active = true;
+                    _misurazione.DataCreazione = dateFormart;
+                    _balance.InsertMisurazione(_misurazione);*/
 
+                    decimal.TryParse(weightStandard, out pesate);
+
+                    ControlloPesateModel _pesate = new ControlloPesateModel();
+                    _pesate.Id_Prodotto = Int32.Parse(idProduct);
+                    _pesate.NumeroControllo = numeroControllo;
+                    _pesate.DataOra = dateFormart;
+                    _pesate.Pesata = weightStandard;
+                    _pesate.NumeroPesata = numeroPesata + 1;
+                    if (pesate > _max || _min > pesate)
+                    {
+                        _pesate.Conforme = false;
+                    }
+                    else
+                    {
+                        _pesate.Conforme = true;
+                    }
+                    // _pesate.Annullato= "";
+                    _pesate.Active = true;
+                    await _balance.InsertControllopesate(_pesate);
+                    await GetNumberPesateControllo(idProduct);
+                    if (numeroPesata == 0)
+                    {
+                        repeatPesata.Visible = false;
+                    }
+                    else
+                    {
+                        repeatPesata.Visible = true;
+                    }
+
+                    if (numeroPesata == numeroPesateControllo)
+                    {
+                        var message =  _balance.GetMessagePesare(idProduct, numeroControllo);
+                        if (message.Equals("0"))
+                        {
+                            lbMessage.Text = "Il peso del prodotto è adecuato. Tutti i pesi sono nel margine di tolleranza.";
+                            lbMessage.BackColor = Color.Green;
+                            lbMessage.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            lbMessage.Text = $"Il peso del prodotto non è adecuato. {message} dei pesi sono fuori dal margine di tolleranza.";
+                            lbMessage.BackColor = Color.Red;
+                            lbMessage.ForeColor = Color.White;
+                        }
+                        lbMessage.Visible = true;
+                        btnResetPesare.Visible = true;
+                    }
+
+                }
             }
 
-           
+            System.Threading.Thread.Sleep(1000);
+            this.Enabled = true;
 
         }
 
@@ -896,32 +954,41 @@ namespace BalanceNetFramework
 
         private void repeatPesata_Click(object sender, EventArgs e)
         {
-
-            if (numeroPesata >= 0)
+            this.Enabled = false;
+            lbMessage.Visible = false;
+            btnResetPesare.Visible = false;
+            if (numeroPesata > 0)
             {
                 repeatPesata.Visible = true;
-                var idControlloPesate = GetIdLatestcontrollopesate(idProduct,numeroControllo);
+                var idControlloPesate = GetIdLatestcontrollopesate(idProduct, numeroControllo);
                 if (_balance.UpdateLastedControlloPesate(idControlloPesate, numeroPesata))
                 {
-                    GetNumberPesateControllo(idProduct);                   
+                    GetNumberPesateControllo(idProduct);
+                    if (numeroPesata == 0)
+                    {
+                        repeatPesata.Visible = false;
+                    }
                 }
             }
             else
             {
                 repeatPesata.Visible = false;
             }
+            System.Threading.Thread.Sleep(1000);
+            this.Enabled = true;
 
         }
 
         private void btnResetPesare_Click(object sender, EventArgs e)
         {
-            if(_balance.ResetControlloPesate(idProduct, numeroControllo))
+            if (_balance.ResetControlloPesate(idProduct, numeroControllo))
             {
                 lbMessage.Visible = false;
                 btnResetPesare.Visible = false;
+                repeatPesata.Visible = false;
                 GetNumberPesateControllo(idProduct);
             }
-            
+
         }
     }
 }
