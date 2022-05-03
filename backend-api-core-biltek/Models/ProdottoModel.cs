@@ -15,7 +15,7 @@
         public int NumeroPesateControllo { get; set; }
         public int NumeroControllo { get; set; }
 
-        public bool Active { get; set; }
+        public bool Attivo { get; set; }
       
     }
 
@@ -33,7 +33,7 @@
         public decimal PesoStandard { get; set; }
         public int NumeroPesateControllo { get; set; }
         public int NumeroControllo { get; set; }
-        public bool Active { get; set; }
+        public bool Attivo { get; set; }
 
         public int total { get; set; }
 

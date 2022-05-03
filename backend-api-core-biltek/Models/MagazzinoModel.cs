@@ -9,7 +9,7 @@ namespace backend_api_core.Models
         public string Lotto { get; set; }
         public DateTime Scadenza { get; set; }
         public decimal QuantitaDiCarico { get; set; }
-        public bool Active { get; set; }
+        public bool Attivo { get; set; }
 
     }
 
@@ -20,7 +20,7 @@ namespace backend_api_core.Models
         public string Lotto { get; set; }
         public DateTime Scadenza { get; set; }
         public decimal QuantitaDiCarico { get; set; }
-        public bool Active { get; set; }
+        public bool Attivo { get; set; }
 
         public int total { get; set; }
     }

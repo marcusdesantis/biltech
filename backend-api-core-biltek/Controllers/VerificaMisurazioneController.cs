@@ -13,13 +13,13 @@ namespace backend_api_core.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ControlloPesateController : ControllerBase
+    public class VerificaMisurazioneController : ControllerBase
     {
-        private readonly IControlloPesate _controlloPesate;
+        private readonly IVerificaMisurazione _verificaMisurazione;
 
-        public ControlloPesateController(IControlloPesate controlloPesate)
+        public VerificaMisurazioneController(IVerificaMisurazione VerificaMisurazione)
         {
-            this._controlloPesate = controlloPesate;
+            this._verificaMisurazione = VerificaMisurazione;
         }
 
         // GET: api/Modello
@@ -27,12 +27,12 @@ namespace backend_api_core.Controllers
         public async Task<ActionResult<IEnumerable<RespuestaCore>>> Get(string value, string parameter, int currentPageNumber, int amountShow)
         {
             RespuestaCore respuesta = new RespuestaCore();
-            IEnumerable<ControlloPesateList> _arrayLista = new ControlloPesateList[] { };
+            IEnumerable<VerificaMisurazioneList> _arrayLista = new VerificaMisurazioneList[] { };
             int elementosTotales = 0;
 
             try
             {
-                _arrayLista = await this._controlloPesate.SearchList(value, parameter, currentPageNumber, amountShow);
+                _arrayLista = await this._verificaMisurazione.SearchList(value, parameter, currentPageNumber, amountShow);
 
                 if (_arrayLista.Count() > 0)
                 {
@@ -64,11 +64,11 @@ namespace backend_api_core.Controllers
         public async Task<ActionResult<RespuestaCore>> Get(int id)
         {
             RespuestaCore respuesta = new RespuestaCore();
-            ControlloPesate datos = new ControlloPesate { };
+            VerificaMisurazione datos = new VerificaMisurazione { };
 
             try
             {
-                datos = await this._controlloPesate.FindById(id);
+                datos = await this._verificaMisurazione.FindById(id);
 
                 if (datos == null)
                 {
@@ -103,7 +103,7 @@ namespace backend_api_core.Controllers
 
         // POST: api/Modello
         [HttpPost]
-        public async Task<ActionResult<object>> Post([FromBody] ControlloPesate data)
+        public async Task<ActionResult<object>> Post([FromBody] VerificaMisurazione data)
         {
             RespuestaCore respuesta = new RespuestaCore();
             RespuestaDB respuestaBD = new RespuestaDB();
@@ -112,7 +112,7 @@ namespace backend_api_core.Controllers
 
                 using (TransactionScope transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    respuestaBD = await this._controlloPesate.Save(data);
+                    respuestaBD = await this._verificaMisurazione.Save(data);
                     if (respuestaBD.status == "error")
                     {
                         return new OkObjectResult(respuestaBD);
@@ -135,7 +135,7 @@ namespace backend_api_core.Controllers
 
         // PUT api/Modello (MODIFICAR)
         [HttpPut]
-        public async Task<ActionResult<object>> Put([FromBody] ControlloPesate data)
+        public async Task<ActionResult<object>> Put([FromBody] VerificaMisurazione data)
         {
             RespuestaCore respuesta = new RespuestaCore();
             RespuestaDB respuestaBD = new RespuestaDB();
@@ -144,7 +144,7 @@ namespace backend_api_core.Controllers
             {
                 using (TransactionScope transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    respuestaBD = await this._controlloPesate.Modify(data);
+                    respuestaBD = await this._verificaMisurazione.Modify(data);
                     if (respuestaBD.status == "error")
                     {
                         return new OkObjectResult(respuestaBD);
@@ -176,7 +176,7 @@ namespace backend_api_core.Controllers
             {
                 using (TransactionScope transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    respuestaBD = await this._controlloPesate.Delete(id);
+                    respuestaBD = await this._verificaMisurazione.Delete(id);
                     if (respuestaBD.status == "error")
                     {
                         return new OkObjectResult(respuestaBD);

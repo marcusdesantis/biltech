@@ -198,7 +198,7 @@
     <Compile Include="Models\ReportModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\MisurazioneList.cs" />
+    <Compile Include="Reports\MeasureList.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Views\ReportWindow.resx">
       <DependentUpon>ReportWindow.cs</DependentUpon>
@@ -219,7 +219,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Reports\MisurazioneReport.rdlc" />
+    <EmbeddedResource Include="Reports\MeasureReport.rdlc" />
     <None Include="BalanceConfig.json" />
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -14,7 +14,7 @@
         public int HandShake { get; set; }
         public string CommandForWeight { get; set; }
         public decimal WeightConversion { get; set; }
-        public bool Active { get; set; }
+        public bool Attivo { get; set; }
       
     }
 
@@ -32,7 +32,7 @@
         public int HandShake { get; set; }
         public string CommandForWeight { get; set; }
         public decimal WeightConversion { get; set; }
-        public bool Active { get; set; }
+        public bool Attivo { get; set; }
 
         public int total { get; set; }
 

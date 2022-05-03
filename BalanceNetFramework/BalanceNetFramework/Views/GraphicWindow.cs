@@ -18,13 +18,13 @@ namespace BalanceNetFramework
         {
             InitializeComponent();
             //this.CenterToScreen();
-            if (GetLastMisurazione())
+            if (GetLastMeasure())
             {
-                graphicMisurazione.Visible = true;
+                graphicMeasure.Visible = true;
             }
             else
             {
-                graphicMisurazione.Visible = false;
+                graphicMeasure.Visible = false;
             }
         }
 
@@ -33,13 +33,13 @@ namespace BalanceNetFramework
 
         }
 
-        public bool GetLastMisurazione()
+        public bool GetLastMeasure()
         {
             bool state = false;
             try
             {
 
-                string sql = "SELECT m.Id, m.Peso, p.Nome FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id ORDER BY m.Id DESC LIMIT 5";
+                string sql = "SELECT m.Id, m.Peso, p.Nome FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id  WHERE m.Attivo=1 AND  p.Attivo=1 ORDER BY m.Id DESC LIMIT 5";
                 MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
 
@@ -50,7 +50,7 @@ namespace BalanceNetFramework
 
                     while (reader.Read())
                     {
-                        graphicMisurazione.Series["Peso"].Points.AddXY(reader["Nome"].ToString().ToUpper(), reader.GetInt32("Peso"));                      
+                        graphicMeasure.Series["Peso"].Points.AddXY(reader["Nome"].ToString().ToUpper(), reader.GetInt32("Peso"));                      
                     }
                  
                     state = true;

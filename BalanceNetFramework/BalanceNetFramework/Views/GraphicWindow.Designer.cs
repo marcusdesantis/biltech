@@ -37,13 +37,13 @@ namespace BalanceNetFramework
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.graphicMisurazione = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.graphicMeasure = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnReport = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.graphicMisurazione)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.graphicMeasure)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -95,31 +95,31 @@ namespace BalanceNetFramework
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.graphicMisurazione);
+            this.panel3.Controls.Add(this.graphicMeasure);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(894, 667);
             this.panel3.TabIndex = 0;
             // 
-            // graphicMisurazione
+            // graphicMeasure
             // 
             chartArea1.Name = "ChartArea1";
-            this.graphicMisurazione.ChartAreas.Add(chartArea1);
-            this.graphicMisurazione.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.graphicMeasure.ChartAreas.Add(chartArea1);
+            this.graphicMeasure.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
-            this.graphicMisurazione.Legends.Add(legend1);
-            this.graphicMisurazione.Location = new System.Drawing.Point(0, 0);
-            this.graphicMisurazione.Margin = new System.Windows.Forms.Padding(0);
-            this.graphicMisurazione.Name = "graphicMisurazione";
-            this.graphicMisurazione.Padding = new System.Windows.Forms.Padding(3);
+            this.graphicMeasure.Legends.Add(legend1);
+            this.graphicMeasure.Location = new System.Drawing.Point(0, 0);
+            this.graphicMeasure.Margin = new System.Windows.Forms.Padding(0);
+            this.graphicMeasure.Name = "graphicMeasure";
+            this.graphicMeasure.Padding = new System.Windows.Forms.Padding(3);
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Peso";
-            this.graphicMisurazione.Series.Add(series1);
-            this.graphicMisurazione.Size = new System.Drawing.Size(894, 667);
-            this.graphicMisurazione.TabIndex = 0;
-            this.graphicMisurazione.Text = "chart1";
+            this.graphicMeasure.Series.Add(series1);
+            this.graphicMeasure.Size = new System.Drawing.Size(894, 667);
+            this.graphicMeasure.TabIndex = 0;
+            this.graphicMeasure.Text = "chart1";
             // 
             // btnReport
             // 
@@ -131,7 +131,7 @@ namespace BalanceNetFramework
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(220, 30);
             this.btnReport.TabIndex = 20;
-            this.btnReport.Text = "Segnala il peso";
+            this.btnReport.Text = "Mostra il peso";
             this.btnReport.UseVisualStyleBackColor = true;
             this.btnReport.Click += new System.EventHandler(this.btnMeasurement_Click);
             // 
@@ -152,7 +152,7 @@ namespace BalanceNetFramework
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.graphicMisurazione)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.graphicMeasure)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -164,7 +164,7 @@ namespace BalanceNetFramework
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart graphicMisurazione;
+        private System.Windows.Forms.DataVisualization.Charting.Chart graphicMeasure;
         private System.Windows.Forms.Button btnReport;
     }
 }

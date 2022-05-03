@@ -13,7 +13,7 @@ namespace BalanceNetFramework.Models
         public DateTime ReportDate { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public List<MisurazioneList> ListMisurazione { get; set; }
+        public List<MeasureList> ListMisurazione { get; set; }
         public List<MisurazioneModel> ReportByDatePeriod { get; set; }
 
         public void CreateReport(DateTime fromDate, DateTime toDate, int? idBalance, int? idProduct)
@@ -25,10 +25,10 @@ namespace BalanceNetFramework.Models
             var getReport = new ManagerBalance();
             var result = getReport.GetReport(fromDate, toDate, idBalance, idProduct);
 
-            ListMisurazione = new List<MisurazioneList>();
+            ListMisurazione = new List<MeasureList>();
             foreach (System.Data.DataRow rows in result.Rows)
             {
-                var misurazioneList = new MisurazioneList()
+                var misurazioneList = new MeasureList()
                 {
                     Id = Convert.ToInt32(rows[0]),
                     Nome = Convert.ToString(rows[1]),

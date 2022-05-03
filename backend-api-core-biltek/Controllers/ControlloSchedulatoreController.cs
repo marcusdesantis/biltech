@@ -13,13 +13,13 @@ namespace backend_api_core.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SchedulerControlloController : ControllerBase
+    public class ControlloSchedulatoreController : ControllerBase
     {
-        private readonly ISchedulerControllo _schedulerControllo;
+        private readonly IControlloSchedulatore _controlloSchedulatore;
 
-        public SchedulerControlloController(ISchedulerControllo schedulerControllo)
+        public ControlloSchedulatoreController(IControlloSchedulatore controlloSchedulatore)
         {
-            this._schedulerControllo = schedulerControllo;
+            this._controlloSchedulatore = controlloSchedulatore;
         }
 
         // GET: api/Modello
@@ -27,12 +27,12 @@ namespace backend_api_core.Controllers
         public async Task<ActionResult<IEnumerable<RespuestaCore>>> Get(string value, string parameter, int currentPageNumber, int amountShow)
         {
             RespuestaCore respuesta = new RespuestaCore();
-            IEnumerable<SchedulerControlloList> _arrayLista = new SchedulerControlloList[] { };
+            IEnumerable<ControlloSchedulatoreList> _arrayLista = new ControlloSchedulatoreList[] { };
             int elementosTotales = 0;
 
             try
             {
-                _arrayLista = await this._schedulerControllo.SearchList(value, parameter, currentPageNumber, amountShow);
+                _arrayLista = await this._controlloSchedulatore.SearchList(value, parameter, currentPageNumber, amountShow);
 
                 if (_arrayLista.Count() > 0)
                 {
@@ -64,11 +64,11 @@ namespace backend_api_core.Controllers
         public async Task<ActionResult<RespuestaCore>> Get(int id)
         {
             RespuestaCore respuesta = new RespuestaCore();
-            SchedulerControllo datos = new SchedulerControllo { };
+            ControlloSchedulatore datos = new ControlloSchedulatore { };
 
             try
             {
-                datos = await this._schedulerControllo.FindById(id);
+                datos = await this._controlloSchedulatore.FindById(id);
 
                 if (datos == null)
                 {
@@ -103,7 +103,7 @@ namespace backend_api_core.Controllers
 
         // POST: api/Modello
         [HttpPost]
-        public async Task<ActionResult<object>> Post([FromBody] SchedulerControllo data)
+        public async Task<ActionResult<object>> Post([FromBody] ControlloSchedulatore data)
         {
             RespuestaCore respuesta = new RespuestaCore();
             RespuestaDB respuestaBD = new RespuestaDB();
@@ -112,7 +112,7 @@ namespace backend_api_core.Controllers
 
                 using (TransactionScope transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    respuestaBD = await this._schedulerControllo.Save(data);
+                    respuestaBD = await this._controlloSchedulatore.Save(data);
                     if (respuestaBD.status == "error")
                     {
                         return new OkObjectResult(respuestaBD);
@@ -135,7 +135,7 @@ namespace backend_api_core.Controllers
 
         // PUT api/Modello (MODIFICAR)
         [HttpPut]
-        public async Task<ActionResult<object>> Put([FromBody] SchedulerControllo data)
+        public async Task<ActionResult<object>> Put([FromBody] ControlloSchedulatore data)
         {
             RespuestaCore respuesta = new RespuestaCore();
             RespuestaDB respuestaBD = new RespuestaDB();
@@ -144,7 +144,7 @@ namespace backend_api_core.Controllers
             {
                 using (TransactionScope transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    respuestaBD = await this._schedulerControllo.Modify(data);
+                    respuestaBD = await this._controlloSchedulatore.Modify(data);
                     if (respuestaBD.status == "error")
                     {
                         return new OkObjectResult(respuestaBD);
@@ -176,7 +176,7 @@ namespace backend_api_core.Controllers
             {
                 using (TransactionScope transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    respuestaBD = await this._schedulerControllo.Delete(id);
+                    respuestaBD = await this._controlloSchedulatore.Delete(id);
                     if (respuestaBD.status == "error")
                     {
                         return new OkObjectResult(respuestaBD);

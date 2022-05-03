@@ -28,11 +28,11 @@ namespace BalanceNetFramework
         {
           
             GetProductDB();
-            cbProductR.SelectedItem = null;
-            cbProductR.SelectedText = "";
+            cbProductReport.SelectedItem = null;
+            cbProductReport.SelectedText = "";
             GetBalanceDB();
-            cbBalanceR.SelectedItem = null;
-            cbBalanceR.SelectedText = "";
+            cbBalanceReport.SelectedItem = null;
+            cbBalanceReport.SelectedText = "";
 
         }
 
@@ -49,20 +49,20 @@ namespace BalanceNetFramework
         private void button2_Click(object sender, EventArgs e)
         {
             this.reportViewer1.LocalReport.DataSources.Clear();
-            var fromDate = datesStart.Value;
+            var fromDate = dateStart.Value;
             var toDate = dateEnd.Value;
 
             var dataStart = fromDate.ToString("yyyy-MM-dd");
             var dataEnd = toDate.ToString("yyyy-MM-dd");
 
-            if (cbBalanceR.SelectedValue == null && cbProductR.SelectedValue == null && checkFilterDate.Checked == false)
+            if (cbBalanceReport.SelectedValue == null && cbProductReport.SelectedValue == null && checkFilterDate.Checked == false)
             {
 
                 MessageBox.Show("Seleziona un filtro.");
 
             }
 
-            if (cbBalanceR.SelectedValue == null && cbProductR.SelectedValue == null && checkFilterDate.Checked)
+            if (cbBalanceReport.SelectedValue == null && cbProductReport.SelectedValue == null && checkFilterDate.Checked)
             {
                 if (fromDate > toDate)
                 {
@@ -84,36 +84,36 @@ namespace BalanceNetFramework
                 }
             }
 
-            if (cbBalanceR.SelectedValue != null && cbProductR.SelectedValue == null && checkFilterDate.Checked == false)
+            if (cbBalanceReport.SelectedValue != null && cbProductReport.SelectedValue == null && checkFilterDate.Checked == false)
             {
                 option = 2;
-                int idBalance = Convert.ToInt32(cbBalanceR.SelectedValue.ToString());
+                int idBalance = Convert.ToInt32(cbBalanceReport.SelectedValue.ToString());
                 GetReport(fromDate, toDate, idBalance, 0);
             }
 
-            if (cbBalanceR.SelectedValue == null && cbProductR.SelectedValue != null && checkFilterDate.Checked == false)
+            if (cbBalanceReport.SelectedValue == null && cbProductReport.SelectedValue != null && checkFilterDate.Checked == false)
             {
                 option = 3;
-                int idProduct = Convert.ToInt32(cbProductR.SelectedValue.ToString());
+                int idProduct = Convert.ToInt32(cbProductReport.SelectedValue.ToString());
                 GetReport(fromDate, toDate, 0, idProduct);
             }
 
-            if (cbBalanceR.SelectedValue != null && cbProductR.SelectedValue != null && checkFilterDate.Checked == false)
+            if (cbBalanceReport.SelectedValue != null && cbProductReport.SelectedValue != null && checkFilterDate.Checked == false)
             {
                 option = 4;
-                int idBalance = Convert.ToInt32(cbBalanceR.SelectedValue.ToString());
-                int idProduct = Convert.ToInt32(cbProductR.SelectedValue.ToString());
+                int idBalance = Convert.ToInt32(cbBalanceReport.SelectedValue.ToString());
+                int idProduct = Convert.ToInt32(cbProductReport.SelectedValue.ToString());
                 GetReport(fromDate, toDate, idBalance, idProduct);
             }
 
-            if (cbBalanceR.SelectedValue != null && cbProductR.SelectedValue == null && checkFilterDate.Checked)
+            if (cbBalanceReport.SelectedValue != null && cbProductReport.SelectedValue == null && checkFilterDate.Checked)
             {
                 if (fromDate > toDate)
                 {
                     if (dataStart.Equals(dataEnd))
                     {
                         option = 5;
-                        int idBalance = Convert.ToInt32(cbBalanceR.SelectedValue.ToString());
+                        int idBalance = Convert.ToInt32(cbBalanceReport.SelectedValue.ToString());
                         GetReport(fromDate, toDate, idBalance, 0);
                     }
                     else
@@ -125,20 +125,20 @@ namespace BalanceNetFramework
                 else
                 {
                     option = 5;
-                    int idBalance = Convert.ToInt32(cbBalanceR.SelectedValue.ToString());
+                    int idBalance = Convert.ToInt32(cbBalanceReport.SelectedValue.ToString());
                     GetReport(fromDate, toDate, idBalance, 0);
                 }
                 
             }
 
-            if (cbBalanceR.SelectedValue == null && cbProductR.SelectedValue != null && checkFilterDate.Checked)
+            if (cbBalanceReport.SelectedValue == null && cbProductReport.SelectedValue != null && checkFilterDate.Checked)
             {
                 if (fromDate > toDate)
                 {
                     if (dataStart.Equals(dataEnd))
                     {
                         option = 6;
-                        int idProduct = Convert.ToInt32(cbProductR.SelectedValue.ToString());
+                        int idProduct = Convert.ToInt32(cbProductReport.SelectedValue.ToString());
                         GetReport(fromDate, toDate, 0, idProduct);
                     }
                     else
@@ -150,21 +150,21 @@ namespace BalanceNetFramework
                 else
                 {
                     option = 6;
-                    int idProduct = Convert.ToInt32(cbProductR.SelectedValue.ToString());
+                    int idProduct = Convert.ToInt32(cbProductReport.SelectedValue.ToString());
                     GetReport(fromDate, toDate, 0, idProduct);
                 }
 
             }
 
-            if (cbBalanceR.SelectedValue != null && cbProductR.SelectedValue != null && checkFilterDate.Checked)
+            if (cbBalanceReport.SelectedValue != null && cbProductReport.SelectedValue != null && checkFilterDate.Checked)
             {
                 if (fromDate > toDate)
                 {
                     if (dataStart.Equals(dataEnd))
                     {
                         option = 7;
-                        int idBalance = Convert.ToInt32(cbBalanceR.SelectedValue.ToString());
-                        int idProduct = Convert.ToInt32(cbProductR.SelectedValue.ToString());
+                        int idBalance = Convert.ToInt32(cbBalanceReport.SelectedValue.ToString());
+                        int idProduct = Convert.ToInt32(cbProductReport.SelectedValue.ToString());
                         GetReport(fromDate, toDate, idBalance, idProduct);
                     }
                     else
@@ -176,8 +176,8 @@ namespace BalanceNetFramework
                 else
                 {
                     option = 7;
-                    int idBalance = Convert.ToInt32(cbBalanceR.SelectedValue.ToString());
-                    int idProduct = Convert.ToInt32(cbProductR.SelectedValue.ToString());
+                    int idBalance = Convert.ToInt32(cbBalanceReport.SelectedValue.ToString());
+                    int idProduct = Convert.ToInt32(cbProductReport.SelectedValue.ToString());
                     GetReport(fromDate, toDate, idBalance, idProduct);
                 }
 
@@ -196,7 +196,7 @@ namespace BalanceNetFramework
             try
             {
 
-                string sql = "SELECT * From prodotto WHERE Active=1";
+                string sql = "SELECT * From prodotto WHERE Attivo=1";
                 MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
 
@@ -212,9 +212,9 @@ namespace BalanceNetFramework
 
                     mysqldt.Fill(dt);
 
-                    cbProductR.Invoke(new Action(() => cbProductR.ValueMember = "Id"));
-                    cbProductR.Invoke(new Action(() => cbProductR.DisplayMember = "Nome"));
-                    cbProductR.Invoke(new Action(() => cbProductR.DataSource = dt));
+                    cbProductReport.Invoke(new Action(() => cbProductReport.ValueMember = "Id"));
+                    cbProductReport.Invoke(new Action(() => cbProductReport.DisplayMember = "Nome"));
+                    cbProductReport.Invoke(new Action(() => cbProductReport.DataSource = dt));
 
                     //idProduct = cbProduct.SelectedValue.ToString();
                   
@@ -250,7 +250,7 @@ namespace BalanceNetFramework
             try
             {
 
-                string sql = "SELECT * From bilancia WHERE Active=1";
+                string sql = "SELECT * From bilancia WHERE Attivo=1";
                 MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
 
@@ -263,9 +263,9 @@ namespace BalanceNetFramework
 
                     mysqldt.Fill(dt);
 
-                    cbBalanceR.Invoke(new Action(() => cbBalanceR.ValueMember = "Id"));
-                    cbBalanceR.Invoke(new Action(() => cbBalanceR.DisplayMember = "Nome"));
-                    cbBalanceR.Invoke(new Action(() => cbBalanceR.DataSource = dt));
+                    cbBalanceReport.Invoke(new Action(() => cbBalanceReport.ValueMember = "Id"));
+                    cbBalanceReport.Invoke(new Action(() => cbBalanceReport.DisplayMember = "Nome"));
+                    cbBalanceReport.Invoke(new Action(() => cbBalanceReport.DataSource = dt));
 
                     state = true;
 

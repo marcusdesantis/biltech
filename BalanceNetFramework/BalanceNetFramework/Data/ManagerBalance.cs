@@ -20,7 +20,7 @@ namespace BalanceNetFramework.Data
         public static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         List<BalanceModel> _balanceList = new List<BalanceModel>();
-        
+
         List<ProdottoModel> _productList;
         BalanceModel _balanceSelected = null;
 
@@ -31,7 +31,6 @@ namespace BalanceNetFramework.Data
 
         BalanceResultModel _balanceResultModel = new BalanceResultModel();
         MisurazioneModel _misurazione = new MisurazioneModel();
-
 
         public BalanceResultModel BalanceResult
         {
@@ -216,7 +215,7 @@ namespace BalanceNetFramework.Data
         }
 
 
-        public void loadDataConfigurationBalance(BalanceModel balanceModel)
+        public void LoadDataConfigurationBalance(BalanceModel balanceModel)
         {
             try
             {
@@ -263,7 +262,7 @@ namespace BalanceNetFramework.Data
             if (!string.IsNullOrEmpty(dataValue) && !dataValue.Equals("\n"))
             {
 
-               
+
                 string idProdotto = Convert.ToString(MainWindow._instance.GetIdProduct());
 
                 if (!idProdotto.Equals("") && !idProdotto.Equals("0"))
@@ -288,7 +287,7 @@ namespace BalanceNetFramework.Data
                         _misurazione.Id_Prodotto = Int32.Parse(idProdotto);
                         _misurazione.Peso = netWeight[0];
                         _misurazione.Id_FormulaProdotto = 5;
-                        _misurazione.Active = true;
+                        _misurazione.Attivo = true;
                         _misurazione.DataCreazione = dateFormart;*/
                         String[] weight = GetDataBalance(dataValue);
                         MainWindow._instance.SetWeight(idProdotto, weight[0], weight[1]);
@@ -297,22 +296,19 @@ namespace BalanceNetFramework.Data
                     {
                         ManagerBalance.log.Error(ex.Message);
                         Console.WriteLine("Error: ", ex.Message);
-                        /*System.IO.StreamWriter sr = new System.IO.StreamWriter("error.log", true);
-                        sr.WriteLine(ex.Message);*/
+                    }
 
-                    }                   
-
-                        /*if (InsertMisurazione(_misurazione))
-                            {
-
-                            Console.WriteLine("Name Bilancia: " + name);
-                            Console.WriteLine("Net Weight: " + netWeight[0]);
-
-                        }
-                        else
+                    /*if (InsertMisurazione(_misurazione))
                         {
-                            Console.WriteLine("Error inserting");
-                        }*/
+
+                        Console.WriteLine("Name Bilancia: " + name);
+                        Console.WriteLine("Net Weight: " + netWeight[0]);
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error inserting");
+                    }*/
 
                 }
                 else
@@ -339,12 +335,12 @@ namespace BalanceNetFramework.Data
             {
                 if (_balanceList.Count > 0)
                 {
-   
+
                     BalanceModel _balance = _balanceList.Where(x => x.Id.Equals(idBalance)).FirstOrDefault();
                     if (_balance != null)
                     {
                         _balanceSelected = _balance;
-                        loadDataConfigurationBalance(_balanceSelected);
+                        LoadDataConfigurationBalance(_balanceSelected);
                         retVal = true;
                     }
                     else
@@ -364,14 +360,14 @@ namespace BalanceNetFramework.Data
             try
             {
 
-                string sql = "SELECT b.Id, b.Nome, b.Codice, b.PortCOM, b.BaudRate, b.DataBits, b.Parity, b.StopBit, b.HandShake, b.CommandForWeight, b.WeightConversion, m.Id as IdModello , m.Nome as NomeModello FROM bilancia as b INNER JOIN modello as m ON b.Id_Modello = m.Id";
+                string sql = "SELECT b.Id, b.Nome, b.Codice, b.PortCOM, b.BaudRate, b.DataBits, b.Parity, b.StopBit, b.HandShake, b.CommandForWeight, b.WeightConversion, m.Id as IdModello , m.Nome as NomeModello FROM bilancia as b INNER JOIN modello as m ON b.Id_Modello = m.Id WHERE b.Attivo=1 AND m.Attivo=1";
                 MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
 
                 try
                 {
                     MySqlCommand command = new MySqlCommand(sql, connectionBD);
-                   
+
                     MySqlDataReader reader = command.ExecuteReader();
 
                     while (reader.Read())
@@ -390,7 +386,7 @@ namespace BalanceNetFramework.Data
                         b.WeightConversion = Decimal.Parse(reader.GetString("WeightConversion"));
                         b.IdModello = Int32.Parse(reader.GetString("IdModello"));
                         b.NomeModello = reader.GetString("NomeModello");
-                        _balanceList.Add(b);                      
+                        _balanceList.Add(b);
                     }
 
                     state = true;
@@ -417,13 +413,13 @@ namespace BalanceNetFramework.Data
 
             return state;
         }
-        public bool InsertMisurazione(MisurazioneModel misurazione)
+        public bool InsertMeasure(MisurazioneModel measure)
         {
             bool state = false;
             try
             {
 
-                string sql = "INSERT INTO misurazione (Id_Bilancia, Id_Prodotto, Peso, Id_FormulaProdotto, Id_Utente, Active, DataCreazione) VALUES (@idBilancia,@idProdotto,@peso,@idFormulaProdotto,@idUtente,@active,@date)";
+                string sql = "INSERT INTO misurazione (Id_Bilancia, Id_Prodotto, Peso, Id_FormulaProdotto, Id_Utente, Attivo, DataCreazione) VALUES (@idBilancia,@idProdotto,@peso,@idFormulaProdotto,@idUtente,@active,@date)";
 
                 MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
@@ -431,13 +427,13 @@ namespace BalanceNetFramework.Data
                 try
                 {
                     MySqlCommand command = new MySqlCommand(sql, connectionBD);
-                    command.Parameters.AddWithValue("@idBilancia", misurazione.Id_Bilancia);
-                    command.Parameters.AddWithValue("@idProdotto", misurazione.Id_Prodotto);
-                    command.Parameters.AddWithValue("@peso", misurazione.Peso);
-                    command.Parameters.AddWithValue("@idFormulaProdotto", misurazione.Id_FormulaProdotto);
-                    command.Parameters.AddWithValue("@idUtente", misurazione.Id_Utente);
-                    command.Parameters.AddWithValue("@active", misurazione.Active);
-                    command.Parameters.AddWithValue("@date", misurazione.DataCreazione);
+                    command.Parameters.AddWithValue("@idBilancia", measure.Id_Bilancia);
+                    command.Parameters.AddWithValue("@idProdotto", measure.Id_Prodotto);
+                    command.Parameters.AddWithValue("@peso", measure.Peso);
+                    command.Parameters.AddWithValue("@idFormulaProdotto", measure.Id_FormulaProdotto);
+                    command.Parameters.AddWithValue("@idUtente", measure.Id_Utente);
+                    command.Parameters.AddWithValue("@active", measure.Attivo);
+                    command.Parameters.AddWithValue("@date", measure.DataCreazione);
 
                     command.ExecuteNonQuery();
                     Console.WriteLine("Insert Success");
@@ -469,13 +465,13 @@ namespace BalanceNetFramework.Data
 
         }
 
-        public async Task<bool> InsertControllopesate(ControlloPesateModel controlPesate)
+        public async Task<bool> InsertControlWeight(ControlloPesateModel controlWeight)
         {
             bool state = false;
             try
             {
 
-                string sql = "INSERT INTO controllopesate (Id_Prodotto, NumeroControllo, DataOra, Pesata, NumeroPesata, Conforme, Annullato, Active) VALUES (@Id_Prodotto, @NumeroControllo, @DataOra, @Pesata, @NumeroPesata, @Conforme, @Annullato, @Active)";
+                string sql = "INSERT INTO controllopeso (Id_Prodotto, NumeroControllo, DataOra, Pesata, NumeroPesata, Adatto, Annullato, Attivo) VALUES (@Id_Prodotto, @NumeroControllo, @DataOra, @Pesata, @NumeroPesata, @Adatto, @Annullato, @Attivo)";
 
                 MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
@@ -483,14 +479,14 @@ namespace BalanceNetFramework.Data
                 try
                 {
                     MySqlCommand command = new MySqlCommand(sql, connectionBD);
-                    command.Parameters.AddWithValue("@Id_Prodotto", controlPesate.Id_Prodotto);
-                    command.Parameters.AddWithValue("@NumeroControllo", controlPesate.NumeroControllo);
-                    command.Parameters.AddWithValue("@DataOra", controlPesate.DataOra);
-                    command.Parameters.AddWithValue("@Pesata", controlPesate.Pesata);
-                    command.Parameters.AddWithValue("@NumeroPesata", controlPesate.NumeroPesata);
-                    command.Parameters.AddWithValue("@Conforme", controlPesate.Conforme);
-                    command.Parameters.AddWithValue("@Annullato", controlPesate.Annullato);
-                    command.Parameters.AddWithValue("@Active", controlPesate.Active);
+                    command.Parameters.AddWithValue("@Id_Prodotto", controlWeight.Id_Prodotto);
+                    command.Parameters.AddWithValue("@NumeroControllo", controlWeight.NumeroControllo);
+                    command.Parameters.AddWithValue("@DataOra", controlWeight.DataOra);
+                    command.Parameters.AddWithValue("@Pesata", controlWeight.Pesata);
+                    command.Parameters.AddWithValue("@NumeroPesata", controlWeight.NumeroPesata);
+                    command.Parameters.AddWithValue("@Adatto", controlWeight.Adatto);
+                    command.Parameters.AddWithValue("@Annullato", controlWeight.Annullato);
+                    command.Parameters.AddWithValue("@Attivo", controlWeight.Attivo);
 
                     await command.ExecuteNonQueryAsync();
                     Console.WriteLine("Insert Success");
@@ -522,17 +518,17 @@ namespace BalanceNetFramework.Data
 
         }
 
-        public bool UpdateLastedControlloPesate(string id, int numeroPesate)
+        public bool UpdateLastedControlWeight(string id, int numberWeight)
         {
             bool state = false;
             try
             {
 
-                string sql = "update biltek_bd.controllopesate set Annullato=@annullato, NumeroPesata=@numeroPesata where Id=@id";
+                string sql = "update biltek_bd.controllopeso set Annullato=@annullato, NumeroPesata=@numberWeight, Attivo=@active where Id=@id";
 
                 MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
-                
+
                 DateTime dataCreazione = DateTime.Now;
                 string dateFormart = dataCreazione.ToString("yy-MM-dd HH:mm:ss");
 
@@ -540,8 +536,9 @@ namespace BalanceNetFramework.Data
                 {
                     MySqlCommand command = new MySqlCommand(sql, connectionBD);
                     command.Parameters.AddWithValue("@id", id);
-                    command.Parameters.AddWithValue("@Annullato", dateFormart);                
-                    command.Parameters.AddWithValue("@numeroPesata", numeroPesate-1);                
+                    command.Parameters.AddWithValue("@Annullato", dateFormart);
+                    command.Parameters.AddWithValue("@numberWeight", numberWeight - 1);
+                    command.Parameters.AddWithValue("@active", 0);
 
                     command.ExecuteNonQuery();
                     Console.WriteLine("update Success");
@@ -573,13 +570,13 @@ namespace BalanceNetFramework.Data
 
         }
 
-        public bool ResetControlloPesate(string id, int numeroControllo)
+        public bool ResetControlWeight(string id, int numberControl)
         {
             bool state = false;
             try
             {
 
-                string sql = "update biltek_bd.controllopesate set Annullato=@annulla WHERE Id_Prodotto=@idProduct and NumeroControllo=@numeroControllo and DATE_FORMAT(DataOra,'%d:%m:%Y') = DATE_FORMAT(Now(), '%d:%m:%Y') and Annullato is null; ";
+                string sql = "update biltek_bd.controllopeso set Annullato=@annulla, Attivo=@active WHERE Id_Prodotto=@idProduct and NumeroControllo=@numberControl and DATE_FORMAT(DataOra,'%d:%m:%Y') = DATE_FORMAT(Now(), '%d:%m:%Y') and Annullato is null; ";
 
                 MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
@@ -591,8 +588,9 @@ namespace BalanceNetFramework.Data
                 {
                     MySqlCommand command = new MySqlCommand(sql, connectionBD);
                     command.Parameters.AddWithValue("@annulla", dateFormart);
+                    command.Parameters.AddWithValue("@active", 0);
                     command.Parameters.AddWithValue("@idProduct", id);
-                    command.Parameters.AddWithValue("@numeroControllo", numeroControllo);
+                    command.Parameters.AddWithValue("@numberControl", numberControl);
 
                     command.ExecuteNonQuery();
                     Console.WriteLine("update Success");
@@ -624,14 +622,14 @@ namespace BalanceNetFramework.Data
 
         }
 
-    
-        public string GetMessagePesare(string idProduct, int numeroControllo)
+
+        public string GetMessageWeight(string idProduct, int numberControl)
         {
             string message = "";
             try
             {
 
-                string sql = "SELECT count(* ) noConforme FROM biltek_bd.controllopesate where id_prodotto =@idProduct and Annullato is null and conforme = 0 and NumeroControllo=@numeroControllo and DATE_FORMAT(DataOra,'%d:%m:%Y') = DATE_FORMAT(Now(), '%d:%m:%Y'); ";
+                string sql = "SELECT count(* ) nonAdatto FROM biltek_bd.controllopeso WHERE Attivo=1 AND id_prodotto =@idProduct and Annullato is null and Adatto = 0 and NumeroControllo=@numberControl and DATE_FORMAT(DataOra,'%d:%m:%Y') = DATE_FORMAT(Now(), '%d:%m:%Y'); ";
 
                 MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
@@ -640,13 +638,13 @@ namespace BalanceNetFramework.Data
                 {
                     MySqlCommand command = new MySqlCommand(sql, connectionBD);
                     command.Parameters.AddWithValue("@idProduct", idProduct);
-                    command.Parameters.AddWithValue("@numeroControllo", numeroControllo);
+                    command.Parameters.AddWithValue("@numberControl", numberControl);
 
-                    MySqlDataReader reader =  command.ExecuteReader();
+                    MySqlDataReader reader = command.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        message = reader.GetString("noConforme");
+                        message = reader.GetString("nonAdatto");
                     }
 
                 }
@@ -672,20 +670,20 @@ namespace BalanceNetFramework.Data
 
         }
 
-        public static string GetIdProdotto(string nome)
+        public static string GetIdProdotto(string name)
         {
             string id = "0";
             try
             {
 
-                string sql = "SELECT Id From prodotto WHERE Active=1 AND Nome=@parameter";
+                string sql = "SELECT Id From prodotto WHERE Attivo=1 AND Nome=@name";
                 MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
 
                 try
                 {
                     MySqlCommand command = new MySqlCommand(sql, connectionBD);
-                    command.Parameters.AddWithValue("@parameter", nome);
+                    command.Parameters.AddWithValue("@name", name);
                     MySqlDataReader reader = command.ExecuteReader();
 
 
@@ -721,8 +719,8 @@ namespace BalanceNetFramework.Data
         public DataTable GetReport(DateTime fromDate, DateTime toDate, int? idBalance, int? idProduct)
         {
 
-           
-            MySqlConnection connectionBD = ConnectionDB.connection();          
+
+            MySqlConnection connectionBD = ConnectionDB.connection();
             var table = new DataTable();
 
             try
@@ -733,7 +731,7 @@ namespace BalanceNetFramework.Data
                 switch (option)
                 {
                     case 1:
-                        string sql = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.DataCreazione BETWEEN @fromDate AND DATE_ADD(@toDate, INTERVAL 1 DAY)";
+                        string sql = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE p.Attivo=1 AND m.Attivo=1 AND m.DataCreazione BETWEEN @fromDate AND DATE_ADD(@toDate, INTERVAL 1 DAY)";
                         MySqlCommand command = new MySqlCommand(sql, connectionBD);
                         command.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd"));
                         command.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd"));
@@ -743,7 +741,7 @@ namespace BalanceNetFramework.Data
                         break;
 
                     case 2:
-                        string sql1 = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Bilancia=@idBilancia";
+                        string sql1 = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Bilancia=@idBilancia AND p.Attivo=1 AND m.Attivo=1";
                         MySqlCommand command1 = new MySqlCommand(sql1, connectionBD);
                         command1.Parameters.AddWithValue("@idBilancia", idBalance);
                         var reader1 = command1.ExecuteReader();
@@ -752,7 +750,7 @@ namespace BalanceNetFramework.Data
                         break;
 
                     case 3:
-                        string sql2 = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Prodotto=@idProdotto";
+                        string sql2 = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Prodotto=@idProdotto AND p.Attivo=1 AND m.Attivo=1";
                         MySqlCommand command2 = new MySqlCommand(sql2, connectionBD);
                         command2.Parameters.AddWithValue("@idProdotto", idProduct);
                         var reader2 = command2.ExecuteReader();
@@ -761,7 +759,7 @@ namespace BalanceNetFramework.Data
                         break;
 
                     case 4:
-                        string sql3 = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Bilancia=@idBilancia AND m.Id_Prodotto=@idProdotto";
+                        string sql3 = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Bilancia=@idBilancia AND m.Id_Prodotto=@idProdotto AND p.Attivo=1 AND m.Attivo=1";
                         MySqlCommand command3 = new MySqlCommand(sql3, connectionBD);
                         command3.Parameters.AddWithValue("@idBilancia", idBalance);
                         command3.Parameters.AddWithValue("@idProdotto", idProduct);
@@ -771,7 +769,7 @@ namespace BalanceNetFramework.Data
                         break;
 
                     case 5:
-                        string sql4 = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Bilancia=@idBilancia AND m.DataCreazione BETWEEN @fromDate AND DATE_ADD(@toDate, INTERVAL 1 DAY)";
+                        string sql4 = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Bilancia=@idBilancia AND m.DataCreazione BETWEEN @fromDate AND DATE_ADD(@toDate, INTERVAL 1 DAY) AND p.Attivo=1 AND m.Attivo=1";
                         MySqlCommand command4 = new MySqlCommand(sql4, connectionBD);
                         command4.Parameters.AddWithValue("@idBilancia", idBalance);
                         command4.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd"));
@@ -782,7 +780,7 @@ namespace BalanceNetFramework.Data
                         break;
 
                     case 6:
-                        string sql5 = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Prodotto=@idProdotto AND m.DataCreazione BETWEEN @fromDate AND DATE_ADD(@toDate, INTERVAL 1 DAY)";
+                        string sql5 = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Prodotto=@idProdotto AND m.DataCreazione BETWEEN @fromDate AND DATE_ADD(@toDate, INTERVAL 1 DAY) AND p.Attivo=1 AND m.Attivo=1";
                         MySqlCommand command5 = new MySqlCommand(sql5, connectionBD);
                         command5.Parameters.AddWithValue("@idProdotto", idProduct);
                         command5.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd"));
@@ -793,7 +791,7 @@ namespace BalanceNetFramework.Data
                         break;
 
                     case 7:
-                        string sql6 = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Bilancia=@idBilancia AND m.Id_Prodotto=@idProdotto AND m.DataCreazione BETWEEN @fromDate AND DATE_ADD(@toDate, INTERVAL 1 DAY)";
+                        string sql6 = "SELECT m.Id,p.Nome, m.Peso, m.DataCreazione FROM misurazione as m INNER JOIN prodotto as p ON m.Id_Prodotto = p.Id WHERE m.Id_Bilancia=@idBilancia AND m.Id_Prodotto=@idProdotto AND m.DataCreazione BETWEEN @fromDate AND DATE_ADD(@toDate, INTERVAL 1 DAY) AND p.Attivo=1 AND m.Attivo=1";
                         MySqlCommand command6 = new MySqlCommand(sql6, connectionBD);
                         command6.Parameters.AddWithValue("@idBilancia", idBalance);
                         command6.Parameters.AddWithValue("@idProdotto", idProduct);
@@ -868,13 +866,13 @@ namespace BalanceNetFramework.Data
                     name = data[0].Replace(":", ": ");
                     name = name.Replace("NomeBilancia:", "");
                 }
-                
+
             }
             catch (Exception ex)
             {
                 ManagerBalance.log.Error(ex.Message);
 
-            }           
+            }
             return name;
         }
 
@@ -929,7 +927,7 @@ namespace BalanceNetFramework.Data
             catch (Exception ex)
             {
                 ManagerBalance.log.Error(ex.Message);
-                Console.WriteLine("Error: ", ex.Message);              
+                Console.WriteLine("Error: ", ex.Message);
             }
             return array;
         }

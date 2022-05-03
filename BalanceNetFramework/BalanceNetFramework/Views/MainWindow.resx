@@ -117,208 +117,106 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;standardPeso.Name" xml:space="preserve">
-    <value>standardPeso</value>
-  </data>
-  <data name="&gt;&gt;standardPeso.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;standardPeso.Parent" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;standardPeso.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;repeatPesata.Name" xml:space="preserve">
-    <value>repeatPesata</value>
-  </data>
-  <data name="&gt;&gt;repeatPesata.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;repeatPesata.Parent" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;repeatPesata.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;btnResetPesare.Name" xml:space="preserve">
-    <value>btnResetPesare</value>
-  </data>
-  <data name="&gt;&gt;btnResetPesare.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnResetPesare.Parent" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;btnResetPesare.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lbMessage.Name" xml:space="preserve">
-    <value>lbMessage</value>
-  </data>
-  <data name="&gt;&gt;lbMessage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbMessage.Parent" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;lbMessage.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;btnPesata.Name" xml:space="preserve">
-    <value>btnPesata</value>
-  </data>
-  <data name="&gt;&gt;btnPesata.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnPesata.Parent" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;btnPesata.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;lblAlerta.Name" xml:space="preserve">
-    <value>lblAlerta</value>
-  </data>
-  <data name="&gt;&gt;lblAlerta.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblAlerta.Parent" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;lblAlerta.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;detailProduct.Name" xml:space="preserve">
-    <value>detailProduct</value>
-  </data>
-  <data name="&gt;&gt;detailProduct.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;detailProduct.Parent" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;detailProduct.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;lblPesoBalance.Name" xml:space="preserve">
-    <value>lblPesoBalance</value>
-  </data>
-  <data name="&gt;&gt;lblPesoBalance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblPesoBalance.Parent" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;lblPesoBalance.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;balanceGauge.Name" xml:space="preserve">
-    <value>balanceGauge</value>
-  </data>
-  <data name="&gt;&gt;balanceGauge.Type" xml:space="preserve">
-    <value>AGaugeApp.AGauge, BalanceNetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;balanceGauge.Parent" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;balanceGauge.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="panelBalance.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lbStandardWeight.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="panelBalance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>326, 3</value>
+  <data name="lbStandardWeight.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt, style=Bold</value>
   </data>
-  <data name="panelBalance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>864, 634</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="panelBalance.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="panelBalance.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;panelBalance.Name" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;panelBalance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelBalance.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;panelBalance.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="repeatPesata.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
-  </data>
-  <data name="repeatPesata.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lbStandardWeight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="repeatPesata.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lbStandardWeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-3, 4</value>
+  </data>
+  <data name="lbStandardWeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 17</value>
+  </data>
+  <data name="lbStandardWeight.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="lbStandardWeight.Text" xml:space="preserve">
+    <value>Peso Standard</value>
+  </data>
+  <data name="&gt;&gt;lbStandardWeight.Name" xml:space="preserve">
+    <value>lbStandardWeight</value>
+  </data>
+  <data name="&gt;&gt;lbStandardWeight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbStandardWeight.Parent" xml:space="preserve">
+    <value>panelBalance</value>
+  </data>
+  <data name="&gt;&gt;lbStandardWeight.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="repeatWeight.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="repeatWeight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="repeatWeight.Location" type="System.Drawing.Point, System.Drawing">
     <value>541, 97</value>
   </data>
-  <data name="repeatPesata.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="repeatWeight.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 33</value>
   </data>
-  <data name="repeatPesata.TabIndex" type="System.Int32, mscorlib">
+  <data name="repeatWeight.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
   </data>
-  <data name="repeatPesata.Text" xml:space="preserve">
+  <data name="repeatWeight.Text" xml:space="preserve">
     <value>Ripettere ultima pesata</value>
   </data>
-  <data name="repeatPesata.Visible" type="System.Boolean, mscorlib">
+  <data name="repeatWeight.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;repeatPesata.Name" xml:space="preserve">
-    <value>repeatPesata</value>
+  <data name="&gt;&gt;repeatWeight.Name" xml:space="preserve">
+    <value>repeatWeight</value>
   </data>
-  <data name="&gt;&gt;repeatPesata.Type" xml:space="preserve">
+  <data name="&gt;&gt;repeatWeight.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;repeatPesata.Parent" xml:space="preserve">
+  <data name="&gt;&gt;repeatWeight.Parent" xml:space="preserve">
     <value>panelBalance</value>
   </data>
-  <data name="&gt;&gt;repeatPesata.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;repeatWeight.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="btnResetPesare.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="btnResetWeight.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
-  <data name="btnResetPesare.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="btnResetWeight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="btnResetPesare.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="btnResetWeight.Location" type="System.Drawing.Point, System.Drawing">
     <value>589, 210</value>
   </data>
-  <data name="btnResetPesare.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnResetWeight.Size" type="System.Drawing.Size, System.Drawing">
     <value>136, 33</value>
   </data>
-  <data name="btnResetPesare.TabIndex" type="System.Int32, mscorlib">
+  <data name="btnResetWeight.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
   </data>
-  <data name="btnResetPesare.Text" xml:space="preserve">
+  <data name="btnResetWeight.Text" xml:space="preserve">
     <value>Ripettere pesate</value>
   </data>
-  <data name="btnResetPesare.Visible" type="System.Boolean, mscorlib">
+  <data name="btnResetWeight.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;btnResetPesare.Name" xml:space="preserve">
-    <value>btnResetPesare</value>
+  <data name="&gt;&gt;btnResetWeight.Name" xml:space="preserve">
+    <value>btnResetWeight</value>
   </data>
-  <data name="&gt;&gt;btnResetPesare.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnResetWeight.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnResetPesare.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnResetWeight.Parent" xml:space="preserve">
     <value>panelBalance</value>
   </data>
-  <data name="&gt;&gt;btnResetPesare.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnResetWeight.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="lbMessage.Font" type="System.Drawing.Font, System.Drawing">
@@ -357,64 +255,64 @@
   <data name="&gt;&gt;lbMessage.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="btnPesata.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="btnWeight.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
-  <data name="btnPesata.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="btnWeight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="btnPesata.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="btnWeight.Location" type="System.Drawing.Point, System.Drawing">
     <value>541, 26</value>
   </data>
-  <data name="btnPesata.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnWeight.Size" type="System.Drawing.Size, System.Drawing">
     <value>314, 84</value>
   </data>
-  <data name="btnPesata.TabIndex" type="System.Int32, mscorlib">
+  <data name="btnWeight.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
   </data>
-  <data name="btnPesata.Text" xml:space="preserve">
+  <data name="btnWeight.Text" xml:space="preserve">
     <value>Prendere peso di controllo (0/0)  Controllo (0)</value>
   </data>
-  <data name="&gt;&gt;btnPesata.Name" xml:space="preserve">
-    <value>btnPesata</value>
+  <data name="&gt;&gt;btnWeight.Name" xml:space="preserve">
+    <value>btnWeight</value>
   </data>
-  <data name="&gt;&gt;btnPesata.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnWeight.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnPesata.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnWeight.Parent" xml:space="preserve">
     <value>panelBalance</value>
   </data>
-  <data name="&gt;&gt;btnPesata.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnWeight.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="lblAlerta.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lbAlert.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
-  <data name="lblAlerta.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lbAlert.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="lblAlerta.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lbAlert.Location" type="System.Drawing.Point, System.Drawing">
     <value>45, 564</value>
   </data>
-  <data name="lblAlerta.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lbAlert.Size" type="System.Drawing.Size, System.Drawing">
     <value>611, 24</value>
   </data>
-  <data name="lblAlerta.TabIndex" type="System.Int32, mscorlib">
+  <data name="lbAlert.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
   </data>
-  <data name="lblAlerta.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="lbAlert.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="&gt;&gt;lblAlerta.Name" xml:space="preserve">
-    <value>lblAlerta</value>
+  <data name="&gt;&gt;lbAlert.Name" xml:space="preserve">
+    <value>lbAlert</value>
   </data>
-  <data name="&gt;&gt;lblAlerta.Type" xml:space="preserve">
+  <data name="&gt;&gt;lbAlert.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lblAlerta.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbAlert.Parent" xml:space="preserve">
     <value>panelBalance</value>
   </data>
-  <data name="&gt;&gt;lblAlerta.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lbAlert.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="detailProduct.Font" type="System.Drawing.Font, System.Drawing">
@@ -447,38 +345,95 @@
   <data name="&gt;&gt;detailProduct.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="lblPesoBalance.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lbWeightBalance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
-  <data name="lblPesoBalance.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lbWeightBalance.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="lblPesoBalance.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lbWeightBalance.Location" type="System.Drawing.Point, System.Drawing">
     <value>160, 498</value>
   </data>
-  <data name="lblPesoBalance.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lbWeightBalance.Size" type="System.Drawing.Size, System.Drawing">
     <value>263, 26</value>
   </data>
-  <data name="lblPesoBalance.TabIndex" type="System.Int32, mscorlib">
+  <data name="lbWeightBalance.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="lblPesoBalance.Text" xml:space="preserve">
+  <data name="lbWeightBalance.Text" xml:space="preserve">
     <value>0.00</value>
   </data>
-  <data name="lblPesoBalance.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="lbWeightBalance.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="&gt;&gt;lblPesoBalance.Name" xml:space="preserve">
-    <value>lblPesoBalance</value>
+  <data name="&gt;&gt;lbWeightBalance.Name" xml:space="preserve">
+    <value>lbWeightBalance</value>
   </data>
-  <data name="&gt;&gt;lblPesoBalance.Type" xml:space="preserve">
+  <data name="&gt;&gt;lbWeightBalance.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lblPesoBalance.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbWeightBalance.Parent" xml:space="preserve">
     <value>panelBalance</value>
   </data>
-  <data name="&gt;&gt;lblPesoBalance.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lbWeightBalance.ZOrder" xml:space="preserve">
     <value>7</value>
+  </data>
+  <data name="balanceGauge.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="balanceGauge.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="balanceGauge.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="balanceGauge.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="balanceGauge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>867, 540</value>
+  </data>
+  <data name="balanceGauge.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;balanceGauge.Name" xml:space="preserve">
+    <value>balanceGauge</value>
+  </data>
+  <data name="&gt;&gt;balanceGauge.Type" xml:space="preserve">
+    <value>AGaugeApp.AGauge, BalanceNetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;balanceGauge.Parent" xml:space="preserve">
+    <value>panelBalance</value>
+  </data>
+  <data name="&gt;&gt;balanceGauge.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="panelBalance.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panelBalance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>326, 3</value>
+  </data>
+  <data name="panelBalance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>864, 632</value>
+  </data>
+  <data name="panelBalance.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="panelBalance.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;panelBalance.Name" xml:space="preserve">
+    <value>panelBalance</value>
+  </data>
+  <data name="&gt;&gt;panelBalance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelBalance.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;panelBalance.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="txtErrorMessage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -604,7 +559,7 @@
     <value>13, 3, 3, 3</value>
   </data>
   <data name="panelProduct.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 634</value>
+    <value>307, 632</value>
   </data>
   <data name="panelProduct.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -918,16 +873,16 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;lblModello.Name" xml:space="preserve">
-    <value>lblModello</value>
+  <data name="&gt;&gt;lblModel.Name" xml:space="preserve">
+    <value>lblModel</value>
   </data>
-  <data name="&gt;&gt;lblModello.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblModel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lblModello.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblModel.Parent" xml:space="preserve">
     <value>panelConnectionInformation</value>
   </data>
-  <data name="&gt;&gt;lblModello.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblModel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;label19.Name" xml:space="preserve">
@@ -1174,10 +1129,10 @@
     <value>Bottom</value>
   </data>
   <data name="panelConnectionInformation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 763</value>
+    <value>0, 761</value>
   </data>
   <data name="panelConnectionInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1193, 8</value>
+    <value>1193, 10</value>
   </data>
   <data name="panelConnectionInformation.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1197,34 +1152,34 @@
   <data name="&gt;&gt;panelConnectionInformation.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="lblModello.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblModel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lblModello.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblModel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
-  <data name="lblModello.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblModel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="lblModello.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblModel.Location" type="System.Drawing.Point, System.Drawing">
     <value>319, 117</value>
   </data>
-  <data name="lblModello.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblModel.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 17</value>
   </data>
-  <data name="lblModello.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblModel.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
   </data>
-  <data name="&gt;&gt;lblModello.Name" xml:space="preserve">
-    <value>lblModello</value>
+  <data name="&gt;&gt;lblModel.Name" xml:space="preserve">
+    <value>lblModel</value>
   </data>
-  <data name="&gt;&gt;lblModello.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblModel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lblModello.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblModel.Parent" xml:space="preserve">
     <value>panelConnectionInformation</value>
   </data>
-  <data name="&gt;&gt;lblModello.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblModel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="label19.AutoSize" type="System.Boolean, mscorlib">
@@ -1960,7 +1915,7 @@
     <value>1</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1193, 640</value>
+    <value>1193, 638</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -1980,69 +1935,6 @@
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panelProduct" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panelBalance" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,27.1028,Percent,72.89719" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <data name="standardPeso.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="standardPeso.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt, style=Bold</value>
-  </data>
-  <data name="standardPeso.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="standardPeso.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-3, 4</value>
-  </data>
-  <data name="standardPeso.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 17</value>
-  </data>
-  <data name="standardPeso.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="standardPeso.Text" xml:space="preserve">
-    <value>Peso Standard</value>
-  </data>
-  <data name="&gt;&gt;standardPeso.Name" xml:space="preserve">
-    <value>standardPeso</value>
-  </data>
-  <data name="&gt;&gt;standardPeso.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;standardPeso.Parent" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;standardPeso.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="balanceGauge.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="balanceGauge.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="balanceGauge.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
-  </data>
-  <data name="balanceGauge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="balanceGauge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>867, 634</value>
-  </data>
-  <data name="balanceGauge.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;balanceGauge.Name" xml:space="preserve">
-    <value>balanceGauge</value>
-  </data>
-  <data name="&gt;&gt;balanceGauge.Type" xml:space="preserve">
-    <value>AGaugeApp.AGauge, BalanceNetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;balanceGauge.Parent" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;balanceGauge.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -2054,9 +1946,6 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1193, 771</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Bilancia</value>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BalanceNetFramework.Reports
 {
-    public class MisurazioneList
+    public class MeasureList
     {
         public int Id { get; set; }
         public string Nome { get; set; }

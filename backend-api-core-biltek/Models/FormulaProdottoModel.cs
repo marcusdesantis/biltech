@@ -5,7 +5,7 @@
         public int? id{ get; set; }
         public int Id_Prodotto { get; set; }
         public int Id_Formula { get; set; }
-        public bool Active { get; set; }
+        public bool Attivo { get; set; }
       
     }
 
@@ -14,7 +14,7 @@
         public int? id { get; set; }
         public int Id_Prodotto { get; set; }
         public int Id_Formula { get; set; }
-        public bool Active { get; set; }
+        public bool Attivo { get; set; }
 
         public int total { get; set; }
 

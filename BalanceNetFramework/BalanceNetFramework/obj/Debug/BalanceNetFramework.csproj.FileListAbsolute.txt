@@ -125,3 +125,5 @@ C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNet
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.csproj.CopyComplete
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.exe
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.pdb
+C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\RdlCompile.cache
+C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\RdlCompile.compiled

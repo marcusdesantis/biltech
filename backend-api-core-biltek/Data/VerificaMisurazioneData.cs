@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace backend_api_core.Data
 {
-    public class SchedulerControlloData : ISchedulerControllo
+    public class VerificaMisurazioneData : IVerificaMisurazione
     {
         private readonly IC_conexion _c_conexion;
 
-        public SchedulerControlloData(IC_conexion c_conexion)
+        public VerificaMisurazioneData(IC_conexion c_conexion)
         {
             this._c_conexion = c_conexion;
         }
@@ -22,9 +22,9 @@ namespace backend_api_core.Data
             try
             {
                 RespuestaDB respuesta = null;
-                string nombreFuncion = "sp_abm_schedulercontrollo";
+                string nombreFuncion = "sp_abm_verificamisurazione";
 
-                respuesta = await this._c_conexion.abmObjeto<SchedulerControllo>(nombreFuncion, AbmAccion.ELIMINAR_BAJA, new SchedulerControllo { Id = id });
+                respuesta = await this._c_conexion.abmObjeto<VerificaMisurazione>(nombreFuncion, AbmAccion.ELIMINAR_BAJA, new VerificaMisurazione { id = id });
 
                 return respuesta;
             }
@@ -34,17 +34,17 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<SchedulerControllo> FindById(int id)
+        public async Task<VerificaMisurazione> FindById(int id)
         {
             try
             {
-                SchedulerControllo datos = new SchedulerControllo();
-                string nombreFuncion = "sp_get_schedulercontrollo";
+                VerificaMisurazione datos = new VerificaMisurazione();
+                string nombreFuncion = "sp_get_verificamisurazione";
 
                 Hashtable parametros = new Hashtable();
                 parametros.Add("Id", id);
 
-                datos = await this._c_conexion.traerObjeto<SchedulerControllo>(nombreFuncion, parametros);
+                datos = await this._c_conexion.traerObjeto<VerificaMisurazione>(nombreFuncion, parametros);
 
                 return datos;
 
@@ -55,14 +55,14 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<RespuestaDB> Modify(SchedulerControllo data)
+        public async Task<RespuestaDB> Modify(VerificaMisurazione data)
         {
             try
             {
                 RespuestaDB respuesta = new RespuestaDB();
-                string nombreFuncion = "sp_abm_schedulercontrollo";
+                string nombreFuncion = "sp_abm_verificamisurazione";
 
-                respuesta = await this._c_conexion.abmObjeto<SchedulerControllo>(nombreFuncion, AbmAccion.MODIFICAR, data);
+                respuesta = await this._c_conexion.abmObjeto<VerificaMisurazione>(nombreFuncion, AbmAccion.MODIFICAR, data);
 
                 return respuesta;
             }
@@ -72,24 +72,21 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<RespuestaDB> Save(SchedulerControllo data)
+        public async Task<RespuestaDB> Save(VerificaMisurazione data)
         {
             try
             {
                 RespuestaDB respuesta = new RespuestaDB();
-                string nombreFuncion = "sp_abm_schedulercontrollo";
+                string nombreFuncion = "sp_abm_verificamisurazione";
 
-                data.Id = data.Id == null ? 0 : data.Id;
+                data.id = data.id == null ? 0 : data.id;
 
                 Hashtable parametros = new Hashtable();
                 parametros.Add("action", AbmAccion.GUARDAR);
-                parametros.Add("Id", data.Id);
-                parametros.Add("Id_Prodotto", data.Id_Prodotto);
-                parametros.Add("NumeroControllo", data.NumeroControllo);
-                parametros.Add("Ora", data.Ora);
+                parametros.Add("id", data.id);
+                parametros.Add("id_Misurazione", data.id_Misurazione);
 
-
-                respuesta = await this._c_conexion.abmObjeto<SchedulerControllo>(nombreFuncion, AbmAccion.GUARDAR, data);
+                respuesta = await this._c_conexion.abmObjeto<VerificaMisurazione>(nombreFuncion, AbmAccion.GUARDAR, data);
 
                 return respuesta;
             }
@@ -99,12 +96,12 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<IEnumerable<SchedulerControlloList>> SearchList(string value, string parameter, int currentPageNumber, int amountShow)
+        public async Task<IEnumerable<VerificaMisurazioneList>> SearchList(string value, string parameter, int currentPageNumber, int amountShow)
         {
             try
             {
-                IEnumerable<SchedulerControlloList> arrayDatos = new SchedulerControlloList[] { };
-                string nombreFuncion = "sp_list_scheduler_controllo";
+                IEnumerable<VerificaMisurazioneList> arrayDatos = new VerificaMisurazioneList[] { };
+                string nombreFuncion = "sp_list_verificamisurazione";
 
                 Hashtable parametros = new Hashtable();
                 parametros.Add("bus_value", value == null ? "" : value);
@@ -112,7 +109,7 @@ namespace backend_api_core.Data
                 parametros.Add("currentPageNumber", currentPageNumber);
                 parametros.Add("amountShow", amountShow);
 
-                arrayDatos = await this._c_conexion.traerArrayObjeto<SchedulerControlloList>(nombreFuncion, parametros);
+                arrayDatos = await this._c_conexion.traerArrayObjeto<VerificaMisurazioneList>(nombreFuncion, parametros);
 
                 return arrayDatos;
 

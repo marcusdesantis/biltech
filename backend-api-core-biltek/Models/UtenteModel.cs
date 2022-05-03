@@ -5,7 +5,7 @@
         public int? Id { get; set; }
         public string utente { get; set; }
         public string Password { get; set; }
-        public bool Active { get; set; }
+        public bool Attivo { get; set; }
 
     }
 
@@ -14,7 +14,7 @@
         public int? Id { get; set; }
         public string utente { get; set; }
         public string Password { get; set; }
-        public bool Active { get; set; }
+        public bool Attivo { get; set; }
 
         public int total { get; set; }
     }

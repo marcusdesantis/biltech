@@ -150,3 +150,9 @@
 2022-04-29 11:21:22,116 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
 2022-04-29 11:24:45,730 [20] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
 2022-04-29 11:29:00,202 [13] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-05-03 07:41:50,197 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Caffe'.
+2022-05-03 09:58:19,723 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Table 'biltek_bd.schedulercontrollo' doesn't exist
+2022-05-03 09:58:32,420 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Table 'biltek_bd.schedulercontrollo' doesn't exist
+2022-05-03 09:58:37,820 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Table 'biltek_bd.schedulercontrollo' doesn't exist
+2022-05-03 10:28:44,160 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-05-03 14:19:49,050 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Column 'Attivo' in where clause is ambiguous

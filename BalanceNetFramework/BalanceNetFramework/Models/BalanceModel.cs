@@ -43,7 +43,7 @@ namespace BalanceNetFramework.Models
         public int Id_TipologiaProdotto { get; set; }
         public int Id_Reparto { get; set; }
         public decimal MinimoScortaMagazzino { get; set; }
-        public bool Active { get; set; }
+        public bool Attivo { get; set; }
         public string DataCreazione { get; set; }
     }
 
@@ -55,7 +55,7 @@ namespace BalanceNetFramework.Models
         public string Peso { get; set; }
         public int Id_FormulaProdotto { get; set; }
         public int Id_Utente { get; set; }
-        public bool Active { get; set; }
+        public bool Attivo { get; set; }
         public string DataCreazione { get; set; }
 
     }
@@ -67,9 +67,9 @@ namespace BalanceNetFramework.Models
         public string DataOra { get; set; }
         public string Pesata { get; set; }
         public int NumeroPesata { get; set; }
-        public bool Conforme { get; set; }
+        public bool Adatto { get; set; }
         public string Annullato { get; set; }
-        public bool Active { get; set; }
+        public bool Attivo { get; set; }
 
     }
 }

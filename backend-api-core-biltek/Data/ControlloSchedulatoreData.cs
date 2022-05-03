@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace backend_api_core.Data
 {
-    public class ControlloPesateData : IControlloPesate
+    public class ControlloSchedulatoreData : IControlloSchedulatore
     {
         private readonly IC_conexion _c_conexion;
 
-        public ControlloPesateData(IC_conexion c_conexion)
+        public ControlloSchedulatoreData(IC_conexion c_conexion)
         {
             this._c_conexion = c_conexion;
         }
@@ -22,9 +22,9 @@ namespace backend_api_core.Data
             try
             {
                 RespuestaDB respuesta = null;
-                string nombreFuncion = "sp_abm_controllopesate";
+                string nombreFuncion = "sp_abm_controlloschedulatore";
 
-                respuesta = await this._c_conexion.abmObjeto<ControlloPesate>(nombreFuncion, AbmAccion.ELIMINAR_BAJA, new ControlloPesate { Id = id });
+                respuesta = await this._c_conexion.abmObjeto<ControlloSchedulatore>(nombreFuncion, AbmAccion.ELIMINAR_BAJA, new ControlloSchedulatore { Id = id });
 
                 return respuesta;
             }
@@ -34,17 +34,17 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<ControlloPesate> FindById(int id)
+        public async Task<ControlloSchedulatore> FindById(int id)
         {
             try
             {
-                ControlloPesate datos = new ControlloPesate();
-                string nombreFuncion = "sp_get_controllopesate";
+                ControlloSchedulatore datos = new ControlloSchedulatore();
+                string nombreFuncion = "sp_get_controlloschedulatore";
 
                 Hashtable parametros = new Hashtable();
                 parametros.Add("Id", id);
 
-                datos = await this._c_conexion.traerObjeto<ControlloPesate>(nombreFuncion, parametros);
+                datos = await this._c_conexion.traerObjeto<ControlloSchedulatore>(nombreFuncion, parametros);
 
                 return datos;
 
@@ -55,14 +55,14 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<RespuestaDB> Modify(ControlloPesate data)
+        public async Task<RespuestaDB> Modify(ControlloSchedulatore data)
         {
             try
             {
                 RespuestaDB respuesta = new RespuestaDB();
-                string nombreFuncion = "sp_abm_controllopesate";
+                string nombreFuncion = "sp_abm_controlloschedulatore";
 
-                respuesta = await this._c_conexion.abmObjeto<ControlloPesate>(nombreFuncion, AbmAccion.MODIFICAR, data);
+                respuesta = await this._c_conexion.abmObjeto<ControlloSchedulatore>(nombreFuncion, AbmAccion.MODIFICAR, data);
 
                 return respuesta;
             }
@@ -72,12 +72,12 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<RespuestaDB> Save(ControlloPesate data)
+        public async Task<RespuestaDB> Save(ControlloSchedulatore data)
         {
             try
             {
                 RespuestaDB respuesta = new RespuestaDB();
-                string nombreFuncion = "sp_abm_controllopesate";
+                string nombreFuncion = "sp_abm_controlloschedulatore";
 
                 data.Id = data.Id == null ? 0 : data.Id;
 
@@ -86,14 +86,10 @@ namespace backend_api_core.Data
                 parametros.Add("Id", data.Id);
                 parametros.Add("Id_Prodotto", data.Id_Prodotto);
                 parametros.Add("NumeroControllo", data.NumeroControllo);
-                parametros.Add("DataOra", data.DataOra);
-                parametros.Add("Pesata", data.Pesata);
-                parametros.Add("NumeroPesata", data.NumeroPesata);
-                parametros.Add("Conforme", data.Conforme);
-                parametros.Add("Annullato", data.Annullato);
+                parametros.Add("Ora", data.Ora);
 
 
-                respuesta = await this._c_conexion.abmObjeto<ControlloPesate>(nombreFuncion, AbmAccion.GUARDAR, data);
+                respuesta = await this._c_conexion.abmObjeto<ControlloSchedulatore>(nombreFuncion, AbmAccion.GUARDAR, data);
 
                 return respuesta;
             }
@@ -103,12 +99,12 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<IEnumerable<ControlloPesateList>> SearchList(string value, string parameter, int currentPageNumber, int amountShow)
+        public async Task<IEnumerable<ControlloSchedulatoreList>> SearchList(string value, string parameter, int currentPageNumber, int amountShow)
         {
             try
             {
-                IEnumerable<ControlloPesateList> arrayDatos = new ControlloPesateList[] { };
-                string nombreFuncion = "sp_list_controllo_pesate";
+                IEnumerable<ControlloSchedulatoreList> arrayDatos = new ControlloSchedulatoreList[] { };
+                string nombreFuncion = "sp_list_controllo_schedulatore";
 
                 Hashtable parametros = new Hashtable();
                 parametros.Add("bus_value", value == null ? "" : value);
@@ -116,7 +112,7 @@ namespace backend_api_core.Data
                 parametros.Add("currentPageNumber", currentPageNumber);
                 parametros.Add("amountShow", amountShow);
 
-                arrayDatos = await this._c_conexion.traerArrayObjeto<ControlloPesateList>(nombreFuncion, parametros);
+                arrayDatos = await this._c_conexion.traerArrayObjeto<ControlloSchedulatoreList>(nombreFuncion, parametros);
 
                 return arrayDatos;
 
