@@ -95,6 +95,7 @@ namespace BalanceNetFramework.Views
             this.Controls.Add(this.label1);
             this.Name = "LoginWindow";
             this.Text = "LoginWindow";
+            this.Load += new System.EventHandler(this.LoginWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

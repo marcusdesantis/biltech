@@ -15,6 +15,7 @@ namespace BalanceNetFramework.Views
     {
         public LoginWindow()
         {
+            this.CenterToScreen();
             InitializeComponent();
         }
 
@@ -42,6 +43,11 @@ namespace BalanceNetFramework.Views
             {
                 MessageBox.Show(ex.Message, "Avvertimento", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void LoginWindow_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

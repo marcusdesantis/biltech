@@ -328,7 +328,7 @@ namespace BalanceNetFramework
                             lbAlert.Text = string.Format("Il peso non rispetta il limite consentito per il prodotto {0}.", name);
                             lbAlert.ForeColor = Color.Red;
                         }));
-                        System.Threading.Thread.Sleep(2000);
+                        System.Threading.Thread.Sleep(7000);
                         ManagerBalance.log.Error($"Il peso non rispetta il limite consentito per il prodotto {name}.");
                         lbAlert.Invoke(new Action(() => lbAlert.Text = string.Empty));
 
@@ -859,7 +859,7 @@ namespace BalanceNetFramework
                         _misurazione.Id_Prodotto = Convert.ToInt32(idProduct);
                         _misurazione.Peso = weightReceivedScale;
                         _misurazione.Id_FormulaProdotto = 5;
-                        _misurazione.Id_Utente = 1;
+                        _misurazione.Id_Utente = 3;
                         _misurazione.Attivo = true;
                         _misurazione.DataCreazione = dateFormart;
                         _balance.InsertMeasure(_misurazione);
