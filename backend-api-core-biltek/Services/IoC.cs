@@ -30,6 +30,7 @@ namespace backend_api_core.Services
             services.AddTransient<IControlloPeso, ControlloPesoData>();
             services.AddTransient<IControlloSchedulatore, ControlloSchedulatoreData>();
             services.AddTransient<IVerificaMisurazione, VerificaMisurazioneData>();
+            services.AddTransient<IRuoli, RuoliData>();
 
             return services;
         }

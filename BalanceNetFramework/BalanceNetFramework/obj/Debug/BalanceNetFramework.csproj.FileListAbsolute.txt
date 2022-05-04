@@ -127,3 +127,4 @@ C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNet
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.pdb
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\RdlCompile.cache
 C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\RdlCompile.compiled
+C:\Projects\biltech\BalanceNetFramework\BalanceNetFramework\obj\Debug\BalanceNetFramework.Views.LoginWindow.resources

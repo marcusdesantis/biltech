@@ -1,0 +1,118 @@
+﻿using BalanceNetFramework.Data;
+using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BalanceNetFramework.Models
+{
+    public class LoginModel
+    {
+        public string ctrlLogin(string user, string password)
+        {
+           
+            string response = "";
+            Users dataUser = null;
+
+            if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(password))
+            {
+                response = "Devi compilare tutti i campi";
+            }
+            else
+            {
+                dataUser = UsersQuery(user);
+
+                if (dataUser == null)
+                {
+                    response = "l'utente non esiste";
+                }
+                else
+                {
+                    if (dataUser.Password != password)
+                    {
+                        response = "Il nome utente e/o la password non corrispondono";
+                    }
+                    else
+                    {
+                        /*Session.id = datosUsuario.Id;
+                        Session.usuario = usuario;
+                        Session.nombre = datosUsuario.Nombre;
+                        Session.id_tipo = datosUsuario.Id_tipo;*/
+                    }
+                }
+            }
+            return response;
+        }
+
+        public bool UserExists(string user)
+        {
+            bool state = false;
+            try
+            {
+                MySqlDataReader reader;
+                MySqlConnection connectionBD = ConnectionDB.connection();
+                connectionBD.Open();
+
+                string sql = "SELECT Id FROM Utente WHERE Utente=@user AND Attivo=@attivo";
+                MySqlCommand comando = new MySqlCommand(sql, connectionBD);
+                comando.Parameters.AddWithValue("@user", user);
+                comando.Parameters.AddWithValue("@attivo", 1);
+
+                reader = comando.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    state = true;
+                }
+                else
+                {
+                    state = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            return state;
+            
+        }
+
+        public Users UsersQuery(string user)
+        {
+            Users usr = null;
+            try
+            {
+                MySqlDataReader reader;
+                MySqlConnection connectionBD = ConnectionDB.connection();
+                connectionBD.Open();
+
+                string sql = "SELECT Id, Utente ,Password, Email, Id_Ruoli, Attivo FROM utente WHERE Attivo=1 AND Utente=@user ";
+                MySqlCommand comando = new MySqlCommand(sql, connectionBD);
+                comando.Parameters.AddWithValue("@user", user);
+
+                reader = comando.ExecuteReader();                
+
+                while (reader.Read())
+                {
+                    usr = new Users();
+                    usr.Id = int.Parse(reader["id"].ToString());
+                    usr.Utente = reader["Utente"].ToString();
+                    usr.Password = reader["Password"].ToString();
+                    usr.Email = reader["Email"].ToString();
+                    usr.Id_Ruoli = int.Parse(reader["Id_Ruoli"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
+            }
+          
+            return usr;
+        }
+    }
+}

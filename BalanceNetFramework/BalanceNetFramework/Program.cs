@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BalanceNetFramework.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace BalanceNetFramework
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindow());
+            Application.Run(new LoginWindow());
         }
     }
 }

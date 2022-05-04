@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace backend_api_core.Data
 {
-    public class UtenteData : IUtente
+    public class RuoliData : IRuoli
     {
         private readonly IC_conexion _c_conexion;
 
-        public UtenteData(IC_conexion c_conexion)
+        public RuoliData(IC_conexion c_conexion)
         {
             this._c_conexion = c_conexion;
         }
@@ -22,9 +22,9 @@ namespace backend_api_core.Data
             try
             {
                 RespuestaDB respuesta = null;
-                string nombreFuncion = "sp_abm_utente";
+                string nombreFuncion = "sp_abm_ruoli";
 
-                respuesta = await this._c_conexion.abmObjeto<Utente>(nombreFuncion, AbmAccion.ELIMINAR_BAJA, new Utente { Id = id });
+                respuesta = await this._c_conexion.abmObjeto<Ruoli>(nombreFuncion, AbmAccion.ELIMINAR_BAJA, new Ruoli { Id = id });
 
                 return respuesta;
             }
@@ -34,17 +34,17 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<Utente> FindById(int id)
+        public async Task<Ruoli> FindById(int id)
         {
             try
             {
-                Utente datos = new Utente();
-                string nombreFuncion = "sp_get_utente";
+                Ruoli datos = new Ruoli();
+                string nombreFuncion = "sp_get_ruoli";
 
                 Hashtable parametros = new Hashtable();
                 parametros.Add("Id", id);
 
-                datos = await this._c_conexion.traerObjeto<Utente>(nombreFuncion, parametros);
+                datos = await this._c_conexion.traerObjeto<Ruoli>(nombreFuncion, parametros);
 
                 return datos;
 
@@ -55,14 +55,14 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<RespuestaDB> Modify(Utente data)
+        public async Task<RespuestaDB> Modify(Ruoli data)
         {
             try
             {
                 RespuestaDB respuesta = new RespuestaDB();
-                string nombreFuncion = "sp_abm_utente";
+                string nombreFuncion = "sp_abm_ruoli";
 
-                respuesta = await this._c_conexion.abmObjeto<Utente>(nombreFuncion, AbmAccion.MODIFICAR, data);
+                respuesta = await this._c_conexion.abmObjeto<Ruoli>(nombreFuncion, AbmAccion.MODIFICAR, data);
 
                 return respuesta;
             }
@@ -72,25 +72,21 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<RespuestaDB> Save(Utente data)
+        public async Task<RespuestaDB> Save(Ruoli data)
         {
             try
             {
                 RespuestaDB respuesta = new RespuestaDB();
-                string nombreFuncion = "sp_abm_utente";
+                string nombreFuncion = "sp_abm_ruoli";
 
                 data.Id = data.Id == null ? 0 : data.Id;
 
                 Hashtable parametros = new Hashtable();
                 parametros.Add("action", AbmAccion.GUARDAR);
                 parametros.Add("Id", data.Id);
-                parametros.Add("Utente", data.utente);
-                parametros.Add("Password", data.Password);
-                parametros.Add("Email", data.Email);
-                parametros.Add("Id_Ruoli", data.Id_Ruoli);
+                parametros.Add("Nome", data.Nome);
 
-
-                respuesta = await this._c_conexion.abmObjeto<Utente>(nombreFuncion, AbmAccion.GUARDAR, data);
+                respuesta = await this._c_conexion.abmObjeto<Ruoli>(nombreFuncion, AbmAccion.GUARDAR, data);
 
                 return respuesta;
             }
@@ -100,12 +96,12 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<IEnumerable<UtenteList>> SearchList(string value, string parameter, int currentPageNumber, int amountShow)
+        public async Task<IEnumerable<RuoliList>> SearchList(string value, string parameter, int currentPageNumber, int amountShow)
         {
             try
             {
-                IEnumerable<UtenteList> arrayDatos = new UtenteList[] { };
-                string nombreFuncion = "sp_list_utente";
+                IEnumerable<RuoliList> arrayDatos = new RuoliList[] { };
+                string nombreFuncion = "sp_list_ruoli";
 
                 Hashtable parametros = new Hashtable();
                 parametros.Add("bus_value", value == null ? "" : value);
@@ -113,7 +109,7 @@ namespace backend_api_core.Data
                 parametros.Add("currentPageNumber", currentPageNumber);
                 parametros.Add("amountShow", amountShow);
 
-                arrayDatos = await this._c_conexion.traerArrayObjeto<UtenteList>(nombreFuncion, parametros);
+                arrayDatos = await this._c_conexion.traerArrayObjeto<RuoliList>(nombreFuncion, parametros);
 
                 return arrayDatos;
 

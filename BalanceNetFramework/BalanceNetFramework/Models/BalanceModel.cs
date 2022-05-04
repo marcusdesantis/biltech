@@ -72,4 +72,17 @@ namespace BalanceNetFramework.Models
         public bool Attivo { get; set; }
 
     }
+
+    public class Users
+    {
+        int id, id_ruoli;
+        string usuario, password, email;
+
+        public int Id { get => id; set => id = value; }
+        public string Utente { get => usuario; set => usuario = value; }
+        public string Password { get => password; set => password = value; }
+        public string Email { get => email; set => email = value; }
+        public int Id_Ruoli { get => id_ruoli; set => id_ruoli = value; }
+        public bool Attivo { get; set; }
+    }
 }

@@ -176,6 +176,13 @@
     <Compile Include="Data\ConnectionDB.cs" />
     <Compile Include="Data\ManagerBalance.cs" />
     <Compile Include="DB\CredentialDB.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Views\LoginWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\LoginWindow.Designer.cs">
+      <DependentUpon>LoginWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ReportWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +207,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\MeasureList.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Views\LoginWindow.resx">
+      <DependentUpon>LoginWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ReportWindow.resx">
       <DependentUpon>ReportWindow.cs</DependentUpon>
     </EmbeddedResource>
