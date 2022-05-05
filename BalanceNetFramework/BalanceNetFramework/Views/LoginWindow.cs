@@ -1,10 +1,15 @@
 ﻿using BalanceNetFramework.Models;
+using BalanceNetFramework.Provider;
+using BalanceNetFramework.Services;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.OAuth;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,35 +24,87 @@ namespace BalanceNetFramework.Views
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e, OAuthGrantResourceOwnerCredentialsContext context)
         {
-            string user = txtUser.Text;
-            string password = txtPassword.Text;
+            //string user = txtUser.Text;
+            //string password = txtPassword.Text;
 
-            try
+            //OAuthAppProvider oauth = new OAuthAppProvider();
+            //oauth.GrantResourceOwnerCredentials();
+
+            var username = context.UserName;
+            var password = context.Password;
+            var userService = new UserService();
+            Users user = userService.GetUserByCredential(username, password);
+
+            if (user != null)
             {
-                LoginModel ctrl = new LoginModel();
-                string respuesta = ctrl.ctrlLogin(user, password);
-                if (respuesta.Length > 0)
-                {
-                    MessageBox.Show(respuesta, "Avvertimento", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MainWindow m = new MainWindow();
-                    m.Visible = true;
-                    this.Visible = false;
-                }
+                var claims = new List<Claim>()
+                    {
+                        new Claim(ClaimTypes.Name, user.Utente),
+                        new Claim("UserID", Convert.ToString(user.Id))
+                    };
+
+                ClaimsIdentity oAutIdentity = new ClaimsIdentity(claims, Startup.OAuthOptions.AuthenticationType);
+                context.Validated(new AuthenticationTicket(oAutIdentity, new AuthenticationProperties() { }));
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Avvertimento", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                context.SetError("invalid_grant", "Error");
             }
+
+
+            //string respuesta = GetUserByCredential(user, password);
+            /*if (respuesta.Length > 0)
+            {
+                MessageBox.Show(respuesta, "Avvertimento", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MainWindow m = new MainWindow();
+                m.Visible = true;
+                this.Visible = false;
+            }*/
+
+
+        }
+
+        private string userServ(string user, string password)
+        {
+            throw new NotImplementedException();
         }
 
         private void LoginWindow_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+
+            string _user = txtUser.Text;
+            string _password = txtPassword.Text;
+
+            var username = _user;
+            var password = _password;
+            var userService = new UserService();
+            Users user = userService.GetUserByCredential(username, password);
+
+            if (user != null)
+            {
+                var claims = new List<Claim>()
+                    {
+                        new Claim(ClaimTypes.Name, user.Utente),
+                        new Claim("UserID", Convert.ToString(user.Id))
+                    };
+
+                ClaimsIdentity oAutIdentity = new ClaimsIdentity(claims, Startup.OAuthOptions.AuthenticationType);
+                //context.Validated(new AuthenticationTicket(oAutIdentity, new AuthenticationProperties() { }));
+            }
+            else
+            {
+                //context.SetError("invalid_grant", "Error");
+            }
         }
     }
 }

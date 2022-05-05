@@ -209,3 +209,4 @@
 2022-05-04 15:31:29,597 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Cannot add or update a child row: a foreign key constraint fails (`biltek_bd`.`misurazione`, CONSTRAINT `misurazione_ibfk_4` FOREIGN KEY (`Id_Utente`) REFERENCES `utente` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
 2022-05-04 15:31:31,530 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Cannot add or update a child row: a foreign key constraint fails (`biltek_bd`.`misurazione`, CONSTRAINT `misurazione_ibfk_4` FOREIGN KEY (`Id_Utente`) REFERENCES `utente` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
 2022-05-04 15:32:59,695 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-05 07:15:21,309 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
