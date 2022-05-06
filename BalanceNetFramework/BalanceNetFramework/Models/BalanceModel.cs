@@ -85,4 +85,17 @@ namespace BalanceNetFramework.Models
         public int Id_Ruoli { get => id_ruoli; set => id_ruoli = value; }
         public bool Attivo { get; set; }
     }
+
+    public class LotteModel
+    {
+        public int Id { get; set; }
+        public int Id_Prodotto { get; set; }
+        public string CodiceLotto { get; set; }
+        public int SogliaMinima { get; set; }
+        public int SogliaMassima { get; set; }
+        public decimal Tolleranza { get; set; }
+        public decimal PesoStandard { get; set; }
+        public bool Attivo { get; set; }
+
+    }
 }

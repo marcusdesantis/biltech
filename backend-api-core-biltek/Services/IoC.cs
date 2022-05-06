@@ -25,12 +25,14 @@ namespace backend_api_core.Services
             services.AddTransient<IBarcodeProdotto, BarcodeProdottoData>();
             services.AddTransient<IMagazzino, MagazzinoData>();
             services.AddTransient<ITipologiaProdotto, TipologiaProdottoData>();
-            services.AddTransient<IReparto, RepartoData>();
+            services.AddTransient<ICategorie, CategorieData>();
             services.AddTransient<IUtente, UtenteData>();
             services.AddTransient<IControlloPeso, ControlloPesoData>();
             services.AddTransient<IControlloSchedulatore, ControlloSchedulatoreData>();
             services.AddTransient<IVerificaMisurazione, VerificaMisurazioneData>();
             services.AddTransient<IRuoli, RuoliData>();
+            services.AddTransient<IAssociazione, AssociazioneData>();
+            services.AddTransient<ILotto, LottoData>();
 
             return services;
         }

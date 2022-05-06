@@ -210,3 +210,17 @@
 2022-05-04 15:31:31,530 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Cannot add or update a child row: a foreign key constraint fails (`biltek_bd`.`misurazione`, CONSTRAINT `misurazione_ibfk_4` FOREIGN KEY (`Id_Utente`) REFERENCES `utente` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
 2022-05-04 15:32:59,695 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
 2022-05-05 07:15:21,309 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-05-06 10:25:32,562 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Unknown column 'CodiceLotto' in 'field list'
+2022-05-06 14:27:57,577 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Data is Null. This method or property cannot be called on Null values.
+2022-05-06 14:37:12,812 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Data is Null. This method or property cannot be called on Null values.
+2022-05-06 14:50:42,406 [12] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Pane.
+2022-05-06 14:53:28,161 [13] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Pane.
+2022-05-06 14:57:00,161 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Pane.
+2022-05-06 15:01:43,130 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Pane.
+2022-05-06 15:18:13,049 [12] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Pane.
+2022-05-06 15:22:42,634 [8] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Pane.
+2022-05-06 15:24:16,931 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-05-06 15:49:10,579 [9] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-06 15:52:49,945 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-06 15:54:55,431 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-06 15:56:27,044 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.

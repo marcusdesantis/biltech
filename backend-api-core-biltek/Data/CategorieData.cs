@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace backend_api_core.Data
 {
-    public class RepartoData : IReparto
+    public class CategorieData : ICategorie
     {
         private readonly IC_conexion _c_conexion;
 
-        public RepartoData(IC_conexion c_conexion)
+        public CategorieData(IC_conexion c_conexion)
         {
             this._c_conexion = c_conexion;
         }
@@ -22,9 +22,9 @@ namespace backend_api_core.Data
             try
             {
                 RespuestaDB respuesta = null;
-                string nombreFuncion = "sp_abm_reparto";
+                string nombreFuncion = "sp_abm_categorie";
 
-                respuesta = await this._c_conexion.abmObjeto<Reparto>(nombreFuncion, AbmAccion.ELIMINAR_BAJA, new Reparto { Id_Reparto = id });
+                respuesta = await this._c_conexion.abmObjeto<Categorie>(nombreFuncion, AbmAccion.ELIMINAR_BAJA, new Categorie { Id = id });
 
                 return respuesta;
             }
@@ -34,17 +34,17 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<Reparto> FindById(int id)
+        public async Task<Categorie> FindById(int id)
         {
             try
             {
-                Reparto datos = new Reparto();
-                string nombreFuncion = "sp_get_reparto";
+                Categorie datos = new Categorie();
+                string nombreFuncion = "sp_get_categorie";
 
                 Hashtable parametros = new Hashtable();
                 parametros.Add("Id", id);
 
-                datos = await this._c_conexion.traerObjeto<Reparto>(nombreFuncion, parametros);
+                datos = await this._c_conexion.traerObjeto<Categorie>(nombreFuncion, parametros);
 
                 return datos;
 
@@ -55,14 +55,14 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<RespuestaDB> Modify(Reparto data)
+        public async Task<RespuestaDB> Modify(Categorie data)
         {
             try
             {
                 RespuestaDB respuesta = new RespuestaDB();
-                string nombreFuncion = "sp_abm_reparto";
+                string nombreFuncion = "sp_abm_categorie";
 
-                respuesta = await this._c_conexion.abmObjeto<Reparto>(nombreFuncion, AbmAccion.MODIFICAR, data);
+                respuesta = await this._c_conexion.abmObjeto<Categorie>(nombreFuncion, AbmAccion.MODIFICAR, data);
 
                 return respuesta;
             }
@@ -72,21 +72,21 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<RespuestaDB> Save(Reparto data)
+        public async Task<RespuestaDB> Save(Categorie data)
         {
             try
             {
                 RespuestaDB respuesta = new RespuestaDB();
-                string nombreFuncion = "sp_abm_reparto";
+                string nombreFuncion = "sp_abm_categorie";
 
-                data.Id_Reparto = data.Id_Reparto == null ? 0 : data.Id_Reparto;
+                data.Id = data.Id == null ? 0 : data.Id;
 
                 Hashtable parametros = new Hashtable();
                 parametros.Add("action", AbmAccion.GUARDAR);
-                parametros.Add("Id_Reparto", data.Id_Reparto);
-                parametros.Add("Nome_Reparto", data.Nome_Reparto);
+                parametros.Add("Id", data.Id);
+                parametros.Add("Nome", data.Nome);
 
-                respuesta = await this._c_conexion.abmObjeto<Reparto>(nombreFuncion, AbmAccion.GUARDAR, data);
+                respuesta = await this._c_conexion.abmObjeto<Categorie>(nombreFuncion, AbmAccion.GUARDAR, data);
 
                 return respuesta;
             }
@@ -96,12 +96,12 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<IEnumerable<RepartoList>> SearchList(string value, string parameter, int currentPageNumber, int amountShow)
+        public async Task<IEnumerable<CategorieList>> SearchList(string value, string parameter, int currentPageNumber, int amountShow)
         {
             try
             {
-                IEnumerable<RepartoList> arrayDatos = new RepartoList[] { };
-                string nombreFuncion = "sp_list_reparto";
+                IEnumerable<CategorieList> arrayDatos = new CategorieList[] { };
+                string nombreFuncion = "sp_list_categorie";
 
                 Hashtable parametros = new Hashtable();
                 parametros.Add("bus_value", value == null ? "" : value);
@@ -109,7 +109,7 @@ namespace backend_api_core.Data
                 parametros.Add("currentPageNumber", currentPageNumber);
                 parametros.Add("amountShow", amountShow);
 
-                arrayDatos = await this._c_conexion.traerArrayObjeto<RepartoList>(nombreFuncion, parametros);
+                arrayDatos = await this._c_conexion.traerArrayObjeto<CategorieList>(nombreFuncion, parametros);
 
                 return arrayDatos;
 

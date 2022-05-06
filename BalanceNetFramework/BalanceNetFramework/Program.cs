@@ -17,7 +17,7 @@ namespace BalanceNetFramework
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginWindow());
+            Application.Run(new MainWindow());
         }
     }
 }

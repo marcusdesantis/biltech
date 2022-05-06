@@ -13,13 +13,13 @@ namespace backend_api_core.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RepartoController : ControllerBase
+    public class LottoController : ControllerBase
     {
-        private readonly IReparto _reparto;
+        private readonly ILotto _lotto;
 
-        public RepartoController(IReparto reparto)
+        public LottoController(ILotto lotto)
         {
-            this._reparto = reparto;
+            this._lotto = lotto;
         }
 
         // GET: api/Modello
@@ -27,12 +27,12 @@ namespace backend_api_core.Controllers
         public async Task<ActionResult<IEnumerable<RespuestaCore>>> Get(string value, string parameter, int currentPageNumber, int amountShow)
         {
             RespuestaCore respuesta = new RespuestaCore();
-            IEnumerable<RepartoList> _arrayLista = new RepartoList[] { };
+            IEnumerable<LottoList> _arrayLista = new LottoList[] { };
             int elementosTotales = 0;
 
             try
             {
-                _arrayLista = await this._reparto.SearchList(value, parameter, currentPageNumber, amountShow);
+                _arrayLista = await this._lotto.SearchList(value, parameter, currentPageNumber, amountShow);
 
                 if (_arrayLista.Count() > 0)
                 {
@@ -64,11 +64,11 @@ namespace backend_api_core.Controllers
         public async Task<ActionResult<RespuestaCore>> Get(int id)
         {
             RespuestaCore respuesta = new RespuestaCore();
-            Reparto datos = new Reparto { };
+            Lotto datos = new Lotto { };
 
             try
             {
-                datos = await this._reparto.FindById(id);
+                datos = await this._lotto.FindById(id);
 
                 if (datos == null)
                 {
@@ -103,7 +103,7 @@ namespace backend_api_core.Controllers
 
         // POST: api/Modello
         [HttpPost]
-        public async Task<ActionResult<object>> Post([FromBody] Reparto data)
+        public async Task<ActionResult<object>> Post([FromBody] Lotto data)
         {
             RespuestaCore respuesta = new RespuestaCore();
             RespuestaDB respuestaBD = new RespuestaDB();
@@ -112,7 +112,7 @@ namespace backend_api_core.Controllers
 
                 using (TransactionScope transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    respuestaBD = await this._reparto.Save(data);
+                    respuestaBD = await this._lotto.Save(data);
                     if (respuestaBD.status == "error")
                     {
                         return new OkObjectResult(respuestaBD);
@@ -135,7 +135,7 @@ namespace backend_api_core.Controllers
 
         // PUT api/Modello (MODIFICAR)
         [HttpPut]
-        public async Task<ActionResult<object>> Put([FromBody] Reparto data)
+        public async Task<ActionResult<object>> Put([FromBody] Lotto data)
         {
             RespuestaCore respuesta = new RespuestaCore();
             RespuestaDB respuestaBD = new RespuestaDB();
@@ -144,7 +144,7 @@ namespace backend_api_core.Controllers
             {
                 using (TransactionScope transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    respuestaBD = await this._reparto.Modify(data);
+                    respuestaBD = await this._lotto.Modify(data);
                     if (respuestaBD.status == "error")
                     {
                         return new OkObjectResult(respuestaBD);
@@ -176,7 +176,7 @@ namespace backend_api_core.Controllers
             {
                 using (TransactionScope transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    respuestaBD = await this._reparto.Delete(id);
+                    respuestaBD = await this._lotto.Delete(id);
                     if (respuestaBD.status == "error")
                     {
                         return new OkObjectResult(respuestaBD);

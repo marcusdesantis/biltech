@@ -314,33 +314,67 @@ namespace BalanceNetFramework
                     decimal _max = toleranceMax;
                     decimal _value = Int32.Parse(data[0]);
 
-
-                    if (_value > _max || _min > _value)
+                    if(_min!=0 && _max != 0)
                     {
+                        if (_value > _max || _min > _value)
+                        {
 
-                        lbAlert.Invoke(new Action(() =>
+                            lbAlert.Invoke(new Action(() =>
+                            {
+                                weightReceivedScale = weight;
+                                lbWeightBalance.Invoke(new Action(() => lbWeightBalance.Text = weight + " " + nameUnitMeasure));
+                                balanceGauge.Invoke(new Action(() => balanceGauge.Value = Convert.ToInt32(_value)));
+                                detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " - " + weight + " " + nameUnitMeasure));
+
+                                lbAlert.Text = string.Format("Il peso non rispetta il limite consentito per il prodotto {0}.", name);
+                                lbAlert.ForeColor = Color.Red;
+                            }));
+                            System.Threading.Thread.Sleep(7000);
+                            ManagerBalance.log.Error($"Il peso non rispetta il limite consentito per il prodotto {name}.");
+                            lbAlert.Invoke(new Action(() => lbAlert.Text = string.Empty));
+
+                        }
+                        else
                         {
                             weightReceivedScale = weight;
                             lbWeightBalance.Invoke(new Action(() => lbWeightBalance.Text = weight + " " + nameUnitMeasure));
                             balanceGauge.Invoke(new Action(() => balanceGauge.Value = Convert.ToInt32(_value)));
                             detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " - " + weight + " " + nameUnitMeasure));
 
-                            lbAlert.Text = string.Format("Il peso non rispetta il limite consentito per il prodotto {0}.", name);
-                            lbAlert.ForeColor = Color.Red;
-                        }));
-                        System.Threading.Thread.Sleep(7000);
-                        ManagerBalance.log.Error($"Il peso non rispetta il limite consentito per il prodotto {name}.");
-                        lbAlert.Invoke(new Action(() => lbAlert.Text = string.Empty));
-
+                        }
                     }
                     else
                     {
-                        weightReceivedScale = weight;
-                        lbWeightBalance.Invoke(new Action(() => lbWeightBalance.Text = weight + " " + nameUnitMeasure));
-                        balanceGauge.Invoke(new Action(() => balanceGauge.Value = Convert.ToInt32(_value)));
-                        detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " - " + weight + " " + nameUnitMeasure));
+                        if (_value > maxValue || _min > minValue)
+                        {
+
+                            lbAlert.Invoke(new Action(() =>
+                            {
+                                weightReceivedScale = weight;
+                                lbWeightBalance.Invoke(new Action(() => lbWeightBalance.Text = weight + " " + nameUnitMeasure));
+                                balanceGauge.Invoke(new Action(() => balanceGauge.Value = Convert.ToInt32(_value)));
+                                detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " - " + weight + " " + nameUnitMeasure));
+
+                                lbAlert.Text = string.Format("Il peso non rispetta il limite consentito per il prodotto {0}.", name);
+                                lbAlert.ForeColor = Color.Red;
+                            }));
+                            System.Threading.Thread.Sleep(7000);
+                            ManagerBalance.log.Error($"Il peso non rispetta il limite consentito per il prodotto {name}.");
+                            lbAlert.Invoke(new Action(() => lbAlert.Text = string.Empty));
+
+                        }
+                        else
+                        {
+                            weightReceivedScale = weight;
+                            lbWeightBalance.Invoke(new Action(() => lbWeightBalance.Text = weight + " " + nameUnitMeasure));
+                            balanceGauge.Invoke(new Action(() => balanceGauge.Value = Convert.ToInt32(_value)));
+                            detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " - " + weight + " " + nameUnitMeasure));
+
+                        }
 
                     }
+
+                 
                 }
                 else
                 {
@@ -492,14 +526,25 @@ namespace BalanceNetFramework
                         {
                             standardWeight = _pesoStandard;
                         }
-                        if (decimal.TryParse(reader.GetString("Tolleranza"), out _porcTolerance))
+
+                        var hasTolleranza = reader.IsDBNull(reader.GetOrdinal("Tolleranza")) ? false : true;
+
+                        if (hasTolleranza)
                         {
-                            tolerance = (int)(standardWeight * (_porcTolerance / 100));
+                            if (decimal.TryParse(reader.GetString("Tolleranza"), out _porcTolerance))
+                            {
+                                tolerance = (int)(standardWeight * (_porcTolerance / 100));
+                            }
+                            else
+                            {
+                                tolerance = 0;
+                            }
                         }
                         else
                         {
                             tolerance = 0;
                         }
+                       
 
 
                     }
@@ -509,6 +554,11 @@ namespace BalanceNetFramework
                         toleranceMax = standardWeight + (int)tolerance;
                         toleranceMin = standardWeight - (int)tolerance;
 
+                    }
+                    else
+                    {
+                        toleranceMax = 0;
+                        toleranceMin = 0;
                     }
 
                     balanceGauge.MinValue = minValue;
@@ -822,7 +872,7 @@ namespace BalanceNetFramework
             }
             else
             {
-                GetNumberWeightControl(idProduct);
+                GetNumberWeightControl(idProduct);             
                 if (numberWeight == numberWeightControl && controlNumber != 0)
                 {
                     var message = _balance.GetMessageWeight(idProduct, controlNumber);
@@ -872,14 +922,30 @@ namespace BalanceNetFramework
                         _pesate.DataOra = dateFormart;
                         _pesate.Pesata = weightReceivedScale;
                         _pesate.NumeroPesata = numberWeight + 1;
-                        if (pesate > _max || _min > pesate)
+
+                        if (toleranceMin != 0 && toleranceMax != 0)
                         {
-                            _pesate.Adatto = false;
+                            if (pesate > _max || _min > pesate)
+                            {
+                                _pesate.Adatto = false;
+                            }
+                            else
+                            {
+                                _pesate.Adatto = true;
+                            }
                         }
                         else
                         {
-                            _pesate.Adatto = true;
+                            if (pesate > maxValue || minValue > pesate)
+                            {
+                                _pesate.Adatto = false;
+                            }
+                            else
+                            {
+                                _pesate.Adatto = true;
+                            }
                         }
+                     
                         // _pesate.Annullato= "";
                         _pesate.Attivo = true;
                         await _balance.InsertControlWeight(_pesate);
@@ -887,10 +953,14 @@ namespace BalanceNetFramework
                         if (numberWeight == 0)
                         {
                             repeatWeight.Visible = false;
+                            txtCodiceLotto.Enabled = false;
+                            btnLotto.Enabled = false;
                         }
                         else
                         {
                             repeatWeight.Visible = true;
+                            txtCodiceLotto.Enabled = true;
+                            btnLotto.Enabled = true;
                         }
 
                         if (numberWeight == numberWeightControl && controlNumber != 0)
@@ -938,20 +1008,26 @@ namespace BalanceNetFramework
                 btnResetWeight.Visible = false;
                 idProduct = cbProduct.SelectedValue.ToString();
                 var name = GetNameUnitMeasure(idProduct);
+                var nameProduct = GetNameProduct(idProduct);
                 String[] data = name.Split('-');
                 nameUnitMeasure = data[1];
                 detailProduct.Text = "";
                 lbWeightBalance.Text = "0.00 " + data[1];
                 lbStandardWeight.Text = "Peso Standard: " + data[2] + data[1];
+                txtProdottoEnable.Text = nameProduct;
                 GetMinAndMaxValue(idProduct);
-                GetNumberWeightControl(idProduct);
+                GetNumberWeightControl(idProduct);             
                 if (numberWeight > 0)
                 {
                     repeatWeight.Visible = true;
+                    txtCodiceLotto.Enabled = true;
+                    btnLotto.Enabled = true;
                 }
                 else
                 {
                     repeatWeight.Visible = false;
+                    txtCodiceLotto.Enabled = false;
+                    btnLotto.Enabled = false;
                 }
 
                 if (numberWeight == numberWeightControl && controlNumber != 0)
@@ -1010,12 +1086,16 @@ namespace BalanceNetFramework
                     if (numberWeight == 0)
                     {
                         repeatWeight.Visible = false;
+                        txtCodiceLotto.Enabled = false;
+                        btnLotto.Enabled = false;
                     }
                 }
             }
             else
             {
                 repeatWeight.Visible = false;
+                txtCodiceLotto.Enabled = false;
+                btnLotto.Enabled = false;
             }
             System.Threading.Thread.Sleep(1000);
             this.Enabled = true;
@@ -1029,6 +1109,8 @@ namespace BalanceNetFramework
                 lbMessage.Visible = false;
                 btnResetWeight.Visible = false;
                 repeatWeight.Visible = false;
+                txtCodiceLotto.Enabled = false;
+                btnLotto.Enabled = false;
                 GetNumberWeightControl(idProduct);
             }
 
@@ -1037,6 +1119,38 @@ namespace BalanceNetFramework
         private void timer1_Tick(object sender, EventArgs e)
         {
             Reload();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            var _codiceLotto = txtCodiceLotto.Text;
+            try
+            {
+                if (string.IsNullOrEmpty(_codiceLotto))
+                {
+                    MessageBox.Show("Inserisci il codice del lotto.");
+                }
+                else
+                {
+                    LotteModel _lotte = new LotteModel();
+                    _lotte.Id_Prodotto = Convert.ToInt32(idProduct);
+                    _lotte.CodiceLotto = _codiceLotto;
+                    _lotte.SogliaMinima = minValue;
+                    _lotte.SogliaMassima = maxValue;
+                    _lotte.Tolleranza = tolerance;
+                    _lotte.PesoStandard = standardWeight;
+                    _lotte.Attivo = true;
+
+                    _balance.InsertLotte(_lotte);
+                   
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+            }
+           
         }
     }
 }

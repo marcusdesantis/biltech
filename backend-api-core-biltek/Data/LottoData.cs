@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace backend_api_core.Data
 {
-    public class ProdottoData : IProdotto
+    public class LottoData : ILotto
     {
         private readonly IC_conexion _c_conexion;
 
-        public ProdottoData(IC_conexion c_conexion)
+        public LottoData(IC_conexion c_conexion)
         {
             this._c_conexion = c_conexion;
         }
@@ -22,9 +22,9 @@ namespace backend_api_core.Data
             try
             {
                 RespuestaDB respuesta = null;
-                string nombreFuncion = "sp_abm_prodotto";
+                string nombreFuncion = "sp_abm_lotto";
 
-                respuesta = await this._c_conexion.abmObjeto<Prodotto>(nombreFuncion, AbmAccion.ELIMINAR_BAJA, new Prodotto { id = id });
+                respuesta = await this._c_conexion.abmObjeto<Lotto>(nombreFuncion, AbmAccion.ELIMINAR_BAJA, new Lotto { Id = id });
 
                 return respuesta;
             }
@@ -34,17 +34,17 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<Prodotto> FindById(int id)
+        public async Task<Lotto> FindById(int id)
         {
             try
             {
-                Prodotto datos = new Prodotto();
-                string nombreFuncion = "sp_get_prodotto";
+                Lotto datos = new Lotto();
+                string nombreFuncion = "sp_get_lotto";
 
                 Hashtable parametros = new Hashtable();
-                parametros.Add("id", id);
+                parametros.Add("Id", id);
 
-                datos = await this._c_conexion.traerObjeto<Prodotto>(nombreFuncion, parametros);
+                datos = await this._c_conexion.traerObjeto<Lotto>(nombreFuncion, parametros);
 
                 return datos;
 
@@ -55,14 +55,14 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<RespuestaDB> Modify(Prodotto data)
+        public async Task<RespuestaDB> Modify(Lotto data)
         {
             try
             {
                 RespuestaDB respuesta = new RespuestaDB();
-                string nombreFuncion = "sp_abm_prodotto";
+                string nombreFuncion = "sp_abm_lotto";
 
-                respuesta = await this._c_conexion.abmObjeto<Prodotto>(nombreFuncion, AbmAccion.MODIFICAR, data);
+                respuesta = await this._c_conexion.abmObjeto<Lotto>(nombreFuncion, AbmAccion.MODIFICAR, data);
 
                 return respuesta;
             }
@@ -72,32 +72,27 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<RespuestaDB> Save(Prodotto data)
+        public async Task<RespuestaDB> Save(Lotto data)
         {
             try
             {
                 RespuestaDB respuesta = new RespuestaDB();
-                string nombreFuncion = "sp_abm_prodotto";
+                string nombreFuncion = "sp_abm_lotto";
 
-                data.id = data.id== null ? 0 : data.id;
+                data.Id = data.Id == null ? 0 : data.Id;
 
                 Hashtable parametros = new Hashtable();
                 parametros.Add("action", AbmAccion.GUARDAR);
-                parametros.Add("Id", data.id);
-                parametros.Add("Nome", data.Nome);
-                parametros.Add("Id_UnitaMisura", data.Id_UnitaMisura);
-                parametros.Add("Id_TipologiaProdotto", data.Id_TipologiaProdotto);
-                parametros.Add("Id_Categorie", data.Id_Categorie);
-                parametros.Add("CodiceProdotto", data.CodiceProdotto);
-                parametros.Add("MinimoScortaMagazzino", data.MinimoScortaMagazzino);
+                parametros.Add("Id", data.Id);
+                parametros.Add("Id_Prodotto", data.Id_Prodotto);
+                parametros.Add("CodiceLotto", data.CodiceLotto);
                 parametros.Add("SogliaMinima", data.SogliaMinima);
                 parametros.Add("SogliaMassima", data.SogliaMassima);
                 parametros.Add("Tolleranza", data.Tolleranza);
                 parametros.Add("PesoStandard", data.PesoStandard);
-                parametros.Add("NumeroPesateControllo", data.NumeroPesateControllo);
-                parametros.Add("NumeroControllo", data.NumeroControllo);
-                
-                respuesta = await this._c_conexion.abmObjeto<Prodotto>(nombreFuncion, AbmAccion.GUARDAR, data);
+
+
+                respuesta = await this._c_conexion.abmObjeto<Lotto>(nombreFuncion, AbmAccion.GUARDAR, data);
 
                 return respuesta;
             }
@@ -107,12 +102,12 @@ namespace backend_api_core.Data
             }
         }
 
-        public async Task<IEnumerable<ProdottoList>> SearchList(string value, string parameter, int currentPageNumber, int amountShow)
+        public async Task<IEnumerable<LottoList>> SearchList(string value, string parameter, int currentPageNumber, int amountShow)
         {
             try
             {
-                IEnumerable<ProdottoList> arrayDatos = new ProdottoList[] { };
-                string nombreFuncion = "sp_list_prodotto";
+                IEnumerable<LottoList> arrayDatos = new LottoList[] { };
+                string nombreFuncion = "sp_list_lotto";
 
                 Hashtable parametros = new Hashtable();
                 parametros.Add("bus_value", value == null ? "" : value);
@@ -120,7 +115,7 @@ namespace backend_api_core.Data
                 parametros.Add("currentPageNumber", currentPageNumber);
                 parametros.Add("amountShow", amountShow);
 
-                arrayDatos = await this._c_conexion.traerArrayObjeto<ProdottoList>(nombreFuncion, parametros);
+                arrayDatos = await this._c_conexion.traerArrayObjeto<LottoList>(nombreFuncion, parametros);
 
                 return arrayDatos;
 

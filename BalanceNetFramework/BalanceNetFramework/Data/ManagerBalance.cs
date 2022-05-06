@@ -518,6 +518,58 @@ namespace BalanceNetFramework.Data
 
         }
 
+        public bool InsertLotte(LotteModel lotte)
+        {
+            bool state = false;
+            try
+            {
+
+                string sql = "INSERT INTO lotto (Id_Prodotto, CodiceLotto, SogliaMinima, SogliaMassima, Tolleranza, PesoStandard, Attivo) VALUES (@Id_Prodotto, @CodiceLotto, @SogliaMinima, @SogliaMassima, @Tolleranza, @PesoStandard, @Attivo);";
+
+                MySqlConnection connectionBD = ConnectionDB.connection();
+                connectionBD.Open();
+
+                try
+                {
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                    command.Parameters.AddWithValue("@Id_Prodotto", lotte.Id_Prodotto);
+                    command.Parameters.AddWithValue("@CodiceLotto", lotte.CodiceLotto);
+                    command.Parameters.AddWithValue("@SogliaMinima", lotte.SogliaMinima);
+                    command.Parameters.AddWithValue("@SogliaMassima", lotte.SogliaMassima);
+                    command.Parameters.AddWithValue("@Tolleranza", lotte.Tolleranza);
+                    command.Parameters.AddWithValue("@PesoStandard", lotte.PesoStandard);
+                    command.Parameters.AddWithValue("@Attivo", lotte.Attivo);
+
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("Insert Success");
+
+                    state = true;
+
+                }
+                catch (Exception ex)
+                {
+                    ManagerBalance.log.Error(ex.Message);
+                    Console.WriteLine("Insert Error: " + ex.Message);
+                    state = false;
+
+                }
+                finally
+                {
+                    connectionBD.Close();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            return state;
+
+        }
+
         public bool UpdateLastedControlWeight(string id, int numberWeight)
         {
             bool state = false;
