@@ -1141,7 +1141,12 @@ namespace BalanceNetFramework
                     _lotte.PesoStandard = standardWeight;
                     _lotte.Attivo = true;
 
-                    _balance.InsertLotte(_lotte);
+                    if (_balance.InsertLotte(_lotte))
+                    {
+                        txtCodiceLotto.Text = "";
+                        Console.WriteLine("record salvato con successo");
+                    }
+                    
                    
                 }
 

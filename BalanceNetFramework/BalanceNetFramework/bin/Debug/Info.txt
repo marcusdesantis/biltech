@@ -224,3 +224,4 @@
 2022-05-06 15:52:49,945 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
 2022-05-06 15:54:55,431 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
 2022-05-06 15:56:27,044 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-06 16:09:33,244 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
