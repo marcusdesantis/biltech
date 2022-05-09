@@ -212,6 +212,7 @@
     <Compile Include="Extentions\OwinContextExtentions.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Provider\OAuthAppProvider.cs" />
+    <Compile Include="Services\ApiClientService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Startup.Auth.cs" />
     <Compile Include="Views\LoginWindow.cs">

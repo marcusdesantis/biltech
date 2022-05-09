@@ -225,3 +225,20 @@
 2022-05-06 15:54:55,431 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
 2022-05-06 15:56:27,044 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
 2022-05-06 16:09:33,244 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-09 13:42:17,866 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Object reference not set to an instance of an object.
+2022-05-09 14:15:48,609 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-09 14:24:15,902 [9] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-09 14:24:17,010 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Field 'Id_Lotto' doesn't have a default value
+2022-05-09 14:58:39,592 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-09 15:00:00,065 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-09 15:09:08,591 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Caffe'.
+2022-05-09 15:38:33,295 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-09 15:48:31,688 [12] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-05-09 15:52:01,646 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-05-09 15:54:06,426 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-05-09 15:57:49,661 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-05-09 16:01:16,757 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-05-09 16:02:25,305 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-05-09 16:03:44,355 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-05-09 16:06:47,776 [9] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-05-09 16:08:28,473 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.

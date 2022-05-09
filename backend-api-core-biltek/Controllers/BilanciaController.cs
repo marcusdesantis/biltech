@@ -7,6 +7,7 @@ using backend_api_core.Models;
 using System.Linq;
 using System;
 using System.Transactions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace backend_api_core.Controllers
 {
@@ -19,6 +20,45 @@ namespace backend_api_core.Controllers
         public BilanciaController(IBilancia bilancia)
         {
             this._bilancia = bilancia;
+        }
+        
+
+        [HttpGet]
+        [Authorize]
+        [Route("GetConfig")]
+        public async Task<ActionResult<IEnumerable<RespuestaCore>>> GetConfig()
+        {
+            RespuestaCore respuesta = new RespuestaCore();
+            IEnumerable<BilanciaList> _arrayLista = new BilanciaList[] { };
+            int elementosTotales = 0;
+
+            try
+            {
+                _arrayLista = await this._bilancia.ConfigList();
+
+                if (_arrayLista.Count() > 0)
+                {
+                    elementosTotales = _arrayLista.ElementAt(0).total;
+                }
+
+                respuesta = new RespuestaCore
+                {
+                    status = "success",
+                    response = _arrayLista,
+                    total = elementosTotales
+                };
+            }
+            catch (Exception ex)
+            {
+                respuesta = new RespuestaCore
+                {
+                    status = "error",
+                    response = ex.Message
+                };
+
+            }
+
+            return new OkObjectResult(respuesta);
         }
 
         // GET: api/Persona

@@ -115,4 +115,39 @@ namespace BalanceNetFramework.Models
             return usr;
         }
     }
+
+    public class UserModel
+    {
+        public int Id { get; set; }
+        public string usuario { get; set; }
+        public string token { get; set; }
+        public string nombre_usuario { get; set; }
+        public string Cognome { get; set; }
+        public string email { get; set; }
+    }
+
+    public class Respuesta
+    {
+        public string status { get; set; }
+        public UserModel response { get; set; }
+    }
+
+    public class RespuestaCliente
+    {
+        public string status { get; set; }
+        public ClienteModel response { get; set; }
+    }
+
+    public class ClienteModel
+    {
+        public string CardCode { get; set; }
+        public string CardName { get; set; }
+        public string Phone1 { get; set; }
+        public string Phone2 { get; set; }
+        public decimal Balance { get; set; }
+        public short GroupNum { get; set; }
+        public string U_MAQ02 { get; set; }
+    }
+
+
 }

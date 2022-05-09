@@ -12,10 +12,12 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace BalanceNetFramework
 {
     public partial class MainWindow : Form
     {
+        private Respuesta _responseToken = new Respuesta();
         private ManagerBalance _balance = null;
         BalanceModel _selected = null;
         //BalanceResultModel _balanceResultModel = new BalanceResultModel();
@@ -30,22 +32,28 @@ namespace BalanceNetFramework
         decimal toleranceMax = 0;
         decimal toleranceMin = 0;
         string weightReceivedScale = "";
+        string codiceLotto = "";
         int numberWeightControl = 0;
         int controlNumber = 0;
         int numberWeight = 0;
+        int idLotto = 0;
 
 
-
+        //Respuesta responseToken
         public MainWindow()
         {
             InitializeComponent();
             this.CenterToScreen();
-            this.MaximizeBox = false;
+
+           //this._responseToken = responseToken;
+
+           // this.MaximizeBox = false;
 
             _instance = this;
 
+           // _balance = new ManagerBalance(responseToken);
             _balance = new ManagerBalance();
-
+            // _balance.GetConfiguration();
             cbBalance.DataSource = _balance.BalanceList;
             cbBalance.DisplayMember = "Nome";
             cbBalance.ValueMember = "Id";
@@ -169,7 +177,6 @@ namespace BalanceNetFramework
 
             Reload();
             timer1.Start();
-
 
         }
 
@@ -665,7 +672,7 @@ namespace BalanceNetFramework
             try
             {
 
-                string sqlControllo = "SELECT ifnull(NumeroPesata,0) NumeroPesata FROM biltek_bd.controllopeso WHERE Attivo=1 AND id_prodotto=@idProduct AND DATE_FORMAT(DataOra,'%d:%m:%Y') = DATE_FORMAT(Now(), '%d:%m:%Y') AND Annullato is null AND NumeroControllo=@numberControllo Order by DataOra desc Limit 1; ";
+                string sqlControllo = "SELECT ifnull(NumeroPesata,0) NumeroPesata FROM biltek_bd.controllopeso WHERE Attivo=1 AND id_prodotto=@idProduct AND Ripristina=0 AND DATE_FORMAT(DataOra,'%d:%m:%Y') = DATE_FORMAT(Now(), '%d:%m:%Y') AND Annullato is null AND NumeroControllo=@numberControllo Order by DataOra desc Limit 1; ";
                 MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
 
@@ -686,6 +693,63 @@ namespace BalanceNetFramework
                     if (readerControllo.HasRows == false)
                     {
                         numberWeight = 0;
+                    }
+
+                    state = true;
+
+                }
+                catch (Exception ex)
+                {
+                    ManagerBalance.log.Error(ex.Message);
+                    Console.WriteLine(ex.Message);
+                    state = false;
+
+                }
+                finally
+                {
+                    connectionBD.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            try
+            {
+
+                string sqlLotto = "select * from biltek_bd.lotto where Attivo=1 AND Id_Prodotto=@idProduct order by Id desc Limit 1";
+                MySqlConnection connectionBD = ConnectionDB.connection();
+                connectionBD.Open();
+
+                try
+                {
+                    MySqlCommand commandLotto = new MySqlCommand(sqlLotto, connectionBD);
+                    commandLotto.Parameters.AddWithValue("@idProduct", idProduct);
+
+                    MySqlDataReader readerLotto = (MySqlDataReader)await commandLotto.ExecuteReaderAsync();
+
+                    while (readerLotto.Read())
+                    {
+                        var hasIdLotto = readerLotto.IsDBNull(readerLotto.GetOrdinal("Id")) ? false : true;
+                        if (hasIdLotto)
+                        {
+                            idLotto = Int32.Parse(readerLotto.GetString("Id"));
+                            codiceLotto = readerLotto.GetString("CodiceLotto");
+                        }
+                        else
+                        {
+                            idLotto = 0;
+                            codiceLotto = "";
+                        }
+
+                    }
+
+                    if (readerLotto.HasRows == false)
+                    {
+                        idLotto = 0;
                     }
 
                     state = true;
@@ -881,6 +945,8 @@ namespace BalanceNetFramework
                         lbMessage.Text = "Il peso del prodotto è adecuato. Tutti i pesi sono nel margine di tolleranza.";
                         lbMessage.BackColor = Color.Green;
                         lbMessage.ForeColor = Color.White;
+                        btnLotto.Enabled = true;
+                        txtCodiceLotto.Enabled = true;
                     }
                     else
                     {
@@ -894,6 +960,8 @@ namespace BalanceNetFramework
                         }
                         lbMessage.BackColor = Color.Red;
                         lbMessage.ForeColor = Color.White;
+                        btnLotto.Enabled = true;
+                        txtCodiceLotto.Enabled = true;
                     }
                     lbMessage.Visible = true;
                     btnResetWeight.Visible = true;
@@ -922,6 +990,8 @@ namespace BalanceNetFramework
                         _pesate.DataOra = dateFormart;
                         _pesate.Pesata = weightReceivedScale;
                         _pesate.NumeroPesata = numberWeight + 1;
+                        _pesate.Id_Lotto = idLotto;
+                        _pesate.Ripristina = false;
 
                         if (toleranceMin != 0 && toleranceMax != 0)
                         {
@@ -959,8 +1029,8 @@ namespace BalanceNetFramework
                         else
                         {
                             repeatWeight.Visible = true;
-                            txtCodiceLotto.Enabled = true;
-                            btnLotto.Enabled = true;
+                            //txtCodiceLotto.Enabled = true;
+                            //btnLotto.Enabled = true;
                         }
 
                         if (numberWeight == numberWeightControl && controlNumber != 0)
@@ -971,6 +1041,9 @@ namespace BalanceNetFramework
                                 lbMessage.Text = "Il peso del prodotto è adecuato. Tutti i pesi sono nel margine di tolleranza.";
                                 lbMessage.BackColor = Color.Green;
                                 lbMessage.ForeColor = Color.White;
+
+                                btnLotto.Enabled = true;
+                                txtCodiceLotto.Enabled = true;
                             }
                             else
                             {
@@ -984,6 +1057,9 @@ namespace BalanceNetFramework
                                 }
                                 lbMessage.BackColor = Color.Red;
                                 lbMessage.ForeColor = Color.White;
+
+                                btnLotto.Enabled = true;
+                                txtCodiceLotto.Enabled = true;
                             }
                             lbMessage.Visible = true;
                             btnResetWeight.Visible = true;
@@ -1016,18 +1092,28 @@ namespace BalanceNetFramework
                 lbStandardWeight.Text = "Peso Standard: " + data[2] + data[1];
                 txtProdottoEnable.Text = nameProduct;
                 GetMinAndMaxValue(idProduct);
-                GetNumberWeightControl(idProduct);             
+                GetNumberWeightControl(idProduct);
+                
                 if (numberWeight > 0)
                 {
-                    repeatWeight.Visible = true;
-                    txtCodiceLotto.Enabled = true;
-                    btnLotto.Enabled = true;
+                    repeatWeight.Visible = true;                  
                 }
                 else
                 {
                     repeatWeight.Visible = false;
                     txtCodiceLotto.Enabled = false;
-                    btnLotto.Enabled = false;
+                    btnLotto.Enabled = false;                
+                }
+
+                if (idLotto == 0)
+                {
+                    btnWeight.Enabled = false;
+                    txtCodiceLotto.Enabled = true;
+                    btnLotto.Enabled = true;
+                }
+                else
+                {
+                    txtCodiceLotto.Text = codiceLotto;
                 }
 
                 if (numberWeight == numberWeightControl && controlNumber != 0)
@@ -1038,6 +1124,9 @@ namespace BalanceNetFramework
                         lbMessage.Text = "Il peso del prodotto è adecuato. Tutti i pesi sono nel margine di tolleranza.";
                         lbMessage.BackColor = Color.Green;
                         lbMessage.ForeColor = Color.White;
+
+                        btnLotto.Enabled = true;
+                        txtCodiceLotto.Enabled = true;
                     }
                     else
                     {
@@ -1051,6 +1140,9 @@ namespace BalanceNetFramework
                         }
                         lbMessage.BackColor = Color.Red;
                         lbMessage.ForeColor = Color.White;
+
+                        btnLotto.Enabled = true;
+                        txtCodiceLotto.Enabled = true;
                     }
                     lbMessage.Visible = true;
                     btnResetWeight.Visible = true;
@@ -1109,9 +1201,12 @@ namespace BalanceNetFramework
                 lbMessage.Visible = false;
                 btnResetWeight.Visible = false;
                 repeatWeight.Visible = false;
+               
                 txtCodiceLotto.Enabled = false;
                 btnLotto.Enabled = false;
+               
                 GetNumberWeightControl(idProduct);
+                _balance.UpdateLastedLotto(Convert.ToString(idLotto));
             }
 
         }
@@ -1124,31 +1219,51 @@ namespace BalanceNetFramework
         private void button1_Click_1(object sender, EventArgs e)
         {
             var _codiceLotto = txtCodiceLotto.Text;
+
+
             try
             {
-                if (string.IsNullOrEmpty(_codiceLotto))
+
+                if (numberWeight == numberWeightControl && controlNumber != 0)
                 {
-                    MessageBox.Show("Inserisci il codice del lotto.");
+                    if (_balance.RepeatControlWeight(idProduct, controlNumber))
+                    {
+                        lbMessage.Visible = false;
+                        btnResetWeight.Visible = false;
+                        repeatWeight.Visible = false;
+                        //btnWeight.Enabled = false;
+                        GetNumberWeightControl(idProduct);
+                        btnLotto.Enabled = false;
+                        txtCodiceLotto.Enabled = false;
+                        //txtCodiceLotto.Text = "";
+                    }
                 }
                 else
                 {
-                    LotteModel _lotte = new LotteModel();
-                    _lotte.Id_Prodotto = Convert.ToInt32(idProduct);
-                    _lotte.CodiceLotto = _codiceLotto;
-                    _lotte.SogliaMinima = minValue;
-                    _lotte.SogliaMassima = maxValue;
-                    _lotte.Tolleranza = tolerance;
-                    _lotte.PesoStandard = standardWeight;
-                    _lotte.Attivo = true;
-
-                    if (_balance.InsertLotte(_lotte))
+                    if (string.IsNullOrEmpty(_codiceLotto))
                     {
-                        txtCodiceLotto.Text = "";
-                        Console.WriteLine("record salvato con successo");
+                        MessageBox.Show("Inserisci il codice del lotto.");
                     }
-                    
-                   
-                }
+                    else
+                    {
+                        LotteModel _lotte = new LotteModel();
+                        _lotte.Id_Prodotto = Convert.ToInt32(idProduct);
+                        _lotte.CodiceLotto = _codiceLotto;
+                        _lotte.SogliaMinima = minValue;
+                        _lotte.SogliaMassima = maxValue;
+                        _lotte.Tolleranza = tolerance;
+                        _lotte.PesoStandard = standardWeight;
+                        _lotte.Attivo = true;
+
+                        if (_balance.InsertLotte(_lotte))
+                        {
+                            txtCodiceLotto.Enabled = false;
+                            btnLotto.Enabled = false;
+                            btnWeight.Enabled = true;
+                            Console.WriteLine("record salvato con successo");
+                        }
+                    }
+                }               
 
             }
             catch (Exception ex)

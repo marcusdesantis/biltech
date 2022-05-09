@@ -130,7 +130,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnLotto.Location" type="System.Drawing.Point, System.Drawing">
-    <value>629, 430</value>
+    <value>610, 137</value>
   </data>
   <data name="btnLotto.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 30</value>
@@ -163,7 +163,7 @@
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>625, 375</value>
+    <value>606, 82</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 20</value>
@@ -193,7 +193,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="txtProdottoEnable.Location" type="System.Drawing.Point, System.Drawing">
-    <value>629, 398</value>
+    <value>610, 105</value>
   </data>
   <data name="txtProdottoEnable.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 26</value>
@@ -223,7 +223,7 @@
     <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>625, 323</value>
+    <value>606, 30</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 20</value>
@@ -256,7 +256,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbLotto.Location" type="System.Drawing.Point, System.Drawing">
-    <value>625, 300</value>
+    <value>606, 7</value>
   </data>
   <data name="lbLotto.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 20</value>
@@ -286,7 +286,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="txtCodiceLotto.Location" type="System.Drawing.Point, System.Drawing">
-    <value>629, 346</value>
+    <value>610, 53</value>
   </data>
   <data name="txtCodiceLotto.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 26</value>
@@ -346,7 +346,7 @@
     <value>NoControl</value>
   </data>
   <data name="repeatWeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>541, 97</value>
+    <value>611, 255</value>
   </data>
   <data name="repeatWeight.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 33</value>
@@ -379,7 +379,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnResetWeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>589, 210</value>
+    <value>659, 368</value>
   </data>
   <data name="btnResetWeight.Size" type="System.Drawing.Size, System.Drawing">
     <value>136, 33</value>
@@ -412,7 +412,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbMessage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>590, 142</value>
+    <value>660, 300</value>
   </data>
   <data name="lbMessage.Size" type="System.Drawing.Size, System.Drawing">
     <value>265, 68</value>
@@ -448,7 +448,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnWeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>541, 26</value>
+    <value>611, 184</value>
   </data>
   <data name="btnWeight.Size" type="System.Drawing.Size, System.Drawing">
     <value>314, 84</value>
@@ -577,7 +577,7 @@
     <value>0, 0</value>
   </data>
   <data name="balanceGauge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>867, 540</value>
+    <value>951, 540</value>
   </data>
   <data name="balanceGauge.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -598,10 +598,10 @@
     <value>Fill</value>
   </data>
   <data name="panelBalance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>326, 3</value>
+    <value>357, 3</value>
   </data>
   <data name="panelBalance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>864, 632</value>
+    <value>948, 632</value>
   </data>
   <data name="panelBalance.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -865,7 +865,7 @@
     <value>13, 3, 3, 3</value>
   </data>
   <data name="panelProduct.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 632</value>
+    <value>338, 632</value>
   </data>
   <data name="panelProduct.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -1645,7 +1645,7 @@
     <value>0, 761</value>
   </data>
   <data name="panelConnectionInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1193, 10</value>
+    <value>1308, 10</value>
   </data>
   <data name="panelConnectionInformation.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1735,7 +1735,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1193, 123</value>
+    <value>1308, 123</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -1765,7 +1765,7 @@
     <value>1</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1193, 638</value>
+    <value>1308, 638</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -1795,7 +1795,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1193, 771</value>
+    <value>1308, 771</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Bilancia</value>

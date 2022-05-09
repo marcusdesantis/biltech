@@ -7,6 +7,8 @@ using System.Data;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -16,7 +18,7 @@ namespace BalanceNetFramework.Data
 {
     public class ManagerBalance
     {
-
+        public Respuesta _responseToken = new Respuesta();
         public static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         List<BalanceModel> _balanceList = new List<BalanceModel>();
@@ -70,11 +72,12 @@ namespace BalanceNetFramework.Data
             }
         }
 
+        //Respuesta responseToken
         public ManagerBalance()
         {
-
-            //loadDataConfigurationBalanceJson(configFilePath);
             LoadDataConfigurationBalanceDB();
+            // _responseToken = responseToken;
+            //loadDataConfigurationBalanceJson(configFilePath);
 
         }
 
@@ -106,6 +109,10 @@ namespace BalanceNetFramework.Data
             return _parity;
         }
 
+        public async void GetConfiguration()
+        {
+            bool retval = await LoadDataConfigurationBalanceRemote();
+        }
         private StopBits Integer2StopBits(int stopBits)
         {
             StopBits _stopBits = StopBits.None;
@@ -353,6 +360,22 @@ namespace BalanceNetFramework.Data
             return retVal;
         }
 
+        public async Task<bool> LoadDataConfigurationBalanceRemote()
+        {
+            bool state = false;
+            string _Url = @"http://localhost:5030/";
+            HttpClient _client = new HttpClient();
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _responseToken.response.token);
+
+            //HttpResponseMessage response = await _client.PostAsync("api/Bilancia/GetConfig", new StringContent("", Encoding.UTF8, "application/json"));
+            HttpResponseMessage response = await _client.GetAsync("api/Bilancia/GetConfig/");
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+            var contentResponse = JsonConvert.DeserializeObject<Respuesta>(responseContent);
+
+            return state;
+
+        }
         public bool LoadDataConfigurationBalanceDB()
         {
             bool state = false;
@@ -471,7 +494,7 @@ namespace BalanceNetFramework.Data
             try
             {
 
-                string sql = "INSERT INTO controllopeso (Id_Prodotto, NumeroControllo, DataOra, Pesata, NumeroPesata, Adatto, Annullato, Attivo) VALUES (@Id_Prodotto, @NumeroControllo, @DataOra, @Pesata, @NumeroPesata, @Adatto, @Annullato, @Attivo)";
+                string sql = "INSERT INTO controllopeso (Id_Prodotto, Id_Lotto, NumeroControllo, DataOra, Pesata, NumeroPesata, Adatto, Annullato, Ripristina,Attivo) VALUES (@Id_Prodotto, @Id_Lotto, @NumeroControllo, @DataOra, @Pesata, @NumeroPesata, @Adatto, @Annullato, @Ripristina, @Attivo)";
 
                 MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
@@ -480,12 +503,14 @@ namespace BalanceNetFramework.Data
                 {
                     MySqlCommand command = new MySqlCommand(sql, connectionBD);
                     command.Parameters.AddWithValue("@Id_Prodotto", controlWeight.Id_Prodotto);
+                    command.Parameters.AddWithValue("@Id_Lotto", controlWeight.Id_Lotto);
                     command.Parameters.AddWithValue("@NumeroControllo", controlWeight.NumeroControllo);
                     command.Parameters.AddWithValue("@DataOra", controlWeight.DataOra);
                     command.Parameters.AddWithValue("@Pesata", controlWeight.Pesata);
                     command.Parameters.AddWithValue("@NumeroPesata", controlWeight.NumeroPesata);
                     command.Parameters.AddWithValue("@Adatto", controlWeight.Adatto);
                     command.Parameters.AddWithValue("@Annullato", controlWeight.Annullato);
+                    command.Parameters.AddWithValue("@Ripristina", controlWeight.Ripristina);
                     command.Parameters.AddWithValue("@Attivo", controlWeight.Attivo);
 
                     await command.ExecuteNonQueryAsync();
@@ -622,6 +647,52 @@ namespace BalanceNetFramework.Data
 
         }
 
+        public bool UpdateLastedLotto(string id)
+        {
+            bool state = false;
+            try
+            {
+
+                string sql = "update biltek_bd.lotto set Attivo=1 where Id=@id";
+
+                MySqlConnection connectionBD = ConnectionDB.connection();
+                connectionBD.Open();
+
+                try
+                {
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                    command.Parameters.AddWithValue("@id", id);
+
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("update Success");
+
+                    state = true;
+
+                }
+                catch (Exception ex)
+                {
+                    ManagerBalance.log.Error(ex.Message);
+                    Console.WriteLine("Insert Error: " + ex.Message);
+                    state = false;
+
+                }
+                finally
+                {
+                    connectionBD.Close();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            return state;
+
+        }
+
         public bool ResetControlWeight(string id, int numberControl)
         {
             bool state = false;
@@ -674,6 +745,56 @@ namespace BalanceNetFramework.Data
 
         }
 
+        public bool RepeatControlWeight(string id, int numberControl)
+        {
+            bool state = false;
+            try
+            {
+
+                string sql = "update biltek_bd.controllopeso set Ripristina=@Ripristina WHERE Id_Prodotto=@idProduct and NumeroControllo=@numberControl and DATE_FORMAT(DataOra,'%d:%m:%Y') = DATE_FORMAT(Now(), '%d:%m:%Y') and Annullato is null; ";
+
+                MySqlConnection connectionBD = ConnectionDB.connection();
+                connectionBD.Open();
+
+                DateTime dataCreazione = DateTime.Now;
+                string dateFormart = dataCreazione.ToString("yy-MM-dd HH:mm:ss");
+
+                try
+                {
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                    command.Parameters.AddWithValue("@Ripristina", 1);
+                    command.Parameters.AddWithValue("@idProduct", id);
+                    command.Parameters.AddWithValue("@numberControl", numberControl);
+
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("update Success");
+
+                    state = true;
+
+                }
+                catch (Exception ex)
+                {
+                    ManagerBalance.log.Error(ex.Message);
+                    Console.WriteLine("Insert Error: " + ex.Message);
+                    state = false;
+
+                }
+                finally
+                {
+                    connectionBD.Close();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            return state;
+
+        }
 
         public string GetMessageWeight(string idProduct, int numberControl)
         {

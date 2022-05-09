@@ -129,5 +129,26 @@ namespace backend_api_core.Data
                 throw ex;
             }
         }
+
+        public async Task<IEnumerable<BilanciaList>> ConfigList()
+        {
+            try
+            {
+                IEnumerable<BilanciaList> arrayDatos = new BilanciaList[] { };
+                string nombreFuncion = "sp_conf_bilancia";
+
+                Hashtable parametros = new Hashtable();
+
+                arrayDatos = await this._c_conexion.traerArrayObjeto<BilanciaList>(nombreFuncion, parametros);
+
+                return arrayDatos;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

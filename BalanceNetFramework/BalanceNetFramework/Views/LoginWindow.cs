@@ -79,32 +79,30 @@ namespace BalanceNetFramework.Views
 
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
-
+           
             string _user = txtUser.Text;
             string _password = txtPassword.Text;
 
-            var username = _user;
-            var password = _password;
-            var userService = new UserService();
-            Users user = userService.GetUserByCredential(username, password);
+            ApiClientService _client = new ApiClientService();
+            Users _utente = new Users() { Id = 0, Utente = _user, Password = _password };
 
-            if (user != null)
+            var resp = await _client.Login(_utente);
+            //if(loginController.Login(_utente))
+            if (resp != null && resp.status == "success")
             {
-                var claims = new List<Claim>()
-                    {
-                        new Claim(ClaimTypes.Name, user.Utente),
-                        new Claim("UserID", Convert.ToString(user.Id))
-                    };
-
-                ClaimsIdentity oAutIdentity = new ClaimsIdentity(claims, Startup.OAuthOptions.AuthenticationType);
-                //context.Validated(new AuthenticationTicket(oAutIdentity, new AuthenticationProperties() { }));
+               // MainWindow form1 = new MainWindow(resp);
+                this.Hide();
+               // form1.usuario = resp.response;
+                //form1.cargarUsuario();
+                //form1.Show();
             }
             else
             {
-                //context.SetError("invalid_grant", "Error");
+                MessageBox.Show("Usuario no autorizado");
             }
+
         }
     }
 }

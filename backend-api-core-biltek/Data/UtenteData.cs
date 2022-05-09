@@ -1,6 +1,7 @@
 ﻿using backend_api_core.Interfaces;
 using backend_api_core.Models;
 using backend_api_core.Utils;
+using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,8 +12,16 @@ namespace backend_api_core.Data
     public class UtenteData : IUtente
     {
         private readonly IC_conexion _c_conexion;
+        private Utente _Utente = new Utente();
 
-        public UtenteData(IC_conexion c_conexion)
+        public Utente Utente
+        {
+            get
+            {
+                return _Utente;
+            }
+        }
+        public UtenteData(IC_conexion c_conexion )
         {
             this._c_conexion = c_conexion;
         }
@@ -53,6 +62,44 @@ namespace backend_api_core.Data
             {
                 throw ex;
             }
+        }
+
+        public async Task<Utente> FindByUtente(string utente)
+        {
+            try
+            {
+                Utente datos = new Utente();
+                string nombreFuncion = "sp_get_utente_by_utente";
+
+                Hashtable parametros = new Hashtable();
+                parametros.Add("utente", utente);
+
+                datos = await this._c_conexion.traerObjeto<Utente>(nombreFuncion, parametros);
+
+                return datos;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<bool> isAuthenticate(Utente utente)
+        {
+            bool respuesta = false;
+            Utente usuario = new Utente();
+            usuario = await FindByUtente(utente.utente);
+
+            if (usuario != null)
+            {
+                if (utente.Password.Equals(usuario.Password))
+                {
+                    _Utente = usuario;
+                    respuesta = true;
+                }
+            }
+            return respuesta;
         }
 
         public async Task<RespuestaDB> Modify(Utente data)

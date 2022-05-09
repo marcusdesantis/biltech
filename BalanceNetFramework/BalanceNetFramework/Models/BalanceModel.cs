@@ -63,12 +63,14 @@ namespace BalanceNetFramework.Models
     {
         public int Id { get; set; }
         public int Id_Prodotto { get; set; }
+        public int Id_Lotto { get; set; }
         public int NumeroControllo { get; set; }
         public string DataOra { get; set; }
         public string Pesata { get; set; }
         public int NumeroPesata { get; set; }
         public bool Adatto { get; set; }
         public string Annullato { get; set; }
+        public bool Ripristina { get; set; }
         public bool Attivo { get; set; }
 
     }
