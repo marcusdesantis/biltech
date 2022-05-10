@@ -28,6 +28,7 @@ namespace BalanceNetFramework
         int minValue = 0;
         int maxValue = 0;
         decimal tolerance = 0;
+        decimal toleranceStart = 0;
         decimal standardWeight = 0;
         decimal toleranceMax = 0;
         decimal toleranceMin = 0;
@@ -45,15 +46,11 @@ namespace BalanceNetFramework
             InitializeComponent();
             this.CenterToScreen();
 
-           //this._responseToken = responseToken;
-
-           // this.MaximizeBox = false;
+            // this.MaximizeBox = false;
 
             _instance = this;
-
-           // _balance = new ManagerBalance(responseToken);
+            
             _balance = new ManagerBalance();
-            // _balance.GetConfiguration();
             cbBalance.DataSource = _balance.BalanceList;
             cbBalance.DisplayMember = "Nome";
             cbBalance.ValueMember = "Id";
@@ -68,8 +65,36 @@ namespace BalanceNetFramework
                 ManagerBalance.log.Error(ex.Message);
             }
 
+        }
 
+        public async void cargarValoresInicialesAsync(Respuesta responseToken)
+        {
+            this._responseToken = responseToken;
 
+            // this.MaximizeBox = false;
+
+            _instance = this;
+
+            _balance = new ManagerBalance(responseToken);
+            //_balance = new ManagerBalance();
+            List<BalanceModel>  balanceList = await _balance.GetConfiguration();
+            if (balanceList.Count() > 0)
+            {
+                cbBalance.DataSource = balanceList;
+                cbBalance.DisplayMember = "Nome";
+                cbBalance.ValueMember = "Id";
+                try
+                {
+
+                    idBalance = cbBalance.SelectedValue.ToString();
+                    SetFields(Int32.Parse(idBalance));
+                }
+                catch (Exception ex)
+                {
+                    ManagerBalance.log.Error(ex.Message);
+                }
+            }
+            
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -118,7 +143,7 @@ namespace BalanceNetFramework
             btnDisconnect.Visible = false;
             btnConnect.Visible = true;
             balanceGauge.Value = 0;
-            lbWeightBalance.Text = "0.00";
+            //lbWeightBalance.Text = "0.00";
             detailProduct.Text = "";
             //cbProduct.Items.Clear();
         }
@@ -149,7 +174,7 @@ namespace BalanceNetFramework
                         btnDisconnect.Visible = false;
                         btnConnect.Visible = true;
                         balanceGauge.Value = 0;
-                        lbWeightBalance.Text = "0.00";
+                        //lbWeightBalance.Text = "0.00";
                         detailProduct.Text = "";
 
                     }
@@ -175,6 +200,8 @@ namespace BalanceNetFramework
         private void cbProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+            balanceGauge.Value=0;
+            weightReceivedScale = "";
             Reload();
             timer1.Start();
 
@@ -329,7 +356,7 @@ namespace BalanceNetFramework
                             lbAlert.Invoke(new Action(() =>
                             {
                                 weightReceivedScale = weight;
-                                lbWeightBalance.Invoke(new Action(() => lbWeightBalance.Text = weight + " " + nameUnitMeasure));
+                                //lbWeightBalance.Invoke(new Action(() => lbWeightBalance.Text = weight + " " + nameUnitMeasure));
                                 balanceGauge.Invoke(new Action(() => balanceGauge.Value = Convert.ToInt32(_value)));
                                 detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " - " + weight + " " + nameUnitMeasure));
 
@@ -344,7 +371,7 @@ namespace BalanceNetFramework
                         else
                         {
                             weightReceivedScale = weight;
-                            lbWeightBalance.Invoke(new Action(() => lbWeightBalance.Text = weight + " " + nameUnitMeasure));
+                            //lbWeightBalance.Invoke(new Action(() => lbWeightBalance.Text = weight + " " + nameUnitMeasure));
                             balanceGauge.Invoke(new Action(() => balanceGauge.Value = Convert.ToInt32(_value)));
                             detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " - " + weight + " " + nameUnitMeasure));
 
@@ -358,7 +385,7 @@ namespace BalanceNetFramework
                             lbAlert.Invoke(new Action(() =>
                             {
                                 weightReceivedScale = weight;
-                                lbWeightBalance.Invoke(new Action(() => lbWeightBalance.Text = weight + " " + nameUnitMeasure));
+                                //lbWeightBalance.Invoke(new Action(() => lbWeightBalance.Text = weight + " " + nameUnitMeasure));
                                 balanceGauge.Invoke(new Action(() => balanceGauge.Value = Convert.ToInt32(_value)));
                                 detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " - " + weight + " " + nameUnitMeasure));
 
@@ -373,7 +400,7 @@ namespace BalanceNetFramework
                         else
                         {
                             weightReceivedScale = weight;
-                            lbWeightBalance.Invoke(new Action(() => lbWeightBalance.Text = weight + " " + nameUnitMeasure));
+                            //lbWeightBalance.Invoke(new Action(() => lbWeightBalance.Text = weight + " " + nameUnitMeasure));
                             balanceGauge.Invoke(new Action(() => balanceGauge.Value = Convert.ToInt32(_value)));
                             detailProduct.Invoke(new Action(() => detailProduct.Text = name.Substring(0, 1).ToUpper() + name.Substring(1) + " - " + weight + " " + nameUnitMeasure));
 
@@ -385,7 +412,7 @@ namespace BalanceNetFramework
                 }
                 else
                 {
-                    lbWeightBalance.Invoke(new Action(() => lbWeightBalance.Text = "0.00 " + nameUnitMeasure));
+                    //lbWeightBalance.Invoke(new Action(() => lbWeightBalance.Text = "0.00 " + nameUnitMeasure));
                     balanceGauge.Invoke(new Action(() => balanceGauge.Value = 0));
                     detailProduct.Invoke(new Action(() => detailProduct.Text = ""));
                     ManagerBalance.log.Error("The format sent by the scale is different or incorrect.");
@@ -541,15 +568,18 @@ namespace BalanceNetFramework
                             if (decimal.TryParse(reader.GetString("Tolleranza"), out _porcTolerance))
                             {
                                 tolerance = (int)(standardWeight * (_porcTolerance / 100));
+                                toleranceStart = _porcTolerance;
                             }
                             else
                             {
                                 tolerance = 0;
+                                toleranceStart = 0;
                             }
                         }
                         else
                         {
                             tolerance = 0;
+                            toleranceStart = 0;
                         }
                        
 
@@ -720,7 +750,7 @@ namespace BalanceNetFramework
             try
             {
 
-                string sqlLotto = "select * from biltek_bd.lotto where Attivo=1 AND Id_Prodotto=@idProduct order by Id desc Limit 1";
+                string sqlLotto = "select * from biltek_bd.lotto where Attivo=1 AND InUso=1 AND Id_Prodotto=@idProduct order by Id desc Limit 1";
                 MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
 
@@ -930,7 +960,7 @@ namespace BalanceNetFramework
             decimal _max = toleranceMax;
             decimal pesate = 0;
 
-            if (String.IsNullOrEmpty(weightReceivedScale))
+            if (String.IsNullOrEmpty(weightReceivedScale) || weightReceivedScale=="0,00")
             {
                 MessageBox.Show("Non ci sono valori da pesare.");
             }
@@ -947,6 +977,10 @@ namespace BalanceNetFramework
                         lbMessage.ForeColor = Color.White;
                         btnLotto.Enabled = true;
                         txtCodiceLotto.Enabled = true;
+                        btnCloseLotto.Enabled = false;
+                        btnCloseLotto.Enabled = false;
+                        btnWeight.Enabled = false;
+                        //txtCodiceLotto.Text = "";
                     }
                     else
                     {
@@ -962,6 +996,10 @@ namespace BalanceNetFramework
                         lbMessage.ForeColor = Color.White;
                         btnLotto.Enabled = true;
                         txtCodiceLotto.Enabled = true;
+                        btnCloseLotto.Enabled = false;
+                        btnCloseLotto.Enabled = false;
+                        btnWeight.Enabled = false;
+                        //txtCodiceLotto.Text = "";
                     }
                     lbMessage.Visible = true;
                     btnResetWeight.Visible = true;
@@ -1025,7 +1063,7 @@ namespace BalanceNetFramework
                             repeatWeight.Visible = false;
                             txtCodiceLotto.Enabled = false;
                             btnLotto.Enabled = false;
-                        }
+                        }                       
                         else
                         {
                             repeatWeight.Visible = true;
@@ -1044,6 +1082,9 @@ namespace BalanceNetFramework
 
                                 btnLotto.Enabled = true;
                                 txtCodiceLotto.Enabled = true;
+                                btnCloseLotto.Enabled = false;
+                                btnWeight.Enabled = false;
+                                //txtCodiceLotto.Text = "";
                             }
                             else
                             {
@@ -1060,6 +1101,9 @@ namespace BalanceNetFramework
 
                                 btnLotto.Enabled = true;
                                 txtCodiceLotto.Enabled = true;
+                                btnCloseLotto.Enabled = false;
+                                btnWeight.Enabled = false;
+                                //txtCodiceLotto.Text = "";
                             }
                             lbMessage.Visible = true;
                             btnResetWeight.Visible = true;
@@ -1087,16 +1131,24 @@ namespace BalanceNetFramework
                 var nameProduct = GetNameProduct(idProduct);
                 String[] data = name.Split('-');
                 nameUnitMeasure = data[1];
-                detailProduct.Text = "";
-                lbWeightBalance.Text = "0.00 " + data[1];
-                lbStandardWeight.Text = "Peso Standard: " + data[2] + data[1];
-                txtProdottoEnable.Text = nameProduct;
+                if (string.IsNullOrEmpty(weightReceivedScale))
+                {
+                    weightReceivedScale = "0,00";
+                }
+                detailProduct.Text = nameProduct.Substring(0, 1).ToUpper() + nameProduct.Substring(1) + " - " +weightReceivedScale + " " + data[1];
+                //lbWeightBalance.Text = "0.00 " + data[1];                             
+                txtCodiceLotto.Text = "";
                 GetMinAndMaxValue(idProduct);
                 GetNumberWeightControl(idProduct);
-                
+                string weightStandardRemovePoint = data[2].Replace(".", ",");
+                string tolereanceRemovePoint = Convert.ToString(toleranceStart).Replace(".", ",");
+                lbStandardWeight.Text = "Peso Standard: " + weightStandardRemovePoint + " " + data[1]+ " - " + "Tolleranza: " + tolereanceRemovePoint + " %" + " - " + "Soglia Minima: "+minValue + " " +data[1] + " - " + "Soglia Massima: " + maxValue + " " + data[1];
+
                 if (numberWeight > 0)
                 {
-                    repeatWeight.Visible = true;                  
+                    repeatWeight.Visible = true;
+                    txtCodiceLotto.Enabled = false;
+                    btnLotto.Enabled = false;
                 }
                 else
                 {
@@ -1110,10 +1162,14 @@ namespace BalanceNetFramework
                     btnWeight.Enabled = false;
                     txtCodiceLotto.Enabled = true;
                     btnLotto.Enabled = true;
+                    btnCloseLotto.Enabled = false;
                 }
                 else
                 {
                     txtCodiceLotto.Text = codiceLotto;
+                    btnCloseLotto.Visible = true;
+                    btnCloseLotto.Enabled = true;
+                    btnWeight.Enabled = true;
                 }
 
                 if (numberWeight == numberWeightControl && controlNumber != 0)
@@ -1127,6 +1183,9 @@ namespace BalanceNetFramework
 
                         btnLotto.Enabled = true;
                         txtCodiceLotto.Enabled = true;
+                        btnCloseLotto.Enabled = false;
+                        btnWeight.Enabled = false;
+                        //txtCodiceLotto.Text = "";
                     }
                     else
                     {
@@ -1143,6 +1202,10 @@ namespace BalanceNetFramework
 
                         btnLotto.Enabled = true;
                         txtCodiceLotto.Enabled = true;
+
+                        btnCloseLotto.Enabled = false;
+                        btnWeight.Enabled = false;
+                        //txtCodiceLotto.Text = "";
                     }
                     lbMessage.Visible = true;
                     btnResetWeight.Visible = true;
@@ -1170,11 +1233,16 @@ namespace BalanceNetFramework
             btnResetWeight.Visible = false;
             if (numberWeight > 0)
             {
+                if (numberWeight == numberWeightControl && controlNumber != 0)
+                {
+                    txtCodiceLotto.Enabled = false;
+                    btnLotto.Enabled = false;
+                }
                 repeatWeight.Visible = true;
                 var idControlPeso = GetIdLastWeightControl(idProduct, controlNumber);
                 if (_balance.UpdateLastedControlWeight(idControlPeso, numberWeight))
                 {
-                    GetNumberWeightControl(idProduct);
+                    Reload();
                     if (numberWeight == 0)
                     {
                         repeatWeight.Visible = false;
@@ -1204,8 +1272,8 @@ namespace BalanceNetFramework
                
                 txtCodiceLotto.Enabled = false;
                 btnLotto.Enabled = false;
-               
-                GetNumberWeightControl(idProduct);
+
+                Reload();
                 _balance.UpdateLastedLotto(Convert.ToString(idLotto));
             }
 
@@ -1232,7 +1300,7 @@ namespace BalanceNetFramework
                         btnResetWeight.Visible = false;
                         repeatWeight.Visible = false;
                         //btnWeight.Enabled = false;
-                        GetNumberWeightControl(idProduct);
+                        Reload();
                         btnLotto.Enabled = false;
                         txtCodiceLotto.Enabled = false;
                         //txtCodiceLotto.Text = "";
@@ -1253,24 +1321,47 @@ namespace BalanceNetFramework
                         _lotte.SogliaMassima = maxValue;
                         _lotte.Tolleranza = tolerance;
                         _lotte.PesoStandard = standardWeight;
+                        _lotte.InUso = true;
                         _lotte.Attivo = true;
 
                         if (_balance.InsertLotte(_lotte))
                         {
+                            Reload();
                             txtCodiceLotto.Enabled = false;
                             btnLotto.Enabled = false;
                             btnWeight.Enabled = true;
                             Console.WriteLine("record salvato con successo");
                         }
                     }
-                }               
+                }
 
             }
             catch (Exception ex)
             {
                 ManagerBalance.log.Error(ex.Message);
             }
-           
+
+        }
+
+        private void btnCloseLotto_Click(object sender, EventArgs e)
+        {
+            if (_balance.RepeatControlWeight(idProduct, controlNumber))
+            {
+                lbMessage.Visible = false;
+                btnResetWeight.Visible = false;
+                repeatWeight.Visible = false;
+                //btnWeight.Enabled = false;
+                _balance.CloseLotto(Convert.ToString(idLotto));
+                Reload();
+                //btnLotto.Enabled = true;
+                //txtCodiceLotto.Enabled = true;
+                txtCodiceLotto.Text = "";
+                btnCloseLotto.Visible = false;
+                btnWeight.Enabled = false;
+
+                Console.WriteLine(Convert.ToString(numberWeight), numberWeightControl, controlNumber);
+                //txtCodiceLotto.Text = "";
+            }
         }
     }
 }

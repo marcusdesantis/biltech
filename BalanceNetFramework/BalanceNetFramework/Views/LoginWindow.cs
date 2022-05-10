@@ -92,11 +92,11 @@ namespace BalanceNetFramework.Views
             //if(loginController.Login(_utente))
             if (resp != null && resp.status == "success")
             {
-               // MainWindow form1 = new MainWindow(resp);
+                MainWindow form1 = new MainWindow();
                 this.Hide();
                // form1.usuario = resp.response;
-                //form1.cargarUsuario();
-                //form1.Show();
+                form1.cargarValoresInicialesAsync(resp);
+                form1.Show();
             }
             else
             {

@@ -6,6 +6,7 @@
         public string Nome { get; set; }
         public string Codice { get; set; }
         public int Id_Modello { get; set; }
+        public string NomeModello { get; set; }
         public string PortCOM { get; set; }
         public int BaudRate { get; set; }
         public int DataBits { get; set; }
@@ -24,6 +25,7 @@
         public string Nome { get; set; }
         public string Codice { get; set; }
         public int Id_Modello { get; set; }
+        public string NomeModello { get; set; }
         public string PortCOM { get; set; }
         public int BaudRate { get; set; }
         public int DataBits { get; set; }

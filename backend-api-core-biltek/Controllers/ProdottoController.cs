@@ -197,5 +197,42 @@ namespace backend_api_core.Controllers
                 return new OkObjectResult(respuesta);
             }
         }
+
+        // GET: api/Prodotto/5
+        [HttpGet("getAllProducts")]
+        public async Task<ActionResult<IEnumerable<RespuestaCore>>> getAllProducts()
+        {
+            RespuestaCore respuesta = new RespuestaCore();
+            IEnumerable<ProdottoList> _arrayLista = new ProdottoList[] { };
+            int elementosTotales = 0;
+
+            try
+            {
+                _arrayLista = await this._prodotto.SearchList("", "1", 0, 0);
+
+                if (_arrayLista.Count() > 0)
+                {
+                    elementosTotales = _arrayLista.Count();
+                }
+
+                respuesta = new RespuestaCore
+                {
+                    status = "success",
+                    response = _arrayLista,
+                    total = elementosTotales
+                };
+                return new OkObjectResult(respuesta);
+            }
+            catch (Exception ex)
+            {
+                respuesta = new RespuestaCore
+                {
+                    status = "error",
+                    response = ex.Message
+                };
+
+                return new OkObjectResult(respuesta);
+            }
+        }
     }
 }

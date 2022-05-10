@@ -12,7 +12,7 @@ namespace BalanceNetFramework.Models
     {
         public string ctrlLogin(string user, string password)
         {
-           
+
             string response = "";
             Users dataUser = null;
 
@@ -78,7 +78,7 @@ namespace BalanceNetFramework.Models
             }
 
             return state;
-            
+
         }
 
         public Users UsersQuery(string user)
@@ -94,7 +94,7 @@ namespace BalanceNetFramework.Models
                 MySqlCommand comando = new MySqlCommand(sql, connectionBD);
                 comando.Parameters.AddWithValue("@user", user);
 
-                reader = comando.ExecuteReader();                
+                reader = comando.ExecuteReader();
 
                 while (reader.Read())
                 {
@@ -111,7 +111,7 @@ namespace BalanceNetFramework.Models
                 ManagerBalance.log.Error(ex.Message);
                 Console.WriteLine("Error: " + ex.Message);
             }
-          
+
             return usr;
         }
     }
@@ -149,5 +149,33 @@ namespace BalanceNetFramework.Models
         public string U_MAQ02 { get; set; }
     }
 
+    public class RespuestaConfig
+    {
+        public string status { get; set; }
+        public List<BilanciaList> response { get; set; }
+        public int total { get; set; }
+    }
+
+    public class BilanciaList
+    {
+        public int? id { get; set; }
+        public string Nome { get; set; }
+        public string Codice { get; set; }
+        public int Id_Modello { get; set; }
+        public string NomeModello { get; set; }
+        public string PortCOM { get; set; }
+        public int BaudRate { get; set; }
+        public int DataBits { get; set; }
+        public int Parity { get; set; }
+        public int StopBit { get; set; }
+        public int HandShake { get; set; }
+        public string CommandForWeight { get; set; }
+        public decimal WeightConversion { get; set; }
+        public bool Attivo { get; set; }
+
+        public int total { get; set; }
+
+
+    }
 
 }

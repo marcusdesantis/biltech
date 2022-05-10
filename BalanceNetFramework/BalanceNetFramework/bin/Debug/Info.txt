@@ -242,3 +242,25 @@
 2022-05-09 16:03:44,355 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
 2022-05-09 16:06:47,776 [9] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
 2022-05-09 16:08:28,473 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-05-09 20:41:19,556 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Object reference not set to an instance of an object.
+2022-05-09 21:14:25,755 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Object reference not set to an instance of an object.
+2022-05-09 21:17:29,261 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Object reference not set to an instance of an object.
+2022-05-09 21:47:04,312 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Object reference not set to an instance of an object.
+2022-05-10 09:37:26,766 [12] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-10 09:45:12,255 [11] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-10 10:00:01,841 [4] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-10 10:12:41,029 [12] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-10 10:40:12,627 [1] ERROR BalanceNetFramework.Data.ManagerBalance - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM biltek_bd.prodotto as p INNER JOIN  biltek_bd.unitamisura as u ON p.Id_Unit' at line 1
+2022-05-10 11:11:50,528 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Caffe'.
+2022-05-10 11:18:35,431 [10] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Caffe'.
+2022-05-10 11:23:35,310 [11] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-10 11:23:39,659 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Incorrect decimal value: '0,00' for column 'Peso' at row 1
+2022-05-10 11:23:39,686 [1] ERROR BalanceNetFramework.Data.ManagerBalance - Incorrect decimal value: '0,00' for column 'Pesata' at row 1
+2022-05-10 11:26:12,483 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-10 11:28:34,626 [12] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-05-10 11:30:47,200 [6] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-05-10 11:47:49,783 [6] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-10 12:11:28,538 [8] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-10 12:12:20,467 [8] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.
+2022-05-10 12:16:04,512 [9] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Burro.
+2022-05-10 12:30:33,234 [5] ERROR BalanceNetFramework.Data.ManagerBalance - Il peso non rispetta il limite consentito per il prodotto Formaggio.

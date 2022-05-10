@@ -53,9 +53,6 @@ namespace BalanceNetFramework.Services
         public async Task<RespuestaCliente> getGliente(string token)
         {
 
-            //_client.DefaultRequestHeaders.Add("Authorization", token);
-            //_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            //_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", "{"+ token+"}");
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
             HttpResponseMessage response = await _client.GetAsync("api/Cliente/5");
@@ -69,6 +66,24 @@ namespace BalanceNetFramework.Services
             var user = JsonConvert.DeserializeObject<RespuestaCliente>(responseContent);
 
             return user;
+        }
+
+        public async Task<RespuestaConfig> GetConfig(string token)
+        {
+
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            HttpResponseMessage response = await _client.GetAsync("api/Bilancia/GetConfig/");
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                RespuestaConfig respuestaConfig = new RespuestaConfig();
+                respuestaConfig.status = "Unauthorized";
+                return respuestaConfig;
+            }
+            var responseContent = await response.Content.ReadAsStringAsync();
+            var config = JsonConvert.DeserializeObject<RespuestaConfig>(responseContent);
+
+            return config;
         }
 
     }

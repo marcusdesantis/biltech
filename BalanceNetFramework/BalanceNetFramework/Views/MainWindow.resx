@@ -118,208 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnLotto.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnLotto.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt, style=Bold</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnLotto.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnLotto.Location" type="System.Drawing.Point, System.Drawing">
-    <value>610, 137</value>
-  </data>
-  <data name="btnLotto.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 30</value>
-  </data>
-  <data name="btnLotto.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="btnLotto.Text" xml:space="preserve">
-    <value>Apri lotto</value>
-  </data>
-  <data name="&gt;&gt;btnLotto.Name" xml:space="preserve">
-    <value>btnLotto</value>
-  </data>
-  <data name="&gt;&gt;btnLotto.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnLotto.Parent" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;btnLotto.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
-  </data>
-  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>606, 82</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 20</value>
-  </data>
-  <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Prodotto</value>
-  </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="txtProdottoEnable.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="txtProdottoEnable.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt</value>
-  </data>
-  <data name="txtProdottoEnable.Location" type="System.Drawing.Point, System.Drawing">
-    <value>610, 105</value>
-  </data>
-  <data name="txtProdottoEnable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 26</value>
-  </data>
-  <data name="txtProdottoEnable.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="&gt;&gt;txtProdottoEnable.Name" xml:space="preserve">
-    <value>txtProdottoEnable</value>
-  </data>
-  <data name="&gt;&gt;txtProdottoEnable.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtProdottoEnable.Parent" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;txtProdottoEnable.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
-  </data>
-  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>606, 30</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 20</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Codice Lotto:</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="lbLotto.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbLotto.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
-  </data>
-  <data name="lbLotto.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lbLotto.Location" type="System.Drawing.Point, System.Drawing">
-    <value>606, 7</value>
-  </data>
-  <data name="lbLotto.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
-  </data>
-  <data name="lbLotto.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="lbLotto.Text" xml:space="preserve">
-    <value>Lotto</value>
-  </data>
-  <data name="&gt;&gt;lbLotto.Name" xml:space="preserve">
-    <value>lbLotto</value>
-  </data>
-  <data name="&gt;&gt;lbLotto.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbLotto.Parent" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;lbLotto.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="txtCodiceLotto.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="txtCodiceLotto.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt</value>
-  </data>
-  <data name="txtCodiceLotto.Location" type="System.Drawing.Point, System.Drawing">
-    <value>610, 53</value>
-  </data>
-  <data name="txtCodiceLotto.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 26</value>
-  </data>
-  <data name="txtCodiceLotto.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="&gt;&gt;txtCodiceLotto.Name" xml:space="preserve">
-    <value>txtCodiceLotto</value>
-  </data>
-  <data name="&gt;&gt;txtCodiceLotto.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtCodiceLotto.Parent" xml:space="preserve">
-    <value>panelBalance</value>
-  </data>
-  <data name="&gt;&gt;txtCodiceLotto.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="lbStandardWeight.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lbStandardWeight.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt, style=Bold</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lbStandardWeight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lbStandardWeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-3, 4</value>
+    <value>3, 4</value>
   </data>
   <data name="lbStandardWeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 17</value>
+    <value>115, 20</value>
   </data>
   <data name="lbStandardWeight.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -337,19 +151,19 @@
     <value>panelBalance</value>
   </data>
   <data name="&gt;&gt;lbStandardWeight.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>0</value>
   </data>
   <data name="repeatWeight.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="repeatWeight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="repeatWeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>611, 255</value>
+    <value>647, 265</value>
   </data>
   <data name="repeatWeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 33</value>
+    <value>315, 33</value>
   </data>
   <data name="repeatWeight.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -370,19 +184,19 @@
     <value>panelBalance</value>
   </data>
   <data name="&gt;&gt;repeatWeight.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>1</value>
   </data>
   <data name="btnResetWeight.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="btnResetWeight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnResetWeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>659, 368</value>
+    <value>648, 384</value>
   </data>
   <data name="btnResetWeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 33</value>
+    <value>314, 33</value>
   </data>
   <data name="btnResetWeight.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -403,7 +217,7 @@
     <value>panelBalance</value>
   </data>
   <data name="&gt;&gt;btnResetWeight.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>2</value>
   </data>
   <data name="lbMessage.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
@@ -412,10 +226,10 @@
     <value>NoControl</value>
   </data>
   <data name="lbMessage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>660, 300</value>
+    <value>648, 307</value>
   </data>
   <data name="lbMessage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>265, 68</value>
+    <value>314, 68</value>
   </data>
   <data name="lbMessage.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -439,7 +253,7 @@
     <value>panelBalance</value>
   </data>
   <data name="&gt;&gt;lbMessage.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>3</value>
   </data>
   <data name="btnWeight.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
@@ -448,7 +262,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnWeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>611, 184</value>
+    <value>648, 173</value>
   </data>
   <data name="btnWeight.Size" type="System.Drawing.Size, System.Drawing">
     <value>314, 84</value>
@@ -469,7 +283,7 @@
     <value>panelBalance</value>
   </data>
   <data name="&gt;&gt;btnWeight.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>4</value>
   </data>
   <data name="lbAlert.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
@@ -478,7 +292,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbAlert.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 564</value>
+    <value>74, 566</value>
   </data>
   <data name="lbAlert.Size" type="System.Drawing.Size, System.Drawing">
     <value>611, 24</value>
@@ -499,7 +313,7 @@
     <value>panelBalance</value>
   </data>
   <data name="&gt;&gt;lbAlert.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>5</value>
   </data>
   <data name="detailProduct.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
@@ -508,7 +322,7 @@
     <value>NoControl</value>
   </data>
   <data name="detailProduct.Location" type="System.Drawing.Point, System.Drawing">
-    <value>177, 524</value>
+    <value>222, 488</value>
   </data>
   <data name="detailProduct.Size" type="System.Drawing.Size, System.Drawing">
     <value>237, 40</value>
@@ -529,7 +343,7 @@
     <value>panelBalance</value>
   </data>
   <data name="&gt;&gt;detailProduct.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>6</value>
   </data>
   <data name="lbWeightBalance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
@@ -538,16 +352,13 @@
     <value>NoControl</value>
   </data>
   <data name="lbWeightBalance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 498</value>
+    <value>838, 447</value>
   </data>
   <data name="lbWeightBalance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>263, 26</value>
+    <value>87, 26</value>
   </data>
   <data name="lbWeightBalance.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="lbWeightBalance.Text" xml:space="preserve">
-    <value>0.00</value>
   </data>
   <data name="lbWeightBalance.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -562,7 +373,7 @@
     <value>panelBalance</value>
   </data>
   <data name="&gt;&gt;lbWeightBalance.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>7</value>
   </data>
   <data name="balanceGauge.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -574,10 +385,10 @@
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
   <data name="balanceGauge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>44, 24</value>
   </data>
   <data name="balanceGauge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>951, 540</value>
+    <value>947, 516</value>
   </data>
   <data name="balanceGauge.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -592,16 +403,16 @@
     <value>panelBalance</value>
   </data>
   <data name="&gt;&gt;balanceGauge.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>8</value>
   </data>
   <data name="panelBalance.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="panelBalance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>357, 3</value>
+    <value>317, 3</value>
   </data>
   <data name="panelBalance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>948, 632</value>
+    <value>988, 632</value>
   </data>
   <data name="panelBalance.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -620,6 +431,99 @@
   </data>
   <data name="&gt;&gt;panelBalance.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="btnLotto.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnLotto.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="btnLotto.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnLotto.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 273</value>
+  </data>
+  <data name="btnLotto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 30</value>
+  </data>
+  <data name="btnLotto.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="btnLotto.Text" xml:space="preserve">
+    <value>Apri lotto</value>
+  </data>
+  <data name="&gt;&gt;btnLotto.Name" xml:space="preserve">
+    <value>btnLotto</value>
+  </data>
+  <data name="&gt;&gt;btnLotto.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnLotto.Parent" xml:space="preserve">
+    <value>panelProduct</value>
+  </data>
+  <data name="&gt;&gt;btnLotto.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 213</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 20</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Codice Lotto:</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>panelProduct</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="txtCodiceLotto.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtCodiceLotto.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="txtCodiceLotto.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 236</value>
+  </data>
+  <data name="txtCodiceLotto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 26</value>
+  </data>
+  <data name="txtCodiceLotto.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;txtCodiceLotto.Name" xml:space="preserve">
+    <value>txtCodiceLotto</value>
+  </data>
+  <data name="&gt;&gt;txtCodiceLotto.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCodiceLotto.Parent" xml:space="preserve">
+    <value>panelProduct</value>
+  </data>
+  <data name="&gt;&gt;txtCodiceLotto.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="txtErrorMessage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -651,14 +555,140 @@
   <data name="&gt;&gt;txtErrorMessage.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="&gt;&gt;btnCloseLotto.Name" xml:space="preserve">
+    <value>btnCloseLotto</value>
+  </data>
+  <data name="&gt;&gt;btnCloseLotto.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCloseLotto.Parent" xml:space="preserve">
+    <value>panelProduct</value>
+  </data>
+  <data name="&gt;&gt;btnCloseLotto.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnTare.Name" xml:space="preserve">
+    <value>btnTare</value>
+  </data>
+  <data name="&gt;&gt;btnTare.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnTare.Parent" xml:space="preserve">
+    <value>panelProduct</value>
+  </data>
+  <data name="&gt;&gt;btnTare.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnReset.Name" xml:space="preserve">
+    <value>btnReset</value>
+  </data>
+  <data name="&gt;&gt;btnReset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnReset.Parent" xml:space="preserve">
+    <value>panelProduct</value>
+  </data>
+  <data name="&gt;&gt;btnReset.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btnSend.Name" xml:space="preserve">
+    <value>btnSend</value>
+  </data>
+  <data name="&gt;&gt;btnSend.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSend.Parent" xml:space="preserve">
+    <value>panelProduct</value>
+  </data>
+  <data name="&gt;&gt;btnSend.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;boxCommand.Name" xml:space="preserve">
+    <value>boxCommand</value>
+  </data>
+  <data name="&gt;&gt;boxCommand.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;boxCommand.Parent" xml:space="preserve">
+    <value>panelProduct</value>
+  </data>
+  <data name="&gt;&gt;boxCommand.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>panelProduct</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;cbProduct.Name" xml:space="preserve">
+    <value>cbProduct</value>
+  </data>
+  <data name="&gt;&gt;cbProduct.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbProduct.Parent" xml:space="preserve">
+    <value>panelProduct</value>
+  </data>
+  <data name="&gt;&gt;cbProduct.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>panelProduct</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="panelProduct.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panelProduct.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 3</value>
+  </data>
+  <data name="panelProduct.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>13, 3, 3, 3</value>
+  </data>
+  <data name="panelProduct.Size" type="System.Drawing.Size, System.Drawing">
+    <value>298, 632</value>
+  </data>
+  <data name="panelProduct.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="panelProduct.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;panelProduct.Name" xml:space="preserve">
+    <value>panelProduct</value>
+  </data>
+  <data name="&gt;&gt;panelProduct.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelProduct.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;panelProduct.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="btnTare.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="btnTare.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnTare.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 162</value>
+    <value>110, 105</value>
   </data>
   <data name="btnTare.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 30</value>
@@ -679,16 +709,16 @@
     <value>panelProduct</value>
   </data>
   <data name="&gt;&gt;btnTare.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="btnReset.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="btnReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 162</value>
+    <value>7, 105</value>
   </data>
   <data name="btnReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 30</value>
@@ -709,16 +739,16 @@
     <value>panelProduct</value>
   </data>
   <data name="&gt;&gt;btnReset.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="btnSend.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="btnSend.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnSend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 123</value>
+    <value>7, 66</value>
   </data>
   <data name="btnSend.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 30</value>
@@ -739,13 +769,13 @@
     <value>panelProduct</value>
   </data>
   <data name="&gt;&gt;btnSend.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="boxCommand.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="boxCommand.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 86</value>
+    <value>7, 29</value>
   </data>
   <data name="boxCommand.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 26</value>
@@ -763,22 +793,22 @@
     <value>panelProduct</value>
   </data>
   <data name="&gt;&gt;boxCommand.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt, style=Bold</value>
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
   <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 61</value>
+    <value>4, 4</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 17</value>
+    <value>172, 20</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -796,13 +826,13 @@
     <value>panelProduct</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="cbProduct.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="cbProduct.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 28</value>
+    <value>7, 174</value>
   </data>
   <data name="cbProduct.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 28</value>
@@ -820,22 +850,22 @@
     <value>panelProduct</value>
   </data>
   <data name="&gt;&gt;cbProduct.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt, style=Bold</value>
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
   <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
+    <value>4, 150</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 17</value>
+    <value>179, 20</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -853,40 +883,10 @@
     <value>panelProduct</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="panelProduct.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="panelProduct.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 3</value>
-  </data>
-  <data name="panelProduct.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>13, 3, 3, 3</value>
-  </data>
-  <data name="panelProduct.Size" type="System.Drawing.Size, System.Drawing">
-    <value>338, 632</value>
-  </data>
-  <data name="panelProduct.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="panelProduct.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;panelProduct.Name" xml:space="preserve">
-    <value>panelProduct</value>
-  </data>
-  <data name="&gt;&gt;panelProduct.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelProduct.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;panelProduct.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>10</value>
   </data>
   <data name="btnConnect.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="btnConnect.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -946,7 +946,7 @@
     <value>True</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt, style=Bold</value>
+    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -955,7 +955,7 @@
     <value>16, 22</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 17</value>
+    <value>72, 20</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -974,6 +974,285 @@
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="&gt;&gt;lblModel.Name" xml:space="preserve">
+    <value>lblModel</value>
+  </data>
+  <data name="&gt;&gt;lblModel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblModel.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;lblModel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label19.Name" xml:space="preserve">
+    <value>label19</value>
+  </data>
+  <data name="&gt;&gt;label19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;lblParser.Name" xml:space="preserve">
+    <value>lblParser</value>
+  </data>
+  <data name="&gt;&gt;lblParser.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblParser.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;lblParser.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;lblWeightConvertion.Name" xml:space="preserve">
+    <value>lblWeightConvertion</value>
+  </data>
+  <data name="&gt;&gt;lblWeightConvertion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblWeightConvertion.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;lblWeightConvertion.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;lblCommand.Name" xml:space="preserve">
+    <value>lblCommand</value>
+  </data>
+  <data name="&gt;&gt;lblCommand.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCommand.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;lblCommand.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;lblHandShake.Name" xml:space="preserve">
+    <value>lblHandShake</value>
+  </data>
+  <data name="&gt;&gt;lblHandShake.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblHandShake.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;lblHandShake.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;labelS.Name" xml:space="preserve">
+    <value>labelS</value>
+  </data>
+  <data name="&gt;&gt;labelS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelS.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;labelS.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;lblParity.Name" xml:space="preserve">
+    <value>lblParity</value>
+  </data>
+  <data name="&gt;&gt;lblParity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblParity.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;lblParity.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;lblStopBit.Name" xml:space="preserve">
+    <value>lblStopBit</value>
+  </data>
+  <data name="&gt;&gt;lblStopBit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblStopBit.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;lblStopBit.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;lblDataBits.Name" xml:space="preserve">
+    <value>lblDataBits</value>
+  </data>
+  <data name="&gt;&gt;lblDataBits.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblDataBits.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;lblDataBits.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;lblBaudRate.Name" xml:space="preserve">
+    <value>lblBaudRate</value>
+  </data>
+  <data name="&gt;&gt;lblBaudRate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblBaudRate.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;lblBaudRate.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;lblPorto.Name" xml:space="preserve">
+    <value>lblPorto</value>
+  </data>
+  <data name="&gt;&gt;lblPorto.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPorto.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;lblPorto.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;lblP.Name" xml:space="preserve">
+    <value>lblP</value>
+  </data>
+  <data name="&gt;&gt;lblP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblP.Parent" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;lblP.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="panelConnectionInformation.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="panelConnectionInformation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 761</value>
+  </data>
+  <data name="panelConnectionInformation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1308, 10</value>
+  </data>
+  <data name="panelConnectionInformation.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="panelConnectionInformation.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;panelConnectionInformation.Name" xml:space="preserve">
+    <value>panelConnectionInformation</value>
+  </data>
+  <data name="&gt;&gt;panelConnectionInformation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelConnectionInformation.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelConnectionInformation.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="lblModel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1638,33 +1917,6 @@
   <data name="&gt;&gt;lblP.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
-  <data name="panelConnectionInformation.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="panelConnectionInformation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 761</value>
-  </data>
-  <data name="panelConnectionInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1308, 10</value>
-  </data>
-  <data name="panelConnectionInformation.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="panelConnectionInformation.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;panelConnectionInformation.Name" xml:space="preserve">
-    <value>panelConnectionInformation</value>
-  </data>
-  <data name="&gt;&gt;panelConnectionInformation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelConnectionInformation.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panelConnectionInformation.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="btnDisconnect.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
@@ -1699,7 +1951,7 @@
     <value>4</value>
   </data>
   <data name="btnMeasurement.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="btnMeasurement.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1783,11 +2035,44 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panelProduct" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panelBalance" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,27.1028,Percent,72.89719" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panelProduct" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panelBalance" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,24.00612,Percent,75.99388" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="btnCloseLotto.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="btnCloseLotto.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCloseLotto.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 314</value>
+  </data>
+  <data name="btnCloseLotto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 30</value>
+  </data>
+  <data name="btnCloseLotto.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="btnCloseLotto.Text" xml:space="preserve">
+    <value>Chiudi Lotto</value>
+  </data>
+  <data name="btnCloseLotto.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;btnCloseLotto.Name" xml:space="preserve">
+    <value>btnCloseLotto</value>
+  </data>
+  <data name="&gt;&gt;btnCloseLotto.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCloseLotto.Parent" xml:space="preserve">
+    <value>panelProduct</value>
+  </data>
+  <data name="&gt;&gt;btnCloseLotto.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

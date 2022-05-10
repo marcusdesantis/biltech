@@ -1,4 +1,5 @@
 ﻿using BalanceNetFramework.Models;
+using BalanceNetFramework.Services;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using System;
@@ -81,6 +82,15 @@ namespace BalanceNetFramework.Data
 
         }
 
+        //
+        public ManagerBalance(Respuesta responseToken)
+        {
+            LoadDataConfigurationBalanceDB();
+            // _responseToken = responseToken;
+            //loadDataConfigurationBalanceJson(configFilePath);
+
+        }
+
         private Parity Integer2Parity(int parity)
         {
             Parity _parity = Parity.None;
@@ -109,9 +119,31 @@ namespace BalanceNetFramework.Data
             return _parity;
         }
 
-        public async void GetConfiguration()
+        public async Task<List<BalanceModel>> GetConfiguration()
         {
-            bool retval = await LoadDataConfigurationBalanceRemote();
+            RespuestaConfig res = await LoadDataConfigurationBalanceRemote(_responseToken.response.token);
+
+            List<BilanciaList> bilanciaList = res.response;
+            foreach (var item in bilanciaList)
+            {
+                BalanceModel b = new BalanceModel();
+                b.Id = (int)item.id;
+                b.Nome = item.Nome;
+                b.Codice = item.Codice;
+                b.PortCOM = item.PortCOM;
+                b.BaudRate = item.BaudRate;
+                b.DataBits = item.DataBits;
+                b.Parity = item.Parity;
+                b.StopBit = item.StopBit;
+                b.HandShake = item.HandShake;
+                b.CommandForWeight = item.CommandForWeight;
+                b.WeightConversion = item.WeightConversion;
+                b.IdModello =item.Id_Modello;
+                b.NomeModello = item.NomeModello;
+                _balanceList.Add(b);
+            }
+            return _balanceList;
+
         }
         private StopBits Integer2StopBits(int stopBits)
         {
@@ -360,20 +392,14 @@ namespace BalanceNetFramework.Data
             return retVal;
         }
 
-        public async Task<bool> LoadDataConfigurationBalanceRemote()
+        public async Task<RespuestaConfig> LoadDataConfigurationBalanceRemote(string token)
         {
             bool state = false;
-            string _Url = @"http://localhost:5030/";
-            HttpClient _client = new HttpClient();
-            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _responseToken.response.token);
 
-            //HttpResponseMessage response = await _client.PostAsync("api/Bilancia/GetConfig", new StringContent("", Encoding.UTF8, "application/json"));
-            HttpResponseMessage response = await _client.GetAsync("api/Bilancia/GetConfig/");
+            ApiClientService _client = new ApiClientService();
+            RespuestaConfig respuestaConfig = await _client.GetConfig(token);
 
-            var responseContent = await response.Content.ReadAsStringAsync();
-            var contentResponse = JsonConvert.DeserializeObject<Respuesta>(responseContent);
-
-            return state;
+            return respuestaConfig;
 
         }
         public bool LoadDataConfigurationBalanceDB()
@@ -549,7 +575,7 @@ namespace BalanceNetFramework.Data
             try
             {
 
-                string sql = "INSERT INTO lotto (Id_Prodotto, CodiceLotto, SogliaMinima, SogliaMassima, Tolleranza, PesoStandard, Attivo) VALUES (@Id_Prodotto, @CodiceLotto, @SogliaMinima, @SogliaMassima, @Tolleranza, @PesoStandard, @Attivo);";
+                string sql = "INSERT INTO lotto (Id_Prodotto, CodiceLotto, SogliaMinima, SogliaMassima, Tolleranza, PesoStandard, InUso ,Attivo) VALUES (@Id_Prodotto, @CodiceLotto, @SogliaMinima, @SogliaMassima, @Tolleranza, @PesoStandard, @InUso ,@Attivo);";
 
                 MySqlConnection connectionBD = ConnectionDB.connection();
                 connectionBD.Open();
@@ -563,6 +589,7 @@ namespace BalanceNetFramework.Data
                     command.Parameters.AddWithValue("@SogliaMassima", lotte.SogliaMassima);
                     command.Parameters.AddWithValue("@Tolleranza", lotte.Tolleranza);
                     command.Parameters.AddWithValue("@PesoStandard", lotte.PesoStandard);
+                    command.Parameters.AddWithValue("@InUso", lotte.InUso);
                     command.Parameters.AddWithValue("@Attivo", lotte.Attivo);
 
                     command.ExecuteNonQuery();
@@ -796,6 +823,55 @@ namespace BalanceNetFramework.Data
 
         }
 
+        public bool CloseLotto(string id)
+        {
+            bool state = false;
+            try
+            {
+
+                string sql = "update biltek_bd.lotto set InUso=@InUso where Id=@idLotto";
+
+                MySqlConnection connectionBD = ConnectionDB.connection();
+                connectionBD.Open();
+
+                DateTime dataCreazione = DateTime.Now;
+                string dateFormart = dataCreazione.ToString("yy-MM-dd HH:mm:ss");
+
+                try
+                {
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                    command.Parameters.AddWithValue("@InUso", 0);
+                    command.Parameters.AddWithValue("@idLotto", id);
+
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("update Success");
+
+                    state = true;
+
+                }
+                catch (Exception ex)
+                {
+                    ManagerBalance.log.Error(ex.Message);
+                    Console.WriteLine("Insert Error: " + ex.Message);
+                    state = false;
+
+                }
+                finally
+                {
+                    connectionBD.Close();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ManagerBalance.log.Error(ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            return state;
+
+        }
         public string GetMessageWeight(string idProduct, int numberControl)
         {
             string message = "";

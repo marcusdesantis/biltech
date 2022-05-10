@@ -97,6 +97,7 @@ namespace BalanceNetFramework.Models
         public int SogliaMassima { get; set; }
         public decimal Tolleranza { get; set; }
         public decimal PesoStandard { get; set; }
+        public bool InUso { get; set; }
         public bool Attivo { get; set; }
 
     }
